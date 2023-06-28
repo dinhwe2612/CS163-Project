@@ -20,8 +20,8 @@ int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenWidth = 1460;
+    const int screenHeight = 850;
 
     InitWindow(screenWidth, screenHeight, "raylib [shapes] example - raylib logo using shapes");
 
