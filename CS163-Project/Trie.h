@@ -1,8 +1,10 @@
-#pragma once
 #include <string>
 #include <iostream>
 #include <vector>
 using namespace std;
+
+#ifndef TRIE_H
+#define TRIE_H
 
 const int ASCII_SIZE = 128;
 
@@ -22,23 +24,8 @@ struct Definition {
 	int num;// number of definition
 	vector<pair<string, string>> word;// {keyword, definition}
 	void add(string& key);
+	int search(string def);
 	void remove(string& key);
 };
 
-struct history {// singly linked list
-	int limit = 10;
-	string word;
-	history *next;
-	void insert(string& key);
-	void remove(string& key);
-	void removeAll();
-};
-
-struct Favourite {
-	int limit = 10;
-	int word;
-	Favourite* next;
-	void insert(string& key);
-	void remove(string& key);
-	void removeAll();
-};
+#endif
