@@ -24,7 +24,7 @@ struct Definition {
 	int num;// number of definition
 	vector<pair<string, string>> word;// {keyword, definition}
 	void add(string& key);
-	int search(string def);
+	string search(string def);
 	void remove(string& key);
 };
 

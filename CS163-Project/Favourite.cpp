@@ -1,10 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "Favourite.h"
-#include "Trie.h"
 using namespace std;
-
-Definition def;
 
 void Favourite::init(string dataset) {
 	datasetName = dataset;
@@ -29,24 +27,47 @@ void Favourite::init(string dataset) {
 }
 
 void Favourite::insert(string key) {
+	++limit;
 	// add to LL
 	FavouriteQueue.enqueue(key);
 
 	// add key to file
-	++limit;
-	//int x = def.search(key);	// search in definition saved in memory
-
 	ifstream fin;
 	ofstream fout;
 	fin.open("../Data/" + datasetName + "/" + datasetName + ".txt");
 	fout.open("../Data/" + datasetName + "/" + datasetName + ".txt", ios::app);
 	fin.get();
 	if (!fin.eof()) fout << endl;
-	//fout << x;
+	fout << key;
 	fin.close();
 	fout.close();
 
 	// if it exceed limit
 	if (limit == MAX_FAVOURITE) 
 		FavouriteQueue.dequeue();
+}
+
+void outputLLToFile(Node* pHead, string fileName) {
+	ofstream fout;
+	fout.open(fileName);
+	while (pHead) {
+		fout << pHead->word << endl;
+		pHead = pHead->next;
+	}
+	fout.close();
+}
+
+void Favourite::remove(string key) {
+	removeANode(FavouriteQueue.head, key);
+	string fileName = "../Data/" + datasetName + "/" + datasetName + ".txt";
+	outputLLToFile(FavouriteQueue.head, fileName);
+}
+
+void Favourite::removeAll() {
+	while (!FavouriteQueue.isEmpty()) {
+		FavouriteQueue.dequeue();
+	}
+	ofstream fout;
+	fout.open("../Data/" + datasetName + "/" + datasetName + ".txt");
+	fout.close();
 }

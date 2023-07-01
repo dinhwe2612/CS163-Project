@@ -17,4 +17,6 @@ struct Favourite {
 	void removeAll();
 };
 
+void outputLLToFile(Node* pHead, string fileName);
+
 #endif
