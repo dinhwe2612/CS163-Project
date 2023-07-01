@@ -8,10 +8,6 @@ void System::Construct() {
 
 	Parable_Regular = LoadFont("../External/source/Font/Parable-Regular.ttf");
 
-	Color defaultColor = { 113, 201, 206, 255 };
-	Color touchedColor = { 63, 201, 250, 245 };
-	Color clickedColor = { 113, 171, 206, 255 };
-
 	reset.SetBox(0.062 * windowWidth, 0.051 * windowHeight, 0.129 * windowWidth, 0.078 * windowHeight, defaultColor, touchedColor, clickedColor);
 	reset.SetText(Parable_Regular, "Reset", GetCenterPos(Parable_Regular, "Reset", 40, 0.5, reset.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
 	
@@ -27,9 +23,12 @@ void System::Construct() {
 	addnew.SetBox(0.764 * windowWidth, 0.196 * windowHeight, 0.19 * windowWidth, 0.078 * windowHeight, defaultColor, touchedColor, clickedColor);
 	addnew.SetText(Parable_Regular, "Add New", GetCenterPos(Parable_Regular, "Add New", 40, 0.5, addnew.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
 
+	changeTranslation.SetBox(0.708 * windowWidth, 0.051 * windowHeight, 0.247 * windowWidth, 0.078 * windowHeight, defaultColor, touchedColor, clickedColor);
+
 	searchBox.Construct(0.062 * windowWidth, 0.176 * windowHeight, 0.645 * windowWidth, 0.107 * windowHeight, Parable_Regular, { (float)0.14 * windowWidth, (float)0.201 * windowHeight }, 40, 1, 45);
 
 	search_icon = LoadTexture("../External/source/Image/magnifyingGlass.png");
+	arrow_icon = LoadTexture("../External/source/Image/arrowDown.png");
 }
 
 void System::Draw() {	
@@ -42,13 +41,20 @@ void System::Draw() {
 			ClearBackground({ 255, 238, 226, 0 });
 
 			DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
+			DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
 
 			reset.DrawText();
 			history.DrawText();
 			favourite.DrawText();
 			game.DrawText();
-			addnew.DrawText();
+			if (!isDropdownChangeTranslation) addnew.DrawText();
+			DrawChangeTranslation();
+
 			searchBox.Draw();
+			if (searchBox.isTyping == false && searchBox.currentInput.empty()) {
+				DrawTextEx(Parable_Regular, "search bar", { (float)0.14 * windowWidth, (float)0.201 * windowHeight }, 40, 0.5, { 0, 0, 0, 170 });
+			}
+			
 			DrawTextureEx(search_icon, { (float)0.071 * windowWidth, (float)0.184 * windowHeight }, 0, 0.2, WHITE);
 			DrawRectangleLines(0.062 * windowWidth, 0.176 * windowHeight, 0.645 * windowWidth, 0.107 * windowHeight, BLACK);
 
@@ -56,4 +62,32 @@ void System::Draw() {
 	}
 
 	CloseWindow();
+}
+
+void System::DrawChangeTranslation() {
+	static int index = 0;
+
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		if (CheckCollisionPointRec(GetMousePosition(), changeTranslation.buttonShape)) isDropdownChangeTranslation ^= true;
+		//else isDropdownChangeTranslation = false;
+	}
+	
+	float y = GetCenterPos(Parable_Regular, translation[index], 40, 1, changeTranslation.buttonShape).y;
+	changeTranslation.SetText(Parable_Regular, translation[index], { (float)0.758 * windowWidth, y}, 40, 1, BLACK, BLACK, BLACK);
+	changeTranslation.DrawText();
+	DrawTextureEx(arrow_icon, { (float)0.901 * windowWidth, y }, 0, 0.15, WHITE);
+
+	if (isDropdownChangeTranslation) {
+		Button temp = changeTranslation;
+		for (int i = 0; i < 5; ++i) {
+			if (i == index) continue;
+			temp.buttonShape.y += temp.buttonShape.height;
+			temp.SetText(Parable_Regular, translation[i], GetCenterPos(Parable_Regular, translation[i], 40, 1, temp.buttonShape), 40, 1, BLACK, BLACK, BLACK);
+			if (temp.getState() == 2) {// button is clicked
+				index = i;
+				isDropdownChangeTranslation = false;
+			}
+			temp.DrawText();
+		}
+	}
 }

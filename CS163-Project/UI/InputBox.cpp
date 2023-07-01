@@ -25,13 +25,19 @@ void InputBox::Draw() {
 	static int timeline = 0;
 
 	timeline += 60;
-	if (timeline > 6000) timeline = 0;
+	if (timeline > 5000) timeline = 0;
 
 	// add | to the end of currentInput
 	bool add = false;
 
 	// check if the input box is clicked
-	isTyping ^= isClicked();
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		if (CheckCollisionPointRec(GetMousePosition(), inputShape)) {
+			isTyping = true;
+		} else {
+			isTyping = false;
+		}
+	}
 	
 	if (isTyping) {
 		int key = GetCharPressed();
@@ -47,7 +53,7 @@ void InputBox::Draw() {
 			add = true;
 		}
 	}
-	if (isTyping && (add || timeline <= 3000)) {
+	if (isTyping && (add || timeline <= 2500)) {
 		currentInput += "|";
 		add = true;
 	}
