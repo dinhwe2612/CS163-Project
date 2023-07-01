@@ -6,3 +6,7 @@ Vector2 GetCenterPos(Font font, string text, float fontSize, float spacing, floa
 	centerPos.y = y + (height - MeasureTextEx(font, text.c_str(), fontSize, spacing).y) / 2;
 	return centerPos;
 }
+
+Vector2 GetCenterPos(Font font, string text, float fontSize, float spacing, Rectangle rect) {
+	return GetCenterPos(font, text, fontSize, spacing, rect.x, rect.y, rect.width, rect.height);
+}

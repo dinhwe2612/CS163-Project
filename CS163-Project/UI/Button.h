@@ -10,6 +10,7 @@ using namespace std;
 struct Button {
     Rectangle buttonShape;
     Color colorBoxDefault = RAYWHITE, colorBoxTouched = RAYWHITE, colorBoxClicked = RAYWHITE, colorText = BLACK;
+    bool drawCorner = true;
 
     //Box
     enum BoxState { DEFAULT, TOUCHED, CLICKED };

@@ -35,6 +35,9 @@ void Button::DrawText() {
 		DrawRectangleRec(buttonShape, colorBoxClicked);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextClicked);
 	}
+	if (drawCorner) {
+		DrawRectangleLinesEx(buttonShape, 4, BLACK);
+	}
 }
 
 int Button::getState() {
