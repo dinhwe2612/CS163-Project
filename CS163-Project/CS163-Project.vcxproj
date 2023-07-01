@@ -136,12 +136,20 @@
     <ClCompile Include="CS163-Project.cpp" />
     <ClCompile Include="Favourite.cpp" />
     <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="System.cpp" />
+    <ClCompile Include="UI\Button.cpp" />
+    <ClCompile Include="UI\InputBox.cpp" />
+    <ClCompile Include="UI\Other.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Favourite.h" />
     <ClInclude Include="History.h" />
     <ClInclude Include="Queue.h" />
+    <ClInclude Include="System.h" />
     <ClInclude Include="Trie.h" />
+    <ClInclude Include="UI\Button.h" />
+    <ClInclude Include="UI\InputBox.h" />
+    <ClInclude Include="UI\Other.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

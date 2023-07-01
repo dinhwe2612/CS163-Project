@@ -12,6 +12,9 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "UI/Button.h"
+#include "UI/Other.h"
+#include "UI/InputBox.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -23,39 +26,34 @@ int main(void)
     const int screenWidth = 1460;
     const int screenHeight = 850;
 
-    InitWindow(screenWidth, screenHeight, "raylib [shapes] example - raylib logo using shapes");
+    InitWindow(screenWidth, screenHeight, "Dictionary - CS163 Project (>'-'<)");
+
+    Font Parable_Regular = LoadFont("../External/source/Font/Parable-Regular.otf");
+
+    Button reset;
+    Button addnew;
+    Button history;
+    Button favourite;
+    Button game;
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
-
+    
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
 
-        // Draw
-        //----------------------------------------------------------------------------------
         BeginDrawing();
 
-        ClearBackground(RAYWHITE);
+        ClearBackground({ 255, 238, 226 });
 
-        DrawRectangle(screenWidth / 2 - 128, screenHeight / 2 - 128, 256, 256, BLACK);
-        DrawRectangle(screenWidth / 2 - 112, screenHeight / 2 - 112, 224, 224, RAYWHITE);
-        DrawText("raylib", screenWidth / 2 - 44, screenHeight / 2 + 48, 50, BLACK);
-
-        DrawText("this is NOT a texture!", 350, 370, 10, GRAY);
+        DrawTextEx(Parable_Regular, "Dictionary", { 0.42 * screenWidth, 0.05 * screenHeight }, 75, 0.5, BLACK);
 
         EndDrawing();
-        //----------------------------------------------------------------------------------
     }
 
     // De-Initialization
-    //--------------------------------------------------------------------------------------
     CloseWindow();        // Close window and OpenGL context
-    //--------------------------------------------------------------------------------------
+    
 
     return 0;
 }
