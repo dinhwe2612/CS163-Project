@@ -34,27 +34,54 @@ void InputBox::Draw() {
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		if (CheckCollisionPointRec(GetMousePosition(), inputShape)) {
 			isTyping = true;
+			add = true;
+			timeline = 0;
 		} else {
 			isTyping = false;
 		}
 	}
 	
 	if (isTyping) {
+		// for typing
 		int key = GetCharPressed();
 		while (key >= 32 && key <= 126 && currentInput.length() < MAX_SIZE) {
-			currentInput += (char)key;
+			currentInput.insert(posCursor++, 1, key);
 			key = GetCharPressed();
 			add = true;
+			timeline = 0;
 		}
 		key = GetKeyPressed();
-		while (key == KEY_BACKSPACE && currentInput.length() > 0) {
-			currentInput.pop_back();
+		// for arrow keys
+		while (key == KEY_LEFT && posCursor > 0) {
+			posCursor--;
 			key = GetKeyPressed();
 			add = true;
+			timeline = 0;
+		}
+		while (key == KEY_RIGHT && posCursor < currentInput.length()) {
+			posCursor++;
+			key = GetKeyPressed();
+			add = true;
+			timeline = 0;
+		}
+		// for backspace
+		while (key == KEY_BACKSPACE && currentInput.length() > 0 && posCursor) {
+			currentInput.erase(--posCursor, 1);
+			if (posCursor < 0) posCursor = 0;
+			key = GetKeyPressed();
+			add = true;
+			timeline = 0;
+		}
+		// for delete
+		while (key == KEY_DELETE && currentInput.length() > 0 && posCursor < currentInput.length()) {
+			currentInput.erase(posCursor, 1);
+			key = GetKeyPressed();
+			add = true;
+			timeline = 0;
 		}
 	}
 	if (isTyping && (add || timeline <= 2500)) {
-		currentInput += "|";
+		currentInput.insert(posCursor, "|");
 		add = true;
 	}
 
@@ -72,7 +99,7 @@ void InputBox::Draw() {
 	}
 
 	if (add) {
-		currentInput.pop_back();
+		currentInput.erase(posCursor, 1);
 	}
 }
 

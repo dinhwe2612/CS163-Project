@@ -33,6 +33,7 @@ struct System {
     Color touchedColor = { 63, 201, 250, 245 };
     Color clickedColor = { 113, 171, 206, 255 };
 
+    enum BoxState { NONE, TOUCHED, CLICKED, RELEASED };
     enum Menu {
         DEFAULT,
         HISTORY,
@@ -46,6 +47,12 @@ struct System {
 
     void Construct();
     void Draw();
+    void DrawDefault();
+    void DrawHistory();
+    void DrawFavourite();
+    void DrawGame();
+    void DrawAddNew();
+    void DrawReset();
     void DrawChangeTranslation();
 };
 

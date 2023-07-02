@@ -13,7 +13,8 @@ struct Button {
     bool drawCorner = true;
 
     //Box
-    enum BoxState { DEFAULT, TOUCHED, CLICKED };
+    enum BoxState { DEFAULT, TOUCHED, CLICKED, RELEASED };
+    int state = DEFAULT;
 
     //Text
     Font font;

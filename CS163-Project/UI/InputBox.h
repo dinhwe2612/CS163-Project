@@ -16,6 +16,7 @@ struct InputBox {
     Color colorTextDefault = BLACK, colorTextTouched = BLACK, colorTextTyping = BLACK;
     int MAX_SIZE = 0;
     bool isTyping = false;
+    int posCursor = 0;
     enum State { DEFAULT, TOUCHED, TYPING };
 
     void Construct(float x, float y, float width, float height, Font _font, Vector2 _coordText, int _szText, float _spacing, int _MAX_SIZE);

@@ -42,12 +42,15 @@ void Button::DrawText() {
 
 int Button::getState() {
 	if (CheckCollisionPointRec(GetMousePosition(), buttonShape)) {
-		if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
-			return CLICKED;
+		if (state == CLICKED && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+			return state = RELEASED;
+		}
+		else if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+			return state = CLICKED;
 		}
 		else {
-			return TOUCHED;
+			return state = TOUCHED;
 		}
 	}
-	return DEFAULT;
+	return state = DEFAULT;
 }
