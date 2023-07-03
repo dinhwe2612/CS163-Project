@@ -23,6 +23,7 @@ struct Button {
     float fontSize;
     float spacing;
     Color colorTextDefault = BLACK, colorTextTouched = BLACK, colorTextClicked = BLACK;
+    Color colorCornerDefault = { 113, 201, 206, 255 }, colorCornerTouched = BLACK, colorCornerClicked = BLACK;
 
     //
     void SetBox(float x, float y, float width, float height, Color colorDefault, Color colorTouched, Color colorClicked);

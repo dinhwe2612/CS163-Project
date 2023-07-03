@@ -26,18 +26,25 @@ void Button::DrawText() {
 	if (state == DEFAULT) {
 		DrawRectangleRec(buttonShape, colorBoxDefault);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextDefault);
+		if (drawCorner) {
+			DrawRectangleLinesEx(buttonShape, 4, colorCornerDefault);
+		}
 	}
 	else if (state == TOUCHED) {
 		DrawRectangleRec(buttonShape, colorBoxTouched);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextTouched);
+		if (drawCorner) {
+			DrawRectangleLinesEx(buttonShape, 4, colorCornerTouched);
+		}
 	}
 	else if (state == CLICKED) {
 		DrawRectangleRec(buttonShape, colorBoxClicked);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextClicked);
+		if (drawCorner) {
+			DrawRectangleLinesEx(buttonShape, 4, colorCornerClicked);
+		}
 	}
-	if (drawCorner) {
-		DrawRectangleLinesEx(buttonShape, 4, BLACK);
-	}
+	
 }
 
 int Button::getState() {

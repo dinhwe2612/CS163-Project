@@ -44,38 +44,37 @@ void InputBox::Draw() {
 	if (isTyping) {
 		// for typing
 		int key = GetCharPressed();
-		while (key >= 32 && key <= 126 && currentInput.length() < MAX_SIZE) {
+		if (key >= 32 && key <= 126 && currentInput.length() < MAX_SIZE) {
 			currentInput.insert(posCursor++, 1, key);
-			key = GetCharPressed();
 			add = true;
 			timeline = 0;
 		}
-		key = GetKeyPressed();
+		int key2 = GetKeyPressed();
 		// for arrow keys
-		while (key == KEY_LEFT && posCursor > 0) {
+		key2 = (IsKeyDown(KEY_LEFT) && timeline % 540 == 0 ? KEY_LEFT : key2);
+		if (key2 == KEY_LEFT && posCursor > 0) {
 			posCursor--;
-			key = GetKeyPressed();
 			add = true;
 			timeline = 0;
 		}
-		while (key == KEY_RIGHT && posCursor < currentInput.length()) {
+		key2 = (IsKeyDown(KEY_RIGHT) && timeline % 540 == 0 ? KEY_RIGHT : key2);
+		if (key2 == KEY_RIGHT && posCursor < currentInput.length()) {
 			posCursor++;
-			key = GetKeyPressed();
 			add = true;
 			timeline = 0;
 		}
 		// for backspace
-		while (key == KEY_BACKSPACE && currentInput.length() > 0 && posCursor) {
+		key2 = (IsKeyDown(KEY_BACKSPACE) && timeline % 540 == 0 ? KEY_BACKSPACE : key2);
+		if (key2 == KEY_BACKSPACE && currentInput.length() > 0 && posCursor) {
 			currentInput.erase(--posCursor, 1);
 			if (posCursor < 0) posCursor = 0;
-			key = GetKeyPressed();
 			add = true;
 			timeline = 0;
 		}
 		// for delete
-		while (key == KEY_DELETE && currentInput.length() > 0 && posCursor < currentInput.length()) {
+		key2 = (IsKeyDown(KEY_DELETE) && timeline % 540 == 0 ? KEY_DELETE : key2);
+		if (key2 == KEY_DELETE && currentInput.length() > 0 && posCursor < currentInput.length()) {
 			currentInput.erase(posCursor, 1);
-			key = GetKeyPressed();
 			add = true;
 			timeline = 0;
 		}

@@ -19,6 +19,7 @@ struct System {
     Button game;
     Button select;
     Button back;
+    Button ok; // for search
     Button changeTranslation;
     string translation[5] = { "eng - eng", "vn - eng", "eng - vn", "slang", "emoji" };
 
@@ -28,8 +29,9 @@ struct System {
     Texture hollowedHeart_icon;
     Texture filledHeart_icon;
     Texture arrow_icon;
+    Texture dictionary_icon;
 
-    Color defaultColor = { 113, 201, 206, 255 };
+    Color defaultColor = { 166, 227, 233, 255 };
     Color touchedColor = { 63, 201, 250, 245 };
     Color clickedColor = { 113, 171, 206, 255 };
 
