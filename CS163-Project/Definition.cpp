@@ -1,12 +1,12 @@
 #include "Definition.h"
 using namespace std;
 
-int hashFunc(string def, int size) {
-	return def.length() % size;
+int hashFunc(string def) {
+	return def.length() % 1009;
 }
 
 void Definition::add(string key, string def) {
-	int index = hashFunc(def, num);
+	int index = hashFunc(def);
     hash_node* pNew = new hash_node;
     pNew->next = nullptr;
     pNew->data.first = key;
@@ -25,7 +25,7 @@ void Definition::add(string key, string def) {
 
 // return keyword
 string Definition::search(string def) {
-    int index = hashFunc(def, num);
+    int index = hashFunc(def);
     if (word[index] == nullptr) return "\0";
 
     hash_node* cur = word[index];
@@ -38,7 +38,7 @@ string Definition::search(string def) {
 
 // remove both keyword and definition
 void Definition::remove(string def) {
-    int index = hashFunc(def, num);
+    int index = hashFunc(def);
     if (!word[index]) return;
 
     hash_node* cur = word[index];

@@ -2,11 +2,12 @@
 using namespace std;
 
 void Keyword::insert(string key, string def) {
+    if (!root) root = new TrieNode();
     TrieNode* pCrawl = root;
 
     for (int i = 0; i < key.length(); i++)
     {
-        int index = key[i] - 'a';
+        int index = key[i];
         if (!pCrawl->child[index])
             pCrawl->child[index] = new TrieNode();
 
