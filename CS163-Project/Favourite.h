@@ -1,8 +1,8 @@
-#include "Queue.h"
-using namespace std;
-
 #ifndef FAVOURITE_H
 #define FAVOURITE_H
+
+#include "Queue.h"
+using namespace std;
 
 const int MAX_FAVOURITE = 1000;
 

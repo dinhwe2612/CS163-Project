@@ -134,7 +134,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CS163-Project.cpp" />
+    <ClCompile Include="Definition.cpp" />
+    <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="Favourite.cpp" />
+    <ClCompile Include="Keyword.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="UI\Button.cpp" />
@@ -142,11 +145,13 @@
     <ClCompile Include="UI\Other.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Definition.h" />
+    <ClInclude Include="Dictionary.h" />
     <ClInclude Include="Favourite.h" />
     <ClInclude Include="History.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="System.h" />
-    <ClInclude Include="Trie.h" />
+    <ClInclude Include="Keyword.h" />
     <ClInclude Include="UI\Button.h" />
     <ClInclude Include="UI\InputBox.h" />
     <ClInclude Include="UI\Other.h" />

@@ -1,9 +1,9 @@
+#ifndef HISTORY_H
+#define HISTORY_H
+
 #include <iostream>
 #include "Queue.h"
 using namespace std;
-
-#ifndef HISTORY_H
-#define HISTORY_H
 
 const int MAX_HISTORY = 100;
 struct History {

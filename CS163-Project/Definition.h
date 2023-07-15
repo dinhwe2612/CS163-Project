@@ -1,0 +1,30 @@
+#ifndef DEFINITION_H
+#define DEFINITION_H
+
+#include <string>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct hash_node {
+	pair<string, string> data;// {keyword, definition}
+	hash_node* next;
+};
+
+int hashFunc(string def, int size);
+
+struct Definition {
+	int num;// number of definition
+	hash_node* word[1009];
+	
+	Definition() {
+		fill(word, word + 1009, nullptr);
+		num = 0;
+	}
+
+	void add(string key, string def);
+	string search(string def);
+	void remove(string def);
+};
+
+#endif
