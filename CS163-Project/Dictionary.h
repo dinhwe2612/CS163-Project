@@ -31,4 +31,7 @@ struct Dictionary {
 	void deleteDictionary();
 };
 
+void addWordToFile(int dictNum, string key, string def);
+void addNewWord(TrieNode* root, string key, string def);
+void addNewDefinition(hash_node** root, string key, string def);
 #endif

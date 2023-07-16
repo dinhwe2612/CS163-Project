@@ -4,7 +4,7 @@ using namespace std;
 
 void Dictionary::buildFromOrigin() {
 	ifstream fin;
-	fin.open("../Data/eng_eng/engEng_origin.txt");
+	fin.open("../Data/engEng/engEng_origin.txt");
 	while (!fin.eof()) {
 		string mix;
 		getline(fin, mix);
@@ -17,7 +17,7 @@ void Dictionary::buildFromOrigin() {
 	}
 	fin.close();
 
-	fin.open("../Data/eng_vie/engVie_origin.txt");
+	fin.open("../Data/engVie/engVie_origin.txt");
 	while (!fin.eof()) {
 		string mix;
 		getline(fin, mix);
@@ -30,7 +30,7 @@ void Dictionary::buildFromOrigin() {
 	}
 	fin.close();
 
-	fin.open("../Data/eng_eng/vieEng_origin.txt");
+	fin.open("../Data/engEng/vieEng_origin.txt");
 	while (!fin.eof()) {
 		string mix;
 		getline(fin, mix);
@@ -132,4 +132,93 @@ void Dictionary::deleteDictionary() {
 	engVie_def.deleteDefinition();
 	slang_def.deleteDefinition();
 	emotional_def.deleteDefinition();
+}
+
+void addWordToFile(int dictNum, string key, string def)
+{
+	//Open the source file
+	string source;
+	switch (dictNum){
+	case 1:
+		source = "engEng";
+		break;
+	case 2:
+		source = "engVie";
+		break;
+	case 3:
+		source = "engEng";
+		break;
+	case 4:
+		source = "slang";
+		break;
+	case 5:
+		source = "emotional";
+		break;
+	}
+
+	ifstream fin;
+	fin.open("../Data/" + source + "/" + source + "_origin.txt", ios::binary | ios::ate);
+	if (!fin.is_open())
+	{
+		cout << "Unable to open source file!" << endl;
+		return;
+	}
+
+	ofstream fout;
+	fout.open("../Data/" + source + "/" + source + "_updated.txt", ios::binary | ios::app);
+	if (!fout.is_open())
+	{
+		cout << "Unable to open destination file!" << endl;
+		return;
+	}
+
+	int size = fin.tellg();
+	char* memblock = new char[size];
+	fin.seekg(0, ios::beg);
+	fin.read(memblock, size);
+	fout.write(memblock, size);
+
+	//add new keyword and definiton into updated file
+	fout << "\n" << key << "	" << def;
+
+	delete[] memblock;
+	fin.close();
+	fout.close();
+}
+
+void addNewWord(TrieNode* root, string key, string def)
+{
+	if (!root) root = new TrieNode();
+	TrieNode* pCrawl = root;
+
+	for (int i = 0; i < key.length(); i++)
+	{
+		int index = key[i];
+		if (!pCrawl->child[index])
+			pCrawl->child[index] = new TrieNode();
+
+		pCrawl = pCrawl->child[index];
+	}
+
+	// mark last node as leaf
+	pCrawl->definition.push_back(def);
+}
+
+void addNewDefinition(hash_node** word, string key, string def)
+{
+	int index = hashFunc(def);
+	hash_node* pNew = new hash_node;
+	pNew->next = nullptr;
+	pNew->data.first = key;
+	pNew->data.second = def;
+
+	if (!word[index]) {
+		word[index] = pNew;
+		return;
+	}
+
+	hash_node* cur = word[index];
+	while (cur->next != nullptr)
+		cur = cur->next;
+	cur->next = pNew;
 }
