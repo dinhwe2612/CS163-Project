@@ -26,8 +26,9 @@ struct Dictionary {
 
 	void buildFromOrigin();
 	void build();
-	string searchKeyword(string s);
-	string searchDefinition(string s);
+	vector<string> searchKeyword(string key, int dicNum); // dicNum: No of dataset
+	vector<string> searchDefinition(string def, int dicNum);
+	void deleteDictionary();
 };
 
 #endif

@@ -12,6 +12,8 @@
 ********************************************************************************************/
 
 #include "System.h"
+//#include "Dictionary.h"
+//#include <iostream>
 
 int main(void)
 {
@@ -20,5 +22,12 @@ int main(void)
     system.Construct();
     system.Draw();
 
+    //Dictionary d;
+    //d.buildFromOrigin();
+    //vector<string> found = d.searchKeyword("A", 1);
+    //for (int i = 0; i < found.size(); i++) {
+    //    cout << found[i] << endl;
+    //}
+    //d.deleteDictionary();
     return 0;
 }

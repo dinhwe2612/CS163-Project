@@ -2,7 +2,16 @@
 using namespace std;
 
 int hashFunc(string def) {
-	return def.length() % 1009;
+	return def[0] * def.length() % 1009;
+}
+
+void deleteHashlist(hash_node*& pHead) {
+    while (pHead) {
+        hash_node* tmp = pHead;
+        pHead = pHead->next;
+        delete tmp;
+    }
+    pHead = nullptr;
 }
 
 void Definition::add(string key, string def) {
@@ -49,4 +58,12 @@ void Definition::remove(string def) {
     hash_node* tmp = cur->next;
     cur->next = tmp->next;
     delete tmp;
+}
+
+void Definition::deleteDefinition() {
+    for (int i = 0; i < 1009; i++) {
+        deleteHashlist(word[i]);
+        word[i] = nullptr;
+    }
+    delete[] word;
 }

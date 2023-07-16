@@ -69,3 +69,67 @@ void Dictionary::buildFromOrigin() {
 	}
 	fin.close();
 }
+
+vector<string> Dictionary::searchKeyword(string key, int dicNum) {
+	vector<string> found;
+	vector<string> tmp;
+	switch (dicNum) {
+	case 1:
+		tmp = engEng_key.search(key);
+		break;
+	case 2:
+		tmp = vieEng_key.search(key);
+		break;
+	case 3:
+		tmp = engVie_key.search(key);
+		break;
+	case 4:
+		tmp = slang_key.search(key);
+		break;
+	case 5:
+		tmp = emotional_key.search(key);
+		break;
+	}
+	if (!tmp.empty()) {
+		found.push_back(key);
+		for (int i = 0; i < tmp.size(); i++) {
+			found.push_back(tmp[i]);
+		}
+	}
+	return found;
+}
+
+vector<string> Dictionary::searchDefinition(string def, int dicNum) {
+	vector<string> found;
+	string key;
+	switch (dicNum) {
+	case 1:
+		key = engEng_def.search(def);
+		break;
+	case 2:
+		key = vieEng_def.search(def);
+		break;
+	case 3:
+		key = engVie_def.search(def);
+		break;
+	case 4:
+		key = slang_def.search(def);
+		break;
+	case 5:
+		key = emotional_def.search(def);
+		break;
+	}
+	if (key != "\0") {
+		found.push_back(key);
+		found.push_back(def);
+	}
+	return found;
+}
+
+void Dictionary::deleteDictionary() {
+	engEng_def.deleteDefinition();
+	vieEng_def.deleteDefinition();
+	engVie_def.deleteDefinition();
+	slang_def.deleteDefinition();
+	emotional_def.deleteDefinition();
+}
