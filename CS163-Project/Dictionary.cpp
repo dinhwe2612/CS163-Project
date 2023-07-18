@@ -186,7 +186,7 @@ void copyDictionary(int dictNum)
 	fin.open("../Data/" + source + "/" + source + "_origin.txt", ios::binary | ios::ate);
 
 	ofstream fout;
-	fout.open("../Data/" + source + "/" + source + ".txt", ios::binary | ios::app);
+	fout.open("../Data/" + source + "/" + source + ".txt", ios::binary);
 
 	int size = fin.tellg();
 	char* memblock = new char[size];
@@ -201,7 +201,6 @@ void copyDictionary(int dictNum)
 
 void addWordToFile(int dictNum, string key, string def)
 {
-	//Open the source file
 	string filename;
 	switch (dictNum) {
 	case 1:
@@ -225,4 +224,9 @@ void addWordToFile(int dictNum, string key, string def)
 	fout.open("../Data/" + filename + "/" + filename + ".txt", ios::app);
 	fout << "\n" << key << "	" << def;
 	fout.close();
+}
+
+void Dictionary::resetDictionary(int dictNum)
+{
+	copyDictionary(dictNum);
 }

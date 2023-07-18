@@ -29,9 +29,9 @@ struct Dictionary {
 	vector<string> searchKeyword(string key, int dicNum); // dicNum: No of dataset
 	vector<string> searchDefinition(string def, int dicNum);
 	void addNewWord(int dictnum, string key, string def);
-	void addNewDefinition(int dictnum, string key, string def);
 	void deleteDictionary();
-	void resetDictionary();
+	void resetDictionary(int dictNum);
+	void editDefinition(int dictNum, string key, string def, string newdef);
 };
 
 void copyDictionary(int dictNum);
