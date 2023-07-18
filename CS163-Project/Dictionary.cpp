@@ -134,19 +134,45 @@ void Dictionary::deleteDictionary() {
 	emotional_def.deleteDefinition();
 }
 
-void addWordToFile(int dictNum, string key, string def)
+void Dictionary::addNewWord(int dictnum, string key, string def)
 {
-	//Open the source file
+	switch (dictnum) {
+	case 1:
+		engEng_key.insert(key, def);
+		engEng_def.add(key, def);
+		break;
+	case 2:
+		vieEng_key.insert(key, def);
+		vieEng_def.add(key, def);
+		break;
+	case 3:
+		engVie_key.insert(key, def);
+		engVie_def.add(key, def);
+		break;
+	case 4:
+		slang_key.insert(key, def);
+		slang_def.add(key, def);
+		break;
+	case 5:
+		emotional_key.insert(key, def);
+		emotional_def.add(key, def);
+		break;
+	}
+	addWordToFile(dictnum, key, def);
+}
+
+void copyDictionary(int dictNum)
+{
 	string source;
-	switch (dictNum){
+	switch (dictNum) {
 	case 1:
 		source = "engEng";
 		break;
 	case 2:
-		source = "engVie";
+		source = "vieEng";
 		break;
 	case 3:
-		source = "engEng";
+		source = "engVie";
 		break;
 	case 4:
 		source = "slang";
@@ -158,19 +184,9 @@ void addWordToFile(int dictNum, string key, string def)
 
 	ifstream fin;
 	fin.open("../Data/" + source + "/" + source + "_origin.txt", ios::binary | ios::ate);
-	if (!fin.is_open())
-	{
-		cout << "Unable to open source file!" << endl;
-		return;
-	}
 
 	ofstream fout;
-	fout.open("../Data/" + source + "/" + source + "_updated.txt", ios::binary | ios::app);
-	if (!fout.is_open())
-	{
-		cout << "Unable to open destination file!" << endl;
-		return;
-	}
+	fout.open("../Data/" + source + "/" + source + ".txt", ios::binary | ios::app);
 
 	int size = fin.tellg();
 	char* memblock = new char[size];
@@ -178,47 +194,35 @@ void addWordToFile(int dictNum, string key, string def)
 	fin.read(memblock, size);
 	fout.write(memblock, size);
 
-	//add new keyword and definiton into updated file
-	fout << "\n" << key << "	" << def;
-
 	delete[] memblock;
 	fin.close();
 	fout.close();
 }
 
-void addNewWord(TrieNode* root, string key, string def)
+void addWordToFile(int dictNum, string key, string def)
 {
-	if (!root) root = new TrieNode();
-	TrieNode* pCrawl = root;
-
-	for (int i = 0; i < key.length(); i++)
-	{
-		int index = key[i];
-		if (!pCrawl->child[index])
-			pCrawl->child[index] = new TrieNode();
-
-		pCrawl = pCrawl->child[index];
+	//Open the source file
+	string filename;
+	switch (dictNum) {
+	case 1:
+		filename = "engEng";
+		break;
+	case 2:
+		filename = "vieEng";
+		break;
+	case 3:
+		filename = "engVie";
+		break;
+	case 4:
+		filename = "slang";
+		break;
+	case 5:
+		filename = "emotional";
+		break;
 	}
 
-	// mark last node as leaf
-	pCrawl->definition.push_back(def);
-}
-
-void addNewDefinition(hash_node** word, string key, string def)
-{
-	int index = hashFunc(def);
-	hash_node* pNew = new hash_node;
-	pNew->next = nullptr;
-	pNew->data.first = key;
-	pNew->data.second = def;
-
-	if (!word[index]) {
-		word[index] = pNew;
-		return;
-	}
-
-	hash_node* cur = word[index];
-	while (cur->next != nullptr)
-		cur = cur->next;
-	cur->next = pNew;
+	ofstream fout;
+	fout.open("../Data/" + filename + "/" + filename + ".txt", ios::app);
+	fout << "\n" << key << "	" << def;
+	fout.close();
 }

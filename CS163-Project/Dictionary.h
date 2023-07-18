@@ -28,10 +28,13 @@ struct Dictionary {
 	void build();
 	vector<string> searchKeyword(string key, int dicNum); // dicNum: No of dataset
 	vector<string> searchDefinition(string def, int dicNum);
+	void addNewWord(int dictnum, string key, string def);
+	void addNewDefinition(int dictnum, string key, string def);
 	void deleteDictionary();
+	void resetDictionary();
 };
 
+void copyDictionary(int dictNum);
 void addWordToFile(int dictNum, string key, string def);
-void addNewWord(TrieNode* root, string key, string def);
-void addNewDefinition(hash_node** root, string key, string def);
+
 #endif
