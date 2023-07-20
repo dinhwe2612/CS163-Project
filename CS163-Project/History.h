@@ -2,19 +2,21 @@
 #define HISTORY_H
 
 #include <iostream>
-#include "Queue.h"
+#include <vector>
 using namespace std;
 
 const int MAX_HISTORY = 100;
 struct History {
-	string datasetName;
-	MyQueue HistoryQueue;
+	vector<string> history;
 	int limit = MAX_HISTORY;
 
-	void init(string dataset);
+	void init();
 	void insert(string key);
 	void remove(string key);
 	void removeAll();
 };
+
+void deleteAKeyinHistory(vector<string> history, string key);
+void outputHistory(vector<string> history, string fileName);
 
 #endif

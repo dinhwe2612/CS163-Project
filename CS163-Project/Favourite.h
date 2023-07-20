@@ -1,14 +1,16 @@
 #ifndef FAVOURITE_H
 #define FAVOURITE_H
 
-#include "Queue.h"
+#include <vector>
+#include <string>
+#include <iostream>
 using namespace std;
 
 const int MAX_FAVOURITE = 1000;
 
 struct Favourite {
 	string datasetName;
-	MyQueue FavouriteQueue;
+	vector<string> favourite;
 	int limit = MAX_FAVOURITE;
 
 	void init(string dataset);
@@ -17,6 +19,7 @@ struct Favourite {
 	void removeAll();
 };
 
-void outputLLToFile(Node* pHead, string fileName);
+void deleteAKey(vector<string> favourite, string key);
+void outputFavourite(vector<string> favourite, string fileName);
 
 #endif

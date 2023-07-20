@@ -21,7 +21,7 @@ void Favourite::init(string dataset) {
 	while (!fin.eof()) {
 		string tmp;
 		getline(fin, tmp);
-		FavouriteQueue.enqueue(tmp);
+		favourite.push_back(tmp);
 	}
 	fin.close();
 }
@@ -29,7 +29,7 @@ void Favourite::init(string dataset) {
 void Favourite::insert(string key) {
 	++limit;
 	// add to LL
-	FavouriteQueue.enqueue(key);
+	favourite.push_back(key);
 
 	// add key to file
 	ifstream fin;
@@ -43,30 +43,36 @@ void Favourite::insert(string key) {
 	fout.close();
 
 	// if it exceed limit
-	if (limit == MAX_FAVOURITE) 
-		FavouriteQueue.dequeue();
+	if (limit == MAX_FAVOURITE)
+		favourite.pop_back();
 }
 
-void outputLLToFile(Node* pHead, string fileName) {
+void deleteAKey(vector<string> favourite, string key) {
+	for (auto it = favourite.begin(); it != favourite.end(); ++it) {
+		if (*it == key) {
+			favourite.erase(it);
+			return;
+		}
+	}
+}
+
+void outputFavourite(vector<string> favourite, string fileName) {
 	ofstream fout;
 	fout.open(fileName);
-	while (pHead) {
-		fout << pHead->word << endl;
-		pHead = pHead->next;
+	for (auto it = favourite.begin(); it != favourite.end(); ++it) {
+		fout << *it;
+		if (it + 1 != favourite.end()) fout << endl;
 	}
-	fout.close();
 }
 
 void Favourite::remove(string key) {
-	removeANode(FavouriteQueue.head, key);
+	deleteAKey(favourite, key);
 	string fileName = "../Data/" + datasetName + "/" + datasetName + ".txt";
-	outputLLToFile(FavouriteQueue.head, fileName);
+	outputFavourite(favourite, fileName);
 }
 
 void Favourite::removeAll() {
-	while (!FavouriteQueue.isEmpty()) {
-		FavouriteQueue.dequeue();
-	}
+	favourite.clear();
 	ofstream fout;
 	fout.open("../Data/" + datasetName + "/" + datasetName + ".txt");
 	fout.close();

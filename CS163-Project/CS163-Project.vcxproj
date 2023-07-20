@@ -137,8 +137,8 @@
     <ClCompile Include="Definition.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="Favourite.cpp" />
+    <ClCompile Include="History.cpp" />
     <ClCompile Include="Keyword.cpp" />
-    <ClCompile Include="Queue.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="UI\Button.cpp" />
     <ClCompile Include="UI\InputBox.cpp" />
@@ -149,7 +149,6 @@
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="Favourite.h" />
     <ClInclude Include="History.h" />
-    <ClInclude Include="Queue.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Keyword.h" />
     <ClInclude Include="UI\Button.h" />
