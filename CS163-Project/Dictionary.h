@@ -32,8 +32,19 @@ struct Dictionary {
 	void deleteDictionary();
 	void resetDictionary(int dictNum);
 	void editDefinition(int dictNum, string key, string def, string newdef);
+
+	// favourite function
+	vector<string> viewFavourite(int dictNum);
+	void addFavourite(int dictNum, string key);
+	void removeAFavourite(int dictNum, string key);
+
+	// history function
+	vector<string> viewHistory();
+	void addHistory(string key);
+	void removeAHistory(string key);
 };
 
+string getSource(int dictNum);
 void copyDictionary(int dictNum);
 void addWordToFile(int dictNum, string key, string def);
 

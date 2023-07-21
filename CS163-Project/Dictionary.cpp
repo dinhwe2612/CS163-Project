@@ -161,26 +161,24 @@ void Dictionary::addNewWord(int dictnum, string key, string def)
 	addWordToFile(dictnum, key, def);
 }
 
-void copyDictionary(int dictNum)
-{
-	string source;
+string getSource(int dictNum) {
 	switch (dictNum) {
 	case 1:
-		source = "engEng";
-		break;
+		return "engEng";
 	case 2:
-		source = "vieEng";
-		break;
+		return "vieEng";
 	case 3:
-		source = "engVie";
-		break;
+		return "engVie";
 	case 4:
-		source = "slang";
-		break;
+		return "slang";
 	case 5:
-		source = "emotional";
-		break;
+		return "emotional";
 	}
+}
+
+void copyDictionary(int dictNum)
+{
+	string source = getSource(dictNum);
 
 	ifstream fin;
 	fin.open("../Data/" + source + "/" + source + "_origin.txt", ios::binary | ios::ate);
@@ -201,24 +199,7 @@ void copyDictionary(int dictNum)
 
 void addWordToFile(int dictNum, string key, string def)
 {
-	string filename;
-	switch (dictNum) {
-	case 1:
-		filename = "engEng";
-		break;
-	case 2:
-		filename = "vieEng";
-		break;
-	case 3:
-		filename = "engVie";
-		break;
-	case 4:
-		filename = "slang";
-		break;
-	case 5:
-		filename = "emotional";
-		break;
-	}
+	string filename = getSource(dictNum);
 
 	ofstream fout;
 	fout.open("../Data/" + filename + "/" + filename + ".txt", ios::app);
@@ -229,4 +210,37 @@ void addWordToFile(int dictNum, string key, string def)
 void Dictionary::resetDictionary(int dictNum)
 {
 	copyDictionary(dictNum);
+}
+
+vector<string> Dictionary::viewFavourite(int dictNum) {
+	string dataset = getSource(dictNum);
+	favourite.init(dataset);
+	return favourite.favourite;
+}
+
+void Dictionary::addFavourite(int dictNum, string key) {
+	string dataset = getSource(dictNum);
+	favourite.init(dataset);
+	favourite.insert(key);
+}
+
+void Dictionary::removeAFavourite(int dictNum, string key) {
+	string dataset = getSource(dictNum);
+	favourite.init(dataset);
+	favourite.remove(key);
+}
+
+vector<string> Dictionary::viewHistory() {
+	history.init();
+	return history.history;
+}
+
+void Dictionary::addHistory(string key) {
+	history.init();
+	history.insert(key);
+}
+
+void Dictionary::removeAHistory(string key) {
+	history.init();
+	history.remove(key);
 }

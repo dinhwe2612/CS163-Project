@@ -9,7 +9,7 @@ void Favourite::init(string dataset) {
 	// read the data from file
 	ifstream fin;
 	// check empty file
-	fin.open("../Data/" + datasetName + "/" + datasetName + ".txt");
+	fin.open("../Data/" + datasetName + "/" + datasetName + "_favourite.txt");
 	fin.get();
 	if (fin.eof()) {
 		fin.close();
@@ -17,7 +17,7 @@ void Favourite::init(string dataset) {
 	}
 	fin.close();
 	// read data
-	fin.open("../Data/" + datasetName + "/" + datasetName + ".txt");
+	fin.open("../Data/" + datasetName + "/" + datasetName + "_favourite.txt");
 	while (!fin.eof()) {
 		string tmp;
 		getline(fin, tmp);
@@ -34,8 +34,8 @@ void Favourite::insert(string key) {
 	// add key to file
 	ifstream fin;
 	ofstream fout;
-	fin.open("../Data/" + datasetName + "/" + datasetName + ".txt");
-	fout.open("../Data/" + datasetName + "/" + datasetName + ".txt", ios::app);
+	fin.open("../Data/" + datasetName + "/" + datasetName + "_favourite.txt");
+	fout.open("../Data/" + datasetName + "/" + datasetName + "_favourite.txt", ios::app);
 	fin.get();
 	if (!fin.eof()) fout << endl;
 	fout << key;
@@ -67,13 +67,13 @@ void outputFavourite(vector<string> favourite, string fileName) {
 
 void Favourite::remove(string key) {
 	deleteAKey(favourite, key);
-	string fileName = "../Data/" + datasetName + "/" + datasetName + ".txt";
+	string fileName = "../Data/" + datasetName + "/" + datasetName + "_favourite.txt";
 	outputFavourite(favourite, fileName);
 }
 
 void Favourite::removeAll() {
 	favourite.clear();
 	ofstream fout;
-	fout.open("../Data/" + datasetName + "/" + datasetName + ".txt");
+	fout.open("../Data/" + datasetName + "/" + datasetName + "_favourite.txt");
 	fout.close();
 }
