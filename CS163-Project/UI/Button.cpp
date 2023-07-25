@@ -24,24 +24,30 @@ void Button::SetText(Font _font, string _Text, Vector2 _coordText, float _fontSi
 void Button::DrawText() {
 	int state = getState();
 	if (state == DEFAULT) {
-		DrawRectangleRec(buttonShape, colorBoxDefault);
+		//DrawRectangleRec(buttonShape, colorBoxDefault);
+		DrawRectangleRounded(buttonShape, roundness, segments, colorBoxDefault);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextDefault);
 		if (drawCorner) {
-			DrawRectangleLinesEx(buttonShape, 4, colorCornerDefault);
+			//DrawRectangleLinesEx(buttonShape, 4, colorCornerDefault);
+			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
 		}
 	}
 	else if (state == TOUCHED) {
-		DrawRectangleRec(buttonShape, colorBoxTouched);
+		//DrawRectangleRec(buttonShape, colorBoxTouched);
+		DrawRectangleRounded(buttonShape, roundness, segments, colorBoxTouched);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextTouched);
 		if (drawCorner) {
-			DrawRectangleLinesEx(buttonShape, 4, colorCornerTouched);
+			//DrawRectangleLinesEx(buttonShape, 4, colorCornerTouched);
+			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
 		}
 	}
 	else if (state == CLICKED) {
-		DrawRectangleRec(buttonShape, colorBoxClicked);
+		//DrawRectangleRec(buttonShape, colorBoxClicked);
+		DrawRectangleRounded(buttonShape, roundness, segments, colorBoxClicked);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextClicked);
 		if (drawCorner) {
-			DrawRectangleLinesEx(buttonShape, 4, colorCornerClicked);
+			//DrawRectangleLinesEx(buttonShape, 4, colorCornerClicked);
+			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
 		}
 	}
 	
