@@ -23,6 +23,9 @@ struct Keyword { // Trie
 	void insert(string key, string def);
 	vector<string> search(string key);// return id of word if found, else return -1
 	void remove(string key);
+
+private:
+	void removeHelper(TrieNode* root, string key, int depth);
 };
 
 #endif

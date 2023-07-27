@@ -33,6 +33,30 @@ vector<string> Keyword::search(string key) {
     return pCrawl->definition;
 }
 
-void Keyword::remove(string key) {
+void Keyword::removeHelper(TrieNode* root, string key, int depth) {
+    if (!root) return;
 
+    if (depth == key.length()) {
+        //remove the definition vector
+        root->definition.clear();
+        return;
+    }
+
+    int index = static_cast<int>(key[depth]);
+    removeHelper(root->child[index], key, depth + 1);
+
+    // remove if it has no definition and has no child nodes.
+    if (root->definition.empty()) {
+        for (int i = 0; i < ASCII_SIZE; ++i) {
+            if (root->child[i]) {
+                return;
+            }
+        }
+        delete root;
+        root = nullptr;
+    }
+}
+
+void Keyword::remove(string key) {
+    removeHelper(root, key, 0);
 }
