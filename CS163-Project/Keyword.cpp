@@ -7,7 +7,7 @@ void Keyword::insert(string key, string def) {
 
     for (int i = 0; i < key.length(); i++)
     {
-        int index = key[i];
+        int index = tolower(key[i]);
         if (!pCrawl->child[index])
             pCrawl->child[index] = new TrieNode();
 
@@ -20,7 +20,8 @@ void Keyword::insert(string key, string def) {
 
 vector<string> Keyword::search(string key) {
     TrieNode* pCrawl = root;
-
+    for (int i = 0; i < key.length(); i++)
+        key[i] = tolower(key[i]);
     for (int i = 0; i < key.length(); i++)
     {
         int index = key[i];

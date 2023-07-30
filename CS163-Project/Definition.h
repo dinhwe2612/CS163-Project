@@ -16,10 +16,10 @@ void deleteHashlist(hash_node*& pHead);
 
 struct Definition {
 	int num;// number of definition
-	hash_node** word = new hash_node*[1009];
+	hash_node** word = new hash_node*[30011];
 	
 	Definition() {
-		fill(word, word + 1009, nullptr);
+		fill(word, word + 30011, nullptr);
 		num = 0;
 	}
 

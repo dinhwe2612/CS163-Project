@@ -2,7 +2,7 @@
 using namespace std;
 
 int hashFunc(string def) {
-	return def[0] * def.length() % 1009;
+	return def[0] * def.length() % 30011;
 }
 
 void deleteHashlist(hash_node*& pHead) {
@@ -61,7 +61,7 @@ void Definition::remove(string def) {
 }
 
 void Definition::deleteDefinition() {
-    for (int i = 0; i < 1009; i++) {
+    for (int i = 0; i < 30011; i++) {
         deleteHashlist(word[i]);
         word[i] = nullptr;
     }

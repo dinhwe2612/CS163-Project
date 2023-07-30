@@ -30,7 +30,7 @@ void Dictionary::buildFromOrigin() {
 	}
 	fin.close();
 
-	fin.open("../Data/engEng/vieEng_origin.txt");
+	fin.open("../Data/vieEng/vieEng_origin.txt");
 	while (!fin.eof()) {
 		string mix;
 		getline(fin, mix);
