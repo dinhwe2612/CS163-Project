@@ -4,6 +4,7 @@
 #include "UI/Button.h"
 #include "UI/InputBox.h"
 #include "string.h"
+#include "Dictionary.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ struct System {
     Button changeTranslation;
     Button mainpage;
     string translation[5] = { "eng - eng", "vn - eng", "eng - vn", "slang", "emoji" };
+    vector<string> search_result;
 
     InputBox searchBox;
     InputBox modifyKeyBox;
@@ -55,7 +57,9 @@ struct System {
         GAME,
         MODIFY,
         RESET,
+        SEARCH_RESULT,
     };
+    int dicNum = 0; // which dictionary is selected
     int menu = DEFAULT;
     bool isDropdownChangeTranslation = false;
 
@@ -70,6 +74,7 @@ struct System {
     void DrawChangeTranslation();
     void DrawRandomWord();
     void DrawSearchBar();
+    void DrawSearchResult();
 };
 
 #endif

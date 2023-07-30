@@ -38,6 +38,7 @@ struct InputBox {
     int getState();
     void reset();
     void manipulate();
+    string getInput();
 };
 
 #endif

@@ -12,22 +12,25 @@
 ********************************************************************************************/
 
 #include "System.h"
-//#include "Dictionary.h"
+#include "Dictionary.h"
 //#include <iostream>
 
 int main(void)
 {
 
-    System system;
-    system.Construct();
-    system.Draw();
+    //System system;
+    //system.Construct();
+    //system.Draw();
 
-    //Dictionary d;
-    //d.buildFromOrigin();
-    //vector<string> found = d.searchKeyword("A", 1);
-    //for (int i = 0; i < found.size(); i++) {
-    //    cout << found[i] << endl;
-    //}
-    //d.deleteDictionary();
+    Dictionary d;
+    d.buildFromOrigin();
+    vector<string> found = d.searchKeyword("A Dong", 2);
+    if (found.empty()) {
+		cout << "Not found" << endl;
+	}
+    for (int i = 0; i < found.size(); i++) {
+        cout << found[i] << endl;
+    }
+    d.deleteDictionary();
     return 0;
 }

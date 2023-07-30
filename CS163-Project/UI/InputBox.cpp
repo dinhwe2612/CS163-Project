@@ -193,3 +193,11 @@ void InputBox::manipulate() {
 		++posR;
 	}
 }
+
+string InputBox::getInput() {
+	string ans;
+	for (char &i : currentInput) {
+		if (i != '|') ans.push_back(i);
+	}
+	return ans;
+}

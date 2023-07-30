@@ -1,6 +1,8 @@
 #include "System.h"
 #include "UI/Other.h"
 
+Dictionary dictionary;
+
 void System::Construct() {
 	windowWidth = 1460;
 	windowHeight = 850;
@@ -69,6 +71,10 @@ void System::Construct() {
 	filledHeart_icon = LoadTexture("../External/source/Image/filled-heart.png");
 	hollowedHeart_icon = LoadTexture("../External/source/Image/heart - Copy.png");
 	reload_icon = LoadTexture("../External/source/Image/reload-icon.png");
+
+	dictionary.buildFromOrigin();
+	vector<string> tmp = dictionary.searchDefinition("A", 1);
+	cout << tmp.size() << '\n';
 }
 
 void System::Draw() {	
@@ -96,6 +102,9 @@ void System::Draw() {
 				break;
 			case MODIFY:
 				DrawModify();
+				break;
+			case SEARCH_RESULT:
+				DrawSearchResult();
 				break;
 			}
 
@@ -243,7 +252,6 @@ void System::DrawModify() {
 }
 
 void System::DrawChangeTranslation() {
-	static int index = 0;
 	static float szY = 0;
 	static int rotation = 90;
 
@@ -253,8 +261,8 @@ void System::DrawChangeTranslation() {
 	}
 	
 	// Draw box
-	Vector2 pos = GetCenterPos(Raleway_Bold, translation[index], 40, 1, changeTranslation.buttonShape);
-	changeTranslation.SetText(Raleway_Bold, translation[index], pos, 40, 1, BLACK, BLACK, BLACK);
+	Vector2 pos = GetCenterPos(Raleway_Bold, translation[dicNum], 40, 1, changeTranslation.buttonShape);
+	changeTranslation.SetText(Raleway_Bold, translation[dicNum], pos, 40, 1, BLACK, BLACK, BLACK);
 	changeTranslation.DrawText();
 
 	// Draw arrow
@@ -280,11 +288,11 @@ void System::DrawChangeTranslation() {
 		temp.buttonShape.height = szY;
 		temp.colorBoxDefault = { 227, 253, 253, 255 };
 		for (int i = 0; i < 5; ++i) {
-			if (i == index) continue;
+			if (i == dicNum) continue;
 			temp.SetText(Raleway_Bold, translation[i], GetCenterPos(Raleway_Bold, translation[i], 40, 1, temp.buttonShape), 40, 1, BLACK, BLACK, BLACK);
 			if (szY == changeTranslation.buttonShape.height) {// button is clicked
 				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(GetMousePosition(), temp.buttonShape)) {
-					index = i;
+					dicNum = i;
 					isDropdownChangeTranslation = false;
 				}
 			}
@@ -325,6 +333,65 @@ void System::DrawSearchBar() {
 	if (searchBox.isTyping == false && searchBox.currentInput.empty()) {
 		DrawTextEx(Parable_Regular, "search bar", { (float)0.312 * windowWidth, (float)0.207 * windowHeight }, 40, 0.5, { 0, 0, 0, 170 });
 	}
+	// draw magnifying glass button
 	ok.DrawText();
 	DrawTextureEx(zoom_icon, { (float)0.893 * windowWidth, (float)0.207 * windowHeight }, 0, 0.11, WHITE);
+
+	// draw search result
+	if (searchBox.isTyping && searchBox.currentInput.empty() == false) {
+		if (IsKeyReleased(KEY_ENTER) || ok.state == RELEASED) {
+			if (mode) {// mode == true -> search by definition, click modeDef or modeKey to change mode
+				search_result = dictionary.searchDefinition(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
+			} else {
+				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
+			}
+			if (search_result.empty()) {
+				search_result.push_back("No result");
+			}
+			menu = SEARCH_RESULT;
+		}
+	}
+}
+
+void System::DrawSearchResult() {
+	static float scrollY = 0;// scroll 
+	static float height = 0;// height of the search result box
+	scrollY += GetMouseWheelMove() * 30;
+	if (scrollY > 0) scrollY = 0;
+	// draw mainpage button
+	mainpage.SetBox(0.743 * windowWidth, 0.406 * windowHeight + scrollY, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
+	mainpage.SetText(Raleway_Black, "Main Page", GetCenterPos(Raleway_Black, "Main Page", 40, 1, mainpage.buttonShape), 40, 1, BLACK, BLACK, BLACK);
+	if (mainpage.buttonShape.y + mainpage.buttonShape.height >= 0.342 * windowHeight) {
+		mainpage.DrawText();
+		if (mainpage.state == RELEASED) {
+			menu = DEFAULT;
+			scrollY = 0;
+			height = 0;
+		}
+	}
+
+	// draw search result
+	if (search_result.size() > 1) {
+		// draw keyword
+		DrawTextEx(Parable_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
+		// draw definition box
+		Rectangle boxShape = { (float)0.061 * windowWidth, (float)0.55 * windowHeight + scrollY, (float)0.878 * windowWidth, (float)height };
+		DrawRectangleRounded(boxShape, 0.25 - 0.00000013 * height * height, 10, {203, 241, 245, 255});
+		boxShape.x += 0.013 * windowWidth;
+		boxShape.width -= 0.023 * windowWidth;
+		height = DrawTextOnBoxEx(boxShape, Raleway_Italic, search_result, { (float)0.09 * windowWidth, (float)0.58 * windowHeight + scrollY }, 40, 0.5, 0.04 * windowHeight, 0.055 * windowHeight, BLACK) - boxShape.y + 0.05 * windowHeight;
+	}
+
+	// draw title
+	DrawRectangle(0, 0, windowWidth, 0.342 * windowHeight, { 236, 249, 255, 255 });
+	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
+	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
+	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
+	// draw search bar
+	DrawSearchBar();
+	// draw mode button
+	if (mode) modeDef.DrawText();
+	else modeKey.DrawText();
+	if (modeDef.getState() == RELEASED) mode ^= 1;
+	else if (modeKey.getState() == RELEASED) mode ^= 1;
 }
