@@ -4,6 +4,8 @@
 Dictionary dictionary;
 
 void System::Construct() {
+	dictionary.buildFromOrigin();
+
 	windowWidth = 1460;
 	windowHeight = 850;
 	InitWindow(windowWidth, windowHeight, "Dictionary - CS163 Project (>'-'<)");
@@ -52,15 +54,19 @@ void System::Construct() {
 	searchBox.SetColorBox({ 255, 255, 255, 120 }, { 255, 255, 255, 80 }, { 255, 255, 255, 160 });
 	searchBox.lengthText -= 0.06 * windowWidth;
 
-	modifyDefBox.Construct(0.303 * windowWidth, 0.416 * windowHeight, 0.636 * windowWidth, 0.12 * windowHeight, Raleway_Bold, { (float)0.323 * windowWidth, (float)0.448 * windowHeight }, 40, 1, 300);
+	modifyDefBox.Construct(0.303 * windowWidth, 0.626 * windowHeight, 0.636 * windowWidth, 0.12 * windowHeight, Raleway_Italic, { (float)0.323 * windowWidth, (float)0.658 * windowHeight }, 40, 1, 300);
 	modifyDefBox.SetColorBox({ 203, 241, 245, 120 }, { 203, 241, 245, 80 }, { 203, 241, 245, 160 });
 	modifyDefBox.roundness = 0.28;
-	modifyKeyBox.Construct(0.303 * windowWidth, 0.626 * windowHeight, 0.636 * windowWidth, 0.12 * windowHeight, Raleway_Italic, { (float)0.323 * windowWidth, (float)0.658 * windowHeight }, 40, 1, 300);
+	modifyKeyBox.Construct(0.303 * windowWidth, 0.416 * windowHeight, 0.636 * windowWidth, 0.12 * windowHeight, Raleway_Bold, { (float)0.323 * windowWidth, (float)0.448 * windowHeight }, 40, 1, 300);
 	modifyKeyBox.SetColorBox({ 203, 241, 245, 120 }, { 203, 241, 245, 80 }, { 203, 241, 245, 160 });
 	modifyKeyBox.roundness = 0.28;
 
 	ok.SetBox(0.886 * windowWidth, 0.195 * windowHeight, 0.042 * windowWidth, 0.072 * windowHeight, defaultColor, touchedColor, clickedColor);
 	ok.roundness = 1.5;
+	
+	enter.SetBox(0.5 * windowWidth, 0.835 * windowHeight, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
+	enter.SetText(Raleway_Black, "Enter", GetCenterPos(Raleway_Black, "Enter", 40, 0.5, enter.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
+	enter.roundness = 0.65;
 
 	search_icon = LoadTexture("../External/source/Image/magnifyingGlass.png");
 	arrow_icon = LoadTexture("../External/source/Image/arrowDown.png");
@@ -71,10 +77,6 @@ void System::Construct() {
 	filledHeart_icon = LoadTexture("../External/source/Image/filled-heart.png");
 	hollowedHeart_icon = LoadTexture("../External/source/Image/heart - Copy.png");
 	reload_icon = LoadTexture("../External/source/Image/reload-icon.png");
-
-	dictionary.buildFromOrigin();
-	vector<string> tmp = dictionary.searchDefinition("A", 1);
-	cout << tmp.size() << '\n';
 }
 
 void System::Draw() {	
@@ -149,6 +151,7 @@ void System::DrawDefault() {
 	}
 	if (addnew.state == RELEASED) {
 		menu = MODIFY;
+		isAddNewWord = true;
 	}
 }
 
@@ -222,6 +225,9 @@ void System::DrawGame() {
 }
 
 void System::DrawModify() {
+	static bool dialog = false;
+	static float timeline = 0;
+	if (timeline <= 10) timeline += GetFrameTime();
 	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
 	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
 	DrawTextEx(Raleway_Black, "keyword", { (float)0.061 * windowWidth, (float)0.448 * windowHeight }, 48, 1, BLACK);
@@ -235,7 +241,32 @@ void System::DrawModify() {
 	modifyKeyBox.Draw();
 	// draw definition input box
 	modifyDefBox.Draw();
-
+	
+	// draw enter button
+	enter.DrawText();
+	if (enter.state == RELEASED) {
+		if (isAddNewWord) {
+			if (dictionary.addNewWord(dicNum + 1, modifyKeyBox.getInput(), modifyDefBox.getInput())) {
+				dialog = true;
+				timeline = 0;
+			}
+		} 
+		//else {
+		//	if (dictionary.editDefinition(dicNum + 1, modifyKeyBox.getInput(), modifyDefBox.getInput(), modifyDefBox.getInput())) {
+		//		dialog = true;
+		//		timeline = 0;
+		//	}
+		//}
+	}
+	// draw dialog successfully adding new word in middle of screen
+	if (dialog) {
+		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && timeline >= 2) {
+			dialog = false;
+			timeline = 0;
+		}
+		DrawRectangle(0, 0, windowWidth, windowHeight, Fade(BLACK, 0.5));
+		DrawTextEx(Raleway_BlackBig, "Successfully!", { (float)0.35 * windowWidth, (float)0.5 * windowHeight }, 68, 0.7, { 50, 205, 50, 255 });
+	}
 	// draw seach bar
 	DrawSearchBar();
 
@@ -249,13 +280,18 @@ void System::DrawModify() {
 	if (mainpage.state == RELEASED) {
 		menu = DEFAULT;
 	}
+	if (menu != MODIFY) {
+		modifyKeyBox.currentInput = "";
+		modifyDefBox.currentInput = "";
+		dialog = false;
+	}
 }
 
 void System::DrawChangeTranslation() {
 	static float szY = 0;
 	static int rotation = 90;
 
-	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 		if (CheckCollisionPointRec(GetMousePosition(), changeTranslation.buttonShape)) isDropdownChangeTranslation ^= true;
 		//else isDropdownChangeTranslation = false;
 	}
@@ -326,6 +362,10 @@ void System::DrawRandomWord() {
 }
 
 void System::DrawSearchBar() {
+	static bool isDropdown = false;
+	static int timeline = 0;
+	timeline += 1;
+	if (timeline > 30) timeline = 0;
 	// draw change translation button
 	DrawChangeTranslation();
 	// draw seach bar
@@ -336,6 +376,34 @@ void System::DrawSearchBar() {
 	// draw magnifying glass button
 	ok.DrawText();
 	DrawTextureEx(zoom_icon, { (float)0.893 * windowWidth, (float)0.207 * windowHeight }, 0, 0.11, WHITE);
+	// check if dropdown
+	Rectangle dropdownBox = { searchBox.inputShape.x, searchBox.inputShape.y + searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height * suggestions.size() };
+	if (CheckCollisionPointRec(GetMousePosition(), dropdownBox) == false && IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+		isDropdown = false;
+		timeline = 0;
+	}
+	isDropdown |= (searchBox.isTyping && searchBox.currentInput.empty() == false);
+	// draw suggestions
+	static Button suggestion[6];
+	if (isDropdown) {// search by keyword
+		if (timeline == 30) suggestions = dictionary.predictKeyword(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
+		for (int i = 0; i < suggestions.size(); ++i) {
+			suggestion[i].SetBox(searchBox.inputShape.x, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height, { 227, 253, 253, 253 }, { 238, 253, 253, 245 }, { 204, 227, 227, 255 });
+			suggestion[i].SetText(Parable_Regular, suggestions[i], { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular, suggestions[i], 40, 1, suggestion[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
+			suggestion[i].DrawText();
+			DrawTextureEx(search_icon, { searchBox.inputShape.x + (float)0.01 * windowWidth, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height + (float)0.01 * windowHeight }, 0, 0.16, WHITE);
+			if (suggestion[i].state == RELEASED) {
+				searchBox.currentInput = suggestions[i];
+				searchBox.posCursor = searchBox.currentInput.size();
+				isDropdown = false;
+				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
+				menu = SEARCH_RESULT;
+				searchBox.isTyping = false;
+				isDropdown = false;
+			}
+		}
+
+	}
 
 	// draw search result
 	if (searchBox.isTyping && searchBox.currentInput.empty() == false) {
@@ -346,17 +414,21 @@ void System::DrawSearchBar() {
 				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
 			}
 			if (search_result.empty()) {
-				search_result.push_back("No result");
+				search_result.push_back("No result!");
 			}
 			menu = SEARCH_RESULT;
+			searchBox.isTyping = false;
+			isDropdown = false;
 		}
 	}
+	if (searchBox.isTyping == false) timeline = 0;
 }
 
 void System::DrawSearchResult() {
 	static float scrollY = 0;// scroll 
 	static float height = 0;// height of the search result box
 	scrollY += GetMouseWheelMove() * 30;
+	if (0.55 * windowHeight + height + scrollY + 0.1 * windowHeight < windowHeight) scrollY = windowHeight - 0.55 * windowHeight - height - 0.1 * windowHeight;
 	if (scrollY > 0) scrollY = 0;
 	// draw mainpage button
 	mainpage.SetBox(0.743 * windowWidth, 0.406 * windowHeight + scrollY, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
@@ -371,15 +443,30 @@ void System::DrawSearchResult() {
 	}
 
 	// draw search result
+	// draw keyword
+	DrawTextEx(Parable_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
 	if (search_result.size() > 1) {
-		// draw keyword
-		DrawTextEx(Parable_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
 		// draw definition box
 		Rectangle boxShape = { (float)0.061 * windowWidth, (float)0.55 * windowHeight + scrollY, (float)0.878 * windowWidth, (float)height };
 		DrawRectangleRounded(boxShape, 0.25 - 0.00000013 * height * height, 10, {203, 241, 245, 255});
 		boxShape.x += 0.013 * windowWidth;
 		boxShape.width -= 0.023 * windowWidth;
-		height = DrawTextOnBoxEx(boxShape, Raleway_Italic, search_result, { (float)0.09 * windowWidth, (float)0.58 * windowHeight + scrollY }, 40, 0.5, 0.04 * windowHeight, 0.055 * windowHeight, BLACK) - boxShape.y + 0.05 * windowHeight;
+		height = DrawTextOnBoxEx(boxShape, Raleway_Italic, search_result, { (float)0.09 * windowWidth, (float)0.61 * windowHeight + scrollY }, 40, 0.5, 0.04 * windowHeight, 0.055 * windowHeight, BLACK) - boxShape.y + 0.05 * windowHeight;
+
+		Button Heart;
+		Heart.SetBox(0.815 * windowWidth, boxShape.y + 0.01 * windowHeight, filledHeart_icon.width * 0.085, filledHeart_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		Heart.DrawText();
+		DrawTextureEx(filledHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, WHITE);
+
+		Button edit;
+		edit.SetBox(0.858 * windowWidth, boxShape.y + 0.01 * windowHeight, edit_icon.width * 0.075, edit_icon.height * 0.075, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		edit.DrawText();
+		DrawTextureEx(edit_icon, { (float)0.858 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.075, edit.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+
+		Button reload;
+		reload.SetBox(0.8943 * windowWidth, boxShape.y + 0.01 * windowHeight, reload_icon.width * 0.085, reload_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		reload.DrawText();
+		DrawTextureEx(reload_icon, { (float)0.8943 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, reload.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	}
 
 	// draw title

@@ -28,8 +28,10 @@ struct System {
     Button modeDef, modeKey; bool mode = false;
     Button changeTranslation;
     Button mainpage;
+    Button enter;
     string translation[5] = { "eng - eng", "vn - eng", "eng - vn", "slang", "emoji" };
     vector<string> search_result;
+    vector<string> suggestions;
 
     InputBox searchBox;
     InputBox modifyKeyBox;
@@ -62,6 +64,7 @@ struct System {
     int dicNum = 0; // which dictionary is selected
     int menu = DEFAULT;
     bool isDropdownChangeTranslation = false;
+    bool isAddNewWord = false;
 
     void Construct();
     void Draw();

@@ -70,6 +70,10 @@ void Dictionary::buildFromOrigin() {
 	fin.close();
 }
 
+void save() {
+
+}
+
 vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 	vector<string> found;
 	vector<string> tmp;
@@ -97,6 +101,26 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		}
 	}
 	return found;
+}
+
+vector<string> Dictionary::predictKeyword(string key, int dicNum) {
+	switch (dicNum) {
+	case 1:
+		return engEng_key.predict(key);
+		break;
+	case 2:
+		return vieEng_key.predict(key);
+		break;
+	case 3:
+		return engVie_key.predict(key);
+		break;
+	case 4:
+		return slang_key.predict(key);
+		break;
+	case 5:
+		return emotional_key.predict(key);
+		break;
+	}
 }
 
 vector<string> Dictionary::searchDefinition(string def, int dicNum) {
@@ -134,31 +158,58 @@ void Dictionary::deleteDictionary() {
 	emotional_def.deleteDefinition();
 }
 
-void Dictionary::addNewWord(int dictnum, string key, string def)
+bool Dictionary::addNewWord(int dictnum, string key, string def)
 {
 	switch (dictnum) {
 	case 1:
-		engEng_key.insert(key, def);
+		if (!engEng_key.insert(key, def)) return false;
 		engEng_def.add(key, def);
 		break;
 	case 2:
-		vieEng_key.insert(key, def);
+		if (!vieEng_key.insert(key, def)) return false;
 		vieEng_def.add(key, def);
 		break;
 	case 3:
-		engVie_key.insert(key, def);
+		if (!engVie_key.insert(key, def)) return false;
 		engVie_def.add(key, def);
 		break;
 	case 4:
-		slang_key.insert(key, def);
+		if (!slang_key.insert(key, def)) return false;
 		slang_def.add(key, def);
 		break;
 	case 5:
-		emotional_key.insert(key, def);
+		if (!emotional_key.insert(key, def)) return false;
 		emotional_def.add(key, def);
 		break;
 	}
 	addWordToFile(dictnum, key, def);
+	return true;
+}
+
+bool Dictionary::editDefinition(int dictNum, string key, string def, string newdef) {
+	switch (dictNum) {
+	case 1:
+		if (!engEng_key.edit(key, def, newdef)) return false;
+		engEng_key.edit(key, def, newdef);
+		break;
+	case 2:
+		if (!vieEng_key.edit(key, def, newdef)) return false;
+		vieEng_key.edit(key, def, newdef);
+		break;
+	case 3:
+		if (!engVie_key.edit(key, def, newdef)) return false;
+		engVie_key.edit(key, def, newdef);
+		break;
+	case 4:
+		if (!slang_key.edit(key, def, newdef)) return false;
+		slang_key.edit(key, def, newdef);
+		break;
+	case 5:
+		if (!emotional_key.edit(key, def, newdef)) return false;
+		emotional_key.edit(key, def, newdef);
+		break;
+	}
+	return true;
 }
 
 string getSource(int dictNum) {

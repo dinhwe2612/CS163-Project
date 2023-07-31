@@ -26,12 +26,14 @@ struct Dictionary {
 
 	void buildFromOrigin();
 	void build();
+	void save();
 	vector<string> searchKeyword(string key, int dicNum); // dicNum: No of dataset
+	vector<string> predictKeyword(string key, int dicNum);
 	vector<string> searchDefinition(string def, int dicNum);
-	void addNewWord(int dictnum, string key, string def);
+	bool addNewWord(int dictnum, string key, string def);
 	void deleteDictionary();
 	void resetDictionary(int dictNum);
-	void editDefinition(int dictNum, string key, string def, string newdef);
+	bool editDefinition(int dictNum, string key, string def, string newdef);
 
 	// favourite function
 	vector<string> viewFavourite(int dictNum);

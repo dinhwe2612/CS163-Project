@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <fstream>
 using namespace std;
 
 const int ASCII_SIZE = 128;
@@ -20,9 +22,14 @@ struct TrieNode {
 struct Keyword { // Trie
 	TrieNode* root = nullptr;
 
-	void insert(string key, string def);
-	vector<string> search(string key);// return id of word if found, else return -1
+	int limitSuggestions = 5;
+	vector<string> predict(string keyword);// using bfs, return vector of suggestions
+
+	bool insert(string key, string def);// return true if insert successfully
+	bool edit(string key, string def, string newdef);// return true if edit successfully
+	vector<string> search(string key);
 	void remove(string key);
+	void save(TrieNode* root, ofstream& fout);
 
 private:
 	void removeHelper(TrieNode* root, string key, int depth);
