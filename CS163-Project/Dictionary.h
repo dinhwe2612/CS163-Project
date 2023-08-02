@@ -21,6 +21,16 @@ struct Dictionary {
 	Definition slang_def;
 	Definition emotional_def;
 
+	struct dic {
+		string key;
+		vector<string> def;
+	};
+	vector<dic> engEng;
+	vector<dic> vieEng;
+	vector<dic> engVie;
+	vector<dic> slang;
+	vector<dic> emotional;
+
 	History history;
 	Favourite favourite;
 

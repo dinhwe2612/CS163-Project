@@ -1,60 +1,39 @@
 #include "Keyword.h"
+#include <string>
 using namespace std;
 
-bool Keyword::insert(string key, string def) {
+int Keyword::insert(string key, string &def) {
     if (!root) root = new TrieNode();
     TrieNode* pCrawl = root;
 
     for (int i = 0; i < key.length(); i++)
     {
         int index = tolower(key[i]);
+        if (index < 0) {
+            cerr << "Error: " << key << endl;
+            index = ' ';
+        }
         if (!pCrawl->child[index])
             pCrawl->child[index] = new TrieNode();
 
         pCrawl = pCrawl->child[index];
     }
-
-    // mark last node as leaf
-    for(string &s : pCrawl->definition)
-		if(s == def) return false;
-    pCrawl->definition.push_back(def);
-    return true;
+    if (pCrawl->id == -1) return pCrawl->id = numOfWords++;
+    return pCrawl->id;
 }
 
-bool Keyword::edit(string key, string def, string newdef) {
-	TrieNode* pCrawl = root;
-    for (int i = 0; i < key.length(); i++)
-    {
-		int index = tolower(key[i]);
-		if (!pCrawl->child[index])
-			return false;
-
-		pCrawl = pCrawl->child[index];
-	}
-
-    for (string& s : pCrawl->definition) {
-        if (s == def) {
-            s = newdef;
-            return true;
-        }
-    }
-	return false;
-}
-
-vector<string> Keyword::search(string key) {
+int Keyword::search(string key) {
     TrieNode* pCrawl = root;
     for (int i = 0; i < key.length(); i++)
-        key[i] = tolower(key[i]);
-    for (int i = 0; i < key.length(); i++)
     {
-        int index = key[i];
+        int index = tolower(key[i]);
         if (!pCrawl->child[index])
-            return vector<string>(0);
+            return -1;
 
         pCrawl = pCrawl->child[index];
     }
 
-    return pCrawl->definition;
+    return pCrawl->id;
 }
 
 void Keyword::removeHelper(TrieNode* root, string key, int depth) {
@@ -62,7 +41,7 @@ void Keyword::removeHelper(TrieNode* root, string key, int depth) {
 
     if (depth == key.length()) {
         //remove the definition vector
-        root->definition.clear();
+        root->id = -1;
         return;
     }
 
@@ -70,7 +49,7 @@ void Keyword::removeHelper(TrieNode* root, string key, int depth) {
     removeHelper(root->child[index], key, depth + 1);
 
     // remove if it has no definition and has no child nodes.
-    if (root->definition.empty()) {
+    if (root->id == -1) {
         for (int i = 0; i < ASCII_SIZE; ++i) {
             if (root->child[i]) {
                 return;
@@ -85,48 +64,58 @@ void Keyword::remove(string key) {
     removeHelper(root, key, 0);
 }
 
-vector<string> Keyword::predict(string keyword) {
-    if (keyword.empty()) return vector<string>(0);
+vector<int> Keyword::predict(string keyword) {
+    if (keyword.empty()) return vector<int>(0);
 	TrieNode* pCrawl = root;
     for (int i = 0; i < keyword.length(); i++) {
 		int index = tolower(keyword[i]);
 		if (!pCrawl->child[index])
-			return vector<string>(0);
+			return vector<int>(0);
 
 		pCrawl = pCrawl->child[index];
 	}
 
-	vector<string> suggestions;
-	queue<pair<TrieNode*, string>> q;
-    q.push({ pCrawl, "" });
+	vector<int> suggestions;
+	queue<TrieNode*> q;
+    q.push(pCrawl);
     while (!q.empty()) {
-		TrieNode* temp = q.front().first;
-        string word = q.front().second;
+        TrieNode* temp = q.front();
 		q.pop();
-        if (!temp->definition.empty()) {
-            suggestions.push_back(keyword + word);
+        if (temp->id != -1) {
+            suggestions.push_back(temp->id);
             if (suggestions.size() == limitSuggestions) return suggestions;
 		}
         for (int i = 0; i < ASCII_SIZE; i++) {
             if (temp->child[i]) {
-                q.push({ temp->child[i], word + (char)i });
+                q.push(temp->child[i]);
 			}
 		}
 	}
 	return suggestions;
 }
 
-void save(TrieNode* root, ofstream& fout) {
-    if (!root) return;
-    for (int i = 0; i < ASCII_SIZE; i++) {
+void Keyword::save(TrieNode* root, ofstream &fout) {
+    fout << root->id << ' ';
+    int cnt = 0;
+    for (int i = 0; i < ASCII_SIZE; ++i) {
+        if (root->child[i]) ++cnt;
+    }
+    fout << cnt << ' ';
+    for (int i = 0; i < ASCII_SIZE; ++i) {
         if (root->child[i]) {
-			fout << (char)i << ' ';
+			fout << i << ' ';
 			save(root->child[i], fout);
 		}
 	}
-    cout << -1 << ' ';
-    cout << root->definition.size() << ' ';
-    for (string& s : root->definition) {
-		cout << s << ' ';
+}
+
+
+void Keyword::build(TrieNode* root, ifstream& fin) {
+    fin >> root->id;
+    int cnt; fin >> cnt;
+    for (int i = 0; i < cnt; ++i) {
+        int c; fin >> c;
+        root->child[c] = new TrieNode();
+        build(root->child[c], fin);
     }
 }

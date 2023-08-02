@@ -1,1549 +1,4424 @@
-?	I have a question
-?	I don’t understand what you mean
-?4U	I have a question for you
-;S	GeHmm? What did you say?
-^^	read message
-<3	sideways heart
-</3	broken heart
-<3333	a bigger heart
-@TEOTD	At the end of the day
-0.02	My two cents worth
-"1TG, 2TG"	Meaning number of items needed for win
-1UP	Meaning extra life
-121	One-to-one
-1337	"Leet, meaning ‘elite’"
-143	I love you
-1432	I love you too
-14AA41	"One for all, and all for one"
-182	I hate you
-19	Zero hand 
-10M	Ten man 
-10X	Thanks
-10Q	Thank you
-1CE	Once
-1DR	I wonder
-1NAM	One in a million
-2	to
-20	location
-2B	To be
-2EZ	Too easy
-2G2BT	Too good to be true
-2M2H	Too much too handle
-2MI	Too much information
-2MOR	Tomorrow
-2MORO	Tomorrow
-2M2H	Too much to handle
-2N8	Tonight
-2NTE	Tonight
-4	for
-411	information
-404	I don’t know
-420	Lets get high
-459	I love you 
-4AO	For adults only
-4COL	For crying out loud
-4EAE	Forever and ever
-4EVA	Forever
-4NR	Foreigner
-4SALE	For sale
-^5	High-five
-511	Too much information
-555	"Sobbing, crying"
-55555	Crying your eyes out
-55555	Laughing
-6Y	Sexy
-7K	Sick
-81	Hells Angels
-831	I love you
-86	Over
-88	Bye-bye 
-88	Hugs and kisses
-9	Parent is watching
-*s*	smile
-*w*	wink
-A3	"Anytime, anywhere, anyplace"
-AA	Alcoholics Anonymous
-AA	As above
-AA	Ask about
-AAF	As a matter of fact
-AAF	As a friend
-AAK	Asleep at keyboard
-AAK	Alive and kicking
-AAMOF	As a matter of fact
-AAMOI	As a matter of interest
-AAP	Always a pleasure
-AAR	At any rate
-AAS	Alive and smiling
-AASHTA	"As always, Sheldon has the answer"
-AATK	Always at the keyboard
-AAYF	"As always, your friend"
-ABBR	Meaning abbreviation
-ABC	Already been chewed
-ABD	Already been done
-ABT	About
-ABT2	About to
-ABTA	Good-bye
-ABU	All bugged up
-AC	Acceptable content
-ACC	Anyone can come
-ACD	ALT CONTROL DELETE
-ACDNT	Accident
-ACE	 marijuana cigarette
-ACK	Acknowledge
-ACPT	Accept
-ACQSTN	Acquisition
-ADAD	"Another day, another dollar"
-ADBB	"All done, bye-bye"
-ADD	Address
-ADDY	Address
-ADIH	Another day in hell
-ADIP	Another day in paradise
-ADMIN	Administrator
-ADMINR	Administrator
-ADN	Any day now
-ADR	Address
-AE	Area effect
-AEAP	As early as possible
-AF	April Fools
-AF	As Freak
-AF	Aggression factor
-AFC	Away from computer
-AFAIAA	As far as I am aware
-AFAIC	As far as I am concerned
-AFAIK	As far as I know
-AFAIUI	As far as I understand it
-AFAP	As far as possible
-AFFA	"Angels Forever, Forever Angels"
-AFJ	April Fool’s joke
-AFK	Away from keyboard
-AFZ	Acronym Free Zone
-AFPOE	A fresh pair of eyes
-AGI	agility
-AH	At home
-AIAMU	And I am a money’s uncle
-AIGHT	Alright
-AIR	As I remember
-AISB	As it should be
-AISB	As I said before
-AISI	As I see it
-AITR	Adult in the room
-AKA	Also known as
-ALCON	All concerned
-ALOL	Actually laughing out loud
-AMA	Ask me anything (Reddit)
-AMAP	As much as possible
-AMBW	All my best wishes
-AML	All my love
-AMOF	As a matter of fact
-A/N	Author’s note
-AO	Anarchy Online
-AOC	Available on cell
-AOE	Area of effect
-AOM	Age of majority
-AOM	Age of Mythology
-AOTA	All of the above
-AOYP	Angel on your pillow
-APAC	All praise and credit
-APP	Application
-APP	Appreciate
-AQAP	As quick or quiet as possible
-ARC	Archive
-ARE	Acronym rich environment
-ARG	Argument
-ASIG	And so it goes
-ASAP	As soon as possible
-A/S/L	Age/sex/location
-ASL	Age/sex/location
-ASLA	Age/sex/location/availability
-AT	At your terminal
-ATB	All the best
-ATEOTD	At the end of the day
-ATM	At the moment
-ATSITS	All the stars in the sky
-ATSL	Along the same line
-AWC	After awhile crocodile
-AWESO	Awesome
-AWOL	Away without leaving
-AWOL	Absent without leave
-AYDY	Are you done yet?
-AYBABTU	All your base are belong to us
-AYEC	At your earliest convenience
-AYOR	At your own risk
-AYSOS	Are you stupid or something?
-AYS	Are you serious?
-AYT	Are you there?
-AYTMTB	And you’re telling me this because
-AYV	Are you vertical?
-AYW	As you were
-AYW	As you wish
-AZN	Asian
-B	Back
-B	Be
-B&	Banned
-B2B	Business-to-business
-B2C	Business-to-consumer
-B2W	Back to work
-B8	Bait 
-B9	Boss is watching
-B/F	Boyfriend
-B/G	Background
-B4	Before
-B4N	Bye for now
-BAG	Busting a gut
-BA	Bad *a*
-BAE	Before anyone else
-BAE	Meaning Babe or baby
-BAFO	Best and final offer
-BAK	Back at keyboard
-BAM	Below average mentality
-BAMF	Bad ass mother fucker
-BAO	Be aware of
-BAS	Big ‘butt’ smile
-BASIC	Meaning anything mainstream
-BASOR	Breathing a sigh of relief
-BAU	Business as usual
-BAY	Back at ya
-BB	Be back
-BB	Big brother
-BB	Baby 
-BBC	Big bad challenge
-BBIAB	Be back in a bit
-BBIAF	Be back in a few
-BBIAM	Be back in a minute
-BBIAS	Be back in a sec
-BBL	Be back later
-BBN	"Bye, bye now"
-BBQ	Barbeque
-BBS	Be back soon
-BBT	Be back tomorrow
-BC	Because
-B/C	Because
-BC	Be cool
-BCNU	Be seeing you
-BCOS	Because
-BCO	Big crush on
-BCOY	Big crush on you
-BD	Big deal
-BDAY	Birthday
-B-DAY	Birthday
-BDN	Big darn number
-BEG	Big evil grin
-BELF	Blood Elf
-BF	Boyfriend
-BF	Brain fart
-BFAW	Best friend at work
-BF2	Battlefield 2 
-BF	Best friend
-BFF	Best friends forever
-BFFL	Best friends for life
-BFFLNMW	"Best friends for life, no matter what"
-BFD	Big freaking deal
-BFG	Big freaking grin
-BFFN	Best friend for now
-BFN	Bye for now
-BG	Big grin
-BGWM	Be gentle with me
-BHL8	Be home late
-BIB	Boss is back
-BIBO	"Beer in, beer out"
-BIC	Butt in chair
-BIF	Before I forget
-BIH	Burn in hell
-BIL	Brother in law
-BIO	I’m going to the bathroom
-BION	Believe it or not
-BIOYA	Blow it out your ass
-BIOYN	Blow it out your nose
-BIS	Best in slot
-BISFLATM	Unverified
-BITMT	But in the meantime
-BL	Belly laugh
-BLNT	Better luck next time
-Bloke	Discord
-BM	Bite me
-BME	Based on my experience
-BM&Y	Between me and you
-BOB	Back off buddy
-BN	Bad news
-BOE	bind on equip
-BOHICA	Bend over here it comes again
-BOL	Best of luck
-BOM	Because of mine
-BOLO	Be on the look out
-BOOMS	Bored out of my skull
-BOP	bind on pickup
-BOSMKL	Bending over smacking my knee laughing
-BOT	Back on topic
-BOT	Be on that
-BMS	"Broke my scale, used when rating someone"
-BOYF	Boyfriend
-BPLM	Big person little mind
-BRB	Be right back
-BR	Best regards
-BRBB	Be right back bitch
-BRNC	"Be right back, nature calls"
-BRD	Bored
-BRH	Be right here
-BRT	Be right there
-BSF	But seriously folks
-BSOD	Blue screen of death
-BSTS	Better safe than sorry
-BT	Bite this
-BT	Between technologies
-BTA	But then again
-BTDT	"Been there, done that"
-BTW	By the way
-BTYCL	Meaning ‘Bootycall’
-BUBU	The most beautiful of women
-BURN	Used to reference an insult
-Buff	changed and is now stronger
-BWL	Bursting with laughter
-BYOB	Bring your own beer
-BYOC	Bring your own computer
-BYOD	Bring your own device
-BYOH	Bat you on the head
-BYOP	paintball
-BYTM	Better you than me
-C&G	Chuckle & grin
-C4N	Ciao for now
-CAD	Control + Alt + Delete
-CAD	Canadian
-Cakeday	Birthday
-CAM	Camera
-CB	Coffee break
-CB	Chat break
-CB	Crazy
-CD9	parents are around
-CFS	Care for secret?
-CFY	Calling for you
-CHK	Check
-CIAO	Good-bye
-CICO	"Coffee in, coffee out"
-CID	Crying in disgrace
-CID	Consider it done
-CLAB	Crying like a baby
-CLD	Could
-CLK	Click
-CM	Call me
-CMAP	Cover my ass partner
-CMB	Call me back
-CMGR	Community manager
-CMIIW	Correct me if I’m wrong
-CMON	Come on
-CNP	Continued in next post
-COB	Close of business
-COH	City of Heroes
-COS	Because
-C/P	Cross post
-CP	Chat post
-CR8	Create
-Cray	crazy
-CRE8	Create
-CRA CRA	crazy
-CRAFT	Can’t remember a freaking thing
-CRB	Come right back
-CRBT	Crying really big tears
-CRIT	critical hit
-CRZ	Crazy
-CRS	Can’t remember stuff
-CSG	"Chuckle, snicker, grin"
-CSL	Can’t stop laughing
-CSS	Counter-Strike Source
-CT	Can’t talk
-CTC	Care to chat?
-CTHU	Cracking the heck up
-CTN	Can’t talk now
-CTO	Check this out
-CU	See you too
-CU	See you
-CU2	See you
-CUA	See you around
-CUL	See you later
-CULA	See you later alligator
-CUL8R	See you later
-CUMID	See you in my dreams
-CURLO	See you around like a donut
-CWD	Comment when done
-CWOT	Complete waste of time
-CWYL	Chat with you later
-CX	Correction
-CYA	See you
-CYAL8R	See you later
-CYE	Check your e-mail
-CYEP	Close your eyes partner
-CYO	See you online
-D2	fingers
-D46?	Down for sex?
-DA	the
-DAE	Does anyone else?
-DAFUQ	What the *Freak*?
-DAM	Don’t annoy me
-DAoC	Dark Age of Camelot
-DBAU	Doing business as usual
-DBEYR	Don’t believe everything you read
-DC	Disconnect
-DD	Dear daughter
-DD	Due diligence
-DDG	Drop dead gorgeous
-DEEZ NUTZ	A phrase used in online chat to annoy or frustrate those involved in the conversation.
-DEGT	Dear daughter
-DERP	stupid
-DF	Don’t even go there
-DFL	Dead freaking last 
-DGA	Don’t go anywhere
-DGAF	Don’t give a freak
-DGT	Don’t go there
-DGTG	"Don’t go there, girlfriend"
-DGYF	"Dang, girl you fine"
-DH	Dear husband
-DHU	support
-DIIK	Darned if I know
-DIKU	Do I know you?
-DILLIGAF	Do I look like I give a freak?
-DILLIGAS	Do I look like I give a sugar?
-DIS	Did I say?
-DITYID	Did I tell you I’m distressed?
-DIY	Do it yourself
-DKDC	"Don’t know, don’t care"
-DKP	Dragon kill points
-D/L	Download
-DL	Download
-DL	Down low
-DL	Dead link
-DLBBB	Don’t let the bed bugs bite
-DLTBBB	Don’t let the bed bugs bite
-DM	Doesn’t matter
-DM	Direct message
-DM	Do me
-DM	Dungeon Master
-DMNO	Dude Man No Offense
-DMY	Don’t mess yourself
-DN	Down
-DNC	I do not understand
-DNR	Dinner
-DNT	Don’t
-d00d	Dude
-DOE	Daughter of Eve
-DORBS	Adorable
-DOT	Damage over time
-Downvote	Voting negatively
-DPS	Damage per second
-DQMOT	Don’t quote me on this
-DR	Didn’t read
-DS	Dear  son
-DTR	Define the relationship
-DTRT	Do the right thing
-DTS	Don’t think so
-DTTD	Don’t touch that dial
-DUPE	Duplicate
-DUR	Do you remember?
-DV8	Deviate
-DW	Dear  wife
-DWF	Divorced white female
-DWM	Divorced white male
-DXNRY	Dictionary
-DYNWUTB	Do you know what you are talking about?
-DYFI	Did you find it?
-DYFM	"Dude, you fascinate me"
-DYJHIW	Don’t you just hate it when…?
-DYOR	Do your own research
-E	Ecstasy
-E	Enemy
-E1	Everyone
-E123	"Easy as one, two, three"
-E2EG	Ear to ear grin
-EAK	Eating at keyboard
-EBKAC	Error between keyboard and chair
-ED	Erase display
-EF4T	Effort
-EG	Evil grin
-EI	Eat it
-EIP	Editing in progress
-ELI5	Explain like I’m 5
-EM	E-mail
-EMA	E-mail address 
-EMBAR	Embarassing
-EMFBI	Excuse me for butting in
-EMFBI	Excuse me for jumping in
-EMSG	E-mail message
-ENUF	Enough
-EOD	End of day
-EOD	End of discussion
-EOL	End of lecture
-EOL	End of life
-EOM	End of message
-EOS	End of show
-EOT	End of transmission
-EQ	EverQuest
-ERP	Erotic Role-Play
-ERS2	are you 
-ES	Erase screen
-ESAD	die
-ETA	Estimated time of arrival
-ETA	Edited to add
-EVA	Ever
-EVO	Evolution
-EWG	teasing
-EWI	Emailing while intoxicated
-EXTRA	Meaning over the top
-EYC	"Excitable, yet calm"
-EZ	Easy
-EZY	Easy
-F	Meaning female
-F2F	Face to face
-F2P	Free to play 
-F4F	Follow for follow
-FAAK	Falling asleep at keyboard
-FAB	Fabulous
-Facepalm	embarrassment or frustration
-FAF	Funny as freak
-FAM	friends
-FAQ	Frequently asked questions
-FAY	Freak all you
-FB	Facebook
-FBB	Facebook buddy
-FBC	Facebook chat
-FBF	Flashback Friday
-FBF	Facebook friend
-FBF	Fat boy food 
-FBFR	FaceBook friend
-FBM	Fine by me
-FBO	Facebook official
-FBOW	For better or worse
-FC	Fingers crossed
-FC	Full card
-FC’INGO	For crying out loud
-FCOL	For crying out loud
-Feelsbadman	feel negative.
-Feelsbatman	to the extreme
-Feelsgoodman	to feel positive.
-FEITCTAJ	Freak them if they can’t take a joke
-FF	Follow Friday
-FFA	Free for all
-FFS	For freak sakes
-FICCL	Frankly I couldn’t care a less
-FIF	Freak I’m funny
-FIIK	Freaked if I know
-FIIOOH	"Forget it, I’m out of here"
-FIL	Father in law
-FIMH	Forever in my heart
-Finna	Going to
-Finsta	A second Instagram account where someone can post things that they’re too afraid to post on their main account.
-FISH	"First in, still here"
-FITB	Fill in the blank
-FML	Freak My Life
-FOMC	Falling off my chair
-FOMO	Fear of missing out
-FOAD	Freak off and die
-FOAF	Friend of a friend
-FOMCL	Falling off my chair laughing
-FRT	For real though
-FTBOMH	From the bottom of my heart
-FTFY	Fixed that for you
-FTL	For the loss
-FTW	For the win
-FU	Freak you
-FUBAR	Fouled up beyond all recognition
-FUBB	Fouled up beyond belief
-FUD	Face up deal 
-FUTAB	"Feet up, take a break"
-FW	Forward
-FWB	Friend with benefits
-FWIW	For what it’s worth
-FWM	Fine with me
-FWP	First world problems
-FYE	"Fire, something that is cool"
-FYEO	For your eyes only
-FYA	For your amusement
-FYI	For your information
-G	Grin
-G	Giggle
-G+	Google+
-G/F	Girlfriend
-G2CU	Good to see you
-G2G	Got to go
-G2GICYAL8ER	Got to go I’ll see you later
-G2R	Got to run
-G2TU	Got to tell you
-G4C	Going for coffee
-G9	Genius
-GA	Go ahead
-GAC	Get a clue
-GAFC	Get a freaking clue
-GAL	Get a life
-GANK	Meaning a player ambush or unfair player kill
-GAS	Got a second?
-GAS	Greetings and salutations
-GB	Goodbye
-GBTW	Get back to work
-GBU	God bless you
-GD	Good
-GDR	"Grinning, ducking, and running"
-GD/R	"Grinning, ducking, and running"
-GFI	Go for it
-GF	Girl friend
-GFN	Gone for now
-GG	Gotta Go
-GG	Good Game
-GG	Brother
-GGA	"Good game, all"
-GGE1	"Good game, everyone"
-GGU2	"Good game, you too"
-GGMSOT	Gotta get me some of that
-GGOH	Gotta Get Outa Here
-GGP	Got to go pee
-GH	Good hand
-GIAR	Give it a rest
-GIC	Gift in crib
-GIGO	"Garbage in, garbage out"
-GIRL	Guy in real life
-GJ	Good job
-GL	Good luck
-GL2U	Good luck to you
-GLA	Good luck all
-GL/HF	"Good luck, have fun"
-GLE	Good luck everyone
-GLE1	Good luck everyone
-GLNG	Good luck next game
-GMBA	Giggling my butt off
-GMTA	Great minds think alike
-GMV	Got my vote
-GN	Good night
-GNA	Good night all
-GNE1	Good night everyone
-GNIGHT	Good night
-GNITE	Good night
-GNSD	"Good night, sweet dreams"
-GOAT	Greatest of all Times
-GOI	Get over it
-GOL	Giggling out loud
-GOMB	Get off my back
-GPOY	Gratuitous picture of yourself
-GR8	Great
-GRATZ	Congratulations
-GRL	Girl
-GRWG	Get right with God
-GR&D	"Grinning, running and ducking"
-GS	Good shot
-GS	Good split
-GT	Good try
-GTFO	Get the *freak* out
-GTFOH	Get the *freak* outta here
-GTG	Got to go
-GTM	Giggling to myself
-GTRM	Going to read mail
-GTSY	Great to see you
-GUCCI	Good
-GUD	Good
-GWHTLC	Glad we had this little chat
-H	Hug
-H8	Hate
-H8TTU	Hate to be you
-HAG1	Have a good one
-HAK	Hug and kiss
-HALP	Help
-HAU	How about you?
-H&K	Hugs & kisses
-H2CUS	Hope to see you soon
-HAGN	Have a good night
-HAGO	Have a good one
-HAND	Have a nice day
-HAWT	Have a wonderful day
-HAWT	sexy
-HB	Hurry back
-HB	Hug back
-HBD	Happy birthday
-H-BDAY	Happy Birthday
-HBU	How about you?
-HF	Have fun
-HFAC	Holy flipping animal crackers
-H-FDAY	Happy Father’s Day
-HHIS	Head hanging in shame
-HIFW	How I felt when
-HL	Half Life 
-HLA	Hola
-H-MDAY	Happy Mother’s Day
-HMU	Hit me up
-HNL	Hole nother level
-HOAS	Hold on a second
-HP	Hit points
-HRU	How are you?
-HTH	Hope this helps
-HUB	Head up butt
-HUYA	Head up your butt
-HV	Have
-HVH	Heroic Violet Hold
-HW	Homework
-HYFR	"Hell yeah, Freaking right!"
-I2	I too 
-IA8	I already ate
-IAAA	I am an accountant
-IAAD	I am a doctor
-IAAL	I am a lawyer
-IAC	In any case
-IAE	In any event
-IANAC	I am not a crook
-IANAL	I am not a lawyer
-IAO	I am out 
-IB	I’m back
-IB	I’m back
-IC	I see
-ICAM	I couldn’t agree more
-ICBW	It could be worse
-ICEDI	I can’t even discuss it
-ICFILWU	I could fall in love with you
-ICYMI	In case you missed it 
-IDBI	I don’t believe it
-IDC	I don’t care
-IDGAF	I don’t give a freak
-IDK	I don’t know
-IDTS	I don’t think so
-IDUNNO	I don’t know
-IFYP	I feel your pain
-IG	Instagram
-IG2R	I got to run
-IGHT	I got high tonight
-IGN	I’ve got nothing
-IGP	I got to go pee
-IHNI	I have no idea
-IIRC	If I remember correctly
-IIIO	"Intel inside, idiot outside"
-IK	I know
-IKR	"I know, right?"
-ILBL8	I’ll be late
-ILU	I love you
-ILUM	I love you man
-ILYSM	I love you so much
-ILY	I love you
-IM	Instant message
-IMAO	In my arrogant opinion
-IMHO	In my humble opinion
-ImL	 I love you
-IMNSHO	In my not so humble opinion
-IMO	In my opinion
-IMS	I am sorry
-IMSB	I am so bored
-IMTM	I am the man
-IMU	I miss u (you)
-INAL	I’m not a lawyer
-INC	incoming
-Inspoo	Inspiration
-INV	Invite
-IOMH	In over my head
-IOW	In other words
-IRL	In real life
-IRMC	I rest my case
-ISLY	I still love you
-ISO	In search of
-ITAM	"It’s The Accounting, Man "
-ITT	In This Thread
-ITYK	I thought you knew
-IUSS	If you say so
-IWALU	I will always love you
-IWAWO	I want a way out
-IWIAM	Idiot wrapped in a moron
-IWSN	I want sex now
-IYKWIM	If you know what I mean
-IYO	In your opinion
-IYQ	I like you
-IYSS	If you say so
-j00	You
-j00r	Your
-JAC	Just a second
-JAM	Just a minute
-JAS	Just a second
-JC (J/C)	Just checking
-JDI	Just do it
-JELLY	jealous
-JFF	Just for fun
-JFGI	Just freaking Google it
-JIC	Just in case
-JJ (J/J)	Just joking
-JJA	Just joking around
-JK (J/K)	Just kidding
-JLMK	Just let me know
-JMO	Just my opinion
-JP	Just playing
-JP	Jackpot
-JT (J/T)	Just teasing
-JTLYK	Just to let you know
-JV	Joint venture
-JW	Just wondering
-K	Okay
-KK	"Knock, knock"
-KK	"Okay, Okay!"
-K8T	Katie
-k/b	Keyboard
-KB	Keyboard
-KB	Kick butt
-KDFU	Cracking K 
-KEWL	Cool
-KEYA	I will key you later
-KEYME	Key me when you get in
-KFY	Kiss for you
-KIA	Know it all
-KIR	Keep it real
-KISS	"Keep it simple, stupid"
-KIT	Keep in touch
-KMA	Kiss my ass
-KMK	Kiss my keister
-KMS	Killing myself
-KMT	Kiss my tushie
-KOC	Kiss on cheek
-KOL	Key opinion leader
-Koreaboo	Someone obsessed with Korean culture
-KOS	Kid over shoulder
-KOS	Kill on sight
-KOW	Knock on wood
-KOTC	Kiss on the cheek
-KOTD	Kicks of the day
-KOTL	Kiss on the lips
-KNIM	Know what I mean?
-KNOW	knowledge
-KPC	Keeping parents clueless
-KS	Kill then steal
-KSC	"Kind of, sort of chuckle"
-KT	Katie
-KUTGW	Keep up the good work
-KYS	Kill yourself
-L2G	Like to go?
-L2G	(would) Love to go
-L2K	Like to come
-L2P	Learn to play
-l33t	"Leet, meaning ‘elite’"
-L4L	Like for like 
-L8R	Later
-L8RG8R	"Later, gator"
-LAB	Life is a bitch
-LBAY	Laughing back at you
-LBS	"Laughing, but serious"
-LBVS	"Laughing, but very serious"
-LD	"Later, dude"
-LD	Long distance
-LDO	"Like, duh obviously"
-LEMENO	Let me know
-LERK	Leaving easy reach of keyboard
-LFD	Left for day
-LFG	Looking for group
-LFG	Looking for guard
-LFM	Looking for more
-LGH	Lets get high
-LH6	Lets have sex
-LHSX	Lets have sex
-LHM	Lord help me
-LHO	Laughing head off
-LI	LinkedIn
-LIC	Like I care
-LIK	Meaning liquor
-LIMT	Laugh in my tummy
-LIT	really good or something fun and exciting
-LIT	Extremely intoxicated
-LLGB	"Love, later, God bless"
-LLS	Laughing like silly
-LMAO	Laughing my ass off
-LMBO	Laughing my butt off
-LMFAO	Laughing my freaking ass off
-LMIRL	Lets meet in real life
-LMK	Let me know
-LMMFAO	Laughing out loud
-LMNK	Leave my name out
-LMS	Like my status
-LNT	Meaning lost in translation
-LOA	List of acronyms
-LOL	Laughing out loud
-LOL	Laugh out loud
-LOL	Lots of love
-LOLH	Laughing out loud hysterically
-LOLO	Lots of love
-LOLWTF	Laughing out loud 
-LOTI	Laughing on the inside
-LOTR	Lord of The Rings 
-LQTM	Laughing quietly to myself
-LSHMBH	Laugh so hard my belly hurts
-LSV	"Language, sex and violence"
-LTD	Living the dream
-LTLWDLS	Let’s twist like we did last summer
-LTNS	Long time no see
-LTOD	Laptop of death
-LTS	Laughing to self
-LULT	Love you long time
-LULZ	"Meaning joke, or for laughs"
-LVM	Left voice mail
-LWOS	Laughing without smiling
-LY	Love ya
-LYLAS	Love you like a sis
-LYLC	Love you like crazy
-LYSM	Love you so much
-M$	Microsoft
-M8	Mate
-MB	Mamma’s boy
-MBS	Mom behind shoulder
-MC	Merry Christmas
-MDIAC	My Dad is a cop
-MEGO	My eyes glaze over
-MEH	shrugging shoulders
-MEH	just okay
-MEHH	sighing
-MEZ	mesmerize
-MFI	Mad for it
-MFW	My face when
-MGB	May God bless
-MGMT	Management
-MHOTY	My hat off to you
-MIRL	Me in real life
-MIRL	Meet in real life
-MISS.3	3-year old daughter
-MKAY	"Mmm, okay”"
-MLM	give the middle finger
-MM	Sister 
-MMK	Meaning okay?
-MNC	Mother nature calls
-MNSG	message in Spanish
-MOD	Moderator
-MOD	Modification
-MORF	Male or female?
-MOMBOY	Mamma’s boy
-MOO	My own opinion
-MOOS	Member of the opposite sex
-MOS	Mother over shoulder
-MOSS	Member of same sex
-MP	Mana points 
-MR.3	3-year old son
-MRT	Modified ReTweet
-MRW	My reaction when
-MSG	Message
-MTF	More to follow
-MTFBWU	May the force be with you
-MU	Miss you
-MUAH	Multiple unsuccessful attempts at humor
-MUSM	Miss you so much
-MWAH	kiss
-MYO	Mind your own business
-MYOB	Mind your own business
-n00b	Newbie
-N1	Nice one
-N2M	Nothing too much
-NADT	Not a darn thing
-NALOPKT	Not a lot of people know that
-NANA	"Not now, no need"
-NBD	No big deal
-NBFAB	No bad for a beginner
-NC	Nice crib 
-ND	Nice double
-NE	Any
-NE1	Anyone
-NERF	Changed and is now weaker
-NFM	None for me 
-NFM	Not for me
-NGL	Not going to lie
-NFS	Need for Speed
-NFS	Not for sale
-NFW	No *freaking* way
-NFW	Not for work
-NFWS	Not for work safe
-NH	Nice hand 
-NIFOC	Naked in front of computer
-NIGI	Now I get it
-NIMBY	Not in my back yard
-NIROK	Not in reach of keyboard
-NLT	No later than
-NM	Nothing much
-NM	Never mind
-NM	Nice meld
-NMH	Not much here
-NMJC	"Nothing much, just chilling"
-NMU	"Not much, you?"
-NO1	No one
-NOOB	someone who is bad at online games
-NOWL	knowledge
-NOYB	None of your business
-NP	No problem
-NPC	Non-playing character
-NQT	Newly qualified teacher
-NR	Nice roll
-NRN	No response necessary
-NS	Nice score
-NS	Nice split
-NSA	No strings attached
-NSFL	Not safe for life
-NSFW	Not safe for work
-NSISR	Not sure if spelled right
-NT	Nice try
-NTHING	Nothing
-NTS	Note to self
-NVM	Never mind
-NVR	Never
-NW	No way
-NWO	No way out
-O4U	Only for you
-O	Opponent 
-O	hugs
-O	Over
-OA	Online auctions
-OATUS	On a totally unrelated subject
-OB	Oh baby
-OB	Oh brother
-OBV	Obviously
-OFC	Of course
-OG	Original gangster
-OGIM	"Oh God, it’s Monday"
-OH	Overheard
-OHHEMMGEE	Oh My God
-OI	Operator indisposed
-OIB	"Oh, I’m back"
-OIC	"Oh, I see"
-OJ	Only joking
-OL	Old lady
-OLL	Online love
-OM	Old man
-OM	"Oh, my"
-OMAA	"Oh, my aching butt"
-OMDB	Over my dead body
-OMFG	Oh my freaking God
-OMG	Oh my God
-OMG	Oh my gosh
-OMGYG2BK	"Oh my God, you got to be kidding"
-OMGYS	Oh my gosh you suck
-OMS	On my soul
-OMW	On my way
-ONL	Online
-OO	Over and out
-OOC	Out of character
-OOH	Out of here
-OOMF	One of my followers
-OOTD	One of these days
-OOTD	Outfit of the day
-OOTO	Out of the office
-OP	On phone
-ORLY	Oh really?
-OS	Operating system
-OT	Off topic 
-OTB	Off to bed
-OTFL	On the floor laughing
-OTL	Out to lunch
-OTOH	On the other hand
-OTP	On the phone
-OTP	couple
-OTT	Over the top
-OTTOMH	Off the top of my head
-OTW	Off to work
-OVA	Over
-OYO	On your own
-P	Partner
-P2P	Parent to parent
-P2P	Peer to peer
-P2P	Pay to play
-P911	Parents coming into room alert
-PAP	Post a picture
-PAT	patrol
-PAW	Parents are watching
-PBOOK	Phonebook
-PC	Player character 
-PCM	Please call me
-PDA	Personal display of affection
-PDH	Pretty darn happy
-PDS	Please don’t shoot
-PDQ	Pretty darn quick
-PEEPS	People
-PFT	Pretty *freaking* tight
-PIC	Picture
-PIP	laughing hard
-PIR	Parents in room
-PISS	Put in some sugar
-PITA	Pain in the butt
-PKMN	Pokemon
-PL8	Plate
-PLD	Played
-PLMK	Please let me know
-PLS	Please
-PLU	People like us
-PLZ	Please
-PLZTLME	Please tell me
-PM	Private Message
-PMFI	Pardon me for interrupting
-PMFJI	Pardon me for jumping in
-PMSL	Pee myself laughing
-POAHF	Put on a happy face
-POIDH	it didn’t happen
-POS	Parent over shoulder
-POT	potion
-POTD	Photo of the day
-POV	Point of view
-POV	Privately owned vehicle
-PPL	People
-PPU	Pending pick-up
-PRESH	Precious
-PROBS	Probably
-PROLLY	Probably
-PROGGY	computer program
-PRON	pornography
-PRT	Party
-PRT	Please Retweet
-PRW	Parents are watching
-PSA	Public Service Announcement
-PSOS	Parent standing over shoulder
-PSP	Playstation Portable
-PST	Please send tell
-PTFO	Pass the freak out
-PTIYPASI	Put that in your pipe and smoke it
-PTL	Praise the Lord
-PTMM	Please tell me more
-PTO	Paid time off
-PTO	Personal time off
-PTO	Parent Teacher Organization
-PUG	Pick up group
-PVE	Player vs enemy
-PVP	Player versus player
-PWN	own
-PXT	Please explain that
-PU	That stinks!
-PUKS	Pick up kids
-PYT	Pretty young thing
-PZ	Peace
-PZA	Pizza
-Q	Queue
-Q4U	I have a question for you
-QC	Quality control
-QFE	Question for everyone
-QFI	Quoted for idiocy
-QFI	Quoted for irony
-QFT	Quoted for truth
-QIK	Quick
-QL	Quit laughing
-QOTD	Quote of the day
-Q_Q	crying eyes
-QQ	Quick question
-QSL	Reply
-QSO	Conversation
-QT	Cutie
-QTPI	Cutie pie
-R	are
-R8	Rate 
-RBAY	Right back at you
-RFN	Right freaking now
-RGR	"I agree, I understand"
-RHIP	Rank has its privileges
-RIP	Rest in peace
-RL	Real life
-RLY	Really
-RME	Rolling my eyes
-RMLB	Read my lips baby
-RMMM	Read my mail man
-ROFL	Rolling on floor laughing
-ROFLCOPTER	Rolling on floor laughing and spinning around
-ROFLMAO	"Rolling on the floor, laughing my butt off"
-ROTFL	Rolling on the floor laughing
-ROTFLUTS	Rolling on the floor laughing unable to speak
-RS	Runescape
-RSN	Real soon now
-RT	Roger that
-RT	Retweet
-RTBS	Reason to be single
-RTFM	Read the freaking manual
-RTFQ	Read the freaking question
-RTHX	Thanks for the RT 
-RTMS	"Read the manual, stupid"
-RTNTN	Retention
-RTRCTV	Retroactive
-RTRMT	Retirement 
-RTSM	Read the stupid manual
-RTWFQ	Read the whole *freaking* question
-RU	Are you?
-RUMOF	Are you male or female?
-RUT	Are you there?
-RUOK	Are you okay?
-RX	Regards
-RW	Real world
-RX	prescription
-RYB	Read your Bible
-RYO	Roll your own
-RYS	Read your screen
-RYS	Are you single?
-S2R	Send to receive
-S2S	Sorry to say
-S4L	Spam for life
-SAL	Such a laugh
-SAT	Sorry about that
-SAVAGE	shockingly careless expression
-SB	Snap back
-SB	Should be
-SB	Smiling back
-SBIA	standing back in amazement
-SBT	Sorry about that
-SC	Stay cool
-SD	Sweet dreams
-SDMB	"Sweet dreams, my baby"
-SENPAI	someone older than you
-SEO	Search engine optimization
-SETE	Smiling Ear-to-Ear
-SELFIE	A photo that is taken of oneself
-SFAIK	So far as I know
-SH	Same here
-SH^	Shut up
-SHID	Slapping head in disgust
-SHIP	wishing two people were in a relationship
-SICNR	"Sorry, I could not resist"
-SIG2R	"Sorry, I got to run"
-SIHTH	Stupidity is hard to take
-SIMYC	Sorry I missed your call
-SIR	Strike it rich
-SIS	Snickering in silence
-SIS	Meaning sister
-SIT	Stay in touch
-SITD	Still in the dark
-SJW	Social justice warrior
-SK8	Skate
-SK8NG	Skating
-SK8R	Skater
-SK8RBOI	Skater Boy
-SLAP	Sounds like a plan
-Slay	To succeed at something
-SM	Social media
-SMAZED	Smoky haze
-SMEXI	sexy Mexican
-SMH	Shaking my head
-SMHID	Scratching my head in disbelief
-SNAFU	Situation normal all fouled up
-SNERT	Snot nosed egotistical rude teenager
-SNR	Streaks and Recents 
-SO	Significant other
-SOAB	Son of a bitch
-S’OK	It is okay
-SOL	Sooner or later
-SOMY	Sick of me yet?
-SorG	Straight or Gay?
-SOS	Meaning help
-SOS	Son of Sam
-SOT	Short of time
-SOTMG	"Short of time, must go"
-SOWM	Someone with me
-SPK	Speak 
-SRSLY	Seriously
-SPST	"Same place, same time"
-SPTO	Spoke to
-SQ	Square
-SRY	Sorry
-SS	So sorry
-SSDD	"Same stuff, different day"
-SSIF	So stupid it’s funny
-SSINF	So stupid it’s not funny
-ST&D	Stop texting and drive
-Stan	a die-hard fan of someone
-STFU	Shut the freak up
-STR8	Straight
-STW	Search the Web
-SU	Shut up
-SUITM	See you in the morning
-SUL	See you later
-SUP	What’s up?
-SUTH	So use(d) to haters
-SUX	it sucks
-SUYF	Shut up you fool
-SWAG	free stuff and giveaways from tech tradeshows
-SWAG	Scientific wild a guess
-SWAK	Sealed with a kiss
-SWALK	Sealed with a loving kiss
-SWAT	Scientific wild butt guess
-SWL	Screaming with laughter
-SWMBO	wife 
-SYL	See you later
-SYS	See you soon
-SYY	Shut your yapper
-T+	Think positive
-T4BU	Thanks for being you
-T:)T	Think happy thoughts
-TA	Thanks a lot
-TAFN	That’s all for now
-TAM	Tomorro a.m.
-TANK	really strong
-TANKED	owned
-TANKING	owning
-TARFU	Things Are Really fouled Up.
-TAU	Thinking about you
-TAUMUALU	Thinking about you miss you always love you
-TBAG	Process of disgracing a corpse
-TBBH	To be brutally honest
-TBC	To be continued
-TBD	To be determined
-TBH	To be honest
-TBL	Text back later
-TBT	Throwback Thursday 
-TC	Take care
-TCB	Take care of business
-TCOY	Take care of yourself
-TD	Tower defense 
-TD2M	Talk dirty to me
-TDTM	Talk dirty to me
-TEA	Meaning gossip
-TFF	Too freaking funny
-TFS	Thanks for sharing
-TFTF	Thanks for the follow 
-TFTI	Thanks for the invitation
-TFTT	Thanks for this tweet
-TG	Thank goodness
-TGIF	Thank God it’s Friday
-THNQ	Thank you 
-THNX	Thanks
-THOT	That were over there
-THT	Think happy thoughts
-THX	Thanks
-TIA	Thanks in advance
-TIAD	Tomorrow is another day
-TIC	Tongue-in-cheek
-TIL	Today I learned
-TILIS	Tell it like it is
-TIR	Teacher in room
-TLK2UL8R	Talk to you later
-TL	Too long
-TL;DR	Too long; didn’t read
-TM	Trust me
-TMA	Take my advice
-TMB	Text me back
-TMB	Tweet me back
-TMI	Too much information
-TMOT	Trust me on this
-TMTH	Too much to handle
-TMYL	Tell me your location
-TMWFI	Take my word for it
-TNSTAAFL	There’s no such thing as a free lunch
-TNT	Til next time
-TOJ	Tears of joy
-TOS	Terms of service
-TOTES	Totally
-TOU	Thinking of you
-TOY	Thinking of you
-TPM	Tomorrow p.m.
-TPTB	The powers that be
-TQ	Te quiero / I love you 
-TSH	Tripping so hard
-TSNF	That’s so not fair
-TSTB	"The sooner, the better"
-TT	Trending topic
-TTFN	Ta ta for now
-TTLY	Totally
-TTTT	These things take time
-TTUL	Talk to you later
-TU	Thank you
-TUI	Turning you in
-TURNT	"Meaning excitement, turned up"
-TWSS	That’s what she said
-TTG	Time to go
-TTYAFN	Talk to you awhile from now
-TTYL	Talk to you later
-TTYS	Talk to you soon
-TY	Thank you
-TYFC	Thank you for charity 
-TYFYC	Thank you for your comment
-TYS	Told you so
-TYT	Take your time
-TYSO	Thank you so much
-TYAFY	Thank you and *freak* you
-TYVM	Thank you very much
-TX	Thanks
-^URS	Up yours
-UCMU	You crack me up
-UDI	Unidentified drinking injury
-UDM	U (You) da (the) man
-UDS	Ugly domestic scene
-UFB	Un *freaking* believable
-UFN	Until further notice
-UFWM	You *freaking* with me?
-UGTBK	You’ve got to be kidding
-UHGTBSM	You have got to be shitting me!
-UKTR	You know that’s right
-UL	Upload
-U-L	You will
-UNA	Use no acronyms
-UN4TUN8	Unfortunate
-UNBLEFBLE	Unbelievable
-UNCRTN	Uncertain
-UNPC	not politically correct
-UOK	You ok?
-UR	You are 
-UR2YS4ME	You are too wise for me
-URA*	You are a star
-URH	You are hot 
-URSKTM	You are so kind to me
-URTM	You are the man
-URW	You are welcome
-USBCA	Until something better comes along
-USU	Usually
-UT	Unreal Tournament
-UT2L	You take too long
-UTM	You tell me
-UV	Unpleasant visual
-UW	You’re welcome
-UX	User experience
-V	Very
-VAT	Value added tax
-VBL	Visible bra line
-VBS	Very big smile
-VC	Voice chat
-VEG	Very evil grin
-VFF	Very freaking funny
-VFM	Value for money
-VGC	Very good condition
-VGG	Very good game
-VGH	Very good hand
-VIP	Very important person
-VM	Voice mail
-VN	Very nice
-VNH	Very nice hand 
-VoIP	Voice over Internet Protocol
-VRY	Very
-VSC	Very soft chuckle
-VSF	Very sad face
-VWD	Very well done
-VWP	Very well played
-W@	What?
-W/	With
-W/B	Welcome back
-W3	WWW 
-W8	Wait
-WAH	Working at home
-WAJ	What a jerk
-WAM	Wait a minute
-WAN2	Want to
-WAN2TLK	Want to talk
-WAREZ	pirated software
-WAS	Wait a second
-WAS	Wild a guess
-WAT	What
-WAWA	Where are we at?
-WAYF	Where are you from?
-W/B	Write back
-WB	Welcome back
-WBS	Write back soon
-WBU	What about you?
-WC	Welcome
-WC	Who cares
-WCA	Who cares anyway
-W/E	Whatever
-W/END	Weekend
-WE	Whatever
-WEBO	Webopedia
-WEEBO	a person obsessed with of Japanese culture
-WEP	Weapon
-WH5	"Who, what, when, where, why"
-WHATEVES	Whatever
-WIBNI	Wouldn’t it be nice if
-WDALYIC	Who died and left you in charge
-WDYK	What do you know?
-WDYT	What do you think?
-WGACA	What do you think?
-WIIFM	What’s in it for me?
-WISP	Winning is so pleasurable
-WITP	What is the point?
-WITW	What in the world
-WIU	Wrap it up
-WK	Week
-WKD	Weekend
-WRT	With regard to
-WL	Whatta loser
-W/O	Without
-WOA	Work of Art
-WOKE	"people who are aware of current social issues, and politics"
-WOMBAT	"Waste of money, brains and time"
-WOW	World of Warcraft
-WRK	Work
-WRU	Where are you?
-WRU@	Where are you at?
-WRUD	What are you doing?
-WTB	Want to buy
-WTF	What the freak?
-WTFE	What the freak ever
-WTFO	"What the freak?, over"
-WTG	Way to go
-WTGP	Want to go private
-WTH	What the heck?
-WTM	Who’s the man?
-WTS	Want to sell? 
-WTT	Want to trade?
-WU	What’s up?
-WUCIWUG	What you see is what you get
-WUF	Where are you from?
-WUP	What’s up?
-WUT	what
-WUW	What you want?
-WUU2	What are you up to?
-WUZ	Meaning “was”
-WWJD	What would Jesus do?
-WWJD	What Would Judd Do?
-WWNC	Will wonders never cease
-WWYC	Write when you can
-WYCM	Will you call me?
-WYD	What are you doing?
-WYGAM	When you get a minute
-WYHAM	When you have a minute
-WYLEI	When you least expect it
-WYSIWYG	What you see is what you get
-WYWH	Wish you were here
-X-1-10	Exciting
-X	Kiss
-X!	a typical woman
-XD	really hard laugh
-XD	devilish smile
-XME	Excuse Me
-XOXOXO	Hugs & Kisses
-XLNT	Excellent
-XLR8	going faster
-XPOST	Cross-post
-XYL	Ex-young lady
-XYZ	Examine your zipper
-Y?	Why?
-Y	Meaning Yawn
-Y2K	You’re too kind
-YA	Your
-YAA	Yet another acronym
-YABA	Yet another bloody acronym
-YARLY	"Ya, really?"
-YAS	Meaning “praise”
-YBIC	Your brother in Christ
-YBS	You’ll be sorry
-YCDBWYCID	You can’t do business when your computer is down
-YCHT	You can have them
-YCLIU	You can look it up
-YCMU	You crack me up
-YCT	Meaning Your comment to?
-YD	Yesterday
-YEET	approval or display of energy
-YF	Wife
-YG	Young gentleman
-YGG	You go girl
-YGTBKM	You’ve got to be kidding me
-YGTR	You got that right
-YHBT	You have been trolled
-YHBW	You have been warned
-YHL	You have lost
-YIU	"Yes, I understand"
-YKW	You know what
-YKWYCD	You know what you can do
-YL	Young lady
-YMMV	Your mileage may vary
-YNK	You never know
-YOLO	You only live once
-YR	Your
-YR	Yeah right
-YRYOCC	You’re running your own cuckoo clock
-YSIC	Your sister in Christ
-YSYD	Yeah sure you do
-YT	YouTube
-YT	You there?
-YTB	You’re the best
-YTB	Youth talk back
-YTTL	You take too long
-YTG	You’re the greatest
-YW	You’re welcome
-YWHNB	"Yes, we have no bananas"
-YWHOL	Yelling “woohoo” out loud
-YWSYLS	"You win some, you lose some"
-YYSSW	"Yeah, yeah, sure, sure, whatever"
-Z	Zero
-Z	going to bed
-Z	Said
-Z%	Zoo
-ZH	Sleeping Hour
-ZOMG	Oh My God
-ZOT	Zero tolerance
-ZUP	What’s up?
-ZZZZ	Sleeping
+1446
+?
+2
+I have a question
+I don’t understand what you mean
+?4U
+1
+I have a question for you
+;S
+1
+GeHmm? What did you say?
+^^
+1
+read message
+<3
+1
+sideways heart
+</3
+1
+broken heart
+<3333
+1
+a bigger heart
+@TEOTD
+1
+At the end of the day
+0.02
+1
+My two cents worth
+"1TG, 2TG"
+1
+Meaning number of items needed for win
+1UP
+1
+Meaning extra life
+121
+1
+One-to-one
+1337
+1
+"Leet, meaning ‘elite’"
+143
+1
+I love you
+1432
+1
+I love you too
+14AA41
+1
+"One for all, and all for one"
+182
+1
+I hate you
+19
+1
+Zero hand 
+10M
+1
+Ten man 
+10X
+1
+Thanks
+10Q
+1
+Thank you
+1CE
+1
+Once
+1DR
+1
+I wonder
+1NAM
+1
+One in a million
+2
+1
+to
+20
+1
+location
+2B
+1
+To be
+2EZ
+1
+Too easy
+2G2BT
+1
+Too good to be true
+2M2H
+1
+Too much too handle
+2MI
+1
+Too much information
+2MOR
+1
+Tomorrow
+2MORO
+1
+Tomorrow
+2N8
+1
+Tonight
+2NTE
+1
+Tonight
+4
+1
+for
+411
+1
+information
+404
+1
+I don’t know
+420
+1
+Lets get high
+459
+1
+I love you 
+4AO
+1
+For adults only
+4COL
+1
+For crying out loud
+4EAE
+1
+Forever and ever
+4EVA
+1
+Forever
+4NR
+1
+Foreigner
+4SALE
+1
+For sale
+^5
+1
+High-five
+511
+1
+Too much information
+555
+1
+"Sobbing, crying"
+55555
+2
+Crying your eyes out
+Laughing
+6Y
+1
+Sexy
+7K
+1
+Sick
+81
+1
+Hells Angels
+831
+1
+I love you
+86
+1
+Over
+88
+2
+Bye-bye 
+Hugs and kisses
+9
+1
+Parent is watching
+*s*
+1
+smile
+*w*
+1
+wink
+A3
+1
+"Anytime, anywhere, anyplace"
+AA
+3
+Alcoholics Anonymous
+As above
+Ask about
+AAF
+1
+As a matter of fact
+AAK
+2
+Asleep at keyboard
+Alive and kicking
+AAMOF
+1
+As a matter of fact
+AAMOI
+1
+As a matter of interest
+AAP
+1
+Always a pleasure
+AAR
+1
+At any rate
+AAS
+1
+Alive and smiling
+AASHTA
+1
+"As always, Sheldon has the answer"
+AATK
+1
+Always at the keyboard
+AAYF
+1
+"As always, your friend"
+ABBR
+1
+Meaning abbreviation
+ABC
+1
+Already been chewed
+ABD
+1
+Already been done
+ABT
+1
+About
+ABT2
+1
+About to
+ABTA
+1
+Good-bye
+ABU
+1
+All bugged up
+AC
+1
+Acceptable content
+ACC
+1
+Anyone can come
+ACD
+1
+ALT CONTROL DELETE
+ACDNT
+1
+Accident
+ACE
+1
+ marijuana cigarette
+ACK
+1
+Acknowledge
+ACPT
+1
+Accept
+ACQSTN
+1
+Acquisition
+ADAD
+1
+"Another day, another dollar"
+ADBB
+1
+"All done, bye-bye"
+ADD
+1
+Address
+ADDY
+1
+Address
+ADIH
+1
+Another day in hell
+ADIP
+1
+Another day in paradise
+ADMIN
+1
+Administrator
+ADMINR
+1
+Administrator
+ADN
+1
+Any day now
+ADR
+1
+Address
+AE
+1
+Area effect
+AEAP
+1
+As early as possible
+AF
+3
+April Fools
+As Freak
+Aggression factor
+AFC
+1
+Away from computer
+AFAIAA
+1
+As far as I am aware
+AFAIC
+1
+As far as I am concerned
+AFAIK
+1
+As far as I know
+AFAIUI
+1
+As far as I understand it
+AFAP
+1
+As far as possible
+AFFA
+1
+"Angels Forever, Forever Angels"
+AFJ
+1
+April Fool’s joke
+AFK
+1
+Away from keyboard
+AFZ
+1
+Acronym Free Zone
+AFPOE
+1
+A fresh pair of eyes
+AGI
+1
+agility
+AH
+1
+At home
+AIAMU
+1
+And I am a money’s uncle
+AIGHT
+1
+Alright
+AIR
+1
+As I remember
+AISB
+2
+As it should be
+As I said before
+AISI
+1
+As I see it
+AITR
+1
+Adult in the room
+AKA
+1
+Also known as
+ALCON
+1
+All concerned
+ALOL
+1
+Actually laughing out loud
+AMA
+1
+Ask me anything (Reddit)
+AMAP
+1
+As much as possible
+AMBW
+1
+All my best wishes
+AML
+1
+All my love
+AMOF
+1
+As a matter of fact
+A/N
+1
+Author’s note
+AO
+1
+Anarchy Online
+AOC
+1
+Available on cell
+AOE
+1
+Area of effect
+AOM
+1
+Age of majority
+AOTA
+1
+All of the above
+AOYP
+1
+Angel on your pillow
+APAC
+1
+All praise and credit
+APP
+2
+Application
+Appreciate
+AQAP
+1
+As quick or quiet as possible
+ARC
+1
+Archive
+ARE
+1
+Acronym rich environment
+ARG
+1
+Argument
+ASIG
+1
+And so it goes
+ASAP
+1
+As soon as possible
+A/S/L
+1
+Age/sex/location
+ASL
+1
+Age/sex/location
+ASLA
+1
+Age/sex/location/availability
+AT
+1
+At your terminal
+ATB
+1
+All the best
+ATEOTD
+1
+At the end of the day
+ATM
+1
+At the moment
+ATSITS
+1
+All the stars in the sky
+ATSL
+1
+Along the same line
+AWC
+1
+After awhile crocodile
+AWESO
+1
+Awesome
+AWOL
+2
+Away without leaving
+Absent without leave
+AYDY
+1
+Are you done yet?
+AYBABTU
+1
+All your base are belong to us
+AYEC
+1
+At your earliest convenience
+AYOR
+1
+At your own risk
+AYSOS
+1
+Are you stupid or something?
+AYS
+1
+Are you serious?
+AYT
+1
+Are you there?
+AYTMTB
+1
+And you’re telling me this because
+AYV
+1
+Are you vertical?
+AYW
+1
+As you were
+AZN
+1
+Asian
+B
+2
+Back
+Be
+B&
+1
+Banned
+B2B
+1
+Business-to-business
+B2C
+1
+Business-to-consumer
+B2W
+1
+Back to work
+B8
+1
+Bait 
+B9
+1
+Boss is watching
+B/F
+1
+Boyfriend
+B/G
+1
+Background
+B4
+1
+Before
+B4N
+1
+Bye for now
+BAG
+1
+Busting a gut
+BA
+1
+Bad *a*
+BAE
+2
+Before anyone else
+Meaning Babe or baby
+BAFO
+1
+Best and final offer
+BAK
+1
+Back at keyboard
+BAM
+1
+Below average mentality
+BAMF
+1
+Bad ass mother fucker
+BAO
+1
+Be aware of
+BAS
+1
+Big ‘butt’ smile
+BASIC
+1
+Meaning anything mainstream
+BASOR
+1
+Breathing a sigh of relief
+BAU
+1
+Business as usual
+BAY
+1
+Back at ya
+BB
+3
+Be back
+Big brother
+Baby 
+BBC
+1
+Big bad challenge
+BBIAB
+1
+Be back in a bit
+BBIAF
+1
+Be back in a few
+BBIAM
+1
+Be back in a minute
+BBIAS
+1
+Be back in a sec
+BBL
+1
+Be back later
+BBN
+1
+"Bye, bye now"
+BBQ
+1
+Barbeque
+BBS
+1
+Be back soon
+BBT
+1
+Be back tomorrow
+BC
+2
+Because
+Be cool
+B/C
+1
+Because
+BCNU
+1
+Be seeing you
+BCOS
+1
+Because
+BCO
+1
+Big crush on
+BCOY
+1
+Big crush on you
+BD
+1
+Big deal
+BDAY
+1
+Birthday
+B-DAY
+1
+Birthday
+BDN
+1
+Big darn number
+BEG
+1
+Big evil grin
+BELF
+1
+Blood Elf
+BF
+3
+Boyfriend
+Brain fart
+Best friend
+BFAW
+1
+Best friend at work
+BF2
+1
+Battlefield 2 
+BFF
+1
+Best friends forever
+BFFL
+1
+Best friends for life
+BFFLNMW
+1
+"Best friends for life, no matter what"
+BFD
+1
+Big freaking deal
+BFG
+1
+Big freaking grin
+BFFN
+1
+Best friend for now
+BFN
+1
+Bye for now
+BG
+1
+Big grin
+BGWM
+1
+Be gentle with me
+BHL8
+1
+Be home late
+BIB
+1
+Boss is back
+BIBO
+1
+"Beer in, beer out"
+BIC
+1
+Butt in chair
+BIF
+1
+Before I forget
+BIH
+1
+Burn in hell
+BIL
+1
+Brother in law
+BIO
+1
+I’m going to the bathroom
+BION
+1
+Believe it or not
+BIOYA
+1
+Blow it out your ass
+BIOYN
+1
+Blow it out your nose
+BIS
+1
+Best in slot
+BISFLATM
+1
+Unverified
+BITMT
+1
+But in the meantime
+BL
+1
+Belly laugh
+BLNT
+1
+Better luck next time
+Bloke
+1
+Discord
+BM
+1
+Bite me
+BME
+1
+Based on my experience
+BM&Y
+1
+Between me and you
+BOB
+1
+Back off buddy
+BN
+1
+Bad news
+BOE
+1
+bind on equip
+BOHICA
+1
+Bend over here it comes again
+BOL
+1
+Best of luck
+BOM
+1
+Because of mine
+BOLO
+1
+Be on the look out
+BOOMS
+1
+Bored out of my skull
+BOP
+1
+bind on pickup
+BOSMKL
+1
+Bending over smacking my knee laughing
+BOT
+2
+Back on topic
+Be on that
+BMS
+1
+"Broke my scale, used when rating someone"
+BOYF
+1
+Boyfriend
+BPLM
+1
+Big person little mind
+BRB
+1
+Be right back
+BR
+1
+Best regards
+BRBB
+1
+Be right back bitch
+BRNC
+1
+"Be right back, nature calls"
+BRD
+1
+Bored
+BRH
+1
+Be right here
+BRT
+1
+Be right there
+BSF
+1
+But seriously folks
+BSOD
+1
+Blue screen of death
+BSTS
+1
+Better safe than sorry
+BT
+2
+Bite this
+Between technologies
+BTA
+1
+But then again
+BTDT
+1
+"Been there, done that"
+BTW
+1
+By the way
+BTYCL
+1
+Meaning ‘Bootycall’
+BUBU
+1
+The most beautiful of women
+BURN
+1
+Used to reference an insult
+Buff
+1
+changed and is now stronger
+BWL
+1
+Bursting with laughter
+BYOB
+1
+Bring your own beer
+BYOC
+1
+Bring your own computer
+BYOD
+1
+Bring your own device
+BYOH
+1
+Bat you on the head
+BYOP
+1
+paintball
+BYTM
+1
+Better you than me
+C&G
+1
+Chuckle & grin
+C4N
+1
+Ciao for now
+CAD
+2
+Control + Alt + Delete
+Canadian
+Cakeday
+1
+Birthday
+CAM
+1
+Camera
+CB
+3
+Coffee break
+Chat break
+Crazy
+CD9
+1
+parents are around
+CFS
+1
+Care for secret?
+CFY
+1
+Calling for you
+CHK
+1
+Check
+CIAO
+1
+Good-bye
+CICO
+1
+"Coffee in, coffee out"
+CID
+2
+Crying in disgrace
+Consider it done
+CLAB
+1
+Crying like a baby
+CLD
+1
+Could
+CLK
+1
+Click
+CM
+1
+Call me
+CMAP
+1
+Cover my ass partner
+CMB
+1
+Call me back
+CMGR
+1
+Community manager
+CMIIW
+1
+Correct me if I’m wrong
+CMON
+1
+Come on
+CNP
+1
+Continued in next post
+COB
+1
+Close of business
+COH
+1
+City of Heroes
+COS
+1
+Because
+C/P
+1
+Cross post
+CP
+1
+Chat post
+CR8
+1
+Create
+Cray
+1
+crazy
+CRE8
+1
+Create
+CRA CRA
+1
+crazy
+CRAFT
+1
+Can’t remember a freaking thing
+CRB
+1
+Come right back
+CRBT
+1
+Crying really big tears
+CRIT
+1
+critical hit
+CRZ
+1
+Crazy
+CRS
+1
+Can’t remember stuff
+CSG
+1
+"Chuckle, snicker, grin"
+CSL
+1
+Can’t stop laughing
+CSS
+1
+Counter-Strike Source
+CT
+1
+Can’t talk
+CTC
+1
+Care to chat?
+CTHU
+1
+Cracking the heck up
+CTN
+1
+Can’t talk now
+CTO
+1
+Check this out
+CU
+1
+See you too
+CU2
+1
+See you
+CUA
+1
+See you around
+CUL
+1
+See you later
+CULA
+1
+See you later alligator
+CUL8R
+1
+See you later
+CUMID
+1
+See you in my dreams
+CURLO
+1
+See you around like a donut
+CWD
+1
+Comment when done
+CWOT
+1
+Complete waste of time
+CWYL
+1
+Chat with you later
+CX
+1
+Correction
+CYA
+1
+See you
+CYAL8R
+1
+See you later
+CYE
+1
+Check your e-mail
+CYEP
+1
+Close your eyes partner
+CYO
+1
+See you online
+D2
+1
+fingers
+D46?
+1
+Down for sex?
+DA
+1
+the
+DAE
+1
+Does anyone else?
+DAFUQ
+1
+What the *Freak*?
+DAM
+1
+Don’t annoy me
+DAoC
+1
+Dark Age of Camelot
+DBAU
+1
+Doing business as usual
+DBEYR
+1
+Don’t believe everything you read
+DC
+1
+Disconnect
+DD
+2
+Dear daughter
+Due diligence
+DDG
+1
+Drop dead gorgeous
+DEEZ NUTZ
+1
+A phrase used in online chat to annoy or frustrate those involved in the conversation.
+DEGT
+1
+Dear daughter
+DERP
+1
+stupid
+DF
+1
+Don’t even go there
+DFL
+1
+Dead freaking last 
+DGA
+1
+Don’t go anywhere
+DGAF
+1
+Don’t give a freak
+DGT
+1
+Don’t go there
+DGTG
+1
+"Don’t go there, girlfriend"
+DGYF
+1
+"Dang, girl you fine"
+DH
+1
+Dear husband
+DHU
+1
+support
+DIIK
+1
+Darned if I know
+DIKU
+1
+Do I know you?
+DILLIGAF
+1
+Do I look like I give a freak?
+DILLIGAS
+1
+Do I look like I give a sugar?
+DIS
+1
+Did I say?
+DITYID
+1
+Did I tell you I’m distressed?
+DIY
+1
+Do it yourself
+DKDC
+1
+"Don’t know, don’t care"
+DKP
+1
+Dragon kill points
+D/L
+1
+Download
+DL
+2
+Download
+Dead link
+DLBBB
+1
+Don’t let the bed bugs bite
+DLTBBB
+1
+Don’t let the bed bugs bite
+DM
+4
+Doesn’t matter
+Direct message
+Do me
+Dungeon Master
+DMNO
+1
+Dude Man No Offense
+DMY
+1
+Don’t mess yourself
+DN
+1
+Down
+DNC
+1
+I do not understand
+DNR
+1
+Dinner
+DNT
+1
+Don’t
+d00d
+1
+Dude
+DOE
+1
+Daughter of Eve
+DORBS
+1
+Adorable
+DOT
+1
+Damage over time
+Downvote
+1
+Voting negatively
+DPS
+1
+Damage per second
+DQMOT
+1
+Don’t quote me on this
+DR
+1
+Didn’t read
+DS
+1
+Dear  son
+DTR
+1
+Define the relationship
+DTRT
+1
+Do the right thing
+DTS
+1
+Don’t think so
+DTTD
+1
+Don’t touch that dial
+DUPE
+1
+Duplicate
+DUR
+1
+Do you remember?
+DV8
+1
+Deviate
+DW
+1
+Dear  wife
+DWF
+1
+Divorced white female
+DWM
+1
+Divorced white male
+DXNRY
+1
+Dictionary
+DYNWUTB
+1
+Do you know what you are talking about?
+DYFI
+1
+Did you find it?
+DYFM
+1
+"Dude, you fascinate me"
+DYJHIW
+1
+Don’t you just hate it when…?
+DYOR
+1
+Do your own research
+E
+2
+Ecstasy
+Enemy
+E1
+1
+Everyone
+E123
+1
+"Easy as one, two, three"
+E2EG
+1
+Ear to ear grin
+EAK
+1
+Eating at keyboard
+EBKAC
+1
+Error between keyboard and chair
+ED
+1
+Erase display
+EF4T
+1
+Effort
+EG
+1
+Evil grin
+EI
+1
+Eat it
+EIP
+1
+Editing in progress
+ELI5
+1
+Explain like I’m 5
+EM
+1
+E-mail
+EMA
+1
+E-mail address 
+EMBAR
+1
+Embarassing
+EMFBI
+1
+Excuse me for butting in
+EMSG
+1
+E-mail message
+ENUF
+1
+Enough
+EOD
+1
+End of day
+EOL
+1
+End of lecture
+EOM
+1
+End of message
+EOS
+1
+End of show
+EOT
+1
+End of transmission
+EQ
+1
+EverQuest
+ERP
+1
+Erotic Role-Play
+ERS2
+1
+are you 
+ES
+1
+Erase screen
+ESAD
+1
+die
+ETA
+2
+Estimated time of arrival
+Edited to add
+EVA
+1
+Ever
+EVO
+1
+Evolution
+EWG
+1
+teasing
+EWI
+1
+Emailing while intoxicated
+EXTRA
+1
+Meaning over the top
+EYC
+1
+"Excitable, yet calm"
+EZ
+1
+Easy
+EZY
+1
+Easy
+F
+1
+Meaning female
+F2F
+1
+Face to face
+F2P
+1
+Free to play 
+F4F
+1
+Follow for follow
+FAAK
+1
+Falling asleep at keyboard
+FAB
+1
+Fabulous
+Facepalm
+1
+embarrassment or frustration
+FAF
+1
+Funny as freak
+FAM
+1
+friends
+FAQ
+1
+Frequently asked questions
+FAY
+1
+Freak all you
+FB
+1
+Facebook
+FBB
+1
+Facebook buddy
+FBC
+1
+Facebook chat
+FBF
+3
+Flashback Friday
+Facebook friend
+Fat boy food 
+FBFR
+1
+FaceBook friend
+FBM
+1
+Fine by me
+FBO
+1
+Facebook official
+FBOW
+1
+For better or worse
+FC
+2
+Fingers crossed
+Full card
+FC’INGO
+1
+For crying out loud
+FCOL
+1
+For crying out loud
+Feelsbadman
+1
+feel negative.
+Feelsbatman
+1
+to the extreme
+Feelsgoodman
+1
+to feel positive.
+FEITCTAJ
+1
+Freak them if they can’t take a joke
+FF
+1
+Follow Friday
+FFA
+1
+Free for all
+FFS
+1
+For freak sakes
+FICCL
+1
+Frankly I couldn’t care a less
+FIF
+1
+Freak I’m funny
+FIIK
+1
+Freaked if I know
+FIIOOH
+1
+"Forget it, I’m out of here"
+FIL
+1
+Father in law
+FIMH
+1
+Forever in my heart
+Finna
+1
+Going to
+Finsta
+1
+A second Instagram account where someone can post things that they’re too afraid to post on their main account.
+FISH
+1
+"First in, still here"
+FITB
+1
+Fill in the blank
+FML
+1
+Freak My Life
+FOMC
+1
+Falling off my chair
+FOMO
+1
+Fear of missing out
+FOAD
+1
+Freak off and die
+FOAF
+1
+Friend of a friend
+FOMCL
+1
+Falling off my chair laughing
+FRT
+1
+For real though
+FTBOMH
+1
+From the bottom of my heart
+FTFY
+1
+Fixed that for you
+FTL
+1
+For the loss
+FTW
+1
+For the win
+FU
+1
+Freak you
+FUBAR
+1
+Fouled up beyond all recognition
+FUBB
+1
+Fouled up beyond belief
+FUD
+1
+Face up deal 
+FUTAB
+1
+"Feet up, take a break"
+FW
+1
+Forward
+FWB
+1
+Friend with benefits
+FWIW
+1
+For what it’s worth
+FWM
+1
+Fine with me
+FWP
+1
+First world problems
+FYE
+1
+"Fire, something that is cool"
+FYEO
+1
+For your eyes only
+FYA
+1
+For your amusement
+FYI
+1
+For your information
+G
+2
+Grin
+Giggle
+G+
+1
+Google+
+G/F
+1
+Girlfriend
+G2CU
+1
+Good to see you
+G2G
+1
+Got to go
+G2GICYAL8ER
+1
+Got to go I’ll see you later
+G2R
+1
+Got to run
+G2TU
+1
+Got to tell you
+G4C
+1
+Going for coffee
+G9
+1
+Genius
+GA
+1
+Go ahead
+GAC
+1
+Get a clue
+GAFC
+1
+Get a freaking clue
+GAL
+1
+Get a life
+GANK
+1
+Meaning a player ambush or unfair player kill
+GAS
+2
+Got a second?
+Greetings and salutations
+GB
+1
+Goodbye
+GBTW
+1
+Get back to work
+GBU
+1
+God bless you
+GD
+1
+Good
+GDR
+1
+"Grinning, ducking, and running"
+GD/R
+1
+"Grinning, ducking, and running"
+GFI
+1
+Go for it
+GF
+1
+Girl friend
+GFN
+1
+Gone for now
+GG
+3
+Gotta Go
+Good Game
+Brother
+GGA
+1
+"Good game, all"
+GGE1
+1
+"Good game, everyone"
+GGU2
+1
+"Good game, you too"
+GGMSOT
+1
+Gotta get me some of that
+GGOH
+1
+Gotta Get Outa Here
+GGP
+1
+Got to go pee
+GH
+1
+Good hand
+GIAR
+1
+Give it a rest
+GIC
+1
+Gift in crib
+GIGO
+1
+"Garbage in, garbage out"
+GIRL
+1
+Guy in real life
+GJ
+1
+Good job
+GL
+1
+Good luck
+GL2U
+1
+Good luck to you
+GLA
+1
+Good luck all
+GL/HF
+1
+"Good luck, have fun"
+GLE
+1
+Good luck everyone
+GLE1
+1
+Good luck everyone
+GLNG
+1
+Good luck next game
+GMBA
+1
+Giggling my butt off
+GMTA
+1
+Great minds think alike
+GMV
+1
+Got my vote
+GN
+1
+Good night
+GNA
+1
+Good night all
+GNE1
+1
+Good night everyone
+GNIGHT
+1
+Good night
+GNITE
+1
+Good night
+GNSD
+1
+"Good night, sweet dreams"
+GOAT
+1
+Greatest of all Times
+GOI
+1
+Get over it
+GOL
+1
+Giggling out loud
+GOMB
+1
+Get off my back
+GPOY
+1
+Gratuitous picture of yourself
+GR8
+1
+Great
+GRATZ
+1
+Congratulations
+GRL
+1
+Girl
+GRWG
+1
+Get right with God
+GR&D
+1
+"Grinning, running and ducking"
+GS
+1
+Good shot
+GT
+1
+Good try
+GTFO
+1
+Get the *freak* out
+GTFOH
+1
+Get the *freak* outta here
+GTG
+1
+Got to go
+GTM
+1
+Giggling to myself
+GTRM
+1
+Going to read mail
+GTSY
+1
+Great to see you
+GUCCI
+1
+Good
+GUD
+1
+Good
+GWHTLC
+1
+Glad we had this little chat
+H
+1
+Hug
+H8
+1
+Hate
+H8TTU
+1
+Hate to be you
+HAG1
+1
+Have a good one
+HAK
+1
+Hug and kiss
+HALP
+1
+Help
+HAU
+1
+How about you?
+H&K
+1
+Hugs & kisses
+H2CUS
+1
+Hope to see you soon
+HAGN
+1
+Have a good night
+HAGO
+1
+Have a good one
+HAND
+1
+Have a nice day
+HAWT
+2
+Have a wonderful day
+sexy
+HB
+2
+Hurry back
+Hug back
+HBD
+1
+Happy birthday
+H-BDAY
+1
+Happy Birthday
+HBU
+1
+How about you?
+HF
+1
+Have fun
+HFAC
+1
+Holy flipping animal crackers
+H-FDAY
+1
+Happy Father’s Day
+HHIS
+1
+Head hanging in shame
+HIFW
+1
+How I felt when
+HL
+1
+Half Life 
+HLA
+1
+Hola
+H-MDAY
+1
+Happy Mother’s Day
+HMU
+1
+Hit me up
+HNL
+1
+Hole nother level
+HOAS
+1
+Hold on a second
+HP
+1
+Hit points
+HRU
+1
+How are you?
+HTH
+1
+Hope this helps
+HUB
+1
+Head up butt
+HUYA
+1
+Head up your butt
+HV
+1
+Have
+HVH
+1
+Heroic Violet Hold
+HW
+1
+Homework
+HYFR
+1
+"Hell yeah, Freaking right!"
+I2
+1
+I too 
+IA8
+1
+I already ate
+IAAA
+1
+I am an accountant
+IAAD
+1
+I am a doctor
+IAAL
+1
+I am a lawyer
+IAC
+1
+In any case
+IAE
+1
+In any event
+IANAC
+1
+I am not a crook
+IANAL
+1
+I am not a lawyer
+IAO
+1
+I am out 
+IB
+1
+I’m back
+IC
+1
+I see
+ICAM
+1
+I couldn’t agree more
+ICBW
+1
+It could be worse
+ICEDI
+1
+I can’t even discuss it
+ICFILWU
+1
+I could fall in love with you
+ICYMI
+1
+In case you missed it 
+IDBI
+1
+I don’t believe it
+IDC
+1
+I don’t care
+IDGAF
+1
+I don’t give a freak
+IDK
+1
+I don’t know
+IDTS
+1
+I don’t think so
+IDUNNO
+1
+I don’t know
+IFYP
+1
+I feel your pain
+IG
+1
+Instagram
+IG2R
+1
+I got to run
+IGHT
+1
+I got high tonight
+IGN
+1
+I’ve got nothing
+IGP
+1
+I got to go pee
+IHNI
+1
+I have no idea
+IIRC
+1
+If I remember correctly
+IIIO
+1
+"Intel inside, idiot outside"
+IK
+1
+I know
+IKR
+1
+"I know, right?"
+ILBL8
+1
+I’ll be late
+ILU
+1
+I love you
+ILUM
+1
+I love you man
+ILYSM
+1
+I love you so much
+ILY
+1
+I love you
+IM
+1
+Instant message
+IMAO
+1
+In my arrogant opinion
+IMHO
+1
+In my humble opinion
+ImL
+1
+ I love you
+IMNSHO
+1
+In my not so humble opinion
+IMO
+1
+In my opinion
+IMS
+1
+I am sorry
+IMSB
+1
+I am so bored
+IMTM
+1
+I am the man
+IMU
+1
+I miss u (you)
+INAL
+1
+I’m not a lawyer
+INC
+1
+incoming
+Inspoo
+1
+Inspiration
+INV
+1
+Invite
+IOMH
+1
+In over my head
+IOW
+1
+In other words
+IRL
+1
+In real life
+IRMC
+1
+I rest my case
+ISLY
+1
+I still love you
+ISO
+1
+In search of
+ITAM
+1
+"It’s The Accounting, Man "
+ITT
+1
+In This Thread
+ITYK
+1
+I thought you knew
+IUSS
+1
+If you say so
+IWALU
+1
+I will always love you
+IWAWO
+1
+I want a way out
+IWIAM
+1
+Idiot wrapped in a moron
+IWSN
+1
+I want sex now
+IYKWIM
+1
+If you know what I mean
+IYO
+1
+In your opinion
+IYQ
+1
+I like you
+IYSS
+1
+If you say so
+j00
+1
+You
+j00r
+1
+Your
+JAC
+1
+Just a second
+JAM
+1
+Just a minute
+JAS
+1
+Just a second
+JC (J/C)
+1
+Just checking
+JDI
+1
+Just do it
+JELLY
+1
+jealous
+JFF
+1
+Just for fun
+JFGI
+1
+Just freaking Google it
+JIC
+1
+Just in case
+JJ (J/J)
+1
+Just joking
+JJA
+1
+Just joking around
+JK (J/K)
+1
+Just kidding
+JLMK
+1
+Just let me know
+JMO
+1
+Just my opinion
+JP
+2
+Just playing
+Jackpot
+JT (J/T)
+1
+Just teasing
+JTLYK
+1
+Just to let you know
+JV
+1
+Joint venture
+JW
+1
+Just wondering
+K
+1
+Okay
+KK
+2
+"Knock, knock"
+"Okay, Okay!"
+K8T
+1
+Katie
+k/b
+1
+Keyboard
+KB
+2
+Keyboard
+Kick butt
+KDFU
+1
+Cracking K 
+KEWL
+1
+Cool
+KEYA
+1
+I will key you later
+KEYME
+1
+Key me when you get in
+KFY
+1
+Kiss for you
+KIA
+1
+Know it all
+KIR
+1
+Keep it real
+KISS
+1
+"Keep it simple, stupid"
+KIT
+1
+Keep in touch
+KMA
+1
+Kiss my ass
+KMK
+1
+Kiss my keister
+KMS
+1
+Killing myself
+KMT
+1
+Kiss my tushie
+KOC
+1
+Kiss on cheek
+KOL
+1
+Key opinion leader
+Koreaboo
+1
+Someone obsessed with Korean culture
+KOS
+2
+Kid over shoulder
+Kill on sight
+KOW
+1
+Knock on wood
+KOTC
+1
+Kiss on the cheek
+KOTD
+1
+Kicks of the day
+KOTL
+1
+Kiss on the lips
+KNIM
+1
+Know what I mean?
+KNOW
+1
+knowledge
+KPC
+1
+Keeping parents clueless
+KS
+1
+Kill then steal
+KSC
+1
+"Kind of, sort of chuckle"
+KT
+1
+Katie
+KUTGW
+1
+Keep up the good work
+KYS
+1
+Kill yourself
+L2G
+2
+Like to go?
+(would) Love to go
+L2K
+1
+Like to come
+L2P
+1
+Learn to play
+l33t
+1
+"Leet, meaning ‘elite’"
+L4L
+1
+Like for like 
+L8R
+1
+Later
+L8RG8R
+1
+"Later, gator"
+LAB
+1
+Life is a bitch
+LBAY
+1
+Laughing back at you
+LBS
+1
+"Laughing, but serious"
+LBVS
+1
+"Laughing, but very serious"
+LD
+2
+"Later, dude"
+Long distance
+LDO
+1
+"Like, duh obviously"
+LEMENO
+1
+Let me know
+LERK
+1
+Leaving easy reach of keyboard
+LFD
+1
+Left for day
+LFG
+1
+Looking for group
+LFM
+1
+Looking for more
+LGH
+1
+Lets get high
+LH6
+1
+Lets have sex
+LHSX
+1
+Lets have sex
+LHM
+1
+Lord help me
+LHO
+1
+Laughing head off
+LI
+1
+LinkedIn
+LIC
+1
+Like I care
+LIK
+1
+Meaning liquor
+LIMT
+1
+Laugh in my tummy
+LIT
+2
+really good or something fun and exciting
+Extremely intoxicated
+LLGB
+1
+"Love, later, God bless"
+LLS
+1
+Laughing like silly
+LMAO
+1
+Laughing my ass off
+LMBO
+1
+Laughing my butt off
+LMFAO
+1
+Laughing my freaking ass off
+LMIRL
+1
+Lets meet in real life
+LMK
+1
+Let me know
+LMMFAO
+1
+Laughing out loud
+LMNK
+1
+Leave my name out
+LMS
+1
+Like my status
+LNT
+1
+Meaning lost in translation
+LOA
+1
+List of acronyms
+LOL
+2
+Laughing out loud
+Lots of love
+LOLH
+1
+Laughing out loud hysterically
+LOLO
+1
+Lots of love
+LOLWTF
+1
+Laughing out loud 
+LOTI
+1
+Laughing on the inside
+LOTR
+1
+Lord of The Rings 
+LQTM
+1
+Laughing quietly to myself
+LSHMBH
+1
+Laugh so hard my belly hurts
+LSV
+1
+"Language, sex and violence"
+LTD
+1
+Living the dream
+LTLWDLS
+1
+Let’s twist like we did last summer
+LTNS
+1
+Long time no see
+LTOD
+1
+Laptop of death
+LTS
+1
+Laughing to self
+LULT
+1
+Love you long time
+LULZ
+1
+"Meaning joke, or for laughs"
+LVM
+1
+Left voice mail
+LWOS
+1
+Laughing without smiling
+LY
+1
+Love ya
+LYLAS
+1
+Love you like a sis
+LYLC
+1
+Love you like crazy
+LYSM
+1
+Love you so much
+M$
+1
+Microsoft
+M8
+1
+Mate
+MB
+1
+Mamma’s boy
+MBS
+1
+Mom behind shoulder
+MC
+1
+Merry Christmas
+MDIAC
+1
+My Dad is a cop
+MEGO
+1
+My eyes glaze over
+MEH
+2
+shrugging shoulders
+just okay
+MEHH
+1
+sighing
+MEZ
+1
+mesmerize
+MFI
+1
+Mad for it
+MFW
+1
+My face when
+MGB
+1
+May God bless
+MGMT
+1
+Management
+MHOTY
+1
+My hat off to you
+MIRL
+2
+Me in real life
+Meet in real life
+MISS.3
+1
+3-year old daughter
+MKAY
+1
+"Mmm, okay”"
+MLM
+1
+give the middle finger
+MM
+1
+Sister 
+MMK
+1
+Meaning okay?
+MNC
+1
+Mother nature calls
+MNSG
+1
+message in Spanish
+MOD
+2
+Moderator
+Modification
+MORF
+1
+Male or female?
+MOMBOY
+1
+Mamma’s boy
+MOO
+1
+My own opinion
+MOOS
+1
+Member of the opposite sex
+MOS
+1
+Mother over shoulder
+MOSS
+1
+Member of same sex
+MP
+1
+Mana points 
+MR.3
+1
+3-year old son
+MRT
+1
+Modified ReTweet
+MRW
+1
+My reaction when
+MSG
+1
+Message
+MTF
+1
+More to follow
+MTFBWU
+1
+May the force be with you
+MU
+1
+Miss you
+MUAH
+1
+Multiple unsuccessful attempts at humor
+MUSM
+1
+Miss you so much
+MWAH
+1
+kiss
+MYO
+1
+Mind your own business
+MYOB
+1
+Mind your own business
+n00b
+1
+Newbie
+N1
+1
+Nice one
+N2M
+1
+Nothing too much
+NADT
+1
+Not a darn thing
+NALOPKT
+1
+Not a lot of people know that
+NANA
+1
+"Not now, no need"
+NBD
+1
+No big deal
+NBFAB
+1
+No bad for a beginner
+NC
+1
+Nice crib 
+ND
+1
+Nice double
+NE
+1
+Any
+NE1
+1
+Anyone
+NERF
+1
+Changed and is now weaker
+NFM
+2
+None for me 
+Not for me
+NGL
+1
+Not going to lie
+NFS
+2
+Need for Speed
+Not for sale
+NFW
+2
+No *freaking* way
+Not for work
+NFWS
+1
+Not for work safe
+NH
+1
+Nice hand 
+NIFOC
+1
+Naked in front of computer
+NIGI
+1
+Now I get it
+NIMBY
+1
+Not in my back yard
+NIROK
+1
+Not in reach of keyboard
+NLT
+1
+No later than
+NM
+3
+Nothing much
+Never mind
+Nice meld
+NMH
+1
+Not much here
+NMJC
+1
+"Nothing much, just chilling"
+NMU
+1
+"Not much, you?"
+NO1
+1
+No one
+NOOB
+1
+someone who is bad at online games
+NOWL
+1
+knowledge
+NOYB
+1
+None of your business
+NP
+1
+No problem
+NPC
+1
+Non-playing character
+NQT
+1
+Newly qualified teacher
+NR
+1
+Nice roll
+NRN
+1
+No response necessary
+NS
+1
+Nice score
+NSA
+1
+No strings attached
+NSFL
+1
+Not safe for life
+NSFW
+1
+Not safe for work
+NSISR
+1
+Not sure if spelled right
+NT
+1
+Nice try
+NTHING
+1
+Nothing
+NTS
+1
+Note to self
+NVM
+1
+Never mind
+NVR
+1
+Never
+NW
+1
+No way
+NWO
+1
+No way out
+O4U
+1
+Only for you
+O
+3
+Opponent 
+hugs
+Over
+OA
+1
+Online auctions
+OATUS
+1
+On a totally unrelated subject
+OB
+1
+Oh baby
+OBV
+1
+Obviously
+OFC
+1
+Of course
+OG
+1
+Original gangster
+OGIM
+1
+"Oh God, it’s Monday"
+OH
+1
+Overheard
+OHHEMMGEE
+1
+Oh My God
+OI
+1
+Operator indisposed
+OIB
+1
+"Oh, I’m back"
+OIC
+1
+"Oh, I see"
+OJ
+1
+Only joking
+OL
+1
+Old lady
+OLL
+1
+Online love
+OM
+2
+Old man
+"Oh, my"
+OMAA
+1
+"Oh, my aching butt"
+OMDB
+1
+Over my dead body
+OMFG
+1
+Oh my freaking God
+OMG
+1
+Oh my God
+OMGYG2BK
+1
+"Oh my God, you got to be kidding"
+OMGYS
+1
+Oh my gosh you suck
+OMS
+1
+On my soul
+OMW
+1
+On my way
+ONL
+1
+Online
+OO
+1
+Over and out
+OOC
+1
+Out of character
+OOH
+1
+Out of here
+OOMF
+1
+One of my followers
+OOTD
+2
+One of these days
+Outfit of the day
+OOTO
+1
+Out of the office
+OP
+1
+On phone
+ORLY
+1
+Oh really?
+OS
+1
+Operating system
+OT
+1
+Off topic 
+OTB
+1
+Off to bed
+OTFL
+1
+On the floor laughing
+OTL
+1
+Out to lunch
+OTOH
+1
+On the other hand
+OTP
+2
+On the phone
+couple
+OTT
+1
+Over the top
+OTTOMH
+1
+Off the top of my head
+OTW
+1
+Off to work
+OVA
+1
+Over
+OYO
+1
+On your own
+P
+1
+Partner
+P2P
+3
+Parent to parent
+Peer to peer
+Pay to play
+P911
+1
+Parents coming into room alert
+PAP
+1
+Post a picture
+PAT
+1
+patrol
+PAW
+1
+Parents are watching
+PBOOK
+1
+Phonebook
+PC
+1
+Player character 
+PCM
+1
+Please call me
+PDA
+1
+Personal display of affection
+PDH
+1
+Pretty darn happy
+PDS
+1
+Please don’t shoot
+PDQ
+1
+Pretty darn quick
+PEEPS
+1
+People
+PFT
+1
+Pretty *freaking* tight
+PIC
+1
+Picture
+PIP
+1
+laughing hard
+PIR
+1
+Parents in room
+PISS
+1
+Put in some sugar
+PITA
+1
+Pain in the butt
+PKMN
+1
+Pokemon
+PL8
+1
+Plate
+PLD
+1
+Played
+PLMK
+1
+Please let me know
+PLS
+1
+Please
+PLU
+1
+People like us
+PLZ
+1
+Please
+PLZTLME
+1
+Please tell me
+PM
+1
+Private Message
+PMFI
+1
+Pardon me for interrupting
+PMFJI
+1
+Pardon me for jumping in
+PMSL
+1
+Pee myself laughing
+POAHF
+1
+Put on a happy face
+POIDH
+1
+it didn’t happen
+POS
+1
+Parent over shoulder
+POT
+1
+potion
+POTD
+1
+Photo of the day
+POV
+2
+Point of view
+Privately owned vehicle
+PPL
+1
+People
+PPU
+1
+Pending pick-up
+PRESH
+1
+Precious
+PROBS
+1
+Probably
+PROLLY
+1
+Probably
+PROGGY
+1
+computer program
+PRON
+1
+pornography
+PRT
+2
+Party
+Please Retweet
+PRW
+1
+Parents are watching
+PSA
+1
+Public Service Announcement
+PSOS
+1
+Parent standing over shoulder
+PSP
+1
+Playstation Portable
+PST
+1
+Please send tell
+PTFO
+1
+Pass the freak out
+PTIYPASI
+1
+Put that in your pipe and smoke it
+PTL
+1
+Praise the Lord
+PTMM
+1
+Please tell me more
+PTO
+3
+Paid time off
+Personal time off
+Parent Teacher Organization
+PUG
+1
+Pick up group
+PVE
+1
+Player vs enemy
+PVP
+1
+Player versus player
+PWN
+1
+own
+PXT
+1
+Please explain that
+PU
+1
+That stinks!
+PUKS
+1
+Pick up kids
+PYT
+1
+Pretty young thing
+PZ
+1
+Peace
+PZA
+1
+Pizza
+Q
+1
+Queue
+Q4U
+1
+I have a question for you
+QC
+1
+Quality control
+QFE
+1
+Question for everyone
+QFI
+1
+Quoted for idiocy
+QFT
+1
+Quoted for truth
+QIK
+1
+Quick
+QL
+1
+Quit laughing
+QOTD
+1
+Quote of the day
+Q_Q
+1
+crying eyes
+QQ
+1
+Quick question
+QSL
+1
+Reply
+QSO
+1
+Conversation
+QT
+1
+Cutie
+QTPI
+1
+Cutie pie
+R
+1
+are
+R8
+1
+Rate 
+RBAY
+1
+Right back at you
+RFN
+1
+Right freaking now
+RGR
+1
+"I agree, I understand"
+RHIP
+1
+Rank has its privileges
+RIP
+1
+Rest in peace
+RL
+1
+Real life
+RLY
+1
+Really
+RME
+1
+Rolling my eyes
+RMLB
+1
+Read my lips baby
+RMMM
+1
+Read my mail man
+ROFL
+1
+Rolling on floor laughing
+ROFLCOPTER
+1
+Rolling on floor laughing and spinning around
+ROFLMAO
+1
+"Rolling on the floor, laughing my butt off"
+ROTFL
+1
+Rolling on the floor laughing
+ROTFLUTS
+1
+Rolling on the floor laughing unable to speak
+RS
+1
+Runescape
+RSN
+1
+Real soon now
+RT
+2
+Roger that
+Retweet
+RTBS
+1
+Reason to be single
+RTFM
+1
+Read the freaking manual
+RTFQ
+1
+Read the freaking question
+RTHX
+1
+Thanks for the RT 
+RTMS
+1
+"Read the manual, stupid"
+RTNTN
+1
+Retention
+RTRCTV
+1
+Retroactive
+RTRMT
+1
+Retirement 
+RTSM
+1
+Read the stupid manual
+RTWFQ
+1
+Read the whole *freaking* question
+RU
+1
+Are you?
+RUMOF
+1
+Are you male or female?
+RUT
+1
+Are you there?
+RUOK
+1
+Are you okay?
+RX
+2
+Regards
+prescription
+RW
+1
+Real world
+RYB
+1
+Read your Bible
+RYO
+1
+Roll your own
+RYS
+2
+Read your screen
+Are you single?
+S2R
+1
+Send to receive
+S2S
+1
+Sorry to say
+S4L
+1
+Spam for life
+SAL
+1
+Such a laugh
+SAT
+1
+Sorry about that
+SAVAGE
+1
+shockingly careless expression
+SB
+3
+Snap back
+Should be
+Smiling back
+SBIA
+1
+standing back in amazement
+SBT
+1
+Sorry about that
+SC
+1
+Stay cool
+SD
+1
+Sweet dreams
+SDMB
+1
+"Sweet dreams, my baby"
+SENPAI
+1
+someone older than you
+SEO
+1
+Search engine optimization
+SETE
+1
+Smiling Ear-to-Ear
+SELFIE
+1
+A photo that is taken of oneself
+SFAIK
+1
+So far as I know
+SH
+1
+Same here
+SH^
+1
+Shut up
+SHID
+1
+Slapping head in disgust
+SHIP
+1
+wishing two people were in a relationship
+SICNR
+1
+"Sorry, I could not resist"
+SIG2R
+1
+"Sorry, I got to run"
+SIHTH
+1
+Stupidity is hard to take
+SIMYC
+1
+Sorry I missed your call
+SIR
+1
+Strike it rich
+SIS
+2
+Snickering in silence
+Meaning sister
+SIT
+1
+Stay in touch
+SITD
+1
+Still in the dark
+SJW
+1
+Social justice warrior
+SK8
+1
+Skate
+SK8NG
+1
+Skating
+SK8R
+1
+Skater
+SK8RBOI
+1
+Skater Boy
+SLAP
+1
+Sounds like a plan
+Slay
+1
+To succeed at something
+SM
+1
+Social media
+SMAZED
+1
+Smoky haze
+SMEXI
+1
+sexy Mexican
+SMH
+1
+Shaking my head
+SMHID
+1
+Scratching my head in disbelief
+SNAFU
+1
+Situation normal all fouled up
+SNERT
+1
+Snot nosed egotistical rude teenager
+SNR
+1
+Streaks and Recents 
+SO
+1
+Significant other
+SOAB
+1
+Son of a bitch
+S’OK
+1
+It is okay
+SOL
+1
+Sooner or later
+SOMY
+1
+Sick of me yet?
+SorG
+1
+Straight or Gay?
+SOS
+2
+Meaning help
+Son of Sam
+SOT
+1
+Short of time
+SOTMG
+1
+"Short of time, must go"
+SOWM
+1
+Someone with me
+SPK
+1
+Speak 
+SRSLY
+1
+Seriously
+SPST
+1
+"Same place, same time"
+SPTO
+1
+Spoke to
+SQ
+1
+Square
+SRY
+1
+Sorry
+SS
+1
+So sorry
+SSDD
+1
+"Same stuff, different day"
+SSIF
+1
+So stupid it’s funny
+SSINF
+1
+So stupid it’s not funny
+ST&D
+1
+Stop texting and drive
+Stan
+1
+a die-hard fan of someone
+STFU
+1
+Shut the freak up
+STR8
+1
+Straight
+STW
+1
+Search the Web
+SU
+1
+Shut up
+SUITM
+1
+See you in the morning
+SUL
+1
+See you later
+SUP
+1
+What’s up?
+SUTH
+1
+So use(d) to haters
+SUX
+1
+it sucks
+SUYF
+1
+Shut up you fool
+SWAG
+2
+free stuff and giveaways from tech tradeshows
+Scientific wild a guess
+SWAK
+1
+Sealed with a kiss
+SWALK
+1
+Sealed with a loving kiss
+SWAT
+1
+Scientific wild butt guess
+SWL
+1
+Screaming with laughter
+SWMBO
+1
+wife 
+SYL
+1
+See you later
+SYS
+1
+See you soon
+SYY
+1
+Shut your yapper
+T+
+1
+Think positive
+T4BU
+1
+Thanks for being you
+T:)T
+1
+Think happy thoughts
+TA
+1
+Thanks a lot
+TAFN
+1
+That’s all for now
+TAM
+1
+Tomorro a.m.
+TANK
+1
+really strong
+TANKED
+1
+owned
+TANKING
+1
+owning
+TARFU
+1
+Things Are Really fouled Up.
+TAU
+1
+Thinking about you
+TAUMUALU
+1
+Thinking about you miss you always love you
+TBAG
+1
+Process of disgracing a corpse
+TBBH
+1
+To be brutally honest
+TBC
+1
+To be continued
+TBD
+1
+To be determined
+TBH
+1
+To be honest
+TBL
+1
+Text back later
+TBT
+1
+Throwback Thursday 
+TC
+1
+Take care
+TCB
+1
+Take care of business
+TCOY
+1
+Take care of yourself
+TD
+1
+Tower defense 
+TD2M
+1
+Talk dirty to me
+TDTM
+1
+Talk dirty to me
+TEA
+1
+Meaning gossip
+TFF
+1
+Too freaking funny
+TFS
+1
+Thanks for sharing
+TFTF
+1
+Thanks for the follow 
+TFTI
+1
+Thanks for the invitation
+TFTT
+1
+Thanks for this tweet
+TG
+1
+Thank goodness
+TGIF
+1
+Thank God it’s Friday
+THNQ
+1
+Thank you 
+THNX
+1
+Thanks
+THOT
+1
+That were over there
+THT
+1
+Think happy thoughts
+THX
+1
+Thanks
+TIA
+1
+Thanks in advance
+TIAD
+1
+Tomorrow is another day
+TIC
+1
+Tongue-in-cheek
+TIL
+1
+Today I learned
+TILIS
+1
+Tell it like it is
+TIR
+1
+Teacher in room
+TLK2UL8R
+1
+Talk to you later
+TL
+1
+Too long
+TL;DR
+1
+Too long; didn’t read
+TM
+1
+Trust me
+TMA
+1
+Take my advice
+TMB
+2
+Text me back
+Tweet me back
+TMI
+1
+Too much information
+TMOT
+1
+Trust me on this
+TMTH
+1
+Too much to handle
+TMYL
+1
+Tell me your location
+TMWFI
+1
+Take my word for it
+TNSTAAFL
+1
+There’s no such thing as a free lunch
+TNT
+1
+Til next time
+TOJ
+1
+Tears of joy
+TOS
+1
+Terms of service
+TOTES
+1
+Totally
+TOU
+1
+Thinking of you
+TOY
+1
+Thinking of you
+TPM
+1
+Tomorrow p.m.
+TPTB
+1
+The powers that be
+TQ
+1
+Te quiero / I love you 
+TSH
+1
+Tripping so hard
+TSNF
+1
+That’s so not fair
+TSTB
+1
+"The sooner, the better"
+TT
+1
+Trending topic
+TTFN
+1
+Ta ta for now
+TTLY
+1
+Totally
+TTTT
+1
+These things take time
+TTUL
+1
+Talk to you later
+TU
+1
+Thank you
+TUI
+1
+Turning you in
+TURNT
+1
+"Meaning excitement, turned up"
+TWSS
+1
+That’s what she said
+TTG
+1
+Time to go
+TTYAFN
+1
+Talk to you awhile from now
+TTYL
+1
+Talk to you later
+TTYS
+1
+Talk to you soon
+TY
+1
+Thank you
+TYFC
+1
+Thank you for charity 
+TYFYC
+1
+Thank you for your comment
+TYS
+1
+Told you so
+TYT
+1
+Take your time
+TYSO
+1
+Thank you so much
+TYAFY
+1
+Thank you and *freak* you
+TYVM
+1
+Thank you very much
+TX
+1
+Thanks
+^URS
+1
+Up yours
+UCMU
+1
+You crack me up
+UDI
+1
+Unidentified drinking injury
+UDM
+1
+U (You) da (the) man
+UDS
+1
+Ugly domestic scene
+UFB
+1
+Un *freaking* believable
+UFN
+1
+Until further notice
+UFWM
+1
+You *freaking* with me?
+UGTBK
+1
+You’ve got to be kidding
+UHGTBSM
+1
+You have got to be shitting me!
+UKTR
+1
+You know that’s right
+UL
+1
+Upload
+U-L
+1
+You will
+UNA
+1
+Use no acronyms
+UN4TUN8
+1
+Unfortunate
+UNBLEFBLE
+1
+Unbelievable
+UNCRTN
+1
+Uncertain
+UNPC
+1
+not politically correct
+UOK
+1
+You ok?
+UR
+1
+You are 
+UR2YS4ME
+1
+You are too wise for me
+URA*
+1
+You are a star
+URH
+1
+You are hot 
+URSKTM
+1
+You are so kind to me
+URTM
+1
+You are the man
+URW
+1
+You are welcome
+USBCA
+1
+Until something better comes along
+USU
+1
+Usually
+UT
+1
+Unreal Tournament
+UT2L
+1
+You take too long
+UTM
+1
+You tell me
+UV
+1
+Unpleasant visual
+UW
+1
+You’re welcome
+UX
+1
+User experience
+V
+1
+Very
+VAT
+1
+Value added tax
+VBL
+1
+Visible bra line
+VBS
+1
+Very big smile
+VC
+1
+Voice chat
+VEG
+1
+Very evil grin
+VFF
+1
+Very freaking funny
+VFM
+1
+Value for money
+VGC
+1
+Very good condition
+VGG
+1
+Very good game
+VGH
+1
+Very good hand
+VIP
+1
+Very important person
+VM
+1
+Voice mail
+VN
+1
+Very nice
+VNH
+1
+Very nice hand 
+VoIP
+1
+Voice over Internet Protocol
+VRY
+1
+Very
+VSC
+1
+Very soft chuckle
+VSF
+1
+Very sad face
+VWD
+1
+Very well done
+VWP
+1
+Very well played
+W@
+1
+What?
+W/
+1
+With
+W/B
+2
+Welcome back
+Write back
+W3
+1
+WWW 
+W8
+1
+Wait
+WAH
+1
+Working at home
+WAJ
+1
+What a jerk
+WAM
+1
+Wait a minute
+WAN2
+1
+Want to
+WAN2TLK
+1
+Want to talk
+WAREZ
+1
+pirated software
+WAS
+2
+Wait a second
+Wild a guess
+WAT
+1
+What
+WAWA
+1
+Where are we at?
+WAYF
+1
+Where are you from?
+WB
+1
+Welcome back
+WBS
+1
+Write back soon
+WBU
+1
+What about you?
+WC
+2
+Welcome
+Who cares
+WCA
+1
+Who cares anyway
+W/E
+1
+Whatever
+W/END
+1
+Weekend
+WE
+1
+Whatever
+WEBO
+1
+Webopedia
+WEEBO
+1
+a person obsessed with of Japanese culture
+WEP
+1
+Weapon
+WH5
+1
+"Who, what, when, where, why"
+WHATEVES
+1
+Whatever
+WIBNI
+1
+Wouldn’t it be nice if
+WDALYIC
+1
+Who died and left you in charge
+WDYK
+1
+What do you know?
+WDYT
+1
+What do you think?
+WGACA
+1
+What do you think?
+WIIFM
+1
+What’s in it for me?
+WISP
+1
+Winning is so pleasurable
+WITP
+1
+What is the point?
+WITW
+1
+What in the world
+WIU
+1
+Wrap it up
+WK
+1
+Week
+WKD
+1
+Weekend
+WRT
+1
+With regard to
+WL
+1
+Whatta loser
+W/O
+1
+Without
+WOA
+1
+Work of Art
+WOKE
+1
+"people who are aware of current social issues, and politics"
+WOMBAT
+1
+"Waste of money, brains and time"
+WOW
+1
+World of Warcraft
+WRK
+1
+Work
+WRU
+1
+Where are you?
+WRU@
+1
+Where are you at?
+WRUD
+1
+What are you doing?
+WTB
+1
+Want to buy
+WTF
+1
+What the freak?
+WTFE
+1
+What the freak ever
+WTFO
+1
+"What the freak?, over"
+WTG
+1
+Way to go
+WTGP
+1
+Want to go private
+WTH
+1
+What the heck?
+WTM
+1
+Who’s the man?
+WTS
+1
+Want to sell? 
+WTT
+1
+Want to trade?
+WU
+1
+What’s up?
+WUCIWUG
+1
+What you see is what you get
+WUF
+1
+Where are you from?
+WUP
+1
+What’s up?
+WUT
+1
+what
+WUW
+1
+What you want?
+WUU2
+1
+What are you up to?
+WUZ
+1
+Meaning “was”
+WWJD
+1
+What would Jesus do?
+WWNC
+1
+Will wonders never cease
+WWYC
+1
+Write when you can
+WYCM
+1
+Will you call me?
+WYD
+1
+What are you doing?
+WYGAM
+1
+When you get a minute
+WYHAM
+1
+When you have a minute
+WYLEI
+1
+When you least expect it
+WYSIWYG
+1
+What you see is what you get
+WYWH
+1
+Wish you were here
+X-1-10
+1
+Exciting
+X
+1
+Kiss
+X!
+1
+a typical woman
+XD
+2
+really hard laugh
+devilish smile
+XME
+1
+Excuse Me
+XOXOXO
+1
+Hugs & Kisses
+XLNT
+1
+Excellent
+XLR8
+1
+going faster
+XPOST
+1
+Cross-post
+XYL
+1
+Ex-young lady
+XYZ
+1
+Examine your zipper
+Y?
+1
+Why?
+Y
+1
+Meaning Yawn
+Y2K
+1
+You’re too kind
+YA
+1
+Your
+YAA
+1
+Yet another acronym
+YABA
+1
+Yet another bloody acronym
+YARLY
+1
+"Ya, really?"
+YAS
+1
+Meaning “praise”
+YBIC
+1
+Your brother in Christ
+YBS
+1
+You’ll be sorry
+YCDBWYCID
+1
+You can’t do business when your computer is down
+YCHT
+1
+You can have them
+YCLIU
+1
+You can look it up
+YCMU
+1
+You crack me up
+YCT
+1
+Meaning Your comment to?
+YD
+1
+Yesterday
+YEET
+1
+approval or display of energy
+YF
+1
+Wife
+YG
+1
+Young gentleman
+YGG
+1
+You go girl
+YGTBKM
+1
+You’ve got to be kidding me
+YGTR
+1
+You got that right
+YHBT
+1
+You have been trolled
+YHBW
+1
+You have been warned
+YHL
+1
+You have lost
+YIU
+1
+"Yes, I understand"
+YKW
+1
+You know what
+YKWYCD
+1
+You know what you can do
+YL
+1
+Young lady
+YMMV
+1
+Your mileage may vary
+YNK
+1
+You never know
+YOLO
+1
+You only live once
+YR
+2
+Your
+Yeah right
+YRYOCC
+1
+You’re running your own cuckoo clock
+YSIC
+1
+Your sister in Christ
+YSYD
+1
+Yeah sure you do
+YT
+2
+YouTube
+You there?
+YTB
+2
+You’re the best
+Youth talk back
+YTTL
+1
+You take too long
+YTG
+1
+You’re the greatest
+YW
+1
+You’re welcome
+YWHNB
+1
+"Yes, we have no bananas"
+YWHOL
+1
+Yelling “woohoo” out loud
+YWSYLS
+1
+"You win some, you lose some"
+YYSSW
+1
+"Yeah, yeah, sure, sure, whatever"
+Z
+3
+Zero
+going to bed
+Said
+Z%
+1
+Zoo
+ZH
+1
+Sleeping Hour
+ZOMG
+1
+Oh My God
+ZOT
+1
+Zero tolerance
+ZUP
+1
+What’s up?
+ZZZZ
+1
+Sleeping

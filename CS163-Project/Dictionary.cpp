@@ -12,8 +12,15 @@ void Dictionary::buildFromOrigin() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 		
-		engEng_key.insert(key, def);
-		engEng_def.add(key, def);
+		int id = engEng_key.insert(key, def);
+		bool add = engEng_def.add(def, id);
+		if (add) {
+			if (id >= engEng.size()) {
+				engEng.emplace_back();
+				engEng[id].key = key;
+			}
+			engEng[id].def.push_back(def);
+		}
 	}
 	fin.close();
 
@@ -25,8 +32,17 @@ void Dictionary::buildFromOrigin() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		engVie_key.insert(key, def);
-		engVie_def.add(key, def);
+		//engVie_key.insert(key, def);
+		//engVie_def.add(key, def);
+		int id = engVie_key.insert(key, def);
+		bool add = engVie_def.add(def, id);
+		if (add) {
+			if (id >= engVie.size()) {
+				engVie.emplace_back();
+				engVie[id].key = key;
+			}
+			engVie[id].def.push_back(def);
+		}
 	}
 	fin.close();
 
@@ -38,8 +54,17 @@ void Dictionary::buildFromOrigin() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		vieEng_key.insert(key, def);
-		vieEng_def.add(key, def);
+		//vieEng_key.insert(key, def);
+		//vieEng_def.add(key, def);
+		int id = vieEng_key.insert(key, def);
+		bool add = vieEng_def.add(def, id);
+		if (add) {
+			if (id >= vieEng.size()) {
+				vieEng.emplace_back();
+				vieEng[id].key = key;
+			}
+			vieEng[id].def.push_back(def);
+		}
 	}
 	fin.close();
 
@@ -51,8 +76,17 @@ void Dictionary::buildFromOrigin() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		slang_key.insert(key, def);
-		slang_def.add(key, def);
+		//slang_key.insert(key, def);
+		//slang_def.add(key, def);
+		int id = slang_key.insert(key, def);
+		bool add = slang_def.add(def, id);
+		if (add) {
+			if (id >= slang.size()) {
+				slang.emplace_back();
+				slang[id].key = key;
+			}
+			slang[id].def.push_back(def);
+		}
 	}
 	fin.close();
 
@@ -64,88 +98,402 @@ void Dictionary::buildFromOrigin() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		emotional_key.insert(key, def);
-		emotional_def.add(key, def);
+		//emotional_key.insert(key, def);
+		//emotional_def.add(key, def);
+		int id = emotional_key.insert(key, def);
+		bool add = emotional_def.add(def, id);
+		if (add) {
+			if (id >= emotional.size()) {
+				emotional.emplace_back();
+				emotional[id].key = key;
+			}
+			emotional[id].def.push_back(def);
+		}
 	}
 	fin.close();
 }
 
-void save() {
+void Dictionary::build() {
+	ifstream fin;
+	//engEng
+	fin.open("../Data/engEng/engEng_trie.txt");
+	engEng_key.build(engEng_key.root, fin);
+	fin.close();
+	fin.open("../Data/engEng/engEng_hashTable.txt");
+	engEng_def.build(fin);
+	fin.close();
+	fin.open("../Data/engEng/engEng.txt");
+	int sz; fin >> sz;
+	fin.ignore();
+	engEng.resize(sz);
+	for (int i = 0; i < sz; ++i) {
+		getline(fin, engEng[i].key);
+		int sz2; fin >> sz2;
+		fin.ignore();
+		for (int j = 0; j < sz2; ++j) {
+			string tmp; getline(fin, tmp);
+			engEng[i].def.push_back(tmp);
+		}
+	}
+	fin.close();
+	//engVie
+	fin.open("../Data/engVie/engVie_trie.txt");
+	engVie_key.build(engVie_key.root, fin);
+	fin.close();
+	fin.open("../Data/engVie/engVie_hashTable.txt");
+	engVie_def.build(fin);
+	fin.close();
+	fin.open("../Data/engVie/engVie.txt");
+	fin >> sz;
+	fin.ignore();
+	engVie.resize(sz);
+	for (int i = 0; i < sz; ++i) {
+		getline(fin, engVie[i].key);
+		int sz2; fin >> sz2;
+		fin.ignore();
+		for (int j = 0; j < sz2; ++j) {
+			string tmp; getline(fin, tmp);
+			engVie[i].def.push_back(tmp);
+		}
+	}
+	fin.close();
+	//vieEng
+	fin.open("../Data/vieEng/vieEng_trie.txt");
+	vieEng_key.build(vieEng_key.root, fin);
+	fin.close();
+	fin.open("../Data/vieEng/vieEng_hashTable.txt");
+	vieEng_def.build(fin);
+	fin.close();
+	fin.open("../Data/vieEng/vieEng.txt");
+	fin >> sz;
+	fin.ignore();
+	vieEng.resize(sz);
+	for (int i = 0; i < sz; ++i) {
+		getline(fin, vieEng[i].key);
+		int sz2; fin >> sz2;
+		fin.ignore();
+		for (int j = 0; j < sz2; ++j) {
+			string tmp; getline(fin, tmp);
+			vieEng[i].def.push_back(tmp);
+		}
+	}
+	fin.close();
+	//engVie
+	fin.open("../Data/slang/slang_trie.txt");
+	slang_key.build(slang_key.root, fin);
+	fin.close();
+	fin.open("../Data/slang/slang_hashTable.txt");
+	slang_def.build(fin);
+	fin.close();
+	fin.open("../Data/slang/slang.txt");
+	fin >> sz;
+	fin.ignore();
+	slang.resize(sz);
+	for (int i = 0; i < sz; ++i) {
+		getline(fin, slang[i].key);
+		int sz2; fin >> sz2;
+		fin.ignore();
+		for (int j = 0; j < sz2; ++j) {
+			string tmp; getline(fin, tmp);
+			slang[i].def.push_back(tmp);
+		}
+	}
+	fin.close();
+	//slang
+	fin.open("../Data/slang/slang_trie.txt");
+	slang_key.build(slang_key.root, fin);
+	fin.close();
+	fin.open("../Data/slang/slang_hashTable.txt");
+	slang_def.build(fin);
+	fin.close();
+	fin.open("../Data/slang/slang.txt");
+	fin >> sz;
+	fin.ignore();
+	slang.resize(sz);
+	for (int i = 0; i < sz; ++i) {
+		getline(fin, slang[i].key);
+		int sz2; fin >> sz2;
+		fin.ignore();
+		for (int j = 0; j < sz2; ++j) {
+			string tmp; getline(fin, tmp);
+			slang[i].def.push_back(tmp);
+		}
+	}
+	fin.close();
+	//emotional
+	fin.open("../Data/emotional/emotional_trie.txt");
+	emotional_key.build(emotional_key.root, fin);
+	fin.close();
+	fin.open("../Data/emotional/emotional_hashTable.txt");
+	emotional_def.build(fin);
+	fin.close();
+	fin.open("../Data/emotional/emotional.txt");
+	fin >> sz;
+	fin.ignore();
+	emotional.resize(sz);
+	for (int i = 0; i < sz; ++i) {
+		getline(fin, emotional[i].key);
+		int sz2; fin >> sz2;
+		fin.ignore();
+		for (int j = 0; j < sz2; ++j) {
+			string tmp; getline(fin, tmp);
+			emotional[i].def.push_back(tmp);
+		}
+	}
+	fin.close();
+}
 
+void Dictionary::save() {
+	ofstream fout;
+	//engEng
+	fout.open("../Data/engEng/engEng_trie.txt");
+	engEng_key.save(engEng_key.root, fout);
+	fout.close();
+	fout.open("../Data/engEng/engEng_hashTable.txt");
+	engEng_def.save(fout);
+	fout.close();
+	fout.open("../Data/engEng/engEng.txt");
+	fout << engEng.size() << '\n';
+	for (int i = 0; i < engEng.size(); ++i) {
+		fout << engEng[i].key << '\n';
+		fout << engEng[i].def.size() << '\n';
+		for (string &tmp : engEng[i].def) {
+			fout << tmp << '\n';
+		}
+	}
+	fout.close();
+	//vieEng
+	fout.open("../Data/vieEng/vieEng_trie.txt");
+	vieEng_key.save(vieEng_key.root, fout);
+	fout.close();
+	fout.open("../Data/vieEng/vieEng_hashTable.txt");
+	vieEng_def.save(fout);
+	fout.close();
+	fout.open("../Data/vieEng/vieEng.txt");
+	fout << vieEng.size() << '\n';
+	for (int i = 0; i < vieEng.size(); ++i) {
+		fout << vieEng[i].key << '\n';
+		fout << vieEng[i].def.size() << '\n';
+		for (string& tmp : vieEng[i].def) {
+			fout << tmp << '\n';
+		}
+	}
+	fout.close();
+	//engVie
+	fout.open("../Data/engVie/engVie_trie.txt");
+	engVie_key.save(engVie_key.root, fout);
+	fout.close();
+	fout.open("../Data/engVie/engVie_hashTable.txt");
+	engVie_def.save(fout);
+	fout.close();
+	fout.open("../Data/engVie/engVie.txt");
+	fout << engVie.size() << '\n';
+	for (int i = 0; i < engVie.size(); ++i) {
+		fout << engVie[i].key << '\n';
+		fout << engVie[i].def.size() << '\n';
+		for (string& tmp : engVie[i].def) {
+			fout << tmp << '\n';
+		}
+	}
+	fout.close();
+	//slang
+	fout.open("../Data/slang/slang_trie.txt");
+	slang_key.save(slang_key.root, fout);
+	fout.close();
+	fout.open("../Data/slang/slang_hashTable.txt");
+	slang_def.save(fout);
+	fout.close();
+	fout.open("../Data/slang/slang.txt");
+	fout << slang.size() << '\n';
+	for (int i = 0; i < slang.size(); ++i) {
+		fout << slang[i].key << '\n';
+		fout << slang[i].def.size() << '\n';
+		for (string& tmp : slang[i].def) {
+			fout << tmp << '\n';
+		}
+	}
+	fout.close();
+	//emotional
+	fout.open("../Data/emotional/emotional_trie.txt");
+	emotional_key.save(emotional_key.root, fout);
+	fout.close();
+	fout.open("../Data/emotional/emotional_hashTable.txt");
+	emotional_def.save(fout);
+	fout.close();
+	fout.open("../Data/emotional/emotional.txt");
+	fout << emotional.size() << '\n';
+	for (int i = 0; i < emotional.size(); ++i) {
+		fout << emotional[i].key << '\n';
+		fout << emotional[i].def.size() << '\n';
+		for (string& tmp : emotional[i].def) {
+			fout << tmp << '\n';
+		}
+	}
+	fout.close();
 }
 
 vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 	vector<string> found;
-	vector<string> tmp;
+	//vector<string> tmp;
+	int index;
 	switch (dicNum) {
 	case 1:
-		tmp = engEng_key.search(key);
+		//tmp = engEng_key.search(key);
+		index = engEng_key.search(key);
+		if (index != -1) {
+			found.push_back(key);
+			for(string &def : engEng[index].def) {
+				found.push_back(def);
+			}
+		}
 		break;
 	case 2:
-		tmp = vieEng_key.search(key);
+		//tmp = vieEng_key.search(key);
+		index = vieEng_key.search(key);
+		if (index != -1) {
+			found.push_back(key);
+			for(string &def : vieEng[index].def) {
+				found.push_back(def);
+			}
+		}
 		break;
 	case 3:
-		tmp = engVie_key.search(key);
+		//tmp = engVie_key.search(key);
+		index = engVie_key.search(key);
+		if (index != -1) {
+			found.push_back(key);
+			for(string &def : engVie[index].def) {
+				found.push_back(def);
+			}
+		}
 		break;
 	case 4:
-		tmp = slang_key.search(key);
+		//tmp = slang_key.search(key);
+		index = slang_key.search(key);
+		if (index != -1) {
+			found.push_back(key);
+			for(string &def : slang[index].def) {
+				found.push_back(def);
+			}
+		}
 		break;
 	case 5:
-		tmp = emotional_key.search(key);
+		//tmp = emotional_key.search(key);
+		index = emotional_key.search(key);
+		if (index != -1) {
+			found.push_back(key);
+			for(string &def : emotional[index].def) {
+				found.push_back(def);
+			}
+		}
 		break;
 	}
-	if (!tmp.empty()) {
-		found.push_back(key);
-		for (int i = 0; i < tmp.size(); i++) {
-			found.push_back(tmp[i]);
-		}
-	}
+	//if (!tmp.empty()) {
+	//	found.push_back(key);
+	//	for (int i = 0; i < tmp.size(); i++) {
+	//		found.push_back(tmp[i]);
+	//	}
+	//}
 	return found;
 }
 
 vector<string> Dictionary::predictKeyword(string key, int dicNum) {
+	vector<int> found;
+	vector<string> result;
 	switch (dicNum) {
 	case 1:
-		return engEng_key.predict(key);
+		found = engEng_key.predict(key);
+		for (int& id : found) {
+			result.push_back(engEng[id].key);
+		}
 		break;
 	case 2:
-		return vieEng_key.predict(key);
+		found = vieEng_key.predict(key);
+		for (int& id : found) {
+			result.push_back(vieEng[id].key);
+		}
 		break;
 	case 3:
-		return engVie_key.predict(key);
+		found = engVie_key.predict(key);
+		for (int& id : found) {
+			result.push_back(engVie[id].key);
+		}
 		break;
 	case 4:
-		return slang_key.predict(key);
+		found = slang_key.predict(key);
+		for (int& id : found) {
+			result.push_back(slang[id].key);
+		}
 		break;
 	case 5:
-		return emotional_key.predict(key);
+		found = emotional_key.predict(key);
+		for (int& id : found) {
+			result.push_back(emotional[id].key);
+		}
 		break;
 	}
+	return result;
 }
 
 vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 	vector<string> found;
-	string key;
+	vector<int> index;
 	switch (dicNum) {
 	case 1:
-		key = engEng_def.search(def);
+		index = engEng_def.search(def);
+		for(int &id : index) {
+			for(string &tmp : engEng[id].def) {
+				if (def == tmp) {
+					found.push_back(engEng[id].key);
+					break;
+				}
+			}
+		}
 		break;
 	case 2:
-		key = vieEng_def.search(def);
+		index = vieEng_def.search(def);
+		for(int &id : index) {
+			for(string &tmp : vieEng[id].def) {
+				if (def == tmp) {
+					found.push_back(vieEng[id].key);
+					break;
+				}
+			}
+		}
 		break;
 	case 3:
-		key = engVie_def.search(def);
+		index = engVie_def.search(def);
+		for (int &id : index) {
+			for (string &tmp : engVie[id].def) {
+				if (def == tmp) {
+					found.push_back(engVie[id].key);
+					break;
+				}
+			}
+		}
 		break;
 	case 4:
-		key = slang_def.search(def);
+		index = slang_def.search(def);
+		for(int &id : index) {
+			for(string &tmp : slang[id].def) {
+				if (def == tmp) {
+					found.push_back(slang[id].key);
+					break;
+				}
+			}
+		}
 		break;
 	case 5:
-		key = emotional_def.search(def);
+		index = emotional_def.search(def);
+		for(int &id : index) {
+			for(string &tmp : emotional[id].def) {
+				if (def == tmp) {
+					found.push_back(emotional[id].key);
+					break;
+				}
+			}
+		}
 		break;
-	}
-	if (key != "\0") {
-		found.push_back(key);
-		found.push_back(def);
 	}
 	return found;
 }
@@ -160,26 +508,57 @@ void Dictionary::deleteDictionary() {
 
 bool Dictionary::addNewWord(int dictnum, string key, string def)
 {
+	int id, add;
 	switch (dictnum) {
 	case 1:
-		if (!engEng_key.insert(key, def)) return false;
-		engEng_def.add(key, def);
+		//if (!engEng_key.insert(key, def)) return false;
+		//engEng_def.add(key, def);
+		id = engEng_key.insert(key, def);
+		add = engEng_def.add(def, id);
+		if (add) {
+			if (id >= engEng.size()) engEng.emplace_back();
+			engEng[id].def.push_back(def);
+		} else return false;
 		break;
 	case 2:
-		if (!vieEng_key.insert(key, def)) return false;
-		vieEng_def.add(key, def);
+		//if (!vieEng_key.insert(key, def)) return false;
+		//vieEng_def.add(key, def);
+		id = vieEng_key.insert(key, def);
+		add = vieEng_def.add(def, id);
+		if (add) {
+			if (id >= vieEng.size()) vieEng.emplace_back();
+			vieEng[id].def.push_back(def);
+		} else return false;
 		break;
 	case 3:
-		if (!engVie_key.insert(key, def)) return false;
-		engVie_def.add(key, def);
+		//if (!engVie_key.insert(key, def)) return false;
+		//engVie_def.add(key, def);
+		id = engVie_key.insert(key, def);
+		add = engVie_def.add(def, id);
+		if (add) {
+			if (id >= engVie.size()) engVie.emplace_back();
+			engVie[id].def.push_back(def);
+		} else return false;
 		break;
 	case 4:
-		if (!slang_key.insert(key, def)) return false;
-		slang_def.add(key, def);
+		//if (!slang_key.insert(key, def)) return false;
+		//slang_def.add(key, def);
+		id = slang_key.insert(key, def);
+		add = slang_def.add(def, id);
+		if (add) {
+			if (id >= slang.size()) slang.emplace_back();
+			slang[id].def.push_back(def);
+		} else return false;
 		break;
 	case 5:
-		if (!emotional_key.insert(key, def)) return false;
-		emotional_def.add(key, def);
+		//if (!emotional_key.insert(key, def)) return false;
+		//emotional_def.add(key, def);
+		id = emotional_key.insert(key, def);
+		add = emotional_def.add(def, id);
+		if (add) {
+			if (id >= emotional.size()) emotional.emplace_back();
+			emotional[id].def.push_back(def);
+		} else return false;
 		break;
 	}
 	addWordToFile(dictnum, key, def);
@@ -187,30 +566,8 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 }
 
 bool Dictionary::editDefinition(int dictNum, string key, string def, string newdef) {
-	switch (dictNum) {
-	case 1:
-		if (!engEng_key.edit(key, def, newdef)) return false;
-		engEng_key.edit(key, def, newdef);
-		break;
-	case 2:
-		if (!vieEng_key.edit(key, def, newdef)) return false;
-		vieEng_key.edit(key, def, newdef);
-		break;
-	case 3:
-		if (!engVie_key.edit(key, def, newdef)) return false;
-		engVie_key.edit(key, def, newdef);
-		break;
-	case 4:
-		if (!slang_key.edit(key, def, newdef)) return false;
-		slang_key.edit(key, def, newdef);
-		break;
-	case 5:
-		if (!emotional_key.edit(key, def, newdef)) return false;
-		emotional_key.edit(key, def, newdef);
-		break;
-	}
-	return true;
-}
+	return false;
+}	
 
 string getSource(int dictNum) {
 	switch (dictNum) {
