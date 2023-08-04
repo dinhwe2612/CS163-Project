@@ -44,3 +44,10 @@ float DrawTextOnBoxEx(Rectangle boxShape, Font font, vector<string> &text, Vecto
 	 }
 	 return y;
 }
+
+int RandInt(int min, int max) {
+	random_device rd;
+	mt19937 mt(rd());
+	uniform_int_distribution<int> dist(min, max);
+	return dist(mt);
+}

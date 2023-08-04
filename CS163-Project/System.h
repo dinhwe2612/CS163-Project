@@ -5,6 +5,8 @@
 #include "UI/InputBox.h"
 #include "string.h"
 #include "Dictionary.h"
+#include <random>
+#include <chrono>
 
 using namespace std;
 
@@ -62,6 +64,7 @@ struct System {
         RESET,
         SEARCH_RESULT,
     };
+    pair<int, vector<string>> randData; // for game
     int dicNum = 0; // which dictionary is selected
     int menu = DEFAULT;
     bool isDropdownChangeTranslation = false;

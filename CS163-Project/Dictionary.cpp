@@ -1,4 +1,5 @@
 #include "Dictionary.h"
+#include "UI/Other.h"
 #include <fstream>
 using namespace std;
 
@@ -114,6 +115,7 @@ void Dictionary::buildFromOrigin() {
 }
 
 void Dictionary::build() {
+	cout << "Building..." << endl;
 	ifstream fin;
 	//engEng
 	fin.open("../Data/engEng/engEng.txt", ios::binary);
@@ -138,6 +140,7 @@ void Dictionary::build() {
 		}
 	}
 	fin.close();
+	cout << "20% engEng done" << endl;
 	//engVie
 	fin.open("../Data/engVie/engVie.txt", ios::binary);
 	engVie_key.build(fin);
@@ -161,6 +164,7 @@ void Dictionary::build() {
 		}
 	}
 	fin.close();
+	cout << "40% engVie done" << endl;
 	//vieEng
 	fin.open("../Data/vieEng/vieEng.txt", ios::binary);
 	vieEng_key.build(fin);
@@ -184,6 +188,7 @@ void Dictionary::build() {
 		}
 	}
 	fin.close();
+	cout << "60% vieEng done" << endl;
 	//slang
 	fin.open("../Data/slang/slang.txt", ios::binary);
 	slang_key.build(fin);
@@ -207,6 +212,7 @@ void Dictionary::build() {
 		}
 	}
 	fin.close();
+	cout << "80% slang done" << endl;
 	//emotional
 	fin.open("../Data/emotional/emotional.txt", ios::binary);
 	emotional_key.build(fin);
@@ -230,6 +236,7 @@ void Dictionary::build() {
 		}
 	}
 	fin.close();
+	cout << "100% emotional done" << endl;
 }
 
 void Dictionary::save() {
@@ -602,6 +609,7 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		} else return false;
 		break;
 	}
+<<<<<<< Updated upstream
 	return true;
 }
 
@@ -611,6 +619,9 @@ bool compareDef(vector<string> curDef, string newdef)
 	{
 		if (curDef[i] == newdef) return false;
 	}
+=======
+	//addWordToFile(dictnum, key, def);
+>>>>>>> Stashed changes
 	return true;
 }
 
@@ -803,4 +814,133 @@ void Dictionary::addHistory(string key) {
 void Dictionary::removeAHistory(string key) {
 	history.init();
 	history.remove(key);
+}
+
+void Dictionary::randomWord(int dictNum, pair<int, vector<string>> &result) {
+	result.second.resize(5);
+	switch (dictNum)
+	{
+	default:
+		break;
+	case 1: 
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, engEng.size() - 1);
+			if (i == result.first) {
+				result.second[0] = engEng[randIdKey].key;
+			}
+			int randIdDef = RandInt(0, engEng[randIdKey].def.size() - 1);
+			result.second[i] = engEng[randIdKey].def[randIdDef];
+		}
+		return;
+	case 2:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, vieEng.size() - 1);
+			if (i == result.first) {
+				result.second[0] = vieEng[randIdKey].key;
+			}
+			int randIdDef = RandInt(0, vieEng[randIdKey].def.size() - 1);
+			result.second[i] = vieEng[randIdKey].def[randIdDef];
+		}
+		return;
+	case 3:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, engVie.size() - 1);
+			if (i == result.first) {
+				result.second[0] = engVie[randIdKey].key;
+			}
+			int randIdDef = RandInt(0, engVie[randIdKey].def.size() - 1);
+			result.second[i] = engVie[randIdKey].def[randIdDef];
+		}
+		return;
+	case 4:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, slang.size() - 1);
+			if (i == result.first) {
+				result.second[0] = slang[randIdKey].key;
+			}
+			int randIdDef = RandInt(0, slang[randIdKey].def.size() - 1);
+			result.second[i] = slang[randIdKey].def[randIdDef];
+		}
+		return;
+	case 5:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, emotional.size() - 1);
+			if (i == result.first) {
+				result.second[0] = emotional[randIdKey].key;
+			}
+			int randIdDef = RandInt(0, emotional[randIdKey].def.size() - 1);
+			result.second[i] = emotional[randIdKey].def[randIdDef];
+		}
+		return;
+	}
+
+}
+
+void Dictionary::randomDef(int dictNum, pair<int, vector<string>> &result) {
+	result.second.resize(5);
+	switch (dictNum)
+	{
+	default:
+		break;
+	case 1:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, engEng.size() - 1);
+			if (i == result.first) {
+				int randIdDef = RandInt(0, engEng[randIdKey].def.size() - 1);
+				result.second[0] = engEng[randIdKey].def[randIdDef];
+			}
+			result.second[i] = engEng[randIdKey].key;
+		}
+		return;
+	case 2:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, vieEng.size() - 1);
+			if (i == result.first) {
+				int randIdDef = RandInt(0, vieEng[randIdKey].def.size() - 1);
+				result.second[0] = vieEng[randIdKey].def[randIdDef];
+			}
+			result.second[i] = vieEng[randIdKey].key;
+		}
+		return;
+	case 3:
+		result.first = RandInt(0, engVie.size() - 1);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(1, 4);
+			if (i == result.first) {
+				int randIdDef = RandInt(0, engVie[randIdKey].def.size() - 1);
+				result.second[0] = engVie[randIdKey].def[randIdDef];
+			}
+			result.second[i] = engVie[randIdKey].key;
+		}
+		return;
+	case 4:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, slang.size() - 1);
+			if (i == result.first) {
+				int randIdDef = RandInt(0, slang[randIdKey].def.size() - 1);
+				result.second[0] = slang[randIdKey].def[randIdDef];
+			}
+			result.second[i] = slang[randIdKey].key;
+		}
+		return;
+	case 5:
+		result.first = RandInt(1, 4);
+		for (int i = 1; i <= 4; ++i) {
+			int randIdKey = RandInt(0, emotional.size() - 1);
+			if (i == result.first) {
+				int randIdDef = RandInt(0, emotional[randIdKey].def.size() - 1);
+				result.second[0] = emotional[randIdKey].def[randIdDef];
+			}
+			result.second[i] = emotional[randIdKey].key;
+		}
+		return;
+	}
 }

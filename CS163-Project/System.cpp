@@ -1,10 +1,15 @@
 #include "System.h"
 #include "UI/Other.h"
+#include <chrono>
 
 Dictionary dictionary;
 
 void System::Construct() {
+	auto start = chrono::high_resolution_clock::now();
 	dictionary.build();
+	auto stop = chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
+	cout << "Time taken by loading data: " << duration.count() << " milliseconds" << endl;
 
 	windowWidth = 1460;
 	windowHeight = 850;
@@ -148,6 +153,12 @@ void System::DrawDefault() {
 		menu = FAVOURITE;
 	}
 	if (game.state == RELEASED) {
+		if (!mode) dictionary.randomWord(dicNum + 1, randData);
+		else dictionary.randomDef(dicNum + 1, randData);
+		cout << randData.first << '\n';
+		for (string& tmp : randData.second) {
+			cout << tmp << '\n';
+		}
 		menu = GAME;
 	}
 	if (addnew.state == RELEASED) {
@@ -207,6 +218,16 @@ void System::DrawFavourite() {
 }
 
 void System::DrawGame() {
+	static Button choiceButton[4];
+	static bool isAnswered = false;
+	static float timeline = 0;
+	Rectangle choiceShape[4] = {
+			{(float)0.027 * windowWidth, (float)0.541 * windowHeight, (float)0.445 * windowWidth, (float)0.176 * windowHeight},
+			{(float)0.527 * windowWidth, (float)0.541 * windowHeight, (float)0.445 * windowWidth, (float)0.176 * windowHeight},
+			{(float)0.027 * windowWidth, (float)0.776 * windowHeight, (float)0.445 * windowWidth, (float)0.176 * windowHeight},
+			{(float)0.527 * windowWidth, (float)0.776 * windowHeight, (float)0.445 * windowWidth, (float)0.176 * windowHeight}
+	};
+	if (timeline <= 10) timeline += GetFrameTime();
 	// draw Game 
 	DrawTextEx(Parable_Regular, "Game", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
 	mainpage.buttonShape.x = 0.039 * windowWidth;
@@ -221,7 +242,56 @@ void System::DrawGame() {
 	else if (modeKey.getState() == RELEASED) mode ^= 1;
 
 	if (mainpage.state == RELEASED) {
+		timeline = 0;
+		isAnswered = false;
 		menu = DEFAULT;
+	}
+
+	// draw multiple choice
+	if (!mode) {// word given
+		Rectangle wordShape = { (float)0.039 * windowWidth, (float)0.194 * windowHeight, (float)0.922 * windowWidth, (float)0.271 * windowHeight };
+		DrawRectangleRoundedLines(wordShape, 0.1, 5, 2, { 113, 201, 206, 255});
+		DrawTextEx(Raleway_Black, randData.second[0].c_str(), GetCenterPos(Raleway_Black, randData.second[0], 48, 1, wordShape), 48, 1, BLACK);
+		for (int i = 0; i < 4; i++) {
+			choiceButton[i].SetBox(choiceShape[i].x, choiceShape[i].y, choiceShape[i].width, choiceShape[i].height, {113, 201, 206, 0}, {113, 201, 206, 15}, {113, 201, 206, 30});
+			choiceButton[i].roundness = 0.2;
+			choiceButton[i].drawCorner = true;
+			choiceButton[i].colorCornerDefault = choiceButton[i].colorCornerClicked = choiceButton[i].colorCornerTouched = {113, 201, 206, 255};
+			if (isAnswered && randData.first == i + 1) {
+				choiceButton[i].colorBoxDefault = choiceButton[i].colorBoxClicked = choiceButton[i].colorBoxTouched = { 0, 179, 0, 255 };
+			}
+			choiceButton[i].DrawText();
+			choiceShape[i].x += 0.01 * windowWidth;
+			choiceShape[i].y += 0.005 * windowHeight;
+			choiceShape[i].width -= 0.015 * windowWidth;
+			choiceShape[i].height -= 0.007 * windowHeight;
+			DrawCircle(choiceShape[i].x + 0.01 * windowHeight, choiceShape[i].y + 0.023 * windowHeight, 0.02 * windowHeight, { 203, 241, 245, 255 });
+			DrawTextEx(Raleway_Bold, to_string(i + 1).c_str(), { choiceShape[i].x + (float)0.001 * windowHeight, choiceShape[i].y + (float)0.002 * windowHeight }, 30, 0.5, BLACK);
+			DrawTextOnBox(choiceShape[i], Raleway_Italic, randData.second[i + 1], { choiceShape[i].x + (float)0.02 * windowWidth, choiceShape[i].y + (float)0.01 * windowHeight }, 30, 0.5, 0.03 * windowHeight, BLACK);
+			if (!isAnswered && choiceButton[i].state == RELEASED) {
+				if (randData.first == i + 1) {
+					isAnswered = true;
+					timeline = 0;
+				}
+			}
+		}
+	}
+	else {// definition given
+
+	}
+	if (isAnswered) {
+		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && timeline >= 1) {
+			isAnswered = false;
+			timeline = 0;
+			if (!mode) {
+				dictionary.randomWord(dicNum + 1, randData);
+			}
+			else {
+				dictionary.randomDef(dicNum + 1, randData);
+			}
+		}
+		DrawRectangle(0, 0, windowWidth, windowHeight, Fade(BLACK, 0.5));
+		DrawTextEx(Raleway_BlackBig, "Correctly!", { (float)0.39 * windowWidth, (float)0.45 * windowHeight }, 68, 0.7, { 50, 205, 50, 255 });
 	}
 }
 
@@ -468,9 +538,6 @@ void System::DrawSearchResult() {
 		remove.SetBox(0.893 * windowWidth, boxShape.y + 0.01 * windowHeight, remove_icon.width * 0.08, remove_icon.height * 0.08, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 		remove.DrawText();
 		DrawTextureEx(remove_icon, { (float)0.893 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.08, remove.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
-		//reload.SetBox(0.8943 * windowWidth, boxShape.y + 0.01 * windowHeight, reload_icon.width * 0.085, reload_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
-		//reload.DrawText();
-		//DrawTextureEx(reload_icon, { (float)0.8943 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, reload.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	}
 
 	// draw title

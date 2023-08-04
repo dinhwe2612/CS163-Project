@@ -1,5 +1,6 @@
 #include "Keyword.h"
 #include <string>
+#include <random>
 using namespace std;
 
 int Keyword::insert(string key, string &def) {
@@ -44,19 +45,18 @@ void Keyword::removeHelper(TrieNode* root, string key, int depth) {
     if (depth == key.length()) {
         //remove the definition vector
         root->id = -1;
+        delete root;
+        root = nullptr;
+        --numOfWords;
         return;
     }
 
     int index = static_cast<int>(key[depth]);
     removeHelper(root->child[index], key, depth + 1);
+    --root->countChild;
 
     // remove if it has no definition and has no child nodes.
-    if (root->id == -1) {
-        for (int i = 0; i < ASCII_SIZE; ++i) {
-            if (root->child[i]) {
-                return;
-            }
-        }
+    if (root->countChild == 0) {
         delete root;
         root = nullptr;
     }
@@ -97,6 +97,7 @@ vector<int> Keyword::predict(string keyword) {
 }
 
 void Keyword::save(ofstream &fout) {
+    fout.write((char*)&numOfWords, sizeof(int));
     queue<TrieNode*> q;
     q.push(root);
     while (!q.empty()) {
@@ -115,6 +116,7 @@ void Keyword::save(ofstream &fout) {
 
 
 void Keyword::build(ifstream& fin) {
+    fin.read((char*)&numOfWords, sizeof(int));
     queue<TrieNode*> q;
     q.push(root);
     while (!q.empty()) {

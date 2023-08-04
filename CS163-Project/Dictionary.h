@@ -56,6 +56,10 @@ struct Dictionary {
 	vector<string> viewHistory();
 	void addHistory(string key);
 	void removeAHistory(string key);
+
+	// random
+	void randomWord(int dictNum, pair<int, vector<string>>& result);
+	void randomDef(int dictNum, pair<int, vector<string>> &result);
 };
 bool compareDef(vector<string> curDef, string newdef);
 string getSource(int dictNum);

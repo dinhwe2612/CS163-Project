@@ -23,8 +23,8 @@ int main(void)
 
     //Dictionary d;
     //auto start = chrono::high_resolution_clock::now();
-    ////d.buildFromOrigin();
-    //d.build();
+    //d.buildFromOrigin();
+    ////d.build();
     //auto stop = chrono::high_resolution_clock::now();
     //auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
     //cout << "Time taken by loading data: " << duration.count() << " milliseconds" << endl;
