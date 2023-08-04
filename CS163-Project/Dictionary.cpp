@@ -116,127 +116,116 @@ void Dictionary::buildFromOrigin() {
 void Dictionary::build() {
 	ifstream fin;
 	//engEng
-	fin.open("../Data/engEng/engEng_trie.txt");
-	engEng_key.build(engEng_key.root, fin);
-	fin.close();
-	fin.open("../Data/engEng/engEng_hashTable.txt");
+	fin.open("../Data/engEng/engEng.txt", ios::binary);
+	engEng_key.build(fin);
 	engEng_def.build(fin);
-	fin.close();
-	fin.open("../Data/engEng/engEng.txt");
-	int sz; fin >> sz;
-	fin.ignore();
+	int sz; fin.read((char*)&sz, sizeof(int));
 	engEng.resize(sz);
 	for (int i = 0; i < sz; ++i) {
-		getline(fin, engEng[i].key);
-		int sz2; fin >> sz2;
-		fin.ignore();
-		for (int j = 0; j < sz2; ++j) {
-			string tmp; getline(fin, tmp);
+		int szKey; 
+		fin.read((char*)&szKey, sizeof(int));
+		engEng[i].key.resize(szKey);
+		fin.read((char*)&engEng[i].key[0], szKey);
+		int numDef; 
+		fin.read((char*)&numDef, sizeof(int));
+		for (int j = 0; j < numDef; ++j) {
+			string tmp; 
+			int szDef;
+			fin.read((char*)&szDef, sizeof(int));
+			tmp.resize(szDef);
+			fin.read((char*)&tmp[0], szDef);
 			engEng[i].def.push_back(tmp);
 		}
 	}
 	fin.close();
 	//engVie
-	fin.open("../Data/engVie/engVie_trie.txt");
-	engVie_key.build(engVie_key.root, fin);
-	fin.close();
-	fin.open("../Data/engVie/engVie_hashTable.txt");
+	fin.open("../Data/engVie/engVie.txt", ios::binary);
+	engVie_key.build(fin);
 	engVie_def.build(fin);
-	fin.close();
-	fin.open("../Data/engVie/engVie.txt");
-	fin >> sz;
-	fin.ignore();
+	fin.read((char*)&sz, sizeof(int));
 	engVie.resize(sz);
 	for (int i = 0; i < sz; ++i) {
-		getline(fin, engVie[i].key);
-		int sz2; fin >> sz2;
-		fin.ignore();
-		for (int j = 0; j < sz2; ++j) {
-			string tmp; getline(fin, tmp);
+		int szKey;
+		fin.read((char*)&szKey, sizeof(int));
+		engVie[i].key.resize(szKey);
+		fin.read((char*)&engVie[i].key[0], szKey);
+		int numDef;
+		fin.read((char*)&numDef, sizeof(int));
+		for (int j = 0; j < numDef; ++j) {
+			string tmp;
+			int szDef;
+			fin.read((char*)&szDef, sizeof(int));
+			tmp.resize(szDef);
+			fin.read((char*)&tmp[0], szDef);
 			engVie[i].def.push_back(tmp);
 		}
 	}
 	fin.close();
 	//vieEng
-	fin.open("../Data/vieEng/vieEng_trie.txt");
-	vieEng_key.build(vieEng_key.root, fin);
-	fin.close();
-	fin.open("../Data/vieEng/vieEng_hashTable.txt");
+	fin.open("../Data/vieEng/vieEng.txt", ios::binary);
+	vieEng_key.build(fin);
 	vieEng_def.build(fin);
-	fin.close();
-	fin.open("../Data/vieEng/vieEng.txt");
-	fin >> sz;
-	fin.ignore();
+	fin.read((char*)&sz, sizeof(int));
 	vieEng.resize(sz);
 	for (int i = 0; i < sz; ++i) {
-		getline(fin, vieEng[i].key);
-		int sz2; fin >> sz2;
-		fin.ignore();
-		for (int j = 0; j < sz2; ++j) {
-			string tmp; getline(fin, tmp);
+		int szKey;
+		fin.read((char*)&szKey, sizeof(int));
+		vieEng[i].key.resize(szKey);
+		fin.read((char*)&vieEng[i].key[0], szKey);
+		int numDef;
+		fin.read((char*)&numDef, sizeof(int));
+		for (int j = 0; j < numDef; ++j) {
+			string tmp;
+			int szDef;
+			fin.read((char*)&szDef, sizeof(int));
+			tmp.resize(szDef);
+			fin.read((char*)&tmp[0], szDef);
 			vieEng[i].def.push_back(tmp);
 		}
 	}
 	fin.close();
-	//engVie
-	fin.open("../Data/slang/slang_trie.txt");
-	slang_key.build(slang_key.root, fin);
-	fin.close();
-	fin.open("../Data/slang/slang_hashTable.txt");
-	slang_def.build(fin);
-	fin.close();
-	fin.open("../Data/slang/slang.txt");
-	fin >> sz;
-	fin.ignore();
-	slang.resize(sz);
-	for (int i = 0; i < sz; ++i) {
-		getline(fin, slang[i].key);
-		int sz2; fin >> sz2;
-		fin.ignore();
-		for (int j = 0; j < sz2; ++j) {
-			string tmp; getline(fin, tmp);
-			slang[i].def.push_back(tmp);
-		}
-	}
-	fin.close();
 	//slang
-	fin.open("../Data/slang/slang_trie.txt");
-	slang_key.build(slang_key.root, fin);
-	fin.close();
-	fin.open("../Data/slang/slang_hashTable.txt");
+	fin.open("../Data/slang/slang.txt", ios::binary);
+	slang_key.build(fin);
 	slang_def.build(fin);
-	fin.close();
-	fin.open("../Data/slang/slang.txt");
-	fin >> sz;
-	fin.ignore();
+	fin.read((char*)&sz, sizeof(int));
 	slang.resize(sz);
 	for (int i = 0; i < sz; ++i) {
-		getline(fin, slang[i].key);
-		int sz2; fin >> sz2;
-		fin.ignore();
-		for (int j = 0; j < sz2; ++j) {
-			string tmp; getline(fin, tmp);
+		int szKey;
+		fin.read((char*)&szKey, sizeof(int));
+		slang[i].key.resize(szKey);
+		fin.read((char*)&slang[i].key[0], szKey);
+		int numDef;
+		fin.read((char*)&numDef, sizeof(int));
+		for (int j = 0; j < numDef; ++j) {
+			string tmp;
+			int szDef;
+			fin.read((char*)&szDef, sizeof(int));
+			tmp.resize(szDef);
+			fin.read((char*)&tmp[0], szDef);
 			slang[i].def.push_back(tmp);
 		}
 	}
 	fin.close();
 	//emotional
-	fin.open("../Data/emotional/emotional_trie.txt");
-	emotional_key.build(emotional_key.root, fin);
-	fin.close();
-	fin.open("../Data/emotional/emotional_hashTable.txt");
+	fin.open("../Data/emotional/emotional.txt", ios::binary);
+	emotional_key.build(fin);
 	emotional_def.build(fin);
-	fin.close();
-	fin.open("../Data/emotional/emotional.txt");
-	fin >> sz;
-	fin.ignore();
+	fin.read((char*)&sz, sizeof(int));
 	emotional.resize(sz);
 	for (int i = 0; i < sz; ++i) {
-		getline(fin, emotional[i].key);
-		int sz2; fin >> sz2;
-		fin.ignore();
-		for (int j = 0; j < sz2; ++j) {
-			string tmp; getline(fin, tmp);
+		int szKey;
+		fin.read((char*)&szKey, sizeof(int));
+		emotional[i].key.resize(szKey);
+		fin.read((char*)&emotional[i].key[0], szKey);
+		int numDef;
+		fin.read((char*)&numDef, sizeof(int));
+		for (int j = 0; j < numDef; ++j) {
+			string tmp;
+			int szDef;
+			fin.read((char*)&szDef, sizeof(int));
+			tmp.resize(szDef);
+			fin.read((char*)&tmp[0], szDef);
 			emotional[i].def.push_back(tmp);
 		}
 	}
@@ -245,88 +234,99 @@ void Dictionary::build() {
 
 void Dictionary::save() {
 	ofstream fout;
+	int sz;
 	//engEng
-	fout.open("../Data/engEng/engEng_trie.txt");
-	engEng_key.save(engEng_key.root, fout);
-	fout.close();
-	fout.open("../Data/engEng/engEng_hashTable.txt");
+	fout.open("../Data/engEng/engEng.txt", ios::binary);
+	engEng_key.save(fout);
 	engEng_def.save(fout);
-	fout.close();
-	fout.open("../Data/engEng/engEng.txt");
-	fout << engEng.size() << '\n';
+	sz = engEng.size();
+	fout.write((char*)&sz, sizeof(int));
 	for (int i = 0; i < engEng.size(); ++i) {
-		fout << engEng[i].key << '\n';
-		fout << engEng[i].def.size() << '\n';
+		int szKey = engEng[i].key.size();
+		fout.write((char*)&szKey, sizeof(int));
+		fout.write((char*)&engEng[i].key[0], sizeof(char) * szKey);
+		int numDef = engEng[i].def.size();
+		fout.write((char*)&numDef, sizeof(int));
 		for (string &tmp : engEng[i].def) {
-			fout << tmp << '\n';
+			int szDef = tmp.size();
+			fout.write((char*)&szDef, sizeof(int));
+			fout.write((char*)&tmp[0], sizeof(char) * szDef);
 		}
 	}
 	fout.close();
 	//vieEng
-	fout.open("../Data/vieEng/vieEng_trie.txt");
-	vieEng_key.save(vieEng_key.root, fout);
-	fout.close();
-	fout.open("../Data/vieEng/vieEng_hashTable.txt");
+	fout.open("../Data/vieEng/vieEng.txt", ios::binary);
+	vieEng_key.save(fout);
 	vieEng_def.save(fout);
-	fout.close();
-	fout.open("../Data/vieEng/vieEng.txt");
-	fout << vieEng.size() << '\n';
+	sz = vieEng.size();
+	fout.write((char*)&sz, sizeof(int));
 	for (int i = 0; i < vieEng.size(); ++i) {
-		fout << vieEng[i].key << '\n';
-		fout << vieEng[i].def.size() << '\n';
+		int szKey = vieEng[i].key.size();
+		fout.write((char*)&szKey, sizeof(int));
+		fout.write((char*)&vieEng[i].key[0], sizeof(char) * szKey);
+		int numDef = vieEng[i].def.size();
+		fout.write((char*)&numDef, sizeof(int));
 		for (string& tmp : vieEng[i].def) {
-			fout << tmp << '\n';
+			int szDef = tmp.size();
+			fout.write((char*)&szDef, sizeof(int));
+			fout.write((char*)&tmp[0], sizeof(char) * szDef);
 		}
 	}
 	fout.close();
 	//engVie
-	fout.open("../Data/engVie/engVie_trie.txt");
-	engVie_key.save(engVie_key.root, fout);
-	fout.close();
-	fout.open("../Data/engVie/engVie_hashTable.txt");
+	fout.open("../Data/engVie/engVie.txt", ios::binary);
+	engVie_key.save(fout);
 	engVie_def.save(fout);
-	fout.close();
-	fout.open("../Data/engVie/engVie.txt");
-	fout << engVie.size() << '\n';
+	sz = engVie.size();
+	fout.write((char*)&sz, sizeof(int));
 	for (int i = 0; i < engVie.size(); ++i) {
-		fout << engVie[i].key << '\n';
-		fout << engVie[i].def.size() << '\n';
+		int szKey = engVie[i].key.size();
+		fout.write((char*)&szKey, sizeof(int));
+		fout.write((char*)&engVie[i].key[0], sizeof(char) * szKey);
+		int numDef = engVie[i].def.size();
+		fout.write((char*)&numDef, sizeof(int));
 		for (string& tmp : engVie[i].def) {
-			fout << tmp << '\n';
+			int szDef = tmp.size();
+			fout.write((char*)&szDef, sizeof(int));
+			fout.write((char*)&tmp[0], sizeof(char) * szDef);
 		}
 	}
 	fout.close();
 	//slang
-	fout.open("../Data/slang/slang_trie.txt");
-	slang_key.save(slang_key.root, fout);
-	fout.close();
-	fout.open("../Data/slang/slang_hashTable.txt");
+	fout.open("../Data/slang/slang.txt", ios::binary);
+	slang_key.save(fout);
 	slang_def.save(fout);
-	fout.close();
-	fout.open("../Data/slang/slang.txt");
-	fout << slang.size() << '\n';
+	sz = slang.size();
+	fout.write((char*)&sz, sizeof(int));
 	for (int i = 0; i < slang.size(); ++i) {
-		fout << slang[i].key << '\n';
-		fout << slang[i].def.size() << '\n';
+		int szKey = slang[i].key.size();
+		fout.write((char*)&szKey, sizeof(int));
+		fout.write((char*)&slang[i].key[0], sizeof(char) * szKey);
+		int numDef = slang[i].def.size();
+		fout.write((char*)&numDef, sizeof(int));
 		for (string& tmp : slang[i].def) {
-			fout << tmp << '\n';
+			int szDef = tmp.size();
+			fout.write((char*)&szDef, sizeof(int));
+			fout.write((char*)&tmp[0], sizeof(char) * szDef);
 		}
 	}
 	fout.close();
 	//emotional
-	fout.open("../Data/emotional/emotional_trie.txt");
-	emotional_key.save(emotional_key.root, fout);
-	fout.close();
-	fout.open("../Data/emotional/emotional_hashTable.txt");
+	fout.open("../Data/emotional/emotional.txt", ios::binary);
+	emotional_key.save(fout);
 	emotional_def.save(fout);
-	fout.close();
-	fout.open("../Data/emotional/emotional.txt");
-	fout << emotional.size() << '\n';
+	sz = emotional.size();
+	fout.write((char*)&sz, sizeof(int));
 	for (int i = 0; i < emotional.size(); ++i) {
-		fout << emotional[i].key << '\n';
-		fout << emotional[i].def.size() << '\n';
+		int szKey = emotional[i].key.size();
+		fout.write((char*)&szKey, sizeof(int));
+		fout.write((char*)&emotional[i].key[0], sizeof(char) * szKey);
+		int numDef = emotional[i].def.size();
+		fout.write((char*)&numDef, sizeof(int));
 		for (string& tmp : emotional[i].def) {
-			fout << tmp << '\n';
+			int szDef = tmp.size();
+			fout.write((char*)&szDef, sizeof(int));
+			fout.write((char*)&tmp[0], sizeof(char) * szDef);
 		}
 	}
 	fout.close();

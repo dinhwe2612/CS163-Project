@@ -4,7 +4,7 @@
 Dictionary dictionary;
 
 void System::Construct() {
-	dictionary.buildFromOrigin();
+	dictionary.build();
 
 	windowWidth = 1460;
 	windowHeight = 850;
@@ -77,6 +77,7 @@ void System::Construct() {
 	filledHeart_icon = LoadTexture("../External/source/Image/filled-heart.png");
 	hollowedHeart_icon = LoadTexture("../External/source/Image/heart - Copy.png");
 	reload_icon = LoadTexture("../External/source/Image/reload-icon.png");
+	remove_icon = LoadTexture("../External/source/Image/remove-icon.png");
 }
 
 void System::Draw() {	
@@ -463,10 +464,13 @@ void System::DrawSearchResult() {
 		edit.DrawText();
 		DrawTextureEx(edit_icon, { (float)0.858 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.075, edit.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 
-		Button reload;
-		reload.SetBox(0.8943 * windowWidth, boxShape.y + 0.01 * windowHeight, reload_icon.width * 0.085, reload_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
-		reload.DrawText();
-		DrawTextureEx(reload_icon, { (float)0.8943 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, reload.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		Button remove;
+		remove.SetBox(0.893 * windowWidth, boxShape.y + 0.01 * windowHeight, remove_icon.width * 0.08, remove_icon.height * 0.08, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		remove.DrawText();
+		DrawTextureEx(remove_icon, { (float)0.893 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.08, remove.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		//reload.SetBox(0.8943 * windowWidth, boxShape.y + 0.01 * windowHeight, reload_icon.width * 0.085, reload_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		//reload.DrawText();
+		//DrawTextureEx(reload_icon, { (float)0.8943 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, reload.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	}
 
 	// draw title

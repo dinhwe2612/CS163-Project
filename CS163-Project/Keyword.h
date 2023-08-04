@@ -11,7 +11,7 @@ const int ASCII_SIZE = 128;
 
 struct TrieNode {
 	TrieNode *child[ASCII_SIZE];
-	//int countWord;// count word have the same prefix
+	int countChild = 0;
 	//vector<string> definition;// definition at the end of keyword
 	int id = -1;// id of keyword
 	TrieNode() {
@@ -26,13 +26,12 @@ struct Keyword { // Trie
 	int limitSuggestions = 5;
 	vector<int> predict(string keyword);// using bfs, return vector of suggestions
 
-	void build(TrieNode* root, ifstream &fin);// build Trie from edges
+	void build(ifstream &fin);// build Trie from edges
 	int insert(string key, string &def);// return id of words if insert successfully else return -1
 	bool edit(string key, string def, string newdef);// return true if edit successfully
 	int search(string key);
 	void remove(string key);
-	void save(TrieNode* root, ofstream &fout);
-	void load(TrieNode* root, vector < pair<pair<int, int>, char>>& edges);
+	void save(ofstream &fout);
 
 private:
 	void removeHelper(TrieNode* root, string key, int depth);

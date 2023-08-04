@@ -5,7 +5,6 @@ using namespace std;
 int Keyword::insert(string key, string &def) {
     if (!root) root = new TrieNode();
     TrieNode* pCrawl = root;
-
     for (int i = 0; i < key.length(); i++)
     {
         int index = tolower(key[i]);
@@ -13,9 +12,12 @@ int Keyword::insert(string key, string &def) {
             cerr << "Error: " << key << endl;
             index = ' ';
         }
-        if (!pCrawl->child[index])
+        if (!pCrawl->child[index]) {
             pCrawl->child[index] = new TrieNode();
-
+            ++pCrawl->countChild;
+        }
+            
+        
         pCrawl = pCrawl->child[index];
     }
     if (pCrawl->id == -1) return pCrawl->id = numOfWords++;
@@ -94,28 +96,37 @@ vector<int> Keyword::predict(string keyword) {
 	return suggestions;
 }
 
-void Keyword::save(TrieNode* root, ofstream &fout) {
-    fout << root->id << ' ';
-    int cnt = 0;
-    for (int i = 0; i < ASCII_SIZE; ++i) {
-        if (root->child[i]) ++cnt;
-    }
-    fout << cnt << ' ';
-    for (int i = 0; i < ASCII_SIZE; ++i) {
-        if (root->child[i]) {
-			fout << i << ' ';
-			save(root->child[i], fout);
+void Keyword::save(ofstream &fout) {
+    queue<TrieNode*> q;
+    q.push(root);
+    while (!q.empty()) {
+		TrieNode* temp = q.front();
+		q.pop();
+        fout.write((char*)&temp->id, sizeof(int));
+        fout.write((char*)&temp->countChild, sizeof(int));
+        for (int i = 0; i < ASCII_SIZE; ++i) {
+            if (temp->child[i]) {
+                fout.write((char*)&i, sizeof(int));
+				q.push(temp->child[i]);
+			}
 		}
 	}
 }
 
 
-void Keyword::build(TrieNode* root, ifstream& fin) {
-    fin >> root->id;
-    int cnt; fin >> cnt;
-    for (int i = 0; i < cnt; ++i) {
-        int c; fin >> c;
-        root->child[c] = new TrieNode();
-        build(root->child[c], fin);
+void Keyword::build(ifstream& fin) {
+    queue<TrieNode*> q;
+    q.push(root);
+    while (!q.empty()) {
+        TrieNode* temp = q.front();
+        q.pop();
+        fin.read((char*)&temp->id, sizeof(int));
+        fin.read((char*)&temp->countChild, sizeof(int));
+        for (int i = 0; i < temp->countChild; ++i) {
+			int c; 
+            fin.read((char*)&c, sizeof(int));
+			temp->child[c] = new TrieNode();
+			q.push(temp->child[c]);
+		}
     }
 }

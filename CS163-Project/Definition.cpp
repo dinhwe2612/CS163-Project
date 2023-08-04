@@ -86,20 +86,21 @@ void Definition::deleteDefinition() {
 
 void Definition::build(ifstream& fin) {
     for (int i = 0; i < MAX; ++i) {
-        int num; fin >> num;
+        int num; 
+        fin.read((char*)&num, sizeof(int));
         for (int j = 0; j < num; ++j) {
-			int id; fin >> id;
-			words[i].push_back(id);
+            words[i].emplace_back();
+            fin.read((char*)&words[i][j], sizeof(int));
 		}
 	}
 }
 
 void Definition::save(ofstream& fout) {
     for (int i = 0; i < MAX; ++i) {
-        fout << words[i].size() << ' ';
+        int num = words[i].size();
+        fout.write((char*)&num, sizeof(int));
         for(int &j : words[i]) {
-			fout << j << ' ';
+            fout.write((char*)&j, sizeof(int));
 		}
-        fout << '\n';
 	}
 }
