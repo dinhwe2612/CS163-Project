@@ -498,13 +498,54 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 	return found;
 }
 
-void Dictionary::deleteDictionary() {
-	engEng_def.deleteDefinition();
-	vieEng_def.deleteDefinition();
-	engVie_def.deleteDefinition();
-	slang_def.deleteDefinition();
-	emotional_def.deleteDefinition();
+vector<string> Dictionary::randomAWord(int dictNum)
+{
+	int id;
+	srand(time(NULL));
+	vector<string> word;
+	switch (dictNum)
+	{
+	case 1:
+		id = rand() % (engEng.size() + 1);
+		word.push_back(engEng[id].key);
+		for (int i = 0; i < engEng[id].def.size(); ++i)
+			word.push_back(engEng[id].def[i]);
+		break;
+	case 2:
+		id = rand() % (vieEng.size() + 1);
+		word.push_back(vieEng[id].key);
+		for (int i = 0; i < vieEng[id].def.size(); ++i)
+			word.push_back(vieEng[id].def[i]);
+		break;
+	case 3:
+		id = rand() % (engVie.size() + 1);
+		word.push_back(engVie[id].key);
+		for (int i = 0; i < engVie[id].def.size(); ++i)
+			word.push_back(engVie[id].def[i]);
+		break;
+	case 4:
+		id = rand() % (slang.size() + 1);
+		word.push_back(slang[id].key);
+		for (int i = 0; i < slang[id].def.size(); ++i)
+			word.push_back(slang[id].def[i]);
+		break;
+	case 5:
+		id = rand() % (emotional.size() + 1);
+		word.push_back(emotional[id].key);
+		for (int i = 0; i < emotional[id].def.size(); ++i)
+			word.push_back(emotional[id].def[i]);
+		break;
+	}
+	return word;
 }
+
+//void Dictionary::deleteDictionary() {
+//	engEng_def.deleteDefinition();
+//	vieEng_def.deleteDefinition();
+//	engVie_def.deleteDefinition();
+//	slang_def.deleteDefinition();
+//	emotional_def.deleteDefinition();
+//}
 
 bool Dictionary::addNewWord(int dictnum, string key, string def)
 {
@@ -561,12 +602,61 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		} else return false;
 		break;
 	}
-	addWordToFile(dictnum, key, def);
+	return true;
+}
+
+bool compareDef(vector<string> curDef, string newdef)
+{
+	for (int i = 0; i < curDef.size(); ++i)
+	{
+		if (curDef[i] == newdef) return false;
+	}
 	return true;
 }
 
 bool Dictionary::editDefinition(int dictNum, string key, string def, string newdef) {
-	return false;
+	int id;
+	vector<string> curDef;
+	vector<string>::iterator it; 
+	switch (dictNum)
+	{
+	case 1:
+		id = engEng_key.search(key);
+		curDef = engEng[id].def;
+		if (!compareDef(curDef, newdef)) return false;
+		it = find(curDef.begin(), curDef.end(), def);
+		*it = newdef;
+		break;
+	case 2:
+		id = vieEng_key.search(key);
+		curDef = vieEng[id].def;
+		if (!compareDef(curDef, newdef)) return false;
+		it = find(curDef.begin(), curDef.end(), def);
+		*it = newdef;
+		break;
+	case 3:
+		id = engVie_key.search(key);
+		curDef = engVie[id].def;
+		if (!compareDef(curDef, newdef)) return false;
+		it = find(curDef.begin(), curDef.end(), def);
+		*it = newdef;
+		break;
+	case 4:
+		id = slang_key.search(key);
+		curDef = slang[id].def;
+		if (!compareDef(curDef, newdef)) return false;
+		it = find(curDef.begin(), curDef.end(), def);
+		*it = newdef;
+		break;
+	case 5:
+		id = emotional_key.search(key);
+		curDef = emotional[id].def;
+		if (!compareDef(curDef, newdef)) return false;
+		it = find(curDef.begin(), curDef.end(), def);
+		*it = newdef;
+		break;
+	}
+	return true;
 }	
 
 string getSource(int dictNum) {
@@ -584,40 +674,92 @@ string getSource(int dictNum) {
 	}
 }
 
-void copyDictionary(int dictNum)
+//void copyDictionary(int dictNum)
+//{
+//	string source = getSource(dictNum);
+//
+//	ifstream fin;
+//	fin.open("../Data/" + source + "/" + source + "_origin.txt", ios::binary | ios::ate);
+//
+//	ofstream fout;
+//	fout.open("../Data/" + source + "/" + source + ".txt", ios::binary);
+//
+//	int size = fin.tellg();
+//	char* memblock = new char[size];
+//	fin.seekg(0, ios::beg);
+//	fin.read(memblock, size);
+//	fout.write(memblock, size);
+//
+//	delete[] memblock;
+//	fin.close();
+//	fout.close();
+//}
+
+//void addWordToFile(int dictNum, string key, string def)
+//{
+//	string filename = getSource(dictNum);
+//
+//	ofstream fout;
+//	fout.open("../Data/" + filename + "/" + filename + ".txt", ios::app);
+//	fout << "\n" << key << "	" << def;
+//	fout.close();
+//}
+
+void Dictionary::removeAWord(int dictNum, string key)
 {
-	string source = getSource(dictNum);
-
-	ifstream fin;
-	fin.open("../Data/" + source + "/" + source + "_origin.txt", ios::binary | ios::ate);
-
-	ofstream fout;
-	fout.open("../Data/" + source + "/" + source + ".txt", ios::binary);
-
-	int size = fin.tellg();
-	char* memblock = new char[size];
-	fin.seekg(0, ios::beg);
-	fin.read(memblock, size);
-	fout.write(memblock, size);
-
-	delete[] memblock;
-	fin.close();
-	fout.close();
-}
-
-void addWordToFile(int dictNum, string key, string def)
-{
-	string filename = getSource(dictNum);
-
-	ofstream fout;
-	fout.open("../Data/" + filename + "/" + filename + ".txt", ios::app);
-	fout << "\n" << key << "	" << def;
-	fout.close();
+	int id;
+	vector<dic>::iterator it;
+	switch (dictNum)
+	{
+	case 1:
+		id = engEng_key.search(key);
+		for (int i = 0; i < engEng[id].def.size(); ++i)
+			engEng_def.remove(engEng[id].def[i], id);
+		it = engEng.begin() + id;
+		engEng.erase(it);
+		engEng_key.remove(key);
+		break;
+	case 2:
+		id = vieEng_key.search(key);
+		for (int i = 0; i < vieEng[id].def.size(); ++i)
+			vieEng_def.remove(vieEng[id].def[i], id);
+		it = vieEng.begin() + id;
+		vieEng.erase(it);
+		vieEng_key.remove(key);
+		break;
+	case 3:
+		id = engVie_key.search(key);
+		for (int i = 0; i < engVie[id].def.size(); ++i)
+			engVie_def.remove(engVie[id].def[i], id);
+		it = engVie.begin() + id;
+		engVie.erase(it);
+		engVie_key.remove(key);
+		break;
+	case 4:
+		id = slang_key.search(key);
+		for (int i = 0; i < slang[id].def.size(); ++i)
+			slang_def.remove(slang[id].def[i], id);
+		it = slang.begin() + id;
+		slang.erase(it);
+		slang_key.remove(key);
+		break;
+	case 5:
+		id = emotional_key.search(key);
+		for (int i = 0; i < emotional[id].def.size(); ++i)
+			emotional_def.remove(emotional[id].def[i], id);
+		it = emotional.begin() + id;
+		emotional.erase(it);
+		emotional_key.remove(key);
+		break;
+	}
 }
 
 void Dictionary::resetDictionary(int dictNum)
 {
-	copyDictionary(dictNum);
+	// copyDictionary(dictNum);
+	buildFromOrigin();
+	favourite.removeAll();
+	history.removeAll();
 }
 
 vector<string> Dictionary::viewFavourite(int dictNum) {

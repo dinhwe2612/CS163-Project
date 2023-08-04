@@ -41,10 +41,11 @@ struct Dictionary {
 	vector<string> predictKeyword(string key, int dicNum);
 	vector<string> searchDefinition(string def, int dicNum);
 	bool addNewWord(int dictnum, string key, string def);
-	void deleteDictionary();
+	//void deleteDictionary();
 	void resetDictionary(int dictNum);
 	bool editDefinition(int dictNum, string key, string def, string newdef);
-
+	void removeAWord(int dictNum, string key);
+	vector<string> randomAWord(int dictNum);
 	// favourite function
 	vector<string> viewFavourite(int dictNum);
 	void addFavourite(int dictNum, string key);
@@ -55,7 +56,7 @@ struct Dictionary {
 	void addHistory(string key);
 	void removeAHistory(string key);
 };
-
+bool compareDef(vector<string> curDef, string newdef);
 string getSource(int dictNum);
 void copyDictionary(int dictNum);
 void addWordToFile(int dictNum, string key, string def);
