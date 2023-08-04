@@ -16,6 +16,7 @@ struct Favourite {
 	void init(string dataset);
 	void insert(string key);
 	void remove(string key);
+	bool isFavourite(string key);
 	void removeAll();
 };
 
