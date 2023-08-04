@@ -49,6 +49,7 @@ struct Dictionary {
 	vector<string> viewFavourite(int dictNum);
 	void addFavourite(int dictNum, string key);
 	void removeAFavourite(int dictNum, string key);
+	bool isFavourite(string key);
 
 	// history function
 	vector<string> viewHistory();

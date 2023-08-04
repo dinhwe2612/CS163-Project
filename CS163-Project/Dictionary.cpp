@@ -638,6 +638,16 @@ void Dictionary::removeAFavourite(int dictNum, string key) {
 	favourite.remove(key);
 }
 
+bool Dictionary::isFavourite(string key) {
+	for (int i = 1; i <= 5; i++) {
+		string dataset = getSource(i);
+		favourite.init(dataset);
+		if (favourite.isFavourite(key))
+			return true;
+	}
+	return false;
+}
+
 vector<string> Dictionary::viewHistory() {
 	history.init();
 	return history.history;
