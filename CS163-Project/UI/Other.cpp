@@ -30,6 +30,9 @@ Vector2 DrawTextOnBox(Rectangle boxShape, Font font, string text, Vector2 coord,
 		else {
 			line += word + " ";
 		}
+		if (y + size.y > limitY) {
+			return { x, y };
+		}
 	}
 	DrawTextEx(font, line.c_str(), { x, y }, fontSize, spacing, colorText);
 	

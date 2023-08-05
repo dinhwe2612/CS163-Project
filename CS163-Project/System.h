@@ -65,6 +65,8 @@ struct System {
         SEARCH_RESULT,
     };
     pair<int, vector<string>> randData; // for game
+    vector<string> randWord; // for mainpage
+    bool isFavour = false;
     int dicNum = 0; // which dictionary is selected
     int menu = DEFAULT;
     bool isDropdownChangeTranslation = false;

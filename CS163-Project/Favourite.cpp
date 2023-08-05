@@ -71,7 +71,7 @@ void Favourite::remove(string key) {
 	outputFavourite(favourite, fileName);
 }
 
-bool Favourite::isFavourite(string key) {
+bool Favourite::isFavourite(string &key) {
 	for (int i = 0; i < favourite.size(); i++) {
 		if (key == favourite[i])
 			return true;

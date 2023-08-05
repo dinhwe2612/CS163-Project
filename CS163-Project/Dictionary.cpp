@@ -513,31 +513,36 @@ vector<string> Dictionary::randomAWord(int dictNum)
 	switch (dictNum)
 	{
 	case 1:
-		id = rand() % (engEng.size() + 1);
+		//id = rand() % (engEng.size() + 1);
+		id = RandInt(0, engEng.size() - 1);
 		word.push_back(engEng[id].key);
 		for (int i = 0; i < engEng[id].def.size(); ++i)
 			word.push_back(engEng[id].def[i]);
 		break;
 	case 2:
-		id = rand() % (vieEng.size() + 1);
+		//id = rand() % (vieEng.size() + 1);
+		id = RandInt(0, vieEng.size() - 1);
 		word.push_back(vieEng[id].key);
 		for (int i = 0; i < vieEng[id].def.size(); ++i)
 			word.push_back(vieEng[id].def[i]);
 		break;
 	case 3:
-		id = rand() % (engVie.size() + 1);
+		//id = rand() % (engVie.size() + 1);
+		id = RandInt(0, engVie.size() - 1);
 		word.push_back(engVie[id].key);
 		for (int i = 0; i < engVie[id].def.size(); ++i)
 			word.push_back(engVie[id].def[i]);
 		break;
 	case 4:
-		id = rand() % (slang.size() + 1);
+		//id = rand() % (slang.size() + 1);
+		id = RandInt(0, slang.size() - 1);
 		word.push_back(slang[id].key);
 		for (int i = 0; i < slang[id].def.size(); ++i)
 			word.push_back(slang[id].def[i]);
 		break;
 	case 5:
-		id = rand() % (emotional.size() + 1);
+		//id = rand() % (emotional.size() + 1);
+		id = RandInt(0, emotional.size() - 1);
 		word.push_back(emotional[id].key);
 		for (int i = 0; i < emotional[id].def.size(); ++i)
 			word.push_back(emotional[id].def[i]);
@@ -609,7 +614,6 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		} else return false;
 		break;
 	}
-<<<<<<< Updated upstream
 	return true;
 }
 
@@ -619,9 +623,7 @@ bool compareDef(vector<string> curDef, string newdef)
 	{
 		if (curDef[i] == newdef) return false;
 	}
-=======
 	//addWordToFile(dictnum, key, def);
->>>>>>> Stashed changes
 	return true;
 }
 

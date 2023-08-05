@@ -83,6 +83,11 @@ void System::Construct() {
 	hollowedHeart_icon = LoadTexture("../External/source/Image/heart - Copy.png");
 	reload_icon = LoadTexture("../External/source/Image/reload-icon.png");
 	remove_icon = LoadTexture("../External/source/Image/remove-icon.png");
+
+	randWord = dictionary.randomAWord(dicNum + 1);
+	for (string i : randWord) {
+		cout << i << endl;
+	}
 }
 
 void System::Draw() {	
@@ -190,6 +195,8 @@ void System::DrawHistory() {
 	if (mainpage.state == RELEASED) {
 		menu = DEFAULT;
 	}
+
+
 }
 
 void System::DrawFavourite() {
@@ -238,8 +245,8 @@ void System::DrawGame() {
 	// draw mode button
 	if (mode) modeDef.DrawText();
 	else modeKey.DrawText();
-	if (modeDef.getState() == RELEASED) mode ^= 1;
-	else if (modeKey.getState() == RELEASED) mode ^= 1;
+	if (modeDef.getState() == RELEASED) mode ^= 1, dictionary.randomDef(dicNum + 1, randData);
+	else if (modeKey.getState() == RELEASED) mode ^= 1, dictionary.randomWord(dicNum + 1, randData);
 
 	if (mainpage.state == RELEASED) {
 		timeline = 0;
@@ -248,7 +255,7 @@ void System::DrawGame() {
 	}
 
 	// draw multiple choice
-	if (!mode) {// word given
+	//if (!mode) {// word given
 		Rectangle wordShape = { (float)0.039 * windowWidth, (float)0.194 * windowHeight, (float)0.922 * windowWidth, (float)0.271 * windowHeight };
 		DrawRectangleRoundedLines(wordShape, 0.1, 5, 2, { 113, 201, 206, 255});
 		DrawTextEx(Raleway_Black, randData.second[0].c_str(), GetCenterPos(Raleway_Black, randData.second[0], 48, 1, wordShape), 48, 1, BLACK);
@@ -275,10 +282,13 @@ void System::DrawGame() {
 				}
 			}
 		}
-	}
-	else {// definition given
+	//}
+	//else {// definition given
+	//	Rectangle defShape = { (float)0.039 * windowWidth, (float)0.194 * windowHeight, (float)0.922 * windowWidth, (float)0.271 * windowHeight };
+	//	DrawRectangleRoundedLines(defShape, 0.1, 5, 2, { 113, 201, 206, 255 });
+	//	DrawTextEx(Raleway_Black, randData.second[0].c_str(), GetCenterPos(Raleway_Black, randData.second[0], 48, 1, defShape), 48, 1, BLACK);
 
-	}
+	//}
 	if (isAnswered) {
 		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && timeline >= 1) {
 			isAnswered = false;
@@ -416,20 +426,39 @@ void System::DrawRandomWord() {
 	Rectangle BoxContent = { (float)0.345 * windowWidth, (float)0.5 * windowHeight, (float)0.594 * windowWidth, (float)0.366 * windowHeight };
 	DrawRectangleRounded(BoxContent, 0.25, 10, { 203, 241, 245, 255 });
 
-	Button Heart; 
+	static Button Heart; 
 	Heart.SetBox(0.825 * windowWidth, 0.515 * windowHeight, filledHeart_icon.width * 0.085, filledHeart_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 	Heart.DrawText();
-	DrawTextureEx(filledHeart_icon, { (float)0.825 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, WHITE);
-	
-	Button edit;
+	if (isFavour) DrawTextureEx(filledHeart_icon, {(float)0.825 * windowWidth, (float)0.515 * windowHeight}, 0, 0.085, WHITE);
+	else DrawTextureEx(hollowedHeart_icon, { (float)0.825 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, WHITE);
+
+	static Button edit;
 	edit.SetBox(0.868 * windowWidth, 0.515 * windowHeight, edit_icon.width * 0.075, edit_icon.height * 0.075, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 	edit.DrawText();
 	DrawTextureEx(edit_icon, { (float)0.868 * windowWidth, (float)0.515 * windowHeight }, 0, 0.075, edit.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	
-	Button reload;
+	static Button reload;
 	reload.SetBox(0.9043 * windowWidth, 0.515 * windowHeight, reload_icon.width * 0.085, reload_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 	reload.DrawText();
 	DrawTextureEx(reload_icon, { (float)0.9043 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, reload.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+	if (reload.state == RELEASED) {
+		randWord = dictionary.randomAWord(dicNum + 1);
+		isFavour = dictionary.isFavourite(randWord[0]);
+	}
+
+	static Button Word;
+	Vector2 szWord = MeasureTextEx(Raleway_Bold, randWord[0].c_str(), 40, 1);
+	Word.SetBox(0.364 * windowWidth, 0.534 * windowHeight, szWord.x, szWord.y, Fade(WHITE, 0), Fade(WHITE, 0.5), Fade(BLACK, 0.5));
+	DrawTextEx(Raleway_Bold, randWord[0].c_str(), { (float)0.364 * windowWidth, (float)0.534 * windowHeight }, 40, 1, BLACK);
+	Word.DrawText();
+	BoxContent.x += 0.016 * windowWidth;
+	BoxContent.width -= 0.016 * windowWidth;
+	DrawTextOnBoxEx(BoxContent, Raleway_Italic, randWord, { (float)0.364 * windowWidth, (float)0.59 * windowHeight }, 39, 0.7, 0.035 * windowHeight, 0.045 * windowHeight, BLACK);
+
+	if (Word.state == RELEASED) {
+		search_result = dictionary.searchKeyword(randWord[0], dicNum + 1);
+		menu = SEARCH_RESULT;
+	}
 }
 
 void System::DrawSearchBar() {
