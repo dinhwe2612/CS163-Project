@@ -17,18 +17,18 @@
 
 int main(void)
 {
-    //System system;
-    //system.Construct();
-    //system.Draw();
+    System system;
+    system.Construct();
+    system.Draw();
 
-    Dictionary d;
-    auto start = chrono::high_resolution_clock::now();
+    //Dictionary d;
+    //auto start = chrono::high_resolution_clock::now();
     //d.buildFromOrigin();
-    d.build();
-    auto stop = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
-    cout << "Time taken by loading data: " << duration.count() << " milliseconds" << endl;
-    cout << d.isFavourite("hello") << endl;
+    //d.build();
+    //auto stop = chrono::high_resolution_clock::now();
+    //auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
+    //cout << "Time taken by loading data: " << duration.count() << " milliseconds" << endl;
+    //cout << d.isFavourite("hello") << endl;
     //d.save();
 
     return 0;

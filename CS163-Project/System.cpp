@@ -363,7 +363,9 @@ void System::DrawModify() {
 	}
 	if (menu != MODIFY) {
 		modifyKeyBox.currentInput = "";
+		modifyKeyBox.posCursor = 0;
 		modifyDefBox.currentInput = "";
+		modifyDefBox.posCursor = 0;
 		dialog = false;
 	}
 }
@@ -429,8 +431,8 @@ void System::DrawRandomWord() {
 	static Button Heart; 
 	Heart.SetBox(0.825 * windowWidth, 0.515 * windowHeight, filledHeart_icon.width * 0.085, filledHeart_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 	Heart.DrawText();
-	if (isFavour) DrawTextureEx(filledHeart_icon, {(float)0.825 * windowWidth, (float)0.515 * windowHeight}, 0, 0.085, WHITE);
-	else DrawTextureEx(hollowedHeart_icon, { (float)0.825 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, WHITE);
+	if (isFavour) DrawTextureEx(filledHeart_icon, {(float)0.825 * windowWidth, (float)0.515 * windowHeight}, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+	else DrawTextureEx(hollowedHeart_icon, { (float)0.825 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 
 	static Button edit;
 	edit.SetBox(0.868 * windowWidth, 0.515 * windowHeight, edit_icon.width * 0.075, edit_icon.height * 0.075, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
@@ -443,7 +445,7 @@ void System::DrawRandomWord() {
 	DrawTextureEx(reload_icon, { (float)0.9043 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, reload.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	if (reload.state == RELEASED) {
 		randWord = dictionary.randomAWord(dicNum + 1);
-		isFavour = dictionary.isFavourite(randWord[0]);
+		//isFavour = dictionary.isFavourite(randWord[0]);
 	}
 
 	static Button Word;
