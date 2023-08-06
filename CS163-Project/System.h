@@ -14,10 +14,12 @@ struct System {
     float windowWidth, windowHeight;
 
     Font Parable_Regular;
+    Font Parable_Regular40;
     Font Raleway_Black;
     Font Raleway_BlackBig;
     Font Raleway_Bold;
     Font Raleway_Italic;
+    Font RussoOne_Regular;
 
     Button reset;
     Button addnew;

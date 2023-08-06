@@ -452,7 +452,10 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 			for(string &tmp : engEng[id].def) {
 				if (def == tmp) {
 					found.push_back(engEng[id].key);
-					break;
+					for(string &tmp2 : engEng[id].def) {
+						found.push_back(tmp2);
+					}
+					return found;
 				}
 			}
 		}
@@ -463,7 +466,10 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 			for(string &tmp : vieEng[id].def) {
 				if (def == tmp) {
 					found.push_back(vieEng[id].key);
-					break;
+					for(string &tmp2 : vieEng[id].def) {
+						found.push_back(tmp2);
+					}
+					return found;
 				}
 			}
 		}
@@ -474,7 +480,10 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 			for (string &tmp : engVie[id].def) {
 				if (def == tmp) {
 					found.push_back(engVie[id].key);
-					break;
+					for (string &tmp2 : engVie[id].def) {
+						found.push_back(tmp2);
+					}
+					return found;
 				}
 			}
 		}
@@ -485,7 +494,10 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 			for(string &tmp : slang[id].def) {
 				if (def == tmp) {
 					found.push_back(slang[id].key);
-					break;
+					for(string &tmp2 : slang[id].def) {
+						found.push_back(tmp2);
+					}
+					return found;
 				}
 			}
 		}
@@ -496,7 +508,10 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 			for(string &tmp : emotional[id].def) {
 				if (def == tmp) {
 					found.push_back(emotional[id].key);
-					break;
+					for(string &tmp2 : emotional[id].def) {
+						found.push_back(tmp2);
+					}
+					return found;
 				}
 			}
 		}

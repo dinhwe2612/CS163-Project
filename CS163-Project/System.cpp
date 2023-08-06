@@ -16,10 +16,12 @@ void System::Construct() {
 	InitWindow(windowWidth, windowHeight, "Dictionary - CS163 Project (>'-'<)");
 
 	Parable_Regular = LoadFontEx("../External/source/Font/Parable-Regular.ttf", 96, 0, 0);
+	Parable_Regular40 = LoadFontEx("../External/source/Font/Parable-Regular.ttf", 40, 0, 0);
 	Raleway_Black = LoadFontEx("../External/source/Font/Raleway-Black.ttf", 40, 0, 0);
 	Raleway_BlackBig = LoadFontEx("../External/source/Font/Raleway-Black.ttf", 72, 0, 0);
 	Raleway_Bold = LoadFontEx("../External/source/Font/Raleway-Bold.ttf", 40, 0, 0);
 	Raleway_Italic = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 40, 0, 0);
+	RussoOne_Regular = LoadFontEx("../External/source/Font/RussoOne-Regular.ttf", 96, 0, 0);
 
 	modeDef.SetBox(0.81 * windowWidth, 0.101 * windowHeight, 0.129 * windowWidth, 0.059 * windowHeight, defaultColor, touchedColor, clickedColor);
 	modeDef.SetText(Raleway_Black, "Definition", GetCenterPos(Raleway_Black, "Definition", 30, 0.5, modeDef.buttonShape), 30, 0.5, BLACK, BLACK, BLACK);
@@ -55,7 +57,7 @@ void System::Construct() {
 	mainpage.SetText(Raleway_Black, "Main Page", GetCenterPos(Raleway_Black, "Main Page", 40, 0.5, mainpage.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
 	mainpage.roundness = 0.65;
 
-	searchBox.Construct(0.294 * windowWidth, 0.185 * windowHeight, 0.645 * windowWidth, 0.094 * windowHeight, Parable_Regular, { (float)0.312 * windowWidth, (float)0.2071 * windowHeight }, 40, 1, 300);
+	searchBox.Construct(0.294 * windowWidth, 0.185 * windowHeight, 0.645 * windowWidth, 0.094 * windowHeight, Parable_Regular40, { (float)0.312 * windowWidth, (float)0.2071 * windowHeight }, 40, 1, 300);
 	searchBox.SetColorBox({ 255, 255, 255, 120 }, { 255, 255, 255, 80 }, { 255, 255, 255, 160 });
 	searchBox.lengthText -= 0.06 * windowWidth;
 
@@ -85,9 +87,6 @@ void System::Construct() {
 	remove_icon = LoadTexture("../External/source/Image/remove-icon.png");
 
 	randWord = dictionary.randomAWord(dicNum + 1);
-	for (string i : randWord) {
-		cout << i << endl;
-	}
 }
 
 void System::Draw() {	
@@ -139,6 +138,10 @@ void System::DrawDefault() {
 	history.DrawText();
 	favourite.DrawText();
 	game.DrawText();
+	if (isDropdownChangeTranslation) {
+		history.state = DEFAULT;
+		favourite.state = DEFAULT;
+	}
 	// draw random word
 	DrawRandomWord();
 
@@ -160,10 +163,7 @@ void System::DrawDefault() {
 	if (game.state == RELEASED) {
 		if (!mode) dictionary.randomWord(dicNum + 1, randData);
 		else dictionary.randomDef(dicNum + 1, randData);
-		cout << randData.first << '\n';
-		for (string& tmp : randData.second) {
-			cout << tmp << '\n';
-		}
+
 		menu = GAME;
 	}
 	if (addnew.state == RELEASED) {
@@ -194,6 +194,7 @@ void System::DrawHistory() {
 
 	if (mainpage.state == RELEASED) {
 		menu = DEFAULT;
+		isFavour = dictionary.isFavourite(randWord[0]);
 	}
 
 
@@ -221,6 +222,7 @@ void System::DrawFavourite() {
 
 	if (mainpage.state == RELEASED) {
 		menu = DEFAULT;
+		isFavour = dictionary.isFavourite(randWord[0]);
 	}
 }
 
@@ -252,6 +254,7 @@ void System::DrawGame() {
 		timeline = 0;
 		isAnswered = false;
 		menu = DEFAULT;
+		isFavour = dictionary.isFavourite(randWord[0]);
 	}
 
 	// draw multiple choice
@@ -360,6 +363,7 @@ void System::DrawModify() {
 	mainpage.DrawText();
 	if (mainpage.state == RELEASED) {
 		menu = DEFAULT;
+		isFavour = dictionary.isFavourite(randWord[0]);
 	}
 	if (menu != MODIFY) {
 		modifyKeyBox.currentInput = "";
@@ -431,9 +435,19 @@ void System::DrawRandomWord() {
 	static Button Heart; 
 	Heart.SetBox(0.825 * windowWidth, 0.515 * windowHeight, filledHeart_icon.width * 0.085, filledHeart_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 	Heart.DrawText();
-	if (isFavour) DrawTextureEx(filledHeart_icon, {(float)0.825 * windowWidth, (float)0.515 * windowHeight}, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
-	else DrawTextureEx(hollowedHeart_icon, { (float)0.825 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
-
+	if (isFavour) {
+		DrawTextureEx(filledHeart_icon, { (float)0.825 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		if (Heart.state == RELEASED) {
+			dictionary.removeAFavourite(dicNum + 1, randWord[0]);
+			isFavour = false;
+		}
+	} else {
+		DrawTextureEx(hollowedHeart_icon, { (float)0.825 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		if (Heart.state == RELEASED) {
+			dictionary.removeAFavourite(dicNum + 1, randWord[0]);
+			isFavour = true;
+		}
+	}
 	static Button edit;
 	edit.SetBox(0.868 * windowWidth, 0.515 * windowHeight, edit_icon.width * 0.075, edit_icon.height * 0.075, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 	edit.DrawText();
@@ -445,7 +459,7 @@ void System::DrawRandomWord() {
 	DrawTextureEx(reload_icon, { (float)0.9043 * windowWidth, (float)0.515 * windowHeight }, 0, 0.085, reload.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	if (reload.state == RELEASED) {
 		randWord = dictionary.randomAWord(dicNum + 1);
-		//isFavour = dictionary.isFavourite(randWord[0]);
+		isFavour = dictionary.isFavourite(randWord[0]);
 	}
 
 	static Button Word;
@@ -459,6 +473,7 @@ void System::DrawRandomWord() {
 
 	if (Word.state == RELEASED) {
 		search_result = dictionary.searchKeyword(randWord[0], dicNum + 1);
+		isFavour = dictionary.isFavourite(randWord[0]);
 		menu = SEARCH_RESULT;
 	}
 }
@@ -473,7 +488,7 @@ void System::DrawSearchBar() {
 	// draw seach bar
 	searchBox.Draw();
 	if (searchBox.isTyping == false && searchBox.currentInput.empty()) {
-		DrawTextEx(Parable_Regular, "search bar", { (float)0.312 * windowWidth, (float)0.207 * windowHeight }, 40, 0.5, { 0, 0, 0, 170 });
+		DrawTextEx(Parable_Regular40, "search bar", { (float)0.312 * windowWidth, (float)0.207 * windowHeight }, 40, 0.5, { 0, 0, 0, 170 });
 	}
 	// draw magnifying glass button
 	ok.DrawText();
@@ -487,11 +502,11 @@ void System::DrawSearchBar() {
 	isDropdown |= (searchBox.isTyping && searchBox.currentInput.empty() == false);
 	// draw suggestions
 	static Button suggestion[6];
-	if (isDropdown) {// search by keyword
+	if (isDropdown && !mode) {// search by keyword
 		if (timeline == 30) suggestions = dictionary.predictKeyword(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
 		for (int i = 0; i < suggestions.size(); ++i) {
 			suggestion[i].SetBox(searchBox.inputShape.x, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height, { 227, 253, 253, 253 }, { 238, 253, 253, 245 }, { 204, 227, 227, 255 });
-			suggestion[i].SetText(Parable_Regular, suggestions[i], { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular, suggestions[i], 40, 1, suggestion[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
+			suggestion[i].SetText(Parable_Regular40, suggestions[i], { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular40, suggestions[i], 40, 1, suggestion[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
 			suggestion[i].DrawText();
 			DrawTextureEx(search_icon, { searchBox.inputShape.x + (float)0.01 * windowWidth, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height + (float)0.01 * windowHeight }, 0, 0.16, WHITE);
 			if (suggestion[i].state == RELEASED) {
@@ -499,12 +514,12 @@ void System::DrawSearchBar() {
 				searchBox.posCursor = searchBox.currentInput.size();
 				isDropdown = false;
 				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
+				isFavour = dictionary.isFavourite(searchBox.getInput());
 				menu = SEARCH_RESULT;
 				searchBox.isTyping = false;
 				isDropdown = false;
 			}
 		}
-
 	}
 
 	// draw search result
@@ -517,7 +532,7 @@ void System::DrawSearchBar() {
 			}
 			if (search_result.empty()) {
 				search_result.push_back("No result!");
-			}
+			} else isFavour = dictionary.isFavourite(search_result[0]);
 			menu = SEARCH_RESULT;
 			searchBox.isTyping = false;
 			isDropdown = false;
@@ -539,6 +554,7 @@ void System::DrawSearchResult() {
 		mainpage.DrawText();
 		if (mainpage.state == RELEASED) {
 			menu = DEFAULT;
+			isFavour = dictionary.isFavourite(randWord[0]);
 			scrollY = 0;
 			height = 0;
 		}
@@ -546,7 +562,8 @@ void System::DrawSearchResult() {
 
 	// draw search result
 	// draw keyword
-	DrawTextEx(Parable_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
+	DrawTextEx(RussoOne_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
+	static Button Heart, edit, remove;
 	if (search_result.size() > 1) {
 		// draw definition box
 		Rectangle boxShape = { (float)0.061 * windowWidth, (float)0.55 * windowHeight + scrollY, (float)0.878 * windowWidth, (float)height };
@@ -555,17 +572,15 @@ void System::DrawSearchResult() {
 		boxShape.width -= 0.023 * windowWidth;
 		height = DrawTextOnBoxEx(boxShape, Raleway_Italic, search_result, { (float)0.09 * windowWidth, (float)0.61 * windowHeight + scrollY }, 40, 0.5, 0.04 * windowHeight, 0.055 * windowHeight, BLACK) - boxShape.y + 0.05 * windowHeight;
 
-		Button Heart;
 		Heart.SetBox(0.815 * windowWidth, boxShape.y + 0.01 * windowHeight, filledHeart_icon.width * 0.085, filledHeart_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 		Heart.DrawText();
-		DrawTextureEx(filledHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, WHITE);
+		if (isFavour) DrawTextureEx(filledHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		else DrawTextureEx(hollowedHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 
-		Button edit;
 		edit.SetBox(0.858 * windowWidth, boxShape.y + 0.01 * windowHeight, edit_icon.width * 0.075, edit_icon.height * 0.075, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 		edit.DrawText();
 		DrawTextureEx(edit_icon, { (float)0.858 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.075, edit.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 
-		Button remove;
 		remove.SetBox(0.893 * windowWidth, boxShape.y + 0.01 * windowHeight, remove_icon.width * 0.08, remove_icon.height * 0.08, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 		remove.DrawText();
 		DrawTextureEx(remove_icon, { (float)0.893 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.08, remove.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
