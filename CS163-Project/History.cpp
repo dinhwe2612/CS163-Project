@@ -5,6 +5,7 @@
 using namespace std;
 
 void History::init() {
+	history.clear();
 	// read the data from file
 	ifstream fin;
 	// check empty file

@@ -17,9 +17,17 @@
 
 int main(void)
 {
-    System system;
-    system.Construct();
-    system.Draw();
+    //System system;
+    //system.Construct();
+    //system.Draw();
+
+
+    Dictionary d;
+    d.addFavourite(1, "1");
+    d.addFavourite(1, "2");
+    d.addFavourite(1, "3");
+    d.addFavourite(1, "4");
+    d.removeAFavourite(1, "2");
 
     //Dictionary d;
     //auto start = chrono::high_resolution_clock::now();

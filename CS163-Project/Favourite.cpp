@@ -5,6 +5,7 @@
 using namespace std;
 
 void Favourite::init(string dataset) {
+	favourite.clear();
 	datasetName = dataset;
 	// read the data from file
 	ifstream fin;
@@ -62,6 +63,7 @@ void outputFavourite(vector<string> favourite, string fileName) {
 		fout << *it;
 		if (it + 1 != favourite.end()) fout << endl;
 	}
+	fout.close();
 }
 
 void Favourite::remove(string key) {
