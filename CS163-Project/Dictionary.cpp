@@ -348,7 +348,7 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		//tmp = engEng_key.search(key);
 		index = engEng_key.search(key);
 		if (index != -1) {
-			found.push_back(key);
+			found.push_back(engEng[index].key);
 			for(string &def : engEng[index].def) {
 				found.push_back(def);
 			}
@@ -358,7 +358,7 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		//tmp = vieEng_key.search(key);
 		index = vieEng_key.search(key);
 		if (index != -1) {
-			found.push_back(key);
+			found.push_back(vieEng[index].key);
 			for(string &def : vieEng[index].def) {
 				found.push_back(def);
 			}
@@ -368,7 +368,7 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		//tmp = engVie_key.search(key);
 		index = engVie_key.search(key);
 		if (index != -1) {
-			found.push_back(key);
+			found.push_back(engVie[index].key);
 			for(string &def : engVie[index].def) {
 				found.push_back(def);
 			}
@@ -378,7 +378,7 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		//tmp = slang_key.search(key);
 		index = slang_key.search(key);
 		if (index != -1) {
-			found.push_back(key);
+			found.push_back(slang[index].key);
 			for(string &def : slang[index].def) {
 				found.push_back(def);
 			}
@@ -388,7 +388,7 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		//tmp = emotional_key.search(key);
 		index = emotional_key.search(key);
 		if (index != -1) {
-			found.push_back(key);
+			found.push_back(emotional[index].key);
 			for(string &def : emotional[index].def) {
 				found.push_back(def);
 			}
@@ -744,7 +744,6 @@ void Dictionary::removeAWord(int dictNum, string key)
 		for (int i = 0; i < engEng[id].def.size(); ++i)
 			engEng_def.remove(engEng[id].def[i], id);
 		it = engEng.begin() + id;
-		engEng.erase(it);
 		engEng_key.remove(key);
 		break;
 	case 2:

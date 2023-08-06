@@ -34,7 +34,7 @@ struct Keyword { // Trie
 	void save(ofstream &fout);
 
 private:
-	void removeHelper(TrieNode* root, string key, int depth);
+	void removeHelper(TrieNode*& root, string key, int depth);
 };
 
 #endif

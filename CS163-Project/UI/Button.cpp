@@ -21,7 +21,7 @@ void Button::SetText(Font _font, string _Text, Vector2 _coordText, float _fontSi
 	colorTextClicked = colorClicked;
 }
 
-void Button::DrawText() {
+void Button::DrawText(int &mouseCursor) {
 	int state = getState();
 	if (state == DEFAULT) {
 		//DrawRectangleRec(buttonShape, colorBoxDefault);
@@ -40,6 +40,9 @@ void Button::DrawText() {
 			//DrawRectangleLinesEx(buttonShape, 4, colorCornerTouched);
 			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
 		}
+		if (setMouse) {
+			mouseCursor = MOUSE_CURSOR_POINTING_HAND;
+		}
 	}
 	else if (state == CLICKED) {
 		//DrawRectangleRec(buttonShape, colorBoxClicked);
@@ -48,6 +51,9 @@ void Button::DrawText() {
 		if (drawCorner) {
 			//DrawRectangleLinesEx(buttonShape, 4, colorCornerClicked);
 			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
+		}
+		if (setMouse) {
+			mouseCursor = MOUSE_CURSOR_POINTING_HAND;
 		}
 	}
 	

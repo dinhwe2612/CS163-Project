@@ -33,6 +33,8 @@ struct System {
     Button changeTranslation;
     Button mainpage;
     Button enter;
+    Button Background;
+    Button yes, no;
     string translation[5] = { "eng - eng", "vn - eng", "eng - vn", "slang", "emoji" };
     vector<string> search_result;
     vector<string> suggestions;
@@ -68,9 +70,12 @@ struct System {
     };
     pair<int, vector<string>> randData; // for game
     vector<string> randWord; // for mainpage
+    vector<string> favourWords; // list of keyword favourite
+    vector<string> historyWords; // list of keyword history
     bool isFavour = false;
     int dicNum = 0; // which dictionary is selected
     int menu = DEFAULT;
+    int mouseCursor = MOUSE_CURSOR_DEFAULT;
     bool isDropdownChangeTranslation = false;
     bool isAddNewWord = false;
 
@@ -86,6 +91,7 @@ struct System {
     void DrawRandomWord();
     void DrawSearchBar();
     void DrawSearchResult();
+    void DrawDialogBox();
 };
 
 #endif

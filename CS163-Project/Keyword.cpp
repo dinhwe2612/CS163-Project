@@ -39,9 +39,9 @@ int Keyword::search(string key) {
     return pCrawl->id;
 }
 
-void Keyword::removeHelper(TrieNode* root, string key, int depth) {
+void Keyword::removeHelper(TrieNode*& root, string key, int depth) {
     if (!root) return;
-
+    
     if (depth == key.length()) {
         //remove the definition vector
         root->id = -1;
@@ -50,8 +50,7 @@ void Keyword::removeHelper(TrieNode* root, string key, int depth) {
         --numOfWords;
         return;
     }
-
-    int index = static_cast<int>(key[depth]);
+    int index = static_cast<int>(tolower(key[depth]));
     removeHelper(root->child[index], key, depth + 1);
     --root->countChild;
 

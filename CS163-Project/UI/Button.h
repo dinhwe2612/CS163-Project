@@ -16,6 +16,7 @@ struct Button {
     float roundness = 0.1, segments = 10;
     enum BoxState { DEFAULT, TOUCHED, CLICKED, RELEASED };
     int state = DEFAULT;
+    bool setMouse = true;
 
     //Text
     Font font;
@@ -31,7 +32,7 @@ struct Button {
 
     //For Button Text
     void SetText(Font _font, string _Text, Vector2 _coordText, float _fontSize, float _spacing, Color colorDefault, Color colorTouched, Color colorClicked);
-    void DrawText();
+    void DrawText(int& mouseCursor);
 
     int getState();
 };
