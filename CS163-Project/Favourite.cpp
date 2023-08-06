@@ -27,7 +27,6 @@ void Favourite::init(string dataset) {
 }
 
 void Favourite::insert(string key) {
-	++limit;
 	// add to LL
 	favourite.push_back(key);
 
@@ -43,11 +42,11 @@ void Favourite::insert(string key) {
 	fout.close();
 
 	// if it exceed limit
-	if (limit == MAX_FAVOURITE)
+	if (favourite.size() == MAX_FAVOURITE)
 		favourite.pop_back();
 }
 
-void deleteAKey(vector<string> favourite, string key) {
+void deleteAKey(vector<string>& favourite, string key) {
 	for (auto it = favourite.begin(); it != favourite.end(); ++it) {
 		if (*it == key) {
 			favourite.erase(it);

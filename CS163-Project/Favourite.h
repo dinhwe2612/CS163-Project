@@ -11,7 +11,6 @@ const int MAX_FAVOURITE = 1000;
 struct Favourite {
 	string datasetName;
 	vector<string> favourite;
-	int limit = MAX_FAVOURITE;
 
 	void init(string dataset);
 	void insert(string key);
@@ -20,7 +19,7 @@ struct Favourite {
 	void removeAll();
 };
 
-void deleteAKey(vector<string> favourite, string key);
+void deleteAKey(vector<string>& favourite, string key);
 void outputFavourite(vector<string> favourite, string fileName);
 
 #endif

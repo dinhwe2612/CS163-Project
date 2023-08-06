@@ -26,7 +26,6 @@ void History::init() {
 }
 
 void History::insert(string key) {
-	++limit;
 	// add to LL
 	history.push_back(key);
 
@@ -42,11 +41,11 @@ void History::insert(string key) {
 	fout.close();
 
 	// if it exceed limit
-	if (limit == MAX_HISTORY)
+	if (history.size() == MAX_HISTORY)
 		history.pop_back();
 }
 
-void deleteAKeyinHistory(vector<string> history, string key) {
+void deleteAKeyinHistory(vector<string>& history, string key) {
 	for (auto it = history.begin(); it != history.end(); ++it) {
 		if (*it == key) {
 			history.erase(it);
