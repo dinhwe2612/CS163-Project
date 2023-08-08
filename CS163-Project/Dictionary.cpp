@@ -817,19 +817,22 @@ bool Dictionary::isFavourite(string key) {
 	return false;
 }
 
-vector<string> Dictionary::viewHistory() {
-	history.init();
+vector<his> Dictionary::viewHistory(int dictNum) {
+	string dataset = getSource(dictNum);
+	history.init(dataset);
 	return history.history;
 }
 
-void Dictionary::addHistory(string key) {
-	history.init();
-	history.insert(key);
+void Dictionary::addHistory(int dictNum, string word, bool isKey) {
+	string dataset = getSource(dictNum);
+	history.init(dataset);
+	history.insert(word, isKey);
 }
 
-void Dictionary::removeAHistory(string key) {
-	history.init();
-	history.remove(key);
+void Dictionary::removeAHistory(int dictNum, string word) {
+	string dataset = getSource(dictNum);
+	history.init(dataset);
+	history.remove(word);
 }
 
 void Dictionary::randomWord(int dictNum, pair<int, vector<string>> &result) {

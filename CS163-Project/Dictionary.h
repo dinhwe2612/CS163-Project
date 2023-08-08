@@ -53,9 +53,9 @@ struct Dictionary {
 	bool isFavourite(string key);
 
 	// history function
-	vector<string> viewHistory();
-	void addHistory(string key);
-	void removeAHistory(string key);
+	vector<his> viewHistory(int dictNum);
+	void addHistory(int dictNum, string word, bool isKey);
+	void removeAHistory(int dictNum, string word);
 
 	// random
 	void randomWord(int dictNum, pair<int, vector<string>>& result);
