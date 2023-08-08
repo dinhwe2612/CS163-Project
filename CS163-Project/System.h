@@ -53,6 +53,7 @@ struct System {
     Texture edit_icon;
     Texture reload_icon;
     Texture remove_icon;
+    Texture history_icon;
 
     Color defaultColor = { 113, 201, 206, 255 };
     Color touchedColor = { 63, 201, 250, 245 };

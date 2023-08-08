@@ -106,6 +106,28 @@ void InputBox::manipulate() {
 	}
 
 	if (isTyping) {
+		// for ctrl + v
+		if (IsKeyDown(KEY_LEFT_CONTROL) || IsKeyDown(KEY_RIGHT_CONTROL)) {
+			if (IsKeyPressed(KEY_V)) {
+				string clipboard = GetClipboardText();
+				for(int i = 0; i < clipboard.size(); ++i) {
+					if (clipboard[i] < 32 || clipboard[i] > 126) {
+						clipboard.erase(i, 1);
+						--i;
+					}
+				}
+				if (clipboard.length() + currentInput.length() <= MAX_SIZE) {
+					currentInput.insert(posCursor, clipboard);
+					posCursor += clipboard.length();
+					posR += clipboard.length();
+					while (posL < posR && !checkCollisionText(posL, posR)) {
+						--posR;
+					}
+					add = true;
+					timeline = 0;
+				}
+			}
+		}
 		// for typing
 		int key = GetCharPressed();
 		if (key >= 32 && key <= 126 && currentInput.length() < MAX_SIZE) {

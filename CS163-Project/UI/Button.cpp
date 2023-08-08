@@ -44,7 +44,7 @@ void Button::DrawText(int &mouseCursor) {
 			mouseCursor = MOUSE_CURSOR_POINTING_HAND;
 		}
 	}
-	else if (state == CLICKED) {
+	else if (state == CLICKED || state == RELEASED) {
 		//DrawRectangleRec(buttonShape, colorBoxClicked);
 		DrawRectangleRounded(buttonShape, roundness, segments, colorBoxClicked);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextClicked);
@@ -55,7 +55,7 @@ void Button::DrawText(int &mouseCursor) {
 		if (setMouse) {
 			mouseCursor = MOUSE_CURSOR_POINTING_HAND;
 		}
-	}
+	} 
 	
 }
 

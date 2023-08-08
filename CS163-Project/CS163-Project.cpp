@@ -14,6 +14,7 @@
 #include "System.h"
 #include "Dictionary.h"
 #include <chrono>
+#include "UI/Other.h"
 
 int main(void)
 {

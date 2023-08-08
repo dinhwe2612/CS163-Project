@@ -85,6 +85,7 @@ void System::Construct() {
 	hollowedHeart_icon = LoadTexture("../External/source/Image/heart - Copy.png");
 	reload_icon = LoadTexture("../External/source/Image/reload-icon.png");
 	remove_icon = LoadTexture("../External/source/Image/remove-icon.png");
+	history_icon = LoadTexture("../External/source/Image/history-icon.png");
 
 	randWord = dictionary.randomAWord(dicNum + 1);
 }
@@ -200,9 +201,6 @@ void System::DrawHistory() {
 	if (modeDef.getState() == RELEASED) mode ^= 1;
 	else if (modeKey.getState() == RELEASED) mode ^= 1;
 
-	// draw seach bar
-	DrawSearchBar();
-
 	if (mainpage.state == RELEASED) {
 		menu = DEFAULT;
 		isFavour = dictionary.isFavourite(randWord[0]);
@@ -212,8 +210,7 @@ void System::DrawHistory() {
 	float coordX[2] = { 0.32 * windowWidth, 0.64 * windowWidth };
 	float coordY = 0.422 * windowHeight;
 	static Button historyButton[100];
-	static Button heartButton[100];
-	static Button editButton[100];
+	static Button removeButton[100];
 	float gap = 0.155 * windowHeight;
 	float szY = 0.127 * windowHeight;
 	static float scrollY = 0;
@@ -222,25 +219,27 @@ void System::DrawHistory() {
 		scrollY = 0.99 * windowHeight - coordY - gap * (historyWords.size() + 1) / 2;
 	if (scrollY > 0) scrollY = 0;
 	for (int i = 0; i < historyWords.size(); ++i) {
-		historyButton[i].SetBox(coordX[i & 1], coordY + gap * (i / 2) + scrollY, 0.309 * windowWidth, szY, { 203, 241, 245, 255 }, { 203, 241, 245, 255 }, { 203, 241, 255, 255 });
-		historyButton[i].SetText(RussoOne_Regular, historyWords[i], { coordX[i & 1] + (float)0.02 * windowWidth, coordY + (float)gap * (i / 2) + (float)0.03 * windowHeight + scrollY }, 40, 0.7, BLACK, BLACK, BLACK);
+		historyButton[i].SetBox(coordX[i & 1], coordY + gap * (i / 2) + scrollY, 0.309 * windowWidth, szY, { 203, 241, 245, 255 }, { 203, 241, 245, 255 }, { 203, 241, 245, 255 });
+		historyButton[i].SetText(RussoOne_Regular, PartialText(RussoOne_Regular, historyWords[i], 40, 0.7, 0.25 * windowWidth), {coordX[i & 1] + (float)0.02 * windowWidth, coordY + (float)gap * (i / 2) + (float)0.03 * windowHeight + scrollY}, 40, 0.7, BLACK, BLACK, BLACK);
 		historyButton[i].roundness = 0.65;
+		historyButton[i].setMouse = false;
 		historyButton[i].DrawText(mouseCursor);
-		heartButton[i].SetBox(coordX[i & 1] + (float)0.268 * windowWidth, coordY + gap * (i / 2) + (float)0.012 * windowHeight + scrollY, hollowedHeart_icon.width * 0.085, hollowedHeart_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
-		heartButton[i].DrawText(mouseCursor);
-		editButton[i].SetBox(coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.072 * windowHeight + scrollY, hollowedHeart_icon.width * 0.085, hollowedHeart_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
-		editButton[i].DrawText(mouseCursor);
-		if (heartButton[i].state == DEFAULT && editButton[i].state == DEFAULT && historyButton[i].state == RELEASED) {
-			menu = SEARCH_RESULT;
-			search_result = dictionary.searchKeyword(historyWords[i], dicNum + 1);
+		removeButton[i].SetBox(coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY, remove_icon.width * 0.085, remove_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		removeButton[i].DrawText(mouseCursor);
+		//if (removeButton[i].state == DEFAULT && historyButton[i].state == RELEASED) {
+		//	menu = SEARCH_RESULT;
+		//	search_result = dictionary.searchKeyword(historyWords[i], dicNum	 + 1);
+		//	isFavour = dictionary.isFavourite(randWord[0]);
+		//}
+		if (removeButton[i].state == RELEASED) {
+			dictionary.removeAHistory(historyWords[i]);
+			historyWords = dictionary.viewHistory();
 		}
-		if (heartButton[i].state == RELEASED) {
-			dictionary.removeAFavourite(dicNum + 1, favourWords[i]);
-			favourWords = dictionary.viewFavourite(dicNum + 1);
-		}
-		DrawTextureEx(filledHeart_icon, { coordX[i & 1] + (float)0.268 * windowWidth, coordY + (float)gap * (i / 2) + (float)0.01 * windowHeight + scrollY }, 0, 0.085, (heartButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
-		DrawTextureEx(edit_icon, { coordX[i & 1] + (float)0.272 * windowWidth, coordY + (float)gap * (i / 2) + (float)0.06 * windowHeight + scrollY }, 0, 0.085, (editButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
+		DrawTextureEx(remove_icon, { coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY }, 0, 0.085, removeButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	}
+
+	// draw seach bar
+	DrawSearchBar();
 
 	if (searchBox.getState() == TOUCHED) {
 		mouseCursor = MOUSE_CURSOR_IBEAM;
@@ -252,8 +251,9 @@ void System::DrawFavourite() {
 	float coordX[2] = { 0.32 * windowWidth, 0.64 * windowWidth  };
 	float coordY = 0.422 * windowHeight;
 	static Button favourButton[100];
-	static Button heartButton[100];
-	static Button editButton[100];
+	//static Button heartButton[100];
+	//static Button editButton[100];
+	static Button removeButton[100];
 	float gap = 0.155 * windowHeight;
 	float szY = 0.127 * windowHeight;
 	static float scrollY = 0;
@@ -262,24 +262,29 @@ void System::DrawFavourite() {
 		scrollY = 0.99 * windowHeight - coordY - gap * (favourWords.size() + 1) / 2;
 	if (scrollY > 0) scrollY = 0;
 	for (int i = 0; i < favourWords.size(); ++i) {
-		favourButton[i].SetBox(coordX[i & 1], coordY + gap * (i/2) + scrollY, 0.309 * windowWidth, szY, { 203, 241, 245, 255 }, { 203, 241, 245, 255 }, { 203, 241, 255, 255 });
+		favourButton[i].SetBox(coordX[i & 1], coordY + gap * (i/2) + scrollY, 0.309 * windowWidth, szY, { 203, 241, 245, 255 }, { 203, 241, 245, 255 }, { 203, 241, 245, 255 });
 		favourButton[i].SetText(RussoOne_Regular, favourWords[i], { coordX[i & 1] + (float)0.02 * windowWidth, coordY + (float)gap * (i/2) + (float)0.03 * windowHeight + scrollY }, 40, 0.7, BLACK, BLACK, BLACK);
 		favourButton[i].roundness = 0.65;
+		favourButton[i].setMouse = false;
 		favourButton[i].DrawText(mouseCursor);
-		heartButton[i].SetBox(coordX[i & 1] + (float)0.268 * windowWidth, coordY + gap * (i / 2) + (float)0.012 * windowHeight + scrollY, hollowedHeart_icon.width * 0.085, hollowedHeart_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
-		heartButton[i].DrawText(mouseCursor);
-		editButton[i].SetBox(coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.072 * windowHeight + scrollY, hollowedHeart_icon.width * 0.085, hollowedHeart_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
-		editButton[i].DrawText(mouseCursor);
-		if (heartButton[i].state == DEFAULT && editButton[i].state == DEFAULT && favourButton[i].state == RELEASED) {
-			menu = SEARCH_RESULT;
-			search_result = dictionary.searchKeyword(favourWords[i], dicNum + 1);
-		}
-		if (heartButton[i].state == RELEASED) {
+		//heartButton[i].SetBox(coordX[i & 1] + (float)0.268 * windowWidth, coordY + gap * (i / 2) + (float)0.012 * windowHeight + scrollY, hollowedHeart_icon.width * 0.085, hollowedHeart_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		//heartButton[i].DrawText(mouseCursor);
+		//editButton[i].SetBox(coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.072 * windowHeight + scrollY, hollowedHeart_icon.width * 0.085, hollowedHeart_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		//editButton[i].DrawText(mouseCursor);
+		removeButton[i].SetBox(coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY, remove_icon.width * 0.085, remove_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		removeButton[i].DrawText(mouseCursor);
+		//if (heartButton[i].state == DEFAULT && editButton[i].state == DEFAULT && favourButton[i].state == RELEASED) {
+		//	menu = SEARCH_RESULT;
+		//	search_result = dictionary.searchKeyword(favourWords[i], dicNum + 1);
+		//	isFavour = dictionary.isFavourite(favourWords[i]);
+		//}
+		if (removeButton[i].state == RELEASED) {
 			dictionary.removeAFavourite(dicNum + 1, favourWords[i]);
 			favourWords = dictionary.viewFavourite(dicNum + 1);
 		}
-		DrawTextureEx(filledHeart_icon, { coordX[i & 1] + (float)0.268 * windowWidth, coordY + (float)gap * (i/2) + (float)0.01 * windowHeight + scrollY }, 0, 0.085, (heartButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
-		DrawTextureEx(edit_icon, { coordX[i & 1] + (float)0.272 * windowWidth, coordY + (float)gap * (i/2) + (float)0.06 * windowHeight + scrollY }, 0, 0.085, (editButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
+		//DrawTextureEx(filledHeart_icon, { coordX[i & 1] + (float)0.268 * windowWidth, coordY + (float)gap * (i/2) + (float)0.01 * windowHeight + scrollY }, 0, 0.085, (heartButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
+		//DrawTextureEx(edit_icon, { coordX[i & 1] + (float)0.272 * windowWidth, coordY + (float)gap * (i/2) + (float)0.06 * windowHeight + scrollY }, 0, 0.085, (editButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
+		DrawTextureEx(remove_icon, { coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY }, 0, 0.085, removeButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	}
 
 	DrawRectangle(0, 0, windowWidth, 0.342 * windowHeight, { 236, 249, 255, 255 });
@@ -506,6 +511,7 @@ void System::DrawChangeTranslation() {
 				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(GetMousePosition(), temp.buttonShape)) {
 					dicNum = i;
 					isDropdownChangeTranslation = false;
+					randWord = dictionary.randomAWord(dicNum + 1);
 				}
 			}
 			temp.DrawText(mouseCursor);
@@ -593,7 +599,7 @@ void System::DrawSearchBar() {
 	static Button suggestion[6];
 	if (isDropdown && !mode) {// search by keyword
 		if (timeline == 30) suggestions = dictionary.predictKeyword(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
-		for (int i = 0; i < suggestions.size(); ++i) {
+		for (int i = 0; i < suggestions.size() && i < 6; ++i) {
 			suggestion[i].SetBox(searchBox.inputShape.x, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height, { 227, 253, 253, 253 }, { 238, 253, 253, 245 }, { 204, 227, 227, 255 });
 			suggestion[i].SetText(Parable_Regular40, suggestions[i], { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular40, suggestions[i], 40, 1, suggestion[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
 			suggestion[i].DrawText(mouseCursor);
@@ -602,12 +608,36 @@ void System::DrawSearchBar() {
 				searchBox.currentInput = suggestions[i];
 				searchBox.posCursor = searchBox.currentInput.size();
 				isDropdown = false;
-				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
-				isFavour = dictionary.isFavourite(searchBox.getInput());
+				search_result = dictionary.searchKeyword(suggestions[i], dicNum + 1);
+				isFavour = dictionary.isFavourite(suggestions[i]);
 				menu = SEARCH_RESULT;
 				searchBox.isTyping = false;
 				isDropdown = false;
-				dictionary.addHistory(searchBox.getInput());
+				dictionary.removeAHistory(suggestions[i]);
+				dictionary.addHistory(suggestions[i]);
+			}
+		}
+	}
+	// draw history
+	static Button history[6];
+	if (isDropdown && searchBox.getInput().empty()) {
+		if (timeline == 30) historyWords = dictionary.viewHistory();
+		for (int i = 0; i < historyWords.size() && i < 6; ++i) {
+			history[i].SetBox(searchBox.inputShape.x, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height, { 227, 253, 253, 253 }, { 238, 253, 253, 245 }, { 204, 227, 227, 255 });
+			history[i].SetText(Parable_Regular40, historyWords[i], { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular40, historyWords[i], 40, 1, history[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
+			history[i].DrawText(mouseCursor);
+			DrawTextureEx(history_icon, { searchBox.inputShape.x + (float)0.01 * windowWidth, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height + (float)0.01 * windowHeight }, 0, 0.1, WHITE);
+			if (history[i].state == RELEASED) {
+				searchBox.currentInput = historyWords[i];
+				searchBox.posCursor = searchBox.currentInput.size();
+				isDropdown = false;
+				search_result = dictionary.searchKeyword(historyWords[i], dicNum + 1);
+				isFavour = dictionary.isFavourite(historyWords[i]);
+				menu = SEARCH_RESULT;
+				searchBox.isTyping = false;
+				isDropdown = false;
+				dictionary.removeAHistory(historyWords[i]);
+				dictionary.addHistory(historyWords[i]);
 			}
 		}
 	}
@@ -615,13 +645,15 @@ void System::DrawSearchBar() {
 	// draw search result
 	if (searchBox.isTyping && searchBox.currentInput.empty() == false) {
 		if (IsKeyReleased(KEY_ENTER) || ok.state == RELEASED) {
+			dictionary.removeAHistory(searchBox.getInput());
+			dictionary.addHistory(searchBox.getInput());
 			if (mode) {// mode == true -> search by definition, click modeDef or modeKey to change mode
 				search_result = dictionary.searchDefinition(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
 			} else {
 				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
 			}
 			if (search_result.empty()) {
-				search_result.push_back("No result!");
+
 			}
 			else {
 				isFavour = dictionary.isFavourite(search_result[0]);
@@ -669,7 +701,10 @@ void System::DrawSearchResult() {
 
 	// draw search result
 	// draw keyword
-	DrawTextEx(RussoOne_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
+	if (search_result.empty()) {
+		DrawTextEx(RussoOne_Regular, "No result!", { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
+	}
+	else DrawTextEx(RussoOne_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
 	static Button Heart, edit, remove;
 	if (search_result.size() > 1) {
 		// draw definition box

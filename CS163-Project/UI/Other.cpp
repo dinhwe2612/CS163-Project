@@ -54,3 +54,17 @@ int RandInt(int min, int max) {
 	uniform_int_distribution<int> dist(min, max);
 	return dist(mt);
 }
+
+string PartialText(Font font, string text, float fontSize, float spacing, float width) {
+	if (MeasureTextEx(font, text.c_str(), fontSize, spacing).x <= width) {
+		return text;
+	}
+	string line = "";
+	for (char& c : text) {
+		if (MeasureTextEx(font, (line + c + "...").c_str(), fontSize, spacing).x > width) {
+			return line + "...";
+		}
+		line += c;
+	}
+	return line + "...";
+}
