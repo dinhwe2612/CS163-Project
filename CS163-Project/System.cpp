@@ -496,7 +496,9 @@ void System::DrawModify() {
 				dictionary.removeAWord(dicNum + 1, modifyKeyBox.getInput());
 			}
 			for (int i = 0; i < (int)modifyDefBox.size(); ++i) {
-				if (dictionary.addNewWord(dicNum + 1, modifyKeyBox.getInput(), modifyDefBox[i].getInput()));
+				if (dictionary.addNewWord(dicNum + 1, modifyKeyBox.getInput(), modifyDefBox[i].getInput())) {
+
+				}
 			}
 			timeline = 0;
 			dialog = true;
@@ -794,7 +796,7 @@ void System::DrawSearchResult() {
 
 	// draw search result
 	// draw keyword
-	if (search_result.empty()) {
+	if (search_result.size() < 2) {
 		DrawTextEx(RussoOne_Regular, "No result!", { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
 	}
 	else DrawTextEx(RussoOne_Regular, search_result[0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);

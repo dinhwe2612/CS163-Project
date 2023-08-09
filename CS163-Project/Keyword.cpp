@@ -10,7 +10,6 @@ int Keyword::insert(string key, string &def) {
     {
         int index = tolower(key[i]);
         if (index < 0) {
-            cerr << "Error: " << key << endl;
             index = ' ';
         }
         if (!pCrawl->child[index]) {
@@ -47,7 +46,7 @@ void Keyword::removeHelper(TrieNode*& root, string key, int depth) {
         root->id = -1;
         delete root;
         root = nullptr;
-        --numOfWords;
+        //--numOfWords; // we don't need to decrease the number of words because we don't completely remove the word.
         return;
     }
     int index = static_cast<int>(tolower(key[depth]));
@@ -55,7 +54,7 @@ void Keyword::removeHelper(TrieNode*& root, string key, int depth) {
     --root->countChild;
 
     // remove if it has no definition and has no child nodes.
-    if (root->countChild == 0) {
+    if (root->countChild == 0 && root->id == -1) {
         delete root;
         root = nullptr;
     }
@@ -116,6 +115,7 @@ void Keyword::save(ofstream &fout) {
 
 void Keyword::build(ifstream& fin) {
     fin.read((char*)&numOfWords, sizeof(int));
+    cout << numOfWords << endl;
     queue<TrieNode*> q;
     q.push(root);
     while (!q.empty()) {

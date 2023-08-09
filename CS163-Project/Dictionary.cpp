@@ -341,11 +341,9 @@ void Dictionary::save() {
 
 vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 	vector<string> found;
-	//vector<string> tmp;
 	int index;
 	switch (dicNum) {
 	case 1:
-		//tmp = engEng_key.search(key);
 		index = engEng_key.search(key);
 		if (index != -1) {
 			found.push_back(engEng[index].key);
@@ -355,7 +353,6 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		}
 		break;
 	case 2:
-		//tmp = vieEng_key.search(key);
 		index = vieEng_key.search(key);
 		if (index != -1) {
 			found.push_back(vieEng[index].key);
@@ -365,7 +362,6 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		}
 		break;
 	case 3:
-		//tmp = engVie_key.search(key);
 		index = engVie_key.search(key);
 		if (index != -1) {
 			found.push_back(engVie[index].key);
@@ -375,7 +371,6 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		}
 		break;
 	case 4:
-		//tmp = slang_key.search(key);
 		index = slang_key.search(key);
 		if (index != -1) {
 			found.push_back(slang[index].key);
@@ -385,7 +380,6 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		}
 		break;
 	case 5:
-		//tmp = emotional_key.search(key);
 		index = emotional_key.search(key);
 		if (index != -1) {
 			found.push_back(emotional[index].key);
@@ -395,12 +389,6 @@ vector<string> Dictionary::searchKeyword(string key, int dicNum) {
 		}
 		break;
 	}
-	//if (!tmp.empty()) {
-	//	found.push_back(key);
-	//	for (int i = 0; i < tmp.size(); i++) {
-	//		found.push_back(tmp[i]);
-	//	}
-	//}
 	return found;
 }
 
@@ -528,35 +516,30 @@ vector<string> Dictionary::randomAWord(int dictNum)
 	switch (dictNum)
 	{
 	case 1:
-		//id = rand() % (engEng.size() + 1);
 		id = RandInt(0, engEng.size() - 1);
 		word.push_back(engEng[id].key);
 		for (int i = 0; i < engEng[id].def.size(); ++i)
 			word.push_back(engEng[id].def[i]);
 		break;
 	case 2:
-		//id = rand() % (vieEng.size() + 1);
 		id = RandInt(0, vieEng.size() - 1);
 		word.push_back(vieEng[id].key);
 		for (int i = 0; i < vieEng[id].def.size(); ++i)
 			word.push_back(vieEng[id].def[i]);
 		break;
 	case 3:
-		//id = rand() % (engVie.size() + 1);
 		id = RandInt(0, engVie.size() - 1);
 		word.push_back(engVie[id].key);
 		for (int i = 0; i < engVie[id].def.size(); ++i)
 			word.push_back(engVie[id].def[i]);
 		break;
 	case 4:
-		//id = rand() % (slang.size() + 1);
 		id = RandInt(0, slang.size() - 1);
 		word.push_back(slang[id].key);
 		for (int i = 0; i < slang[id].def.size(); ++i)
 			word.push_back(slang[id].def[i]);
 		break;
 	case 5:
-		//id = rand() % (emotional.size() + 1);
 		id = RandInt(0, emotional.size() - 1);
 		word.push_back(emotional[id].key);
 		for (int i = 0; i < emotional[id].def.size(); ++i)
@@ -579,8 +562,6 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 	int id, add;
 	switch (dictnum) {
 	case 1:
-		//if (!engEng_key.insert(key, def)) return false;
-		//engEng_def.add(key, def);
 		id = engEng_key.insert(key, def);
 		add = engEng_def.add(def, id);
 		if (add) {
@@ -589,8 +570,6 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		} else return false;
 		break;
 	case 2:
-		//if (!vieEng_key.insert(key, def)) return false;
-		//vieEng_def.add(key, def);
 		id = vieEng_key.insert(key, def);
 		add = vieEng_def.add(def, id);
 		if (add) {
@@ -599,8 +578,6 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		} else return false;
 		break;
 	case 3:
-		//if (!engVie_key.insert(key, def)) return false;
-		//engVie_def.add(key, def);
 		id = engVie_key.insert(key, def);
 		add = engVie_def.add(def, id);
 		if (add) {
@@ -609,8 +586,6 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		} else return false;
 		break;
 	case 4:
-		//if (!slang_key.insert(key, def)) return false;
-		//slang_def.add(key, def);
 		id = slang_key.insert(key, def);
 		add = slang_def.add(def, id);
 		if (add) {
@@ -619,8 +594,6 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		} else return false;
 		break;
 	case 5:
-		//if (!emotional_key.insert(key, def)) return false;
-		//emotional_def.add(key, def);
 		id = emotional_key.insert(key, def);
 		add = emotional_def.add(def, id);
 		if (add) {
@@ -638,7 +611,6 @@ bool compareDef(vector<string> curDef, string newdef)
 	{
 		if (curDef[i] == newdef) return false;
 	}
-	//addWordToFile(dictnum, key, def);
 	return true;
 }
 
@@ -743,40 +715,31 @@ void Dictionary::removeAWord(int dictNum, string key)
 		id = engEng_key.search(key);
 		for (int i = 0; i < engEng[id].def.size(); ++i)
 			engEng_def.remove(engEng[id].def[i], id);
-		it = engEng.begin() + id;
-		engEng_key.remove(key);
+		engEng[id].def.clear();
 		break;
 	case 2:
 		id = vieEng_key.search(key);
 		for (int i = 0; i < vieEng[id].def.size(); ++i)
 			vieEng_def.remove(vieEng[id].def[i], id);
-		it = vieEng.begin() + id;
-		vieEng.erase(it);
-		vieEng_key.remove(key);
+		vieEng[id].def.clear();
 		break;
 	case 3:
 		id = engVie_key.search(key);
 		for (int i = 0; i < engVie[id].def.size(); ++i)
 			engVie_def.remove(engVie[id].def[i], id);
-		it = engVie.begin() + id;
-		engVie.erase(it);
-		engVie_key.remove(key);
+		engVie[id].def.clear();
 		break;
 	case 4:
 		id = slang_key.search(key);
 		for (int i = 0; i < slang[id].def.size(); ++i)
 			slang_def.remove(slang[id].def[i], id);
-		it = slang.begin() + id;
-		slang.erase(it);
-		slang_key.remove(key);
+		slang[id].def.clear();
 		break;
 	case 5:
 		id = emotional_key.search(key);
 		for (int i = 0; i < emotional[id].def.size(); ++i)
 			emotional_def.remove(emotional[id].def[i], id);
-		it = emotional.begin() + id;
-		emotional.erase(it);
-		emotional_key.remove(key);
+		emotional[id].def.clear();
 		break;
 	}
 }
