@@ -685,7 +685,7 @@ bool Dictionary::editDefinition(int dictNum, string key, string def, string newd
 		break;
 	}
 	return true;
-}	
+}
 
 string getSource(int dictNum) {
 	switch (dictNum) {
@@ -781,7 +781,7 @@ void Dictionary::removeAWord(int dictNum, string key)
 	}
 }
 
-void Dictionary::resetDictionary(int dictNum)
+void Dictionary::resetDictionary()
 {
 	// copyDictionary(dictNum);
 	buildFromOrigin();

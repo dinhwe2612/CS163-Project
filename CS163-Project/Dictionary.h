@@ -42,10 +42,11 @@ struct Dictionary {
 	vector<string> searchDefinition(string def, int dicNum);
 	bool addNewWord(int dictnum, string key, string def);
 	//void deleteDictionary();
-	void resetDictionary(int dictNum);
+	void resetDictionary();
 	bool editDefinition(int dictNum, string key, string def, string newdef);
 	void removeAWord(int dictNum, string key);
 	vector<string> randomAWord(int dictNum);
+
 	// favourite function
 	vector<string> viewFavourite(int dictNum);
 	void addFavourite(int dictNum, string key);
