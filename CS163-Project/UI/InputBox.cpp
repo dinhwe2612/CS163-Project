@@ -23,7 +23,7 @@ void InputBox::SetColorText(Color colorDefault, Color colorTouched, Color colorT
 }
 
 void InputBox::Draw() {
-	manipulate();
+	if (!noTyping) manipulate();
 
 	if (getState() == DEFAULT) {
 		//DrawRectangleRec(inputShape, colorBoxDefault);

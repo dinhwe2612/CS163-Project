@@ -18,6 +18,7 @@ struct System {
     Font Raleway_Black;
     Font Raleway_BlackBig;
     Font Raleway_Bold;
+    Font Raleway_Bold48;
     Font Raleway_Italic;
     Font RussoOne_Regular;
 
@@ -35,13 +36,17 @@ struct System {
     Button enter;
     Button Background;
     Button yes, no;
+    Button decreaseButton, increaseButton;
+    Button historyButton[100];
+    Button favourButton[100];
+    Button removeButton[100];
     string translation[5] = { "eng - eng", "vn - eng", "eng - vn", "slang", "emoji" };
     vector<string> search_result;
     vector<string> suggestions;
 
     InputBox searchBox;
     InputBox modifyKeyBox;
-    InputBox modifyDefBox;
+    vector<InputBox> modifyDefBox;
 
     Texture search_icon;
     Texture hollowedHeart_icon;
@@ -72,7 +77,7 @@ struct System {
     pair<int, vector<string>> randData; // for game
     vector<string> randWord; // for mainpage
     vector<string> favourWords; // list of keyword favourite
-    vector<string> historyWords; // list of keyword history
+    vector<his> historyWords; // list of keyword history
     bool isFavour = false;
     int dicNum = 0; // which dictionary is selected
     int menu = DEFAULT;
@@ -93,6 +98,7 @@ struct System {
     void DrawSearchBar();
     void DrawSearchResult();
     void DrawDialogBox();
+    void SetModify(string key);
 };
 
 #endif

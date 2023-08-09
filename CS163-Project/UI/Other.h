@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
-
+#include "Button.h"
 using namespace std;
 
 // center text

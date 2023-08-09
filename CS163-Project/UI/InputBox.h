@@ -20,6 +20,7 @@ struct InputBox {
     bool isTyping = false;// check if the input box is ready to type
     bool drawCorner = true;// draw corner of input box
     bool add = false;// add | to the end of currentInput
+    bool noTyping = false;// prevent from typing
     int timeline = 0;// for blinking cursor
     int posCursor = 0;// position of cursor
     int posL = 0;// first position in currentInput would be drawn
