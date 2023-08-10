@@ -32,9 +32,10 @@ struct Keyword { // Trie
 	int search(string key);
 	void remove(string key);
 	void save(ofstream &fout);
-
+	void deleteKeyword();
 private:
 	void removeHelper(TrieNode*& root, string key, int depth);
+	void destroyTrie(TrieNode* root);
 };
 
 #endif

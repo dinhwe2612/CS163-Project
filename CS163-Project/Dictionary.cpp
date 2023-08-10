@@ -744,9 +744,30 @@ void Dictionary::removeAWord(int dictNum, string key)
 	}
 }
 
+void Dictionary::clear()
+{
+	engEng.clear();
+	vieEng.clear();
+	engVie.clear();
+	slang.clear();
+	emotional.clear();
+
+	engEng_def.deleteDefinition();
+	vieEng_def.deleteDefinition();
+	engVie_def.deleteDefinition();
+	slang_def.deleteDefinition();
+	emotional_def.deleteDefinition();
+
+	engEng_key.deleteKeyword();
+	vieEng_key.deleteKeyword();
+	engVie_key.deleteKeyword();
+	slang_key.deleteKeyword();
+	emotional_key.deleteKeyword();
+}
+
 void Dictionary::resetDictionary()
 {
-	// copyDictionary(dictNum);
+	clear();
 	buildFromOrigin();
 	favourite.removeAll();
 	history.removeAll();

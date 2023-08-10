@@ -131,3 +131,20 @@ void Keyword::build(ifstream& fin) {
 		}
     }
 }
+
+void Keyword::destroyTrie(TrieNode* root)
+{
+    if (!root)
+        return;
+
+    for (int i = 0; i < ASCII_SIZE; ++i)
+        destroyTrie(root->child[i]);
+
+    delete root;
+}
+
+void Keyword::deleteKeyword()
+{
+    destroyTrie(root);
+    root = nullptr;
+}

@@ -42,6 +42,7 @@ struct Dictionary {
 	vector<string> searchDefinition(string def, int dicNum);
 	bool addNewWord(int dictnum, string key, string def);
 	//void deleteDictionary();
+	void clear();
 	void resetDictionary();
 	bool editDefinition(int dictNum, string key, string def, string newdef);
 	void removeAWord(int dictNum, string key);
