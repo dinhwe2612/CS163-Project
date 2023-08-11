@@ -94,6 +94,8 @@ void System::Construct() {
 	reset_icon = LoadTexture("../External/source/Image/reset-icon.png");
 	dinosaur_icon = LoadTexture("../External/source/Image/dinosaur-icon.png");
 	rdinosaur_icon = LoadTexture("../External/source/Image/rdinosaur-icon.png");
+	dinosaur2_icon = LoadTexture("../External/source/Image/dinosaur2-icon.png");
+	dinosaur3_icon = LoadTexture("../External/source/Image/dinosaur3-icon.png");
 
 	randWord = dictionary.randomAWord(dicNum + 1);
 	historyWords = dictionary.viewHistory(dicNum + 1);
@@ -254,7 +256,141 @@ void System::DrawReset(string content) {
 }
 
 void System::ResetDictionary() {
-	dictionary.resetDictionary();
+	//dictionary.resetDictionary();
+	DrawReset("0% ");
+	dictionary.engEng.clear();
+	dictionary.vieEng.clear();
+	dictionary.engVie.clear();
+	dictionary.slang.clear();
+	dictionary.emotional.clear();
+	DrawReset("5% ");
+	dictionary.engEng_def.deleteDefinition();
+	dictionary.vieEng_def.deleteDefinition();
+	dictionary.engVie_def.deleteDefinition();
+	dictionary.slang_def.deleteDefinition();
+	dictionary.emotional_def.deleteDefinition();
+	DrawReset("10% ");
+	dictionary.engEng_key.deleteKeyword();
+	DrawReset("25% ");
+	dictionary.vieEng_key.deleteKeyword();
+	dictionary.engVie_key.deleteKeyword();
+	DrawReset("35% ");
+	dictionary.slang_key.deleteKeyword();
+	dictionary.emotional_key.deleteKeyword();
+	DrawReset("40% ");
+	dictionary.favourite.removeAll();
+	dictionary.history.removeAll();
+	DrawReset("45% ");
+	ifstream fin;
+	fin.open("../Data/engEng/engEng_origin.txt");
+	while (!fin.eof()) {
+		string mix;
+		getline(fin, mix);
+		int index = mix.find("	");
+		string key = mix.substr(0, index);
+		string def = mix.substr(index + 1, mix.length());
+
+		int id = dictionary.engEng_key.insert(key, def);
+		bool add = dictionary.engEng_def.add(def, id);
+		if (add) {
+			if (id >= dictionary.engEng.size()) {
+				dictionary.engEng.emplace_back();
+				dictionary.engEng[id].key = key;
+			}
+			dictionary.engEng[id].def.push_back(def);
+		}
+	}
+	fin.close();
+	DrawReset("70% ");
+	fin.open("../Data/engVie/engVie_origin.txt");
+	while (!fin.eof()) {
+		string mix;
+		getline(fin, mix);
+		int index = mix.find("	");
+		string key = mix.substr(0, index);
+		string def = mix.substr(index + 1, mix.length());
+
+		//engVie_key.insert(key, def);
+		//engVie_def.add(key, def);
+		int id = dictionary.engVie_key.insert(key, def);
+		bool add = dictionary.engVie_def.add(def, id);
+		if (add) {
+			if (id >= dictionary.engVie.size()) {
+				dictionary.engVie.emplace_back();
+				dictionary.engVie[id].key = key;
+			}
+			dictionary.engVie[id].def.push_back(def);
+		}
+	}
+	fin.close();
+	DrawReset("78% ");
+	fin.open("../Data/vieEng/vieEng_origin.txt");
+	while (!fin.eof()) {
+		string mix;
+		getline(fin, mix);
+		int index = mix.find("	");
+		string key = mix.substr(0, index);
+		string def = mix.substr(index + 1, mix.length());
+
+		//vieEng_key.insert(key, def);
+		//vieEng_def.add(key, def);
+		int id = dictionary.vieEng_key.insert(key, def);
+		bool add = dictionary.vieEng_def.add(def, id);
+		if (add) {
+			if (id >= dictionary.vieEng.size()) {
+				dictionary.vieEng.emplace_back();
+				dictionary.vieEng[id].key = key;
+			}
+			dictionary.vieEng[id].def.push_back(def);
+		}
+	}
+	fin.close();
+	DrawReset("82% ");
+	fin.open("../Data/slang/slang_origin.txt");
+	while (!fin.eof()) {
+		string mix;
+		getline(fin, mix);
+		int index = mix.find("	");
+		string key = mix.substr(0, index);
+		string def = mix.substr(index + 1, mix.length());
+
+		//slang_key.insert(key, def);
+		//slang_def.add(key, def);
+		int id = dictionary.slang_key.insert(key, def);
+		bool add = dictionary.slang_def.add(def, id);
+		if (add) {
+			if (id >= dictionary.slang.size()) {
+				dictionary.slang.emplace_back();
+				dictionary.slang[id].key = key;
+			}
+			dictionary.slang[id].def.push_back(def);
+		}
+	}
+	fin.close();
+	DrawReset("96% ");
+	fin.open("../Data/emotional/emotional_origin.txt");
+	while (!fin.eof()) {
+		string mix;
+		getline(fin, mix);
+		int index = mix.find("	");
+		string key = mix.substr(0, index);
+		string def = mix.substr(index + 1, mix.length());
+
+		//emotional_key.insert(key, def);
+		//emotional_def.add(key, def);
+		int id = dictionary.emotional_key.insert(key, def);
+		bool add = dictionary.emotional_def.add(def, id);
+		if (add) {
+			if (id >= dictionary.emotional.size()) {
+				dictionary.emotional.emplace_back();
+				dictionary.emotional[id].key = key;
+			}
+			dictionary.emotional[id].def.push_back(def);
+		}
+	}
+	fin.close();
+	DrawReset("100% ");
+	WaitTime(0.5);
 	randWord = dictionary.randomAWord(dicNum + 1);
 	cout << "Reset dictionary successfully!" << endl;
 }
@@ -267,6 +403,9 @@ void System::DrawHistory() {
 	mainpage.buttonShape.y = 0.568 * windowHeight;
 	mainpage.coordText = GetCenterPos(mainpage.font, mainpage.Text, mainpage.fontSize, mainpage.spacing, mainpage.buttonShape);
 	mainpage.DrawText(mouseCursor);
+
+	// draw dinosour
+	DrawTextureEx(dinosaur3_icon, { (float)0.073 * windowWidth, (float)0.68 * windowHeight }, 0, 0.35, WHITE);
 
 	// draw mode button
 	if (mode) modeDef.DrawText(mouseCursor);
@@ -300,7 +439,9 @@ void System::DrawHistory() {
 		removeButton[i].DrawText(mouseCursor);
 		if (removeButton[i].state == DEFAULT && historyButton[i].state == RELEASED) {
 			menu = SEARCH_RESULT;
-			search_result = dictionary.searchKeyword(historyWords[i].word, dicNum + 1);
+			mode = historyWords[i].isKey ? false : true;
+			if (!mode) search_result = dictionary.searchKeyword(historyWords[i].word, dicNum + 1);
+			else search_result = dictionary.searchDefinition(historyWords[i].word, dicNum + 1);
 			isFavour = dictionary.isFavourite(randWord[0]);
 		}
 		if (removeButton[i].state == RELEASED) {
@@ -366,6 +507,9 @@ void System::DrawFavourite() {
 	mainpage.buttonShape.y = 0.568 * windowHeight;
 	mainpage.coordText = GetCenterPos(mainpage.font, mainpage.Text, mainpage.fontSize, mainpage.spacing, mainpage.buttonShape);
 	mainpage.DrawText(mouseCursor);
+
+	// draw dinosour
+	DrawTextureEx(dinosaur2_icon, { (float)0.073 * windowWidth, (float)0.68 * windowHeight }, 0, 1, WHITE);
 
 	// draw mode button
 	if (mode) modeDef.DrawText(mouseCursor);
@@ -892,7 +1036,7 @@ void System::DrawSearchResult() {
 		edit.DrawText(mouseCursor);
 		DrawTextureEx(edit_icon, { (float)0.858 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.075, edit.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 		if (edit.state == RELEASED) {
-			SetModify(randWord[0]);
+			SetModify(search_result[0]);
 			menu = MODIFY;
 		}
 		remove.SetBox(0.893 * windowWidth, boxShape.y + 0.01 * windowHeight, remove_icon.width * 0.08, remove_icon.height * 0.08, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));

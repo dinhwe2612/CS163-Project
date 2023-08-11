@@ -68,6 +68,8 @@ struct System {
     Texture reset_icon;
     Texture dinosaur_icon;
     Texture rdinosaur_icon;
+    Texture dinosaur2_icon;
+    Texture dinosaur3_icon;
 
     Color defaultColor = { 113, 201, 206, 255 };
     Color touchedColor = { 63, 201, 250, 245 };
