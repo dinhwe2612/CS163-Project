@@ -145,6 +145,7 @@ void Keyword::destroyTrie(TrieNode* root)
 
 void Keyword::deleteKeyword()
 {
+    numOfWords = 0;
     destroyTrie(root);
-    root = nullptr;
+    root = new TrieNode();
 }

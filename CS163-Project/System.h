@@ -16,10 +16,13 @@ struct System {
     Font Parable_Regular;
     Font Parable_Regular40;
     Font Raleway_Black;
+    Font Raleway_Black48;
     Font Raleway_BlackBig;
     Font Raleway_Bold;
+    Font Raleway_Bold30;
     Font Raleway_Bold48;
     Font Raleway_Italic;
+    Font Raleway_Italic30;
     Font RussoOne_Regular;
 
     Button reset;
@@ -59,6 +62,7 @@ struct System {
     Texture reload_icon;
     Texture remove_icon;
     Texture history_icon;
+    Texture reset_icon;
 
     Color defaultColor = { 113, 201, 206, 255 };
     Color touchedColor = { 63, 201, 250, 245 };

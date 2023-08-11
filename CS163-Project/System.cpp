@@ -19,10 +19,13 @@ void System::Construct() {
 	Parable_Regular = LoadFontEx("../External/source/Font/Parable-Regular.ttf", 96, 0, 0);
 	Parable_Regular40 = LoadFontEx("../External/source/Font/Parable-Regular.ttf", 40, 0, 0);
 	Raleway_Black = LoadFontEx("../External/source/Font/Raleway-Black.ttf", 40, 0, 0);
+	Raleway_Black48 = LoadFontEx("../External/source/Font/Raleway-Black.ttf", 48, 0, 0);
 	Raleway_BlackBig = LoadFontEx("../External/source/Font/Raleway-Black.ttf", 72, 0, 0);
 	Raleway_Bold = LoadFontEx("../External/source/Font/Raleway-Bold.ttf", 40, 0, 0);
 	Raleway_Bold48 = LoadFontEx("../External/source/Font/Raleway-Bold.ttf", 48, 0, 0);
+	Raleway_Bold30 = LoadFontEx("../External/source/Font/Raleway-Bold.ttf", 30, 0, 0);
 	Raleway_Italic = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 40, 0, 0);
+	Raleway_Italic30 = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 30, 0, 0);
 	RussoOne_Regular = LoadFontEx("../External/source/Font/RussoOne-Regular.ttf", 96, 0, 0);
 
 	modeDef.SetBox(0.81 * windowWidth, 0.101 * windowHeight, 0.129 * windowWidth, 0.059 * windowHeight, defaultColor, touchedColor, clickedColor);
@@ -86,6 +89,7 @@ void System::Construct() {
 	reload_icon = LoadTexture("../External/source/Image/reload-icon.png");
 	remove_icon = LoadTexture("../External/source/Image/remove-icon.png");
 	history_icon = LoadTexture("../External/source/Image/history-icon.png");
+	reset_icon = LoadTexture("../External/source/Image/reset-icon.png");
 
 	randWord = dictionary.randomAWord(dicNum + 1);
 	historyWords = dictionary.viewHistory(dicNum + 1);
@@ -163,6 +167,7 @@ void System::Draw() {
 }
 
 void System::DrawDefault() {
+	static bool isDialogOpen = false;
 	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
 	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
 	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
@@ -189,28 +194,54 @@ void System::DrawDefault() {
 
 	// draw seach bar
 	DrawSearchBar();
+	if (!isDialogOpen) {
+		if (history.state == RELEASED) {
+			menu = HISTORY;
+			historyWords = dictionary.viewHistory(dicNum + 1);
+		}
+		if (favourite.state == RELEASED) {
+			menu = FAVOURITE;
+			favourWords = dictionary.viewFavourite(dicNum + 1);
+		}
+		if (game.state == RELEASED) {
+			if (!mode) dictionary.randomWord(dicNum + 1, randData);
+			else dictionary.randomDef(dicNum + 1, randData);
 
-	if (history.state == RELEASED) {
-		menu = HISTORY;
-		historyWords = dictionary.viewHistory(dicNum + 1);
+			menu = GAME;
+		}
+		if (addnew.state == RELEASED) {
+			menu = MODIFY;
+			isAddNewWord = true;
+		}
+		if (searchBox.getState() == TOUCHED) {
+			mouseCursor = MOUSE_CURSOR_IBEAM;
+		}
 	}
-	if (favourite.state == RELEASED) {
-		menu = FAVOURITE;
-		favourWords = dictionary.viewFavourite(dicNum + 1);
+	if (isDialogOpen) {
+		DrawDialogBox();
+		if (no.state == RELEASED) {
+			isDialogOpen = false;
+		}
+		if (yes.state == RELEASED) {
+			isDialogOpen = false;
+			SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+			DrawRectangle(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight, WHITE);
+			DrawRectangle(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.05 * windowHeight, RAYWHITE);
+			DrawRectangleLines(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight, Fade(BLACK, 0.7));
+			DrawTextureEx(reset_icon, { (float)0.296 * windowWidth, (float)0.374 * windowHeight }, 0, 0.07, WHITE);
+			DrawTextEx(Raleway_Italic, "LOADING...", GetCenterPos(Raleway_Italic, "LOADING..", 40, 0.5, 0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight), 40, 0.5, BLACK);
+			DrawTextEx(Raleway_Bold30, "Reset", GetCenterPos(Raleway_Bold30, "Reset", 30, 0.5, 0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.05 * windowHeight), 30, 0.5, BLACK);
+			EndDrawing();
+			dictionary.resetDictionary();
+			randWord = dictionary.randomAWord(dicNum + 1);
+			cout << "Reset dictionary successfully!" << endl;
+		}
 	}
-	if (game.state == RELEASED) {
-		if (!mode) dictionary.randomWord(dicNum + 1, randData);
-		else dictionary.randomDef(dicNum + 1, randData);
-
-		menu = GAME;
+	if (reset.state == RELEASED) {
+		isDialogOpen = true;
+		cout << "Reset dictionary?" << endl;
 	}
-	if (addnew.state == RELEASED) {
-		menu = MODIFY;
-		isAddNewWord = true;
-	}
-	if (searchBox.getState() == TOUCHED) {
-		mouseCursor = MOUSE_CURSOR_IBEAM;
-	}
+	if (isDialogOpen) menu = DEFAULT;
 }
 
 void System::DrawHistory() {
@@ -373,40 +404,41 @@ void System::DrawGame() {
 	}
 
 	// draw multiple choice
-	//if (!mode) {// word given
-		Rectangle wordShape = { (float)0.039 * windowWidth, (float)0.194 * windowHeight, (float)0.922 * windowWidth, (float)0.271 * windowHeight };
-		DrawRectangleRoundedLines(wordShape, 0.1, 5, 2, { 113, 201, 206, 255});
-		DrawTextEx(Raleway_Black, randData.second[0].c_str(), GetCenterPos(Raleway_Black, randData.second[0], 48, 1, wordShape), 48, 1, BLACK);
-		for (int i = 0; i < 4; i++) {
-			choiceButton[i].SetBox(choiceShape[i].x, choiceShape[i].y, choiceShape[i].width, choiceShape[i].height, {113, 201, 206, 0}, {113, 201, 206, 15}, {113, 201, 206, 30});
-			choiceButton[i].roundness = 0.2;
-			choiceButton[i].drawCorner = true;
-			choiceButton[i].colorCornerDefault = choiceButton[i].colorCornerClicked = choiceButton[i].colorCornerTouched = {113, 201, 206, 255};
-			if (isAnswered && randData.first == i + 1) {
-				choiceButton[i].colorBoxDefault = choiceButton[i].colorBoxClicked = choiceButton[i].colorBoxTouched = { 0, 179, 0, 255 };
-			}
-			choiceButton[i].DrawText(mouseCursor);
-			choiceShape[i].x += 0.01 * windowWidth;
-			choiceShape[i].y += 0.005 * windowHeight;
-			choiceShape[i].width -= 0.015 * windowWidth;
-			choiceShape[i].height -= 0.007 * windowHeight;
-			DrawCircle(choiceShape[i].x + 0.01 * windowHeight, choiceShape[i].y + 0.023 * windowHeight, 0.02 * windowHeight, { 203, 241, 245, 255 });
-			DrawTextEx(Raleway_Bold, to_string(i + 1).c_str(), { choiceShape[i].x + (float)0.001 * windowHeight, choiceShape[i].y + (float)0.002 * windowHeight }, 30, 0.5, BLACK);
-			DrawTextOnBox(choiceShape[i], Raleway_Italic, randData.second[i + 1], { choiceShape[i].x + (float)0.02 * windowWidth, choiceShape[i].y + (float)0.01 * windowHeight }, 30, 0.5, 0.03 * windowHeight, BLACK);
-			if (!isAnswered && choiceButton[i].state == RELEASED) {
-				if (randData.first == i + 1) {
-					isAnswered = true;
-					timeline = 0;
-				}
+	Rectangle wordShape = { (float)0.039 * windowWidth, (float)0.194 * windowHeight, (float)0.922 * windowWidth, (float)0.271 * windowHeight };
+	DrawRectangleRoundedLines(wordShape, 0.1, 5, 2, { 113, 201, 206, 255});
+	DrawTextEx(Raleway_Black48, randData.second[0].c_str(), GetCenterPos(Raleway_Black48, randData.second[0], 48, 1, wordShape), 48, 1, BLACK);
+	static float scrollY[4] = { 0, 0, 0, 0 };
+	for (int i = 0; i < 4; i++) {
+		choiceButton[i].SetBox(choiceShape[i].x, choiceShape[i].y, choiceShape[i].width, choiceShape[i].height, {113, 201, 206, 0}, {113, 201, 206, 15}, {113, 201, 206, 30});
+		choiceButton[i].roundness = 0.2;
+		choiceButton[i].drawCorner = true;
+		choiceButton[i].colorCornerDefault = choiceButton[i].colorCornerClicked = choiceButton[i].colorCornerTouched = {113, 201, 206, 255};
+		if (isAnswered && randData.first == i + 1) {
+			choiceButton[i].colorBoxDefault = choiceButton[i].colorBoxClicked = choiceButton[i].colorBoxTouched = { 0, 179, 0, 255 };
+		}
+		DrawCircle(choiceShape[i].x + 0.009 * windowWidth + 0.01 * windowHeight, choiceShape[i].y + 0.005 * windowHeight + 0.023 * windowHeight, 0.02 * windowHeight, { 203, 241, 245, 255 });
+		DrawTextEx(Raleway_Bold30, to_string(i + 1).c_str(), { choiceShape[i].x + (float)0.009 * windowWidth + (float)0.001 * windowHeight, choiceShape[i].y + (float)0.005 * windowHeight + (float)0.002 * windowHeight }, 30, 0.5, BLACK);
+		choiceButton[i].DrawText(mouseCursor);
+		choiceShape[i].x += 0.03 * windowWidth;
+		choiceShape[i].y += 0.005 * windowHeight;
+		choiceShape[i].width -= 0.035 * windowWidth;
+		choiceShape[i].height -= 0.007 * windowHeight;
+		Vector2 posLast = DrawTextOnBox(choiceShape[i], Raleway_Italic30, randData.second[i + 1], { choiceShape[i].x + (float)0.01 * windowWidth, choiceShape[i].y + (float)0.01 * windowHeight + scrollY[i]}, 30, 0.5, 0.036 * windowHeight, BLACK);
+		if (!isAnswered && choiceButton[i].state == TOUCHED) {
+			float szY = posLast.y - (choiceShape[i].y + (float)0.01 * windowHeight + scrollY[i]);
+			scrollY[i] += GetMouseWheelMove() * 0.05 * windowHeight;
+			float endY = choiceShape[i].y + choiceShape[i].height;
+			if (choiceShape[i].y + (float)0.01 * windowHeight + scrollY[i] + szY < 0.95 * endY) scrollY[i] = 0.95 * endY - (choiceShape[i].y + (float)0.01 * windowHeight + szY);
+			if (scrollY[i] > 0) scrollY[i] = 0;
+		}
+		if (!isAnswered && choiceButton[i].state == RELEASED) {
+			if (randData.first == i + 1) {
+				isAnswered = true;
+				timeline = 0;
 			}
 		}
-	//}
-	//else {// definition given
-	//	Rectangle defShape = { (float)0.039 * windowWidth, (float)0.194 * windowHeight, (float)0.922 * windowWidth, (float)0.271 * windowHeight };
-	//	DrawRectangleRoundedLines(defShape, 0.1, 5, 2, { 113, 201, 206, 255 });
-	//	DrawTextEx(Raleway_Black, randData.second[0].c_str(), GetCenterPos(Raleway_Black, randData.second[0], 48, 1, defShape), 48, 1, BLACK);
+	}
 
-	//}
 	if (isAnswered) {
 		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && timeline >= 1) {
 			isAnswered = false;

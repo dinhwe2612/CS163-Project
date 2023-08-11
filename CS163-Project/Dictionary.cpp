@@ -751,26 +751,27 @@ void Dictionary::clear()
 	engVie.clear();
 	slang.clear();
 	emotional.clear();
-
+	cout << "Clear container successfully!" << endl;
 	engEng_def.deleteDefinition();
 	vieEng_def.deleteDefinition();
 	engVie_def.deleteDefinition();
 	slang_def.deleteDefinition();
 	emotional_def.deleteDefinition();
-
+	cout << "Clear hash table successfully!" << endl;
 	engEng_key.deleteKeyword();
 	vieEng_key.deleteKeyword();
 	engVie_key.deleteKeyword();
 	slang_key.deleteKeyword();
 	emotional_key.deleteKeyword();
+	cout << "Clear trie successfully!" << endl;
 }
 
 void Dictionary::resetDictionary()
 {
 	clear();
-	buildFromOrigin();
 	favourite.removeAll();
 	history.removeAll();
+	buildFromOrigin();
 }
 
 vector<string> Dictionary::viewFavourite(int dictNum) {

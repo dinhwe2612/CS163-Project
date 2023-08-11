@@ -12,6 +12,8 @@ Vector2 GetCenterPos(Font font, string text, float fontSize, float spacing, Rect
 }
 
 Vector2 DrawTextOnBox(Rectangle boxShape, Font font, string text, Vector2 coord, float fontSize, float spacing, float lineGap, Color colorText) {
+	BeginScissorMode(boxShape.x, boxShape.y, boxShape.width, boxShape.height); // Begin scissor mode (allows drawing only inside a rectangle)
+	
 	float x = coord.x, y = coord.y;
 	float limitX = boxShape.x + boxShape.width;
 	float limitY = boxShape.y + boxShape.height;
@@ -30,12 +32,10 @@ Vector2 DrawTextOnBox(Rectangle boxShape, Font font, string text, Vector2 coord,
 		else {
 			line += word + " ";
 		}
-		if (y + size.y > limitY) {
-			return { x, y };
-		}
 	}
 	DrawTextEx(font, line.c_str(), { x, y }, fontSize, spacing, colorText);
 	
+	EndScissorMode();
 	return { x + MeasureTextEx(font, line.c_str(), fontSize, spacing).x, y };
 }
 
