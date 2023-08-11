@@ -82,6 +82,21 @@ void History::remove(string word) {
 void History::removeAll() {
 	history.clear();
 	ofstream fout;
-	fout.open("../Data/" + datasetName + "/" + datasetName + "_history.txt");
-	fout.close();
+	/*for (int i = 1; i <= 5; i++) {
+		string dataset;
+		switch (i) {
+		case 1:
+			dataset = "engEng";
+		case 2:
+			dataset = "vieEng";
+		case 3:
+			dataset = "engVie";
+		case 4:
+			dataset = "slang";
+		case 5:
+			dataset = "emotional";
+		}
+		fout.open("../Data/" + dataset + "/" + dataset + "_history.txt");
+		fout.close();
+	}*/
 }

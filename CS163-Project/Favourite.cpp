@@ -90,6 +90,21 @@ bool Favourite::isFavourite(string &key) {
 void Favourite::removeAll() {
 	favourite.clear();
 	ofstream fout;
-	fout.open("../Data/" + datasetName + "/" + datasetName + "_favourite.txt");
-	fout.close();
+	/*for (int i = 1; i <= 5; i++) {
+		string dataset;
+		switch (i) {
+		case 1:
+			dataset = "engEng";
+		case 2:
+			dataset = "vieEng";
+		case 3:
+			dataset = "engVie";
+		case 4:
+			dataset = "slang";
+		case 5:
+			dataset = "emotional";
+		}
+		fout.open("../Data/" + dataset + "/" + dataset + "_favourite.txt");
+		fout.close();
+	}*/
 }
