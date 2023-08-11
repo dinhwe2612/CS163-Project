@@ -9,6 +9,7 @@ int Keyword::insert(string key, string &def) {
     for (int i = 0; i < key.length(); i++)
     {
         int index = tolower(key[i]);
+        cout << key[i] << " " << index << endl;
         if (index < 0) {
             index = ' ';
         }

@@ -14,6 +14,7 @@ struct System {
     float windowWidth, windowHeight;
 
     Font Parable_Regular;
+    Font Parable_Regular100;
     Font Parable_Regular40;
     Font Raleway_Black;
     Font Raleway_Black48;
@@ -65,6 +66,8 @@ struct System {
     Texture remove_icon;
     Texture history_icon;
     Texture reset_icon;
+    Texture dinosaur_icon;
+    Texture rdinosaur_icon;
 
     Color defaultColor = { 113, 201, 206, 255 };
     Color touchedColor = { 63, 201, 250, 245 };
@@ -104,6 +107,7 @@ struct System {
     void DrawSearchBar();
     void DrawSearchResult();
     void DrawDialogBox();
+    void DrawTitle();
     void SetModify(string key);
     void ResetDictionary();
 };

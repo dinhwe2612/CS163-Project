@@ -565,7 +565,10 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		id = engEng_key.insert(key, def);
 		add = engEng_def.add(def, id);
 		if (add) {
-			if (id >= engEng.size()) engEng.emplace_back();
+			if (id >= engEng.size()) {
+				engEng.emplace_back();
+				engEng[id].key = key;
+			}
 			engEng[id].def.push_back(def);
 		} else return false;
 		break;
@@ -573,7 +576,10 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		id = vieEng_key.insert(key, def);
 		add = vieEng_def.add(def, id);
 		if (add) {
-			if (id >= vieEng.size()) vieEng.emplace_back();
+			if (id >= vieEng.size()) {
+				vieEng.emplace_back();
+				engEng[id].key = key;
+			}
 			vieEng[id].def.push_back(def);
 		} else return false;
 		break;
@@ -581,7 +587,10 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		id = engVie_key.insert(key, def);
 		add = engVie_def.add(def, id);
 		if (add) {
-			if (id >= engVie.size()) engVie.emplace_back();
+			if (id >= engVie.size()) {
+				engVie.emplace_back();
+				engEng[id].key = key;
+			}
 			engVie[id].def.push_back(def);
 		} else return false;
 		break;
@@ -589,7 +598,10 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		id = slang_key.insert(key, def);
 		add = slang_def.add(def, id);
 		if (add) {
-			if (id >= slang.size()) slang.emplace_back();
+			if (id >= slang.size()) {
+				slang.emplace_back();
+				engEng[id].key = key;
+			}
 			slang[id].def.push_back(def);
 		} else return false;
 		break;
@@ -597,7 +609,10 @@ bool Dictionary::addNewWord(int dictnum, string key, string def)
 		id = emotional_key.insert(key, def);
 		add = emotional_def.add(def, id);
 		if (add) {
-			if (id >= emotional.size()) emotional.emplace_back();
+			if (id >= emotional.size()) {
+				emotional.emplace_back();
+				engEng[id].key = key;
+			}
 			emotional[id].def.push_back(def);
 		} else return false;
 		break;

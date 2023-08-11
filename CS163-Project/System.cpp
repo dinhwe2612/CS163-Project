@@ -28,6 +28,7 @@ void System::Construct() {
 	Raleway_Italic30 = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 30, 0, 0);
 	Raleway_Italic48 = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 48, 0, 0);
 	RussoOne_Regular = LoadFontEx("../External/source/Font/RussoOne-Regular.ttf", 96, 0, 0);
+	Parable_Regular100 = LoadFontEx("../External/source/Font/Parable-Regular.ttf", 100, 0, 0);
 
 	modeDef.SetBox(0.81 * windowWidth, 0.101 * windowHeight, 0.129 * windowWidth, 0.059 * windowHeight, defaultColor, touchedColor, clickedColor);
 	modeDef.SetText(Raleway_Black, "Definition", GetCenterPos(Raleway_Black, "Definition", 30, 0.5, modeDef.buttonShape), 30, 0.5, BLACK, BLACK, BLACK);
@@ -91,6 +92,8 @@ void System::Construct() {
 	remove_icon = LoadTexture("../External/source/Image/remove-icon.png");
 	history_icon = LoadTexture("../External/source/Image/history-icon.png");
 	reset_icon = LoadTexture("../External/source/Image/reset-icon.png");
+	dinosaur_icon = LoadTexture("../External/source/Image/dinosaur-icon.png");
+	rdinosaur_icon = LoadTexture("../External/source/Image/rdinosaur-icon.png");
 
 	randWord = dictionary.randomAWord(dicNum + 1);
 	historyWords = dictionary.viewHistory(dicNum + 1);
@@ -167,11 +170,15 @@ void System::Draw() {
 	CloseWindow();
 }
 
+void System::DrawTitle() {
+	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.398 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
+	DrawTextureEx(dictionary_icon, { (float)0.322 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
+	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
+}
+
 void System::DrawDefault() {
 	static bool isDialogOpen = false;
-	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
-	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
-	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
+	DrawTitle();
 	// draw addnew button
 	addnew.DrawText(mouseCursor);
 	DrawTextureEx(add_icon, { addnew.coordText.x - (float)0.003 * windowWidth, addnew.coordText.y }, 0, 0.05, WHITE);
@@ -253,9 +260,7 @@ void System::ResetDictionary() {
 }
 
 void System::DrawHistory() {
-	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
-	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
-	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
+	DrawTitle();
 	DrawTextEx(Raleway_BlackBig, "History", { (float)0.083 * windowWidth, (float)0.422 * windowHeight }, 72, 0.5, BLACK);
 
 	mainpage.buttonShape.x = 0.061 * windowWidth;
@@ -354,9 +359,7 @@ void System::DrawFavourite() {
 	}
 
 	DrawRectangle(0, 0, windowWidth, 0.342 * windowHeight, { 236, 249, 255, 255 });
-	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
-	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
-	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
+	DrawTitle();
 	DrawTextEx(Raleway_BlackBig, "Favourite", { (float)0.061 * windowWidth, (float)0.422 * windowHeight }, 72, 0.5, BLACK);
 
 	mainpage.buttonShape.x = 0.061 * windowWidth;
@@ -395,7 +398,9 @@ void System::DrawGame() {
 	};
 	if (timeline <= 10) timeline += GetFrameTime();
 	// draw Game 
-	DrawTextEx(Parable_Regular, "Game", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
+	DrawTextEx(Parable_Regular100, "Game", { (float)0.43 * windowWidth, (float)0.023 * windowHeight }, 100, 0.5, BLACK);
+	DrawTextureEx(dinosaur_icon, { (float)0.326 * windowWidth, (float)0.023 * windowHeight }, 0, 0.5, WHITE);
+	DrawTextureEx(rdinosaur_icon, { (float)0.596 * windowWidth, (float)0.023 * windowHeight }, 0, 0.5, WHITE);
 	mainpage.buttonShape.x = 0.039 * windowWidth;
 	mainpage.buttonShape.y = 0.071 * windowHeight;
 	mainpage.coordText = GetCenterPos(mainpage.font, mainpage.Text, mainpage.fontSize, mainpage.spacing, mainpage.buttonShape);
@@ -424,6 +429,7 @@ void System::DrawGame() {
 	}
 	else DrawTextEx(!mode ? Raleway_Black48 : Raleway_Italic48, randData.second[0].c_str(), GetCenterPos(Raleway_Black48, randData.second[0], 48, 1, wordShape), 48, 1, BLACK);
 	static float scrollY[4] = { 0, 0, 0, 0 };
+	static bool isChoosed[4] = { false, false, false, false };
 	for (int i = 0; i < 4; i++) {
 		choiceButton[i].SetBox(choiceShape[i].x, choiceShape[i].y, choiceShape[i].width, choiceShape[i].height, {113, 201, 206, 0}, {113, 201, 206, 15}, {113, 201, 206, 30});
 		choiceButton[i].roundness = 0.2;
@@ -432,9 +438,13 @@ void System::DrawGame() {
 		if (isAnswered && randData.first == i + 1) {
 			choiceButton[i].colorBoxDefault = choiceButton[i].colorBoxClicked = choiceButton[i].colorBoxTouched = { 0, 179, 0, 255 };
 		}
+		choiceButton[i].DrawText(mouseCursor);
+		if (isChoosed[i]) {
+			DrawRectangleRounded(choiceShape[i], 0.2, 4, {239, 83, 80, 150});
+		}
 		DrawCircle(choiceShape[i].x + 0.009 * windowWidth + 0.01 * windowHeight, choiceShape[i].y + 0.005 * windowHeight + 0.023 * windowHeight, 0.02 * windowHeight, { 203, 241, 245, 255 });
 		DrawTextEx(Raleway_Bold30, to_string(i + 1).c_str(), { choiceShape[i].x + (float)0.009 * windowWidth + (float)0.001 * windowHeight, choiceShape[i].y + (float)0.005 * windowHeight + (float)0.002 * windowHeight }, 30, 0.5, BLACK);
-		choiceButton[i].DrawText(mouseCursor);
+		
 		choiceShape[i].x += 0.03 * windowWidth;
 		choiceShape[i].y += 0.005 * windowHeight;
 		choiceShape[i].width -= 0.035 * windowWidth;
@@ -451,6 +461,8 @@ void System::DrawGame() {
 			if (randData.first == i + 1) {
 				isAnswered = true;
 				timeline = 0;
+			} else {
+				isChoosed[i] = true;
 			}
 		}
 	}
@@ -465,6 +477,11 @@ void System::DrawGame() {
 			else {
 				dictionary.randomDef(dicNum + 1, randData);
 			}
+			for (int i = 0; i < 4; ++i) {
+				scrollY[i] = 0;
+				isChoosed[i] = false;
+			}
+
 		}
 		DrawRectangle(0, 0, windowWidth, windowHeight, Fade(BLACK, 0.5));
 		DrawTextEx(Raleway_BlackBig, "Correctly!", { (float)0.39 * windowWidth, (float)0.45 * windowHeight }, 68, 0.7, { 50, 205, 50, 255 });
@@ -543,6 +560,7 @@ void System::DrawModify() {
 			if (!isAddNewWord) {
 				dictionary.removeAWord(dicNum + 1, modifyKeyBox.getInput());
 			}
+			cout << modifyKeyBox.getInput() << '\n';
 			for (int i = 0; i < (int)modifyDefBox.size(); ++i) {
 				if (dictionary.addNewWord(dicNum + 1, modifyKeyBox.getInput(), modifyDefBox[i].getInput())) {
 
@@ -563,9 +581,7 @@ void System::DrawModify() {
 	}
 
 	DrawRectangle(0, 0, windowWidth, 0.342 * windowHeight, { 236, 249, 255, 255 });
-	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
-	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
-	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
+	DrawTitle();
 
 	// draw seach bar
 	DrawSearchBar();
@@ -899,9 +915,7 @@ void System::DrawSearchResult() {
 	}
 	// draw title
 	DrawRectangle(0, 0, windowWidth, 0.342 * windowHeight, { 236, 249, 255, 255 });
-	DrawTextEx(Parable_Regular, "Dictionary", { (float)0.338 * windowWidth, (float)0.023 * windowHeight }, 96, 0.5, BLACK);
-	DrawTextureEx(dictionary_icon, { (float)0.262 * windowWidth, (float)0.023 * windowHeight }, 0, 0.2, Fade(WHITE, 0.8));
-	DrawLine(0, 0.342 * windowHeight, windowWidth, 0.342 * windowHeight, BLACK);
+	DrawTitle();
 	// draw search bar
 	DrawSearchBar();
 	// draw mode button
