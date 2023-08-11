@@ -477,7 +477,6 @@ void System::DrawFavourite() {
 		favourButton[i].SetBox(coordX[i & 1], coordY + gap * (i/2) + scrollY, 0.309 * windowWidth, szY, { 203, 241, 245, 255 }, { 203, 241, 245, 255 }, { 203, 241, 245, 255 });
 		favourButton[i].SetText(RussoOne_Regular, favourWords[i], { coordX[i & 1] + (float)0.02 * windowWidth, coordY + (float)gap * (i/2) + (float)0.03 * windowHeight + scrollY }, 40, 0.7, BLACK, BLACK, BLACK);
 		favourButton[i].roundness = 0.65;
-		favourButton[i].setMouse = false;
 		favourButton[i].DrawText(mouseCursor);
 		//heartButton[i].SetBox(coordX[i & 1] + (float)0.268 * windowWidth, coordY + gap * (i / 2) + (float)0.012 * windowHeight + scrollY, hollowedHeart_icon.width * 0.085, hollowedHeart_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 		//heartButton[i].DrawText(mouseCursor);
@@ -485,11 +484,11 @@ void System::DrawFavourite() {
 		//editButton[i].DrawText(mouseCursor);
 		removeButton[i].SetBox(coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY, remove_icon.width * 0.085, remove_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 		removeButton[i].DrawText(mouseCursor);
-		//if (heartButton[i].state == DEFAULT && editButton[i].state == DEFAULT && favourButton[i].state == RELEASED) {
-		//	menu = SEARCH_RESULT;
-		//	search_result = dictionary.searchKeyword(favourWords[i], dicNum + 1);
-		//	isFavour = dictionary.isFavourite(favourWords[i]);
-		//}
+		if (removeButton[i].state == DEFAULT && favourButton[i].state == RELEASED) {
+			menu = SEARCH_RESULT;
+			search_result = dictionary.searchKeyword(favourWords[i], dicNum + 1);
+			isFavour = dictionary.isFavourite(favourWords[i]);
+		}
 		if (removeButton[i].state == RELEASED) {
 			dictionary.removeAFavourite(dicNum + 1, favourWords[i]);
 			favourWords = dictionary.viewFavourite(dicNum + 1);
