@@ -23,6 +23,7 @@ struct System {
     Font Raleway_Bold48;
     Font Raleway_Italic;
     Font Raleway_Italic30;
+    Font Raleway_Italic48;
     Font RussoOne_Regular;
 
     Button reset;
@@ -43,6 +44,7 @@ struct System {
     Button historyButton[100];
     Button favourButton[100];
     Button removeButton[100];
+    Button heartButton[100];
     string translation[5] = { "eng - eng", "vn - eng", "eng - vn", "slang", "emoji" };
     vector<string> search_result;
     vector<string> suggestions;
@@ -96,13 +98,14 @@ struct System {
     void DrawFavourite();
     void DrawGame();
     void DrawModify();
-    void DrawReset();
+    void DrawReset(string content);
     void DrawChangeTranslation();
     void DrawRandomWord();
     void DrawSearchBar();
     void DrawSearchResult();
     void DrawDialogBox();
     void SetModify(string key);
+    void ResetDictionary();
 };
 
 #endif

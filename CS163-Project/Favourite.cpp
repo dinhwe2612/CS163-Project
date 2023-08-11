@@ -74,6 +74,7 @@ void Favourite::remove(string key) {
 
 bool Favourite::isFavourite(string &key) {
 	for (int i = 0; i < favourite.size(); i++) {
+		if (key.size() != favourite[i].size()) continue;
 		bool ok = true;
 		for(int j = 0; j < key.size(); j++)
 			if (tolower(key[j]) != tolower(favourite[i][j])) {

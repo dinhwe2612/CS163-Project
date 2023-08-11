@@ -26,6 +26,7 @@ void System::Construct() {
 	Raleway_Bold30 = LoadFontEx("../External/source/Font/Raleway-Bold.ttf", 30, 0, 0);
 	Raleway_Italic = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 40, 0, 0);
 	Raleway_Italic30 = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 30, 0, 0);
+	Raleway_Italic48 = LoadFontEx("../External/source/Font/Raleway-Italic.ttf", 48, 0, 0);
 	RussoOne_Regular = LoadFontEx("../External/source/Font/RussoOne-Regular.ttf", 96, 0, 0);
 
 	modeDef.SetBox(0.81 * windowWidth, 0.101 * windowHeight, 0.129 * windowWidth, 0.059 * windowHeight, defaultColor, touchedColor, clickedColor);
@@ -224,17 +225,7 @@ void System::DrawDefault() {
 		}
 		if (yes.state == RELEASED) {
 			isDialogOpen = false;
-			SetMouseCursor(MOUSE_CURSOR_DEFAULT);
-			DrawRectangle(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight, WHITE);
-			DrawRectangle(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.05 * windowHeight, RAYWHITE);
-			DrawRectangleLines(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight, Fade(BLACK, 0.7));
-			DrawTextureEx(reset_icon, { (float)0.296 * windowWidth, (float)0.374 * windowHeight }, 0, 0.07, WHITE);
-			DrawTextEx(Raleway_Italic, "LOADING...", GetCenterPos(Raleway_Italic, "LOADING..", 40, 0.5, 0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight), 40, 0.5, BLACK);
-			DrawTextEx(Raleway_Bold30, "Reset", GetCenterPos(Raleway_Bold30, "Reset", 30, 0.5, 0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.05 * windowHeight), 30, 0.5, BLACK);
-			EndDrawing();
-			dictionary.resetDictionary();
-			randWord = dictionary.randomAWord(dicNum + 1);
-			cout << "Reset dictionary successfully!" << endl;
+			ResetDictionary();
 		}
 	}
 	if (reset.state == RELEASED) {
@@ -242,6 +233,23 @@ void System::DrawDefault() {
 		cout << "Reset dictionary?" << endl;
 	}
 	if (isDialogOpen) menu = DEFAULT;
+}
+
+void System::DrawReset(string content) {
+	SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+	DrawRectangle(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight, WHITE);
+	DrawRectangle(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.05 * windowHeight, RAYWHITE);
+	DrawRectangleLines(0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight, Fade(BLACK, 0.7));
+	DrawTextureEx(reset_icon, { (float)0.296 * windowWidth, (float)0.374 * windowHeight }, 0, 0.07, WHITE);
+	DrawTextEx(Raleway_Italic, (content + "LOADING...").c_str(), GetCenterPos(Raleway_Italic, content + "LOADING..", 40, 0.5, 0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.3 * windowHeight), 40, 0.5, BLACK);
+	DrawTextEx(Raleway_Bold30, "Reset", GetCenterPos(Raleway_Bold30, "Reset", 30, 0.5, 0.294 * windowWidth, 0.37 * windowHeight, 0.412 * windowWidth, 0.05 * windowHeight), 30, 0.5, BLACK);
+	EndDrawing();
+}
+
+void System::ResetDictionary() {
+	dictionary.resetDictionary();
+	randWord = dictionary.randomAWord(dicNum + 1);
+	cout << "Reset dictionary successfully!" << endl;
 }
 
 void System::DrawHistory() {
@@ -276,7 +284,9 @@ void System::DrawHistory() {
 	if (scrollY + coordY + gap * (historyWords.size() + 1) / 2 < 0.99 * windowHeight)
 		scrollY = 0.99 * windowHeight - coordY - gap * (historyWords.size() + 1) / 2;
 	if (scrollY > 0) scrollY = 0;
+	BeginScissorMode(0, 0.342 * windowHeight, windowWidth, 0.658 * windowHeight);
 	for (int i = 0; i < historyWords.size(); ++i) {
+		if (coordY + gap * (i / 2) + scrollY + szY < 0.342 * windowHeight) continue;
 		historyButton[i].SetBox(coordX[i & 1], coordY + gap * (i / 2) + scrollY, 0.309 * windowWidth, szY, { 203, 241, 245, 255 }, { 203, 241, 245, 255 }, { 203, 241, 245, 255 });
 		historyButton[i].SetText(RussoOne_Regular, PartialText(RussoOne_Regular, historyWords[i].word, 40, 0.7, 0.25 * windowWidth), {coordX[i & 1] + (float)0.02 * windowWidth, coordY + (float)gap * (i / 2) + (float)0.03 * windowHeight + scrollY}, 40, 0.7, BLACK, BLACK, BLACK);
 		historyButton[i].roundness = 0.65;
@@ -294,6 +304,7 @@ void System::DrawHistory() {
 		}
 		DrawTextureEx(remove_icon, { coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY }, 0, 0.085, removeButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	}
+	EndScissorMode();
 
 	// draw seach bar
 	DrawSearchBar();
@@ -339,7 +350,7 @@ void System::DrawFavourite() {
 		}
 		//DrawTextureEx(filledHeart_icon, { coordX[i & 1] + (float)0.268 * windowWidth, coordY + (float)gap * (i/2) + (float)0.01 * windowHeight + scrollY }, 0, 0.085, (heartButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
 		//DrawTextureEx(edit_icon, { coordX[i & 1] + (float)0.272 * windowWidth, coordY + (float)gap * (i/2) + (float)0.06 * windowHeight + scrollY }, 0, 0.085, (editButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE));
-		DrawTextureEx(remove_icon, { coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY }, 0, 0.085, removeButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		DrawTextureEx(filledHeart_icon, { coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY }, 0, 0.088, removeButton[i].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 	}
 
 	DrawRectangle(0, 0, windowWidth, 0.342 * windowHeight, { 236, 249, 255, 255 });
@@ -406,7 +417,12 @@ void System::DrawGame() {
 	// draw multiple choice
 	Rectangle wordShape = { (float)0.039 * windowWidth, (float)0.194 * windowHeight, (float)0.922 * windowWidth, (float)0.271 * windowHeight };
 	DrawRectangleRoundedLines(wordShape, 0.1, 5, 2, { 113, 201, 206, 255});
-	DrawTextEx(Raleway_Black48, randData.second[0].c_str(), GetCenterPos(Raleway_Black48, randData.second[0], 48, 1, wordShape), 48, 1, BLACK);
+	Vector2 pos = GetCenterPos(Raleway_Black48, randData.second[0], 48, 1, wordShape);
+	if (pos.x < wordShape.x) {
+		wordShape.x += 0.01 * windowWidth;
+		DrawTextOnBox(wordShape, !mode ? Raleway_Black48 : Raleway_Italic48, randData.second[0], { wordShape.x + (float)0.02 * windowWidth, wordShape.y + (float)0.015 * windowHeight }, 48, 1, 0.042 * windowHeight, BLACK);
+	}
+	else DrawTextEx(!mode ? Raleway_Black48 : Raleway_Italic48, randData.second[0].c_str(), GetCenterPos(Raleway_Black48, randData.second[0], 48, 1, wordShape), 48, 1, BLACK);
 	static float scrollY[4] = { 0, 0, 0, 0 };
 	for (int i = 0; i < 4; i++) {
 		choiceButton[i].SetBox(choiceShape[i].x, choiceShape[i].y, choiceShape[i].width, choiceShape[i].height, {113, 201, 206, 0}, {113, 201, 206, 15}, {113, 201, 206, 30});
@@ -423,7 +439,7 @@ void System::DrawGame() {
 		choiceShape[i].y += 0.005 * windowHeight;
 		choiceShape[i].width -= 0.035 * windowWidth;
 		choiceShape[i].height -= 0.007 * windowHeight;
-		Vector2 posLast = DrawTextOnBox(choiceShape[i], Raleway_Italic30, randData.second[i + 1], { choiceShape[i].x + (float)0.01 * windowWidth, choiceShape[i].y + (float)0.01 * windowHeight + scrollY[i]}, 30, 0.5, 0.036 * windowHeight, BLACK);
+		Vector2 posLast = DrawTextOnBox(choiceShape[i], !mode ? Raleway_Italic30 : Raleway_Bold30, randData.second[i + 1], { choiceShape[i].x + (float)0.01 * windowWidth, choiceShape[i].y + (float)0.01 * windowHeight + scrollY[i]}, 30, 0.5, 0.036 * windowHeight, BLACK);
 		if (!isAnswered && choiceButton[i].state == TOUCHED) {
 			float szY = posLast.y - (choiceShape[i].y + (float)0.01 * windowHeight + scrollY[i]);
 			scrollY[i] += GetMouseWheelMove() * 0.05 * windowHeight;
@@ -541,7 +557,6 @@ void System::DrawModify() {
 		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && timeline >= 2) {
 			dialog = false;
 			timeline = 0;
-			isAddNewWord = false;
 		}
 		DrawRectangle(0, 0, windowWidth, windowHeight, Fade(BLACK, 0.5));
 		DrawTextEx(Raleway_BlackBig, "Successfully!", { (float)0.35 * windowWidth, (float)0.5 * windowHeight }, 68, 0.7, { 50, 205, 50, 255 });
@@ -565,13 +580,16 @@ void System::DrawModify() {
 	if (mainpage.state == RELEASED) {
 		menu = DEFAULT;
 		isFavour = dictionary.isFavourite(randWord[0]);
+		randWord = dictionary.searchKeyword(randWord[0], dicNum + 1);
 	}
 	if (menu != MODIFY) {
-		modifyKeyBox.currentInput = "";
 		modifyKeyBox.posCursor = 0;
-		//modifyDefBox.currentInput = "";
-		//modifyDefBox.posCursor = 0;
 		dialog = false;
+		timeline = 0;
+		isAddNewWord = false;
+		modifyKeyBox.currentInput = "";
+		modifyKeyBox.noTyping = false;
+		modifyDefBox.clear();
 	}
 	if (searchBox.getState() == TOUCHED) {
 		mouseCursor = MOUSE_CURSOR_IBEAM;
@@ -748,13 +766,15 @@ void System::DrawSearchBar() {
 		}
 	}
 	// draw history
+	static Button hisButton[7];
 	if (isDropdown && searchBox.getInput().empty()) {
+		
 		for (int i = 0, i2 = (int)historyWords.size() - 1; i < 6 && i2 >= 0; ++i, --i2) {
-			historyButton[i].SetBox(searchBox.inputShape.x, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height, { 227, 253, 253, 253 }, { 238, 253, 253, 245 }, { 204, 227, 227, 255 });
-			historyButton[i].SetText(Parable_Regular40, historyWords[i2].word, { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular40, historyWords[i2].word, 40, 1, historyButton[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
-			historyButton[i].DrawText(mouseCursor);
+			hisButton[i].SetBox(searchBox.inputShape.x, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height, { 227, 253, 253, 253 }, { 238, 253, 253, 245 }, { 204, 227, 227, 255 });
+			hisButton[i].SetText(Parable_Regular40, historyWords[i2].word, { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular40, historyWords[i2].word, 40, 1, hisButton[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
+			hisButton[i].DrawText(mouseCursor);
 			DrawTextureEx(history_icon, { searchBox.inputShape.x + (float)0.01 * windowWidth, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height + (float)0.01 * windowHeight }, 0, 0.1, WHITE);
-			if (historyButton[i].state == RELEASED) {
+			if (hisButton[i].state == RELEASED) {
 				searchBox.currentInput = historyWords[i2].word;
 				searchBox.posCursor = searchBox.currentInput.size();
 				isDropdown = false;
@@ -780,12 +800,7 @@ void System::DrawSearchBar() {
 			} else {
 				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
 			}
-			if (search_result.empty()) {
-
-			}
-			else {
-				isFavour = dictionary.isFavourite(search_result[0]);
-			}
+			if (!search_result.empty()) isFavour = dictionary.isFavourite(search_result[0]);
 			menu = SEARCH_RESULT;
 			searchBox.isTyping = false;
 			isDropdown = false;
@@ -846,14 +861,14 @@ void System::DrawSearchResult() {
 		if (isFavour) {
 			DrawTextureEx(filledHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 			if (Heart.state == RELEASED) {
-				dictionary.removeAFavourite(dicNum + 1, randWord[0]);
+				dictionary.removeAFavourite(dicNum + 1, search_result[0]);
 				isFavour = false;
 			}
 		}
 		else {
 			DrawTextureEx(hollowedHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, Heart.state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
 			if (Heart.state == RELEASED) {
-				dictionary.addFavourite(dicNum + 1, randWord[0]);
+				dictionary.addFavourite(dicNum + 1, search_result[0]);
 				isFavour = true;
 			}
 		}
