@@ -864,7 +864,9 @@ void Dictionary::resetDictionary()
 vector<string> Dictionary::viewFavourite(int dictNum) {
 	string dataset = getSource(dictNum);
 	favourite.init(dataset);
-	return favourite.favourite;
+	vector<string> rev = favourite.favourite;
+	reverse(rev.begin(), rev.end());
+	return rev;
 }
 
 void Dictionary::addFavourite(int dictNum, string key) {
@@ -892,7 +894,9 @@ bool Dictionary::isFavourite(string key) {
 vector<his> Dictionary::viewHistory(int dictNum) {
 	string dataset = getSource(dictNum);
 	history.init(dataset);
-	return history.history;
+	vector<his> rev = history.history;
+	reverse(rev.begin(), rev.end());
+	return rev;
 }
 
 void Dictionary::addHistory(int dictNum, string word, bool isKey) {
