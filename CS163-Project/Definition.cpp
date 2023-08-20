@@ -19,7 +19,7 @@ vector<int> Definition::getHashList(string& def) {
             res.push_back(hashFunc(word));
         }
         else {
-            res.push_back((res.back() * 137 + hashFunc(word)) % MOD);
+            res.push_back((1ll * res.back() * 137 + hashFunc(word)) % MOD);
         }
 	}
     return res;
@@ -44,6 +44,16 @@ int Definition::getHash(vector<int> &hashDef, int l, int r) {
     return (hashDef[r] - 1ll * (l ? hashDef[l - 1] : 0) * POW(r - l + 1) + 1ll * MOD * MOD) % MOD;
 }
 
+int Definition::getHash(string &def) {
+    stringstream ss(def);
+    string word;
+    int hashDef = 0;
+	while (ss >> word) {
+		hashDef = (1ll * hashDef * 137 + hashFunc(word)) % MOD;
+	}
+	return hashDef;
+}
+
 int Definition::getNumDef(string &def) {
     stringstream ss(def);
     int cnt = 0;
@@ -54,7 +64,7 @@ int Definition::getNumDef(string &def) {
 }
 
 vector<pair<int, int>> Definition::searchHash(string &def) {
-    int hashDef = hashFunc(def);
+    int hashDef = getHash(def);
     int szDef = getNumDef(def);
 	vector<pair<int, int>> res;
 	for (int id = 0; id < (int)hashList.size(); ++id) {

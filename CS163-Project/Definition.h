@@ -30,6 +30,7 @@ struct Definition {
 	int POW(int n);
 	vector<int> getHashList(string &def);
 	int getHash(vector<int> &hashDef, int l, int r);
+	int getHash(string& def);
 	vector<pair<int, int>> searchHash(string &def);
 	void build(ifstream &fin);
 	void save(ofstream &fout);

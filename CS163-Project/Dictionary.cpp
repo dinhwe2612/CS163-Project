@@ -529,9 +529,54 @@ vector<vector<string>> Dictionary::searchHashDefinition(string def, int dicNum) 
 				for(string &tmp : engEng[id.first].def) {
 					found.back().push_back(tmp);
 				}
-				if (found.size() == 40) break;
+				if (found.size() == 100) break;
 			}
 			break;
+		case 2:
+			index = vieEng_def.searchHash(def);
+			for (pair<int, int> &id : index) {
+				if (!check(vieEng[id.first].def[id.second], def)) continue;
+				found.emplace_back();
+				found.back().push_back(vieEng[id.first].key);
+				for(string &tmp : vieEng[id.first].def) {
+					found.back().push_back(tmp);
+				}
+				if (found.size() == 100) break;
+			}
+			break;
+		case 3:
+			index = engVie_def.searchHash(def);
+			for (pair<int, int> &id : index) {
+				if (!check(engVie[id.first].def[id.second], def)) continue;
+				found.emplace_back();
+				found.back().push_back(engVie[id.first].key);
+				for(string &tmp : engVie[id.first].def) {
+					found.back().push_back(tmp);
+				}
+				if (found.size() == 100) break;
+			}
+		case 4: 
+			index = slang_def.searchHash(def);
+			for (pair<int, int> &id : index) {
+				if (!check(slang[id.first].def[id.second], def)) continue;
+				found.emplace_back();
+				found.back().push_back(slang[id.first].key);
+				for(string &tmp : slang[id.first].def) {
+					found.back().push_back(tmp);
+				}
+				if (found.size() == 100) break;
+			}
+		case 5:
+			index = emotional_def.searchHash(def);
+			for (pair<int, int> &id : index) {
+				if (!check(emotional[id.first].def[id.second], def)) continue;
+				found.emplace_back();
+				found.back().push_back(emotional[id.first].key);
+				for(string &tmp : emotional[id.first].def) {
+					found.back().push_back(tmp);
+				}
+				if (found.size() == 100) break;
+			}
 	};
 	return found;
 }

@@ -848,6 +848,7 @@ void System::DrawChangeTranslation() {
 					isDropdownChangeTranslation = false;
 					randWord = dictionary.randomAWord(dicNum + 1);
 					isFavour = dictionary.isFavourite(randWord[0]);
+					historyWords = dictionary.viewHistory(dicNum + 1);
 				}
 			}
 			temp.DrawText(mouseCursor);
@@ -1153,8 +1154,8 @@ void System::DrawSearchDefResult() {
 	next.SetText(Raleway_Black, ">", GetCenterPos(Raleway_Black, ">", 40, 1, next.buttonShape), 40, 1, BLACK, BLACK, BLACK);
 	if (mainpage.buttonShape.y + mainpage.buttonShape.height >= 0.342 * windowHeight) {
 		mainpage.DrawText(mouseCursor);
-		prev.DrawText(mouseCursor);
-		next.DrawText(mouseCursor);
+		if (choosen != 0) prev.DrawText(mouseCursor);
+		if (choosen + 1 != (int)searchDef_result.size()) next.DrawText(mouseCursor);
 		DrawTextEx(Raleway_Black48, to_string(choosen + 1).c_str(), GetCenterPos(Raleway_Black48, to_string(choosen + 1), 48, 0.5, { prev.buttonShape.x + prev.buttonShape.width, prev.buttonShape.y, next.buttonShape.x - (prev.buttonShape.x + prev.buttonShape.width), prev.buttonShape.height }), 48, 0.5, BLACK);
 		string totalPage = "of " + to_string(searchDef_result.size()) + (searchDef_result.size() > 1 ? " pages" : " page");
 		DrawTextEx(Raleway_Bold30, totalPage.c_str(), { GetCenterPos(Raleway_Bold30, totalPage, 30, 0.5, { prev.buttonShape.x + prev.buttonShape.width, prev.buttonShape.y + prev.buttonShape.height, next.buttonShape.x - (prev.buttonShape.x + prev.buttonShape.width), prev.buttonShape.height }).x, (float)0.5 * windowHeight + scrollY }, 30, 0.5, BLACK);
@@ -1166,16 +1167,20 @@ void System::DrawSearchDefResult() {
 			choosen = 0;
 		}
 		if (prev.state == RELEASED) {
+			prev.state = CLICKED;
 			if (choosen > 0) --choosen;
 			scrollY = 0;
 			height = 0;
 			isFavour = dictionary.isFavourite(searchDef_result[choosen][0]);
 		}
 		if (next.state == RELEASED) {
-			if (choosen + 1 < searchDef_result.size()) ++choosen;
-			scrollY = 0;
-			height = 0;
-			isFavour = dictionary.isFavourite(searchDef_result[choosen][0]);
+			next.state = CLICKED;
+			if (choosen + 1 < searchDef_result.size()) {
+				++choosen;
+				scrollY = 0;
+				height = 0;
+				isFavour = dictionary.isFavourite(searchDef_result[choosen][0]);
+			}
 		}
 	}
 
