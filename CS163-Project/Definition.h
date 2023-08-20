@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
+#include <algorithm>
 using namespace std;
 
 //struct hash_node {
@@ -12,19 +14,23 @@ using namespace std;
 //	hash_node* next;
 //};
 const int MAX = 1011;
-int hashFunc(string def);
+int hashFunc(string &def);
 //void deleteHashlist(hash_node*& pHead);
 
 struct Definition {
 	int num = 0;// number of definition
-	//hash_node** word = new hash_node*[30011];
-	vector<int> words[MAX];
-	
-	//Definition() {
-	//	fill(word, word + 30011, nullptr);
-	//	num = 0;
-	//}
 
+	vector<int> words[MAX];
+
+	const int MOD = 1e9 + 7;
+	vector<int> pw;
+	vector<vector<vector<int>>> hashList;
+	
+	int getNumDef(string &def);
+	int POW(int n);
+	vector<int> getHashList(string &def);
+	int getHash(vector<int> &hashDef, int l, int r);
+	vector<pair<int, int>> searchHash(string &def);
 	void build(ifstream &fin);
 	void save(ofstream &fout);
 	bool add(string &def, int id);// add a new definition, return true if success

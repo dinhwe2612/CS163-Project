@@ -508,6 +508,34 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 	return found;
 }
 
+bool check(string &a, string &b) {
+	if (a.size() < b.size()) return false;
+	for (int l = 0, r = (int)b.size() - 1; r < a.size(); ++l, ++r) {
+		if (a.substr(l, r - l + 1) == b) return true;
+	}
+	return false;
+}
+
+vector<vector<string>> Dictionary::searchHashDefinition(string def, int dicNum) {
+	vector<vector<string>> found;
+	vector<pair<int, int>> index;
+	switch (dicNum) {
+		case 1:
+			index = engEng_def.searchHash(def);
+			for (pair<int, int> &id : index) {
+				if (!check(engEng[id.first].def[id.second], def)) continue;
+				found.emplace_back();
+				found.back().push_back(engEng[id.first].key);
+				for(string &tmp : engEng[id.first].def) {
+					found.back().push_back(tmp);
+				}
+				if (found.size() == 40) break;
+			}
+			break;
+	};
+	return found;
+}
+
 vector<string> Dictionary::randomAWord(int dictNum)
 {
 	int id;
@@ -548,14 +576,6 @@ vector<string> Dictionary::randomAWord(int dictNum)
 	}
 	return word;
 }
-
-//void Dictionary::deleteDictionary() {
-//	engEng_def.deleteDefinition();
-//	vieEng_def.deleteDefinition();
-//	engVie_def.deleteDefinition();
-//	slang_def.deleteDefinition();
-//	emotional_def.deleteDefinition();
-//}
 
 bool Dictionary::addNewWord(int dictnum, string key, string def)
 {

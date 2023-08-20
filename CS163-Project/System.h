@@ -13,6 +13,8 @@ using namespace std;
 struct System {
     float windowWidth, windowHeight;
 
+    Dictionary dictionary;
+
     Font Parable_Regular;
     Font Parable_Regular100;
     Font Parable_Regular40;
@@ -48,6 +50,7 @@ struct System {
     Button heartButton[100];
     string translation[5] = { "eng - eng", "vn - eng", "eng - vn", "slang", "emoji" };
     vector<string> search_result;
+    vector<vector<string>> searchDef_result;
     vector<string> suggestions;
 
     InputBox searchBox;
@@ -84,6 +87,7 @@ struct System {
         MODIFY,
         RESET,
         SEARCH_RESULT,
+        SEARCH_DEF_RESULT,
     };
     pair<int, vector<string>> randData; // for game
     vector<string> randWord; // for mainpage
@@ -97,6 +101,7 @@ struct System {
     bool isAddNewWord = false;
 
     void Construct();
+    void Destruct();
     void Draw();
     void DrawDefault();
     void DrawHistory();
@@ -108,6 +113,7 @@ struct System {
     void DrawRandomWord();
     void DrawSearchBar();
     void DrawSearchResult();
+    void DrawSearchDefResult();
     void DrawDialogBox();
     void DrawTitle();
     void SetModify(string key);

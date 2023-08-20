@@ -1,42 +1,89 @@
 #include "Definition.h"
+
 using namespace std;
 
-int hashFunc(string def) {
+int hashFunc(string &def) {
     int hashDef = 0;
-    for (int i = 0; i < min(4, (int)def.size()); ++i) {
+    for (int i = 0; i < (int)def.size(); ++i) {
         hashDef = (hashDef * 137 + def[i] + 1) % MAX;
     }
 	return hashDef;
 }
 
-//void deleteHashlist(hash_node*& pHead) {
-//    while (pHead) {
-//        hash_node* tmp = pHead;
-//        pHead = pHead->next;
-//        delete tmp;
-//    }
-//    pHead = nullptr;
-//}
+vector<int> Definition::getHashList(string& def) {
+    vector<int> res;
+    stringstream ss(def);
+    string word;
+    while (ss >> word) {
+        if (res.empty()) {
+            res.push_back(hashFunc(word));
+        }
+        else {
+            res.push_back((res.back() * 137 + hashFunc(word)) % MOD);
+        }
+	}
+    return res;
+}
+
+int Definition::POW(int n) {
+    if (n == 0) return 1;
+    if (n == 1) return 137;
+    while (n >= (int)pw.size()) {
+        pw.push_back(-1);
+	}
+    if (pw[n] != -1) return pw[n];
+    int tmp = POW(n >> 1);
+    return pw[n] = (n & 1 ? (1ll * tmp * tmp * 137) % MOD : (1ll * tmp * tmp) % MOD);
+}
+
+int Definition::getHash(vector<int> &hashDef, int l, int r) {
+    if (l > r) {
+        cerr << "getHash error\n";
+        return 0;
+    }
+    return (hashDef[r] - 1ll * (l ? hashDef[l - 1] : 0) * POW(r - l + 1) + 1ll * MOD * MOD) % MOD;
+}
+
+int Definition::getNumDef(string &def) {
+    stringstream ss(def);
+    int cnt = 0;
+    while (ss >> def) {
+        ++cnt;
+    }
+    return cnt;
+}
+
+vector<pair<int, int>> Definition::searchHash(string &def) {
+    int hashDef = hashFunc(def);
+    int szDef = getNumDef(def);
+	vector<pair<int, int>> res;
+	for (int id = 0; id < (int)hashList.size(); ++id) {
+        int cnt = 0;
+        for (vector<int> &listDef : hashList[id]) {
+            bool ok = false;
+            for (int l = 0, r = szDef - 1; r < (int)listDef.size(); ++l, ++r) {
+                if (getHash(listDef, l, r) == hashDef) {
+                    res.push_back({ id, cnt });
+                    ok = true;
+                    break;
+                }
+            }
+            if (ok) break;
+            ++cnt;
+        }
+	}
+	return res;
+}
 
 bool Definition::add(string &def, int id) {
 	int index = hashFunc(def);
-    //hash_node* pNew = new hash_node;
-    //pNew->next = nullptr;
-    //pNew->data.first = key;
-    //pNew->data.second = def;
-
-    //if (!word[index]) {
-    //    word[index] = pNew;
-    //    return;
-    //}
-
-    //hash_node* cur = word[index];
-    //while (cur->next != nullptr)
-    //    cur = cur->next;
-    //cur->next = pNew;
     vector<int>::iterator it = find(words[index].begin(), words[index].end(), id);
     if (it == words[index].end()) {
 		words[index].push_back(id);
+        if (id >= (int)hashList.size()) {
+            hashList.emplace_back();
+        }
+        hashList[id].push_back(getHashList(def));
         return true;
 	}
     return false;
@@ -45,43 +92,24 @@ bool Definition::add(string &def, int id) {
 // return keyword
 vector<int> Definition::search(string &def) {
     int index = hashFunc(def);
-    //if (word[index] == nullptr) return "\0";
-
-    //hash_node* cur = word[index];
-    //while (cur && cur->data.second != def) {
-    //    cur = cur->next;
-    //}
-    //if (!cur) return "\0";
-    //return cur->data.first;
     return words[index];
 }
 
 // remove both keyword and definition
 bool Definition::remove(string &def, int id) {
     int index = hashFunc(def);
-    //if (!word[index]) return;
-
-    //hash_node* cur = word[index];
-    //while (cur->next && cur->next->data.second != def)
-    //    cur = cur->next;
-
-    //if (!cur->next) return;
-    //hash_node* tmp = cur->next;
-    //cur->next = tmp->next;
-    //delete tmp;
     vector<int>::iterator it = find(words[index].begin(), words[index].end(), id);
     if (it == words[index].end()) return false;
     words[index].erase(it);
+    hashList[id].clear();
     return true;
 }
 
 void Definition::deleteDefinition() {
     for (int i = 0; i < MAX; i++) {
-        //deleteHashlist(word[i]);
-        //word[i] = nullptr;
         words[i].clear();
     }
-    //delete[] word;
+    hashList.clear();
 }
 
 void Definition::build(ifstream& fin) {
@@ -91,6 +119,22 @@ void Definition::build(ifstream& fin) {
         for (int j = 0; j < num; ++j) {
             words[i].emplace_back();
             fin.read((char*)&words[i][j], sizeof(int));
+		}
+	}
+    int szHashList;
+	fin.read((char*)&szHashList, sizeof(int));
+	for (int i = 0; i < szHashList; ++i) {
+		int szListDef;
+		fin.read((char*)&szListDef, sizeof(int));
+		hashList.emplace_back();
+		for (int j = 0; j < szListDef; ++j) {
+			int szDef;
+			fin.read((char*)&szDef, sizeof(int));
+			hashList[i].emplace_back();
+			for (int k = 0; k < szDef; ++k) {
+				hashList[i][j].emplace_back();
+				fin.read((char*)&hashList[i][j][k], sizeof(int));
+			}
 		}
 	}
 }
@@ -103,4 +147,17 @@ void Definition::save(ofstream& fout) {
             fout.write((char*)&j, sizeof(int));
 		}
 	}
+    int szHashList = hashList.size();
+    fout.write((char*)&szHashList, sizeof(int));
+    for (int i = 0; i < szHashList; ++i) {
+        int szListDef = hashList[i].size();
+        fout.write((char*)&szListDef, sizeof(int));
+        for (int j = 0; j < szListDef; ++j) {
+            int szDef = hashList[i][j].size();
+            fout.write((char*)&szDef, sizeof(int));
+            for (int& k : hashList[i][j]) {
+                fout.write((char*)&k, sizeof(int));
+            }
+        }
+    }
 }

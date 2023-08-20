@@ -2,8 +2,6 @@
 #include "UI/Other.h"
 #include <chrono>
 
-Dictionary dictionary;
-
 void System::Construct() {
 	auto start = chrono::high_resolution_clock::now();
 	dictionary.build();
@@ -34,35 +32,43 @@ void System::Construct() {
 	modeDef.SetText(Raleway_Black, "Definition", GetCenterPos(Raleway_Black, "Definition", 30, 0.5, modeDef.buttonShape), 30, 0.5, BLACK, BLACK, BLACK);
 	modeKey = modeDef;
 	modeKey.SetText(Raleway_Black, "Keyword", GetCenterPos(Raleway_Black, "Keyword", 30, 0.5, modeKey.buttonShape), 30, 0.5, BLACK, BLACK, BLACK);
+	modeKey.isZoom = true;
 
 	reset.SetBox(0.673 * windowWidth, 0.399 * windowHeight, 0.099 * windowWidth, 0.066 * windowHeight, defaultColor, touchedColor, clickedColor);
 	reset.SetText(Raleway_Black, "Reset", GetCenterPos(Raleway_Black, "Reset", 30, 0.5, reset.buttonShape), 30, 0.5, BLACK, BLACK, BLACK);
 	reset.roundness = 0.65;
+	reset.isZoom = true;
 
 	back = reset;
 	back.SetText(Raleway_Black, "Back", GetCenterPos(Raleway_Black, "Back", 30, 0.5, back.buttonShape), 30, 0.5, BLACK, BLACK, BLACK);
+	back.isZoom = true;
 
 	history.SetBox(0.055 * windowWidth, 0.438 * windowHeight, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
 	history.SetText(Raleway_Black, "History", GetCenterPos(Raleway_Black, "History", 40, 0.5, history.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
 	history.roundness = 0.65;
+	history.isZoom = true;
 
 	favourite.SetBox(0.055 * windowWidth, 0.6 * windowHeight, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
 	favourite.SetText(Raleway_Black, "Favourite", GetCenterPos(Raleway_Black, "Favourite", 40, 0.5, favourite.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
 	favourite.roundness = 0.65;
+	favourite.isZoom = true;
 
 	game.SetBox(0.055 * windowWidth, 0.762 * windowHeight, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
 	game.SetText(Raleway_Black, "Game", GetCenterPos(Raleway_Black, "Game", 40, 0.5, game.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
 	game.roundness = 0.65;
+	game.isZoom = true;
 
 	addnew.SetBox(0.795 * windowWidth, 0.399 * windowHeight, 0.144 * windowWidth, 0.066 * windowHeight, defaultColor, touchedColor, clickedColor);
 	addnew.SetText(Raleway_Black, "     Add New", GetCenterPos(Raleway_Black, "     Add New", 30, 0.5, addnew.buttonShape), 30, 0.5, BLACK, BLACK, BLACK);
 	addnew.roundness = 0.65;
+	addnew.isZoom = true;
 
 	changeTranslation.SetBox(0.061 * windowWidth, 0.185 * windowHeight, 0.233 * windowWidth, 0.094 * windowHeight, defaultColor, touchedColor, clickedColor);
 
 	mainpage.SetBox(0.743 * windowWidth, 0.835 * windowHeight, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
 	mainpage.SetText(Raleway_Black, "Main Page", GetCenterPos(Raleway_Black, "Main Page", 40, 0.5, mainpage.buttonShape), 40, 0.5, BLACK, BLACK, BLACK);
 	mainpage.roundness = 0.65;
+	mainpage.isZoom = true;
 
 	searchBox.Construct(0.294 * windowWidth, 0.185 * windowHeight, 0.645 * windowWidth, 0.094 * windowHeight, Parable_Regular40, { (float)0.312 * windowWidth, (float)0.2071 * windowHeight }, 40, 1, 300);
 	searchBox.SetColorBox({ 255, 255, 255, 120 }, { 255, 255, 255, 80 }, { 255, 255, 255, 160 });
@@ -79,6 +85,7 @@ void System::Construct() {
 	ok.roundness = 1.5;
 	
 	enter.roundness = 0.65;
+	enter.isZoom = true;
 
 	search_icon = LoadTexture("../External/source/Image/magnifyingGlass.png");
 	arrow_icon = LoadTexture("../External/source/Image/arrowDown.png");
@@ -99,6 +106,45 @@ void System::Construct() {
 
 	randWord = dictionary.randomAWord(dicNum + 1);
 	historyWords = dictionary.viewHistory(dicNum + 1);
+}
+
+void System::Destruct() {
+	dictionary.save();
+	dictionary.clear();
+	randData.second.clear();
+	favourWords.clear();
+	historyWords.clear();
+
+	UnloadTexture(search_icon);
+	UnloadTexture(arrow_icon);
+	UnloadTexture(dictionary_icon);
+	UnloadTexture(add_icon);
+	UnloadTexture(zoom_icon);
+	UnloadTexture(edit_icon);
+	UnloadTexture(filledHeart_icon);
+	UnloadTexture(hollowedHeart_icon);
+	UnloadTexture(reload_icon);
+	UnloadTexture(remove_icon);
+	UnloadTexture(history_icon);
+	UnloadTexture(reset_icon);
+	UnloadTexture(dinosaur_icon);
+	UnloadTexture(rdinosaur_icon);
+	UnloadTexture(dinosaur2_icon);
+	UnloadTexture(dinosaur3_icon);
+
+	UnloadFont(Parable_Regular);
+	UnloadFont(Parable_Regular100);
+	UnloadFont(Parable_Regular40);
+	UnloadFont(Raleway_Black);
+	UnloadFont(Raleway_Black48);
+	UnloadFont(Raleway_BlackBig);
+	UnloadFont(Raleway_Bold);
+	UnloadFont(Raleway_Bold30);
+	UnloadFont(Raleway_Bold48);
+	UnloadFont(Raleway_Italic);
+	UnloadFont(Raleway_Italic30);
+	UnloadFont(Raleway_Italic48);
+	UnloadFont(RussoOne_Regular);
 }
 
 void System::Draw() {	
@@ -162,8 +208,10 @@ void System::Draw() {
 			case SEARCH_RESULT:
 				DrawSearchResult();
 				break;
+			case SEARCH_DEF_RESULT:
+				DrawSearchDefResult();
+				break;
 			}
-
 			SetMouseCursor(mouseCursor);
 
 		EndDrawing();
@@ -223,10 +271,11 @@ void System::DrawDefault() {
 			menu = MODIFY;
 			isAddNewWord = true;
 		}
-		if (searchBox.getState() == TOUCHED) {
+		if (ok.state == DEFAULT && searchBox.getState() == TOUCHED) {
 			mouseCursor = MOUSE_CURSOR_IBEAM;
 		}
 	}
+	if (isDialogOpen) menu = DEFAULT;
 	if (isDialogOpen) {
 		DrawDialogBox();
 		if (no.state == RELEASED) {
@@ -241,7 +290,6 @@ void System::DrawDefault() {
 		isDialogOpen = true;
 		cout << "Reset dictionary?" << endl;
 	}
-	if (isDialogOpen) menu = DEFAULT;
 }
 
 void System::DrawReset(string content) {
@@ -256,7 +304,6 @@ void System::DrawReset(string content) {
 }
 
 void System::ResetDictionary() {
-	//dictionary.resetDictionary();
 	DrawReset("0% ");
 	dictionary.engEng.clear();
 	dictionary.vieEng.clear();
@@ -283,6 +330,7 @@ void System::ResetDictionary() {
 	DrawReset("45% ");
 	ifstream fin;
 	fin.open("../Data/engEng/engEng_origin.txt");
+	int cnt = 0;
 	while (!fin.eof()) {
 		string mix;
 		getline(fin, mix);
@@ -299,6 +347,8 @@ void System::ResetDictionary() {
 			}
 			dictionary.engEng[id].def.push_back(def);
 		}
+		if (++cnt == 60000) DrawReset("56% ");
+		else if (cnt == 85000) DrawReset("64% ");
 	}
 	fin.close();
 	DrawReset("70% ");
@@ -310,8 +360,6 @@ void System::ResetDictionary() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		//engVie_key.insert(key, def);
-		//engVie_def.add(key, def);
 		int id = dictionary.engVie_key.insert(key, def);
 		bool add = dictionary.engVie_def.add(def, id);
 		if (add) {
@@ -332,8 +380,6 @@ void System::ResetDictionary() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		//vieEng_key.insert(key, def);
-		//vieEng_def.add(key, def);
 		int id = dictionary.vieEng_key.insert(key, def);
 		bool add = dictionary.vieEng_def.add(def, id);
 		if (add) {
@@ -354,8 +400,6 @@ void System::ResetDictionary() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		//slang_key.insert(key, def);
-		//slang_def.add(key, def);
 		int id = dictionary.slang_key.insert(key, def);
 		bool add = dictionary.slang_def.add(def, id);
 		if (add) {
@@ -376,8 +420,6 @@ void System::ResetDictionary() {
 		string key = mix.substr(0, index);
 		string def = mix.substr(index + 1, mix.length());
 
-		//emotional_key.insert(key, def);
-		//emotional_def.add(key, def);
 		int id = dictionary.emotional_key.insert(key, def);
 		bool add = dictionary.emotional_def.add(def, id);
 		if (add) {
@@ -438,11 +480,17 @@ void System::DrawHistory() {
 		removeButton[i].SetBox(coordX[i & 1] + (float)0.271 * windowWidth, coordY + gap * (i / 2) + (float)0.032 * windowHeight + scrollY, remove_icon.width * 0.085, remove_icon.height * 0.085 - (float)0.01 * windowHeight, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
 		removeButton[i].DrawText(mouseCursor);
 		if (removeButton[i].state == DEFAULT && historyButton[i].state == RELEASED) {
-			menu = SEARCH_RESULT;
 			mode = historyWords[i].isKey ? false : true;
-			if (!mode) search_result = dictionary.searchKeyword(historyWords[i].word, dicNum + 1);
-			else search_result = dictionary.searchDefinition(historyWords[i].word, dicNum + 1);
-			isFavour = dictionary.isFavourite(randWord[0]);
+			if (!mode) {
+				menu = SEARCH_RESULT;
+				search_result = dictionary.searchKeyword(historyWords[i].word, dicNum + 1);
+				isFavour = dictionary.isFavourite(historyWords[i].word);
+			}
+			else {
+				menu = SEARCH_DEF_RESULT;
+				searchDef_result = dictionary.searchHashDefinition(historyWords[i].word, dicNum + 1);
+				if (!searchDef_result.empty()) isFavour = dictionary.isFavourite(searchDef_result[0][0]);
+			}
 		}
 		if (removeButton[i].state == RELEASED) {
 			dictionary.removeAHistory(dicNum + 1, historyWords[i].word);
@@ -455,7 +503,7 @@ void System::DrawHistory() {
 	// draw seach bar
 	DrawSearchBar();
 
-	if (searchBox.getState() == TOUCHED) {
+	if (ok.state == DEFAULT && searchBox.getState() == TOUCHED) {
 		mouseCursor = MOUSE_CURSOR_IBEAM;
 	}
 }
@@ -524,7 +572,7 @@ void System::DrawFavourite() {
 		isFavour = dictionary.isFavourite(randWord[0]);
 	}
 
-	if (searchBox.getState() == TOUCHED) {
+	if (ok.state == DEFAULT && searchBox.getState() == TOUCHED) {
 		mouseCursor = MOUSE_CURSOR_IBEAM;
 	}
 }
@@ -750,7 +798,7 @@ void System::DrawModify() {
 		modifyKeyBox.noTyping = false;
 		modifyDefBox.clear();
 	}
-	if (searchBox.getState() == TOUCHED) {
+	if (ok.state == DEFAULT && searchBox.getState() == TOUCHED) {
 		mouseCursor = MOUSE_CURSOR_IBEAM;
 	}
 }
@@ -799,6 +847,7 @@ void System::DrawChangeTranslation() {
 					dicNum = i;
 					isDropdownChangeTranslation = false;
 					randWord = dictionary.randomAWord(dicNum + 1);
+					isFavour = dictionary.isFavourite(randWord[0]);
 				}
 			}
 			temp.DrawText(mouseCursor);
@@ -937,9 +986,16 @@ void System::DrawSearchBar() {
 				searchBox.currentInput = historyWords[i2].word;
 				searchBox.posCursor = searchBox.currentInput.size();
 				isDropdown = false;
-				search_result = dictionary.searchKeyword(historyWords[i2].word, dicNum + 1);
+				mode = !historyWords[i2].isKey;
+				if (mode) {
+					searchDef_result = dictionary.searchHashDefinition(historyWords[i2].word, dicNum + 1);
+					menu = SEARCH_DEF_RESULT;
+				}
+				else {
+					search_result = dictionary.searchKeyword(historyWords[i2].word, dicNum + 1);
+					menu = SEARCH_RESULT;
+				}
 				isFavour = dictionary.isFavourite(historyWords[i2].word);
-				menu = SEARCH_RESULT;
 				searchBox.isTyping = false;
 				dictionary.removeAHistory(dicNum + 1, historyWords[i2].word);
 				dictionary.addHistory(dicNum + 1, historyWords[i2].word, !mode);
@@ -955,12 +1011,18 @@ void System::DrawSearchBar() {
 			dictionary.addHistory(dicNum + 1, searchBox.getInput(), !mode);
 			historyWords = dictionary.viewHistory(dicNum + 1);
 			if (mode) {// mode == true -> search by definition, click modeDef or modeKey to change mode
-				search_result = dictionary.searchDefinition(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
+				searchDef_result = dictionary.searchHashDefinition(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
+				cout << "RESULT: \n";
+				for (int i = 0; i < searchDef_result.size(); ++i) {
+					cout << searchDef_result[i][0] << '\n';
+				}
+				if (!searchDef_result.empty()) isFavour = dictionary.isFavourite(searchDef_result[0][0]);
 			} else {
 				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
 			}
 			if (!search_result.empty()) isFavour = dictionary.isFavourite(search_result[0]);
-			menu = SEARCH_RESULT;
+			if (mode) menu = SEARCH_DEF_RESULT;
+			else menu = SEARCH_RESULT;
 			searchBox.isTyping = false;
 			isDropdown = false;
 		}
@@ -1067,7 +1129,124 @@ void System::DrawSearchResult() {
 	if (modeDef.getState() == RELEASED) mode ^= 1;
 	else if (modeKey.getState() == RELEASED) mode ^= 1;
 
-	if (searchBox.getState() == TOUCHED) {
+	if (ok.state == DEFAULT && searchBox.getState() == TOUCHED) {
+		mouseCursor = MOUSE_CURSOR_IBEAM;
+	}
+}
+
+void System::DrawSearchDefResult() {
+	static float scrollY = 0;// scroll 
+	static float height = 0;// height of the search result box
+	static bool dialog = false;
+	static int choosen = 0;
+	static Button Heart[40], edit[40], remove[40];
+	scrollY += GetMouseWheelMove() * 30;
+	if (0.55 * windowHeight + height + scrollY + 0.1 * windowHeight < windowHeight) scrollY = windowHeight - 0.55 * windowHeight - height - 0.1 * windowHeight;
+	if (scrollY > 0) scrollY = 0;
+	// draw mainpage button
+	mainpage.SetBox(0.743 * windowWidth, 0.406 * windowHeight + scrollY, 0.196 * windowWidth, 0.082 * windowHeight, defaultColor, touchedColor, clickedColor);
+	mainpage.SetText(Raleway_Black, "Main Page", GetCenterPos(Raleway_Black, "Main Page", 40, 1, mainpage.buttonShape), 40, 1, BLACK, BLACK, BLACK);
+	static Button prev, next;
+	prev.SetBox(0.543 * windowWidth, 0.426 * windowHeight + scrollY, 0.058 * windowWidth, 0.052 * windowHeight, defaultColor, touchedColor, clickedColor);
+	prev.SetText(Raleway_Black, "<", GetCenterPos(Raleway_Black, "<", 40, 1, prev.buttonShape), 40, 1, BLACK, BLACK, BLACK);
+	next.SetBox(0.661 * windowWidth, 0.426 * windowHeight + scrollY, 0.058 * windowWidth, 0.052 * windowHeight, defaultColor, touchedColor, clickedColor);
+	next.SetText(Raleway_Black, ">", GetCenterPos(Raleway_Black, ">", 40, 1, next.buttonShape), 40, 1, BLACK, BLACK, BLACK);
+	if (mainpage.buttonShape.y + mainpage.buttonShape.height >= 0.342 * windowHeight) {
+		mainpage.DrawText(mouseCursor);
+		prev.DrawText(mouseCursor);
+		next.DrawText(mouseCursor);
+		DrawTextEx(Raleway_Black48, to_string(choosen + 1).c_str(), GetCenterPos(Raleway_Black48, to_string(choosen + 1), 48, 0.5, { prev.buttonShape.x + prev.buttonShape.width, prev.buttonShape.y, next.buttonShape.x - (prev.buttonShape.x + prev.buttonShape.width), prev.buttonShape.height }), 48, 0.5, BLACK);
+		string totalPage = "of " + to_string(searchDef_result.size()) + (searchDef_result.size() > 1 ? " pages" : " page");
+		DrawTextEx(Raleway_Bold30, totalPage.c_str(), { GetCenterPos(Raleway_Bold30, totalPage, 30, 0.5, { prev.buttonShape.x + prev.buttonShape.width, prev.buttonShape.y + prev.buttonShape.height, next.buttonShape.x - (prev.buttonShape.x + prev.buttonShape.width), prev.buttonShape.height }).x, (float)0.5 * windowHeight + scrollY }, 30, 0.5, BLACK);
+		if (mainpage.state == RELEASED) {
+			menu = DEFAULT;
+			isFavour = dictionary.isFavourite(randWord[0]);
+			scrollY = 0;
+			height = 0;
+			choosen = 0;
+		}
+		if (prev.state == RELEASED) {
+			if (choosen > 0) --choosen;
+			scrollY = 0;
+			height = 0;
+			isFavour = dictionary.isFavourite(searchDef_result[choosen][0]);
+		}
+		if (next.state == RELEASED) {
+			if (choosen + 1 < searchDef_result.size()) ++choosen;
+			scrollY = 0;
+			height = 0;
+			isFavour = dictionary.isFavourite(searchDef_result[choosen][0]);
+		}
+	}
+
+	// draw search result
+	// draw keyword
+	if (searchDef_result.empty() || searchDef_result[0].size() < 2) {
+		DrawTextEx(RussoOne_Regular, "No result!", { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
+	}
+	else {
+		DrawTextEx(RussoOne_Regular, searchDef_result[choosen][0].c_str(), { (float)0.061 * windowWidth, (float)0.389 * windowHeight + scrollY }, 96, 1, BLACK);
+		// draw definition box
+		Rectangle boxShape = { (float)0.061 * windowWidth, (float)0.55 * windowHeight + scrollY, (float)0.878 * windowWidth, (float)height };
+		DrawRectangleRounded(boxShape, 0.25 - 0.00000012 * height * height, 10, { 203, 241, 245, 255 });
+		boxShape.x += 0.013 * windowWidth;
+		boxShape.width -= 0.023 * windowWidth;
+		height = DrawTextOnBoxEx(boxShape, Raleway_Italic, searchDef_result[choosen], {(float)0.09 * windowWidth, (float)0.61 * windowHeight + scrollY}, 40, 0.5, 0.04 * windowHeight, 0.055 * windowHeight, BLACK) - boxShape.y + 0.05 * windowHeight;
+
+		Heart[choosen].SetBox(0.815 * windowWidth, boxShape.y + 0.01 * windowHeight, filledHeart_icon.width * 0.085, filledHeart_icon.height * 0.085, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		Heart[choosen].DrawText(mouseCursor);
+		if (isFavour) {
+			DrawTextureEx(filledHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, Heart[choosen].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+			if (Heart[choosen].state == RELEASED) {
+				dictionary.removeAFavourite(dicNum + 1, searchDef_result[choosen][0]);
+				isFavour = false;
+			}
+		}
+		else {
+			DrawTextureEx(hollowedHeart_icon, { (float)0.815 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.085, Heart[choosen].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+			if (Heart[choosen].state == RELEASED) {
+				dictionary.addFavourite(dicNum + 1, searchDef_result[choosen][0]);
+				isFavour = true;
+			}
+		}
+		edit[choosen].SetBox(0.858 * windowWidth, boxShape.y + 0.01 * windowHeight, edit_icon.width * 0.075, edit_icon.height * 0.075, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		edit[choosen].DrawText(mouseCursor);
+		DrawTextureEx(edit_icon, { (float)0.858 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.075, edit[choosen].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		if (edit[choosen].state == RELEASED) {
+			SetModify(searchDef_result[choosen][0]);
+			menu = MODIFY;
+		}
+		remove[choosen].SetBox(0.893 * windowWidth, boxShape.y + 0.01 * windowHeight, remove_icon.width * 0.08, remove_icon.height * 0.08, Fade(WHITE, 0), Fade(WHITE, 0), Fade(WHITE, 0));
+		remove[choosen].DrawText(mouseCursor);
+		DrawTextureEx(remove_icon, { (float)0.893 * windowWidth, boxShape.y + (float)0.01 * windowHeight }, 0, 0.08, remove[choosen].state == CLICKED ? Fade(WHITE, 0.4) : WHITE);
+		if (remove[choosen].state == RELEASED) {
+			dialog = true;
+		}
+	}
+	if (dialog) {
+		DrawDialogBox();
+		if (yes.state == RELEASED) {
+			dictionary.removeAWord(dicNum + 1, searchDef_result[choosen][0]);
+			searchDef_result.erase(searchDef_result.begin() + choosen);
+			if (choosen == searchDef_result.size()) --choosen;
+			dialog = false;
+		}
+		if (no.state == RELEASED) {
+			dialog = false;
+		}
+	}
+	// draw title
+	DrawRectangle(0, 0, windowWidth, 0.342 * windowHeight, { 236, 249, 255, 255 });
+	DrawTitle();
+	// draw search bar
+	DrawSearchBar();
+	// draw mode button
+	if (mode) modeDef.DrawText(mouseCursor);
+	else modeKey.DrawText(mouseCursor);
+	if (modeDef.getState() == RELEASED) mode ^= 1;
+	else if (modeKey.getState() == RELEASED) mode ^= 1;
+
+	if (ok.state == DEFAULT && searchBox.getState() == TOUCHED) {
 		mouseCursor = MOUSE_CURSOR_IBEAM;
 	}
 }

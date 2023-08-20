@@ -17,6 +17,7 @@ struct Button {
     enum BoxState { DEFAULT, TOUCHED, CLICKED, RELEASED };
     int state = DEFAULT;
     bool setMouse = true;
+    bool isZoom = false;
 
     //Text
     Font font;

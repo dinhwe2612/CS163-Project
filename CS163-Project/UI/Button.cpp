@@ -23,22 +23,40 @@ void Button::SetText(Font _font, string _Text, Vector2 _coordText, float _fontSi
 
 void Button::DrawText(int &mouseCursor) {
 	int state = getState();
+	Rectangle currentShape = buttonShape;
+	if (isZoom) {
+		if (state == DEFAULT) {
+
+		}
+		else if (state == TOUCHED) {
+			currentShape.x -= 0.01 * buttonShape.width;
+			currentShape.y -= 0.01 * buttonShape.height;
+			currentShape.width *= 1.02;
+			currentShape.height *= 1.02;
+		}
+		else if (state == CLICKED || state == RELEASED) {
+			currentShape.x += 0.02 * buttonShape.width;
+			currentShape.y += 0.02 * buttonShape.height;
+			currentShape.width *= 0.96;
+			currentShape.height *= 0.96;
+		}
+	}
 	if (state == DEFAULT) {
 		//DrawRectangleRec(buttonShape, colorBoxDefault);
-		DrawRectangleRounded(buttonShape, roundness, segments, colorBoxDefault);
+		DrawRectangleRounded(currentShape, roundness, segments, colorBoxDefault);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextDefault);
 		if (drawCorner) {
 			//DrawRectangleLinesEx(buttonShape, 4, colorCornerDefault);
-			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
+			DrawRectangleRoundedLines(currentShape, roundness, segments, 4, colorCornerClicked);
 		}
 	}
 	else if (state == TOUCHED) {
 		//DrawRectangleRec(buttonShape, colorBoxTouched);
-		DrawRectangleRounded(buttonShape, roundness, segments, colorBoxTouched);
+		DrawRectangleRounded(currentShape, roundness, segments, colorBoxTouched);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextTouched);
 		if (drawCorner) {
 			//DrawRectangleLinesEx(buttonShape, 4, colorCornerTouched);
-			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
+			DrawRectangleRoundedLines(currentShape, roundness, segments, 4, colorCornerClicked);
 		}
 		if (setMouse) {
 			mouseCursor = MOUSE_CURSOR_POINTING_HAND;
@@ -46,11 +64,11 @@ void Button::DrawText(int &mouseCursor) {
 	}
 	else if (state == CLICKED || state == RELEASED) {
 		//DrawRectangleRec(buttonShape, colorBoxClicked);
-		DrawRectangleRounded(buttonShape, roundness, segments, colorBoxClicked);
+		DrawRectangleRounded(currentShape, roundness, segments, colorBoxClicked);
 		DrawTextEx(font, Text.c_str(), coordText, fontSize, spacing, colorTextClicked);
 		if (drawCorner) {
 			//DrawRectangleLinesEx(buttonShape, 4, colorCornerClicked);
-			DrawRectangleRoundedLines(buttonShape, roundness, segments, 4, colorCornerClicked);
+			DrawRectangleRoundedLines(currentShape, roundness, segments, 4, colorCornerClicked);
 		}
 		if (setMouse) {
 			mouseCursor = MOUSE_CURSOR_POINTING_HAND;

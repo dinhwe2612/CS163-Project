@@ -40,6 +40,7 @@ struct Dictionary {
 	vector<string> searchKeyword(string key, int dicNum); // dicNum: No of dataset
 	vector<string> predictKeyword(string key, int dicNum);
 	vector<string> searchDefinition(string def, int dicNum);
+	vector<vector<string>> searchHashDefinition(string def, int dicNum);
 	bool addNewWord(int dictnum, string key, string def);
 	//void deleteDictionary();
 	void clear();
