@@ -511,7 +511,13 @@ vector<string> Dictionary::searchDefinition(string def, int dicNum) {
 bool check(string &a, string &b) {
 	if (a.size() < b.size()) return false;
 	for (int l = 0, r = (int)b.size() - 1; r < a.size(); ++l, ++r) {
-		if (a.substr(l, r - l + 1) == b) return true;
+		if (a.substr(l, r - l + 1) == b) {
+			if ((l - 1 > 0 && a[l - 1] == ' ') || l == 0) {
+				if ((r + 1 < a.size() && a[r + 1] == ' ') || r + 1 == a.size()) {
+					return true;
+				}
+			}
+		}
 	}
 	return false;
 }
@@ -519,6 +525,7 @@ bool check(string &a, string &b) {
 vector<vector<string>> Dictionary::searchHashDefinition(string def, int dicNum) {
 	vector<vector<string>> found;
 	vector<pair<int, int>> index;
+	while(!def.empty() && def.back() == ' ') def.pop_back();
 	switch (dicNum) {
 		case 1:
 			index = engEng_def.searchHash(def);

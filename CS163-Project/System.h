@@ -97,6 +97,7 @@ struct System {
     int dicNum = 0; // which dictionary is selected
     int menu = DEFAULT;
     int mouseCursor = MOUSE_CURSOR_DEFAULT;
+    int choosen = 0;
     bool isDropdownChangeTranslation = false;
     bool isAddNewWord = false;
 

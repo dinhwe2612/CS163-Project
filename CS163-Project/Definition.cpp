@@ -57,7 +57,8 @@ int Definition::getHash(string &def) {
 int Definition::getNumDef(string &def) {
     stringstream ss(def);
     int cnt = 0;
-    while (ss >> def) {
+    string word;
+    while (ss >> word) {
         ++cnt;
     }
     return cnt;

@@ -971,6 +971,7 @@ void System::DrawSearchBar() {
 				dictionary.removeAHistory(dicNum + 1, suggestions[i]);
 				dictionary.addHistory(dicNum + 1, suggestions[i], !mode);
 				historyWords = dictionary.viewHistory(dicNum + 1);
+				choosen = 0;
 			}
 		}
 	}
@@ -978,28 +979,29 @@ void System::DrawSearchBar() {
 	static Button hisButton[7];
 	if (isDropdown && searchBox.getInput().empty()) {
 		
-		for (int i = 0, i2 = (int)historyWords.size() - 1; i < 6 && i2 >= 0; ++i, --i2) {
+		for (int i = 0; i < min(6, (int)historyWords.size()); ++i) {
 			hisButton[i].SetBox(searchBox.inputShape.x, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height, searchBox.inputShape.width, searchBox.inputShape.height, { 227, 253, 253, 253 }, { 238, 253, 253, 245 }, { 204, 227, 227, 255 });
-			hisButton[i].SetText(Parable_Regular40, historyWords[i2].word, { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular40, historyWords[i2].word, 40, 1, hisButton[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
+			hisButton[i].SetText(Parable_Regular40, historyWords[i].word, { (float)0.35 * windowWidth ,GetCenterPos(Parable_Regular40, historyWords[i].word, 40, 1, hisButton[i].buttonShape).y }, 40, 1, { 178, 178, 178, 255 }, { 178, 178, 178, 255 }, { 178, 178, 178, 255 });
 			hisButton[i].DrawText(mouseCursor);
 			DrawTextureEx(history_icon, { searchBox.inputShape.x + (float)0.01 * windowWidth, searchBox.inputShape.y + (i + 1) * searchBox.inputShape.height + (float)0.01 * windowHeight }, 0, 0.1, WHITE);
 			if (hisButton[i].state == RELEASED) {
-				searchBox.currentInput = historyWords[i2].word;
+				searchBox.currentInput = historyWords[i].word;
 				searchBox.posCursor = searchBox.currentInput.size();
 				isDropdown = false;
-				mode = !historyWords[i2].isKey;
+				mode = !historyWords[i].isKey;
 				if (mode) {
-					searchDef_result = dictionary.searchHashDefinition(historyWords[i2].word, dicNum + 1);
+					searchDef_result = dictionary.searchHashDefinition(historyWords[i].word, dicNum + 1);
 					menu = SEARCH_DEF_RESULT;
+					choosen = 0;
 				}
 				else {
-					search_result = dictionary.searchKeyword(historyWords[i2].word, dicNum + 1);
+					search_result = dictionary.searchKeyword(historyWords[i].word, dicNum + 1);
 					menu = SEARCH_RESULT;
 				}
-				isFavour = dictionary.isFavourite(historyWords[i2].word);
+				isFavour = dictionary.isFavourite(historyWords[i].word);
 				searchBox.isTyping = false;
-				dictionary.removeAHistory(dicNum + 1, historyWords[i2].word);
-				dictionary.addHistory(dicNum + 1, historyWords[i2].word, !mode);
+				dictionary.removeAHistory(dicNum + 1, historyWords[i].word);
+				dictionary.addHistory(dicNum + 1, historyWords[i].word, !mode);
 				historyWords = dictionary.viewHistory(dicNum + 1);
 			}
 		}
@@ -1013,10 +1015,7 @@ void System::DrawSearchBar() {
 			historyWords = dictionary.viewHistory(dicNum + 1);
 			if (mode) {// mode == true -> search by definition, click modeDef or modeKey to change mode
 				searchDef_result = dictionary.searchHashDefinition(searchBox.getInput(), dicNum + 1);// dicNum + 1 because dicNum begin from 0
-				cout << "RESULT: \n";
-				for (int i = 0; i < searchDef_result.size(); ++i) {
-					cout << searchDef_result[i][0] << '\n';
-				}
+				choosen = 0;
 				if (!searchDef_result.empty()) isFavour = dictionary.isFavourite(searchDef_result[0][0]);
 			} else {
 				search_result = dictionary.searchKeyword(searchBox.getInput(), dicNum + 1);
@@ -1139,8 +1138,7 @@ void System::DrawSearchDefResult() {
 	static float scrollY = 0;// scroll 
 	static float height = 0;// height of the search result box
 	static bool dialog = false;
-	static int choosen = 0;
-	static Button Heart[40], edit[40], remove[40];
+	static Button Heart[100], edit[100], remove[100];
 	scrollY += GetMouseWheelMove() * 30;
 	if (0.55 * windowHeight + height + scrollY + 0.1 * windowHeight < windowHeight) scrollY = windowHeight - 0.55 * windowHeight - height - 0.1 * windowHeight;
 	if (scrollY > 0) scrollY = 0;
