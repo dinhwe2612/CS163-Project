@@ -1005,9 +1005,9 @@ void Dictionary::randomDef(int dictNum, pair<int, vector<string>> &result) {
 		}
 		return;
 	case 3:
-		result.first = RandInt(0, engVie.size() - 1);
+		result.first = RandInt(1, 4);
 		for (int i = 1; i <= 4; ++i) {
-			int randIdKey = RandInt(1, 4);
+			int randIdKey = RandInt(0, engVie.size() - 1);
 			if (i == result.first) {
 				int randIdDef = RandInt(0, engVie[randIdKey].def.size() - 1);
 				result.second[0] = engVie[randIdKey].def[randIdDef];

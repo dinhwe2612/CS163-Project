@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include <iostream>
 #include <string.h>
+#include <vector>
 using namespace std;
 
 struct InputBox {
@@ -15,6 +16,7 @@ struct InputBox {
     Color colorBoxDefault = RAYWHITE, colorBoxTouched = RAYWHITE, colorBoxTyping = RAYWHITE;
     Color colorTextDefault = BLACK, colorTextTouched = BLACK, colorTextTyping = BLACK;
     Color colorCornerDefault = { 113, 201, 206, 255 };
+    Color colorSelected = { 119, 136, 153, 255 };
     int MAX_SIZE = 0;// max size of input
     float roundness = 0, segments = 0;// for drawing corner of input box
     bool isTyping = false;// check if the input box is ready to type
@@ -27,18 +29,24 @@ struct InputBox {
     int posR = 0;// last position in currentInput would be drawn
     int countConsecutiveKey = 0;// count consecutive key pressed
     int lastKey = 0;// last key pressed
+    int prePosCursor = 0;// previous position of cursor
+    long long isMouseDown = 0;// check if mouse is pressed
+    vector<float> coordDisplay;
     float lengthText = 0;// length of text limit
     enum State { DEFAULT, TOUCHED, TYPING };
 
     void Construct(float x, float y, float width, float height, Font _font, Vector2 _coordText, int _szText, float _spacing, int _MAX_SIZE);
     void SetColorBox(Color colorDefault, Color colorTouched, Color colorTyping);
     void SetColorText(Color colorDefault, Color colorTouched, Color colorTyping);
+    void DrawText(Color color);
     void Draw();
     bool checkCollisionText(int l, int r);
     bool isClicked();
     int getState();
     void reset();
     void manipulate();
+    void balance();
+    void mouseOperation();
     string getInput();
 };
 

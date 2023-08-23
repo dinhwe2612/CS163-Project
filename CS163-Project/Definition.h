@@ -9,13 +9,8 @@
 #include <algorithm>
 using namespace std;
 
-//struct hash_node {
-//	pair<string, string> data;// {keyword, definition}
-//	hash_node* next;
-//};
 const int MAX = 1011;
 int hashFunc(string &def);
-//void deleteHashlist(hash_node*& pHead);
 
 struct Definition {
 	int num = 0;// number of definition

@@ -22,13 +22,30 @@ void InputBox::SetColorText(Color colorDefault, Color colorTouched, Color colorT
 	colorTextTyping = colorTyping;
 }
 
+void InputBox::DrawText(Color color) {
+	float curx = coordText.x;
+	int l = prePosCursor - (add && prePosCursor < posCursor);
+	int r = posCursor;
+	if (!add) --l, --r;
+	if (l > r) swap(l, r);
+	++l;
+	for (int i = posL; i <= posR; i++) {
+		if (i < l || r < i) DrawTextEx(font, currentInput.substr(i, 1).c_str(), {curx, coordText.y}, szText, spacing, color);
+		else {
+			DrawTextEx(font, currentInput.substr(i, 1).c_str(), {curx, coordText.y}, szText, spacing, colorSelected);
+		}
+		curx += MeasureTextEx(font, currentInput.substr(i, 1).c_str(), szText, spacing).x + spacing;
+	}
+}
+
 void InputBox::Draw() {
 	if (!noTyping) manipulate();
 
 	if (getState() == DEFAULT) {
 		//DrawRectangleRec(inputShape, colorBoxDefault);
 		DrawRectangleRounded(inputShape, roundness, segments, colorBoxDefault);
-		DrawTextEx(font, currentInput.substr(posL, posR - posL + 1).c_str(), {coordText.x, coordText.y}, szText, spacing, colorTextDefault);
+		//DrawTextEx(font, currentInput.substr(posL, posR - posL + 1).c_str(), {coordText.x, coordText.y}, szText, spacing, colorTextDefault);
+		DrawText(colorTextDefault);
 		if (drawCorner) {
 			//DrawRectangleLinesEx(inputShape, 2, colorCornerDefault);
 			DrawRectangleRoundedLines(inputShape, roundness, segments, 2, colorCornerDefault);
@@ -36,7 +53,8 @@ void InputBox::Draw() {
 	} else if (getState() == TOUCHED) {
 		//DrawRectangleRec(inputShape, colorBoxTouched);
 		DrawRectangleRounded(inputShape, roundness, segments, colorBoxTouched);
-		DrawTextEx(font, currentInput.substr(posL, posR - posL + 1).c_str(), {coordText.x, coordText.y}, szText, spacing, colorTextTouched);
+		//DrawTextEx(font, currentInput.substr(posL, posR - posL + 1).c_str(), {coordText.x, coordText.y}, szText, spacing, colorTextTouched);
+		DrawText(colorTextTouched);
 		if (drawCorner) {
 			//DrawRectangleLinesEx(inputShape, 2, colorCornerDefault);
 			DrawRectangleRoundedLines(inputShape, roundness, segments, 2, colorCornerDefault);
@@ -44,7 +62,8 @@ void InputBox::Draw() {
 	} else if (getState() == TYPING) {
 		//DrawRectangleRec(inputShape, colorBoxTyping);
 		DrawRectangleRounded(inputShape, roundness, segments, colorBoxTyping);
-		DrawTextEx(font, currentInput.substr(posL, posR - posL + 1).c_str(), {coordText.x, coordText.y}, szText, spacing, colorTextTyping);
+		//DrawTextEx(font, currentInput.substr(posL, posR - posL + 1).c_str(), {coordText.x, coordText.y}, szText, spacing, colorTextTyping);
+		DrawText(colorTextTyping);
 		if (drawCorner) {
 			//DrawRectangleLinesEx(inputShape, 2, colorCornerDefault);
 			DrawRectangleRoundedLines(inputShape, roundness, segments, 2, colorCornerDefault);
@@ -190,18 +209,78 @@ void InputBox::manipulate() {
 			timeline = 0;
 		}
 	}
+	balance();
+	mouseOperation();
 	// for cursor
 	if (isTyping && (add || timeline <= 2500)) {
 		currentInput.insert(posCursor, "|");
 		add = true;
 	}
+	balance();
+}
+
+void InputBox::mouseOperation() {
+	// for clicking on the input box
+	static bool selected = false;
+	coordDisplay.clear();
+	for (int i = posL; i <= posR; ++i) {
+		if (i < 0 || i >= currentInput.size()) continue;
+		string c = currentInput.substr(i, 1);
+		float x = MeasureTextEx(font, c.c_str(), szText, spacing).x;
+		if (coordDisplay.empty()) coordDisplay.push_back(coordText.x + x);
+		else coordDisplay.push_back(coordDisplay.back() + x + spacing);
+	}
+	coordDisplay.push_back(inputShape.x + inputShape.width);
+	selected &= !IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
+	if (isMouseDown <= 1 && !selected) prePosCursor = posCursor;
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+		Vector2 mouse = GetMousePosition();
+		if (CheckCollisionPointRec(mouse, inputShape)) {
+			for (int i = 0; i < coordDisplay.size(); ++i) {
+				if (mouse.x < coordDisplay[i]) {
+					posCursor = posL + i;
+					if (isMouseDown >= 30) {
+						selected = true;
+						if (mouse.x < coordText.x && posCursor > 0) {
+							--posCursor;
+						}
+						else if (mouse.x > coordText.x + lengthText && posCursor < currentInput.size()) {
+							++posCursor;
+						}
+					}
+					add = true;
+					break;
+				}
+			}
+		}
+		++isMouseDown;
+	} else isMouseDown = 0;
+	// ctrl + c
+	if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_C)) {
+		if (selected) {
+			int l = prePosCursor - (add && prePosCursor < posCursor);
+			int r = posCursor;
+			if (!add) --l, --r;
+			if (l > r) swap(l, r);
+			if (l + 1 <= r) {
+				string s = currentInput.substr(l + 1, r - l);
+				if (s.back() == '|') s.pop_back();
+				else if (s.front() == '|') s.erase(0, 1);
+				SetClipboardText(s.c_str());
+			}
+		}
+	}
+}
+
+void InputBox::balance() {
 	// for text drawing
 	if (posL > posCursor) {
 		posL = posCursor;
 		while (posL < posR && !checkCollisionText(posL, posR)) {
 			--posR;
 		}
-	} else if (posR < posCursor) {
+	}
+	else if (posR < posCursor) {
 		posR = posCursor;
 		while (posL < posR && !checkCollisionText(posL, posR)) {
 			++posL;
