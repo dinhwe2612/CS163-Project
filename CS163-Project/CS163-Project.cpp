@@ -21,7 +21,7 @@ int main(void)
     System system;
     system.Construct();
     system.Draw();
-    //system.Destruct();
+    system.Destruct();
 
     return 0;
 }

@@ -125,9 +125,25 @@ void InputBox::manipulate() {
 	}
 
 	if (isTyping) {
+		// ctrl + c
+		if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_C)) {
+			if (selected) {
+				int l = prePosCursor - (add && prePosCursor < posCursor);
+				int r = posCursor;
+				if (!add) --l, --r;
+				if (l > r) swap(l, r);
+				if (l + 1 <= r) {
+					string s = currentInput.substr(l + 1, r - l);
+					if (s.back() == '|') s.pop_back();
+					else if (s.front() == '|') s.erase(0, 1);
+					SetClipboardText(s.c_str());
+				}
+			}
+		}
 		// for ctrl + v
 		if (IsKeyDown(KEY_LEFT_CONTROL) || IsKeyDown(KEY_RIGHT_CONTROL)) {
 			if (IsKeyPressed(KEY_V)) {
+				removeSelected();
 				string clipboard = GetClipboardText();
 				for(int i = 0; i < clipboard.size(); ++i) {
 					if (clipboard[i] < 32 || clipboard[i] > 126) {
@@ -150,6 +166,7 @@ void InputBox::manipulate() {
 		// for typing
 		int key = GetCharPressed();
 		if (key >= 32 && key <= 126 && currentInput.length() < MAX_SIZE) {
+			removeSelected();
 			currentInput.insert(posCursor++, 1, key);
 			++posR;
 			while (posL < posR && !checkCollisionText(posL, posR)) {
@@ -163,6 +180,7 @@ void InputBox::manipulate() {
 		// for arrow keys
 		key2 = (IsKeyDown(KEY_LEFT) && (timeline == 540 || (timeline % 60 == 0 && countConsecutiveKey >= 4)) ? KEY_LEFT : key2);
 		if (key2 == KEY_LEFT && posCursor > 0) {
+			selected = false;
 			if (lastKey != key2) {
 				lastKey = key2;
 				countConsecutiveKey = 0;
@@ -174,6 +192,7 @@ void InputBox::manipulate() {
 		}
 		key2 = (IsKeyDown(KEY_RIGHT) && (timeline % 540 == 0 || (timeline % 60 == 0 && countConsecutiveKey >= 4)) ? KEY_RIGHT : key2);
 		if (key2 == KEY_RIGHT && posCursor < currentInput.length()) {
+			selected = false;
 			if (lastKey != key2) {
 				lastKey = key2;
 				countConsecutiveKey = 0;
@@ -183,9 +202,19 @@ void InputBox::manipulate() {
 			add = true;
 			timeline = 0;
 		}
+		bool skip = false;
+		if (selected) {
+			if (IsKeyPressed(KEY_BACKSPACE) || IsKeyPressed(KEY_DELETE)) {
+				removeSelected();
+				add = true;
+				timeline = 0;
+				skip = true;
+			}
+		}
+
 		// for backspace
 		key2 = (IsKeyDown(KEY_BACKSPACE) && (timeline % 540 == 0 || (timeline % 60 == 0 && countConsecutiveKey >= 4)) ? KEY_BACKSPACE : key2);
-		if (key2 == KEY_BACKSPACE && currentInput.length() > 0 && posCursor) {
+		if (!skip && key2 == KEY_BACKSPACE && currentInput.length() > 0 && posCursor) {
 			if (lastKey != key2) {
 				lastKey = key2;
 				countConsecutiveKey = 0;
@@ -198,7 +227,7 @@ void InputBox::manipulate() {
 		}
 		// for delete
 		key2 = (IsKeyDown(KEY_DELETE) && (timeline % 540 == 0 || (timeline % 60 == 0 && countConsecutiveKey >= 4)) ? KEY_DELETE : key2);
-		if (key2 == KEY_DELETE && currentInput.length() > 0 && posCursor < currentInput.length()) {
+		if (!skip && key2 == KEY_DELETE && currentInput.length() > 0 && posCursor < currentInput.length()) {
 			if (lastKey != key2) {
 				lastKey = key2;
 				countConsecutiveKey = 0;
@@ -220,8 +249,7 @@ void InputBox::manipulate() {
 }
 
 void InputBox::mouseOperation() {
-	// for clicking on the input box
-	static bool selected = false;
+	// for clicking on the input box 
 	coordDisplay.clear();
 	for (int i = posL; i <= posR; ++i) {
 		if (i < 0 || i >= currentInput.size()) continue;
@@ -230,16 +258,16 @@ void InputBox::mouseOperation() {
 		if (coordDisplay.empty()) coordDisplay.push_back(coordText.x + x);
 		else coordDisplay.push_back(coordDisplay.back() + x + spacing);
 	}
-	coordDisplay.push_back(inputShape.x + inputShape.width);
+	coordDisplay.push_back(99999);
 	selected &= !IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 	if (isMouseDown <= 1 && !selected) prePosCursor = posCursor;
 	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
 		Vector2 mouse = GetMousePosition();
-		if (CheckCollisionPointRec(mouse, inputShape)) {
+		if (isTyping) {
 			for (int i = 0; i < coordDisplay.size(); ++i) {
 				if (mouse.x < coordDisplay[i]) {
 					posCursor = posL + i;
-					if (isMouseDown >= 30) {
+					if (isMouseDown >= 6) {
 						selected = true;
 						if (mouse.x < coordText.x && posCursor > 0) {
 							--posCursor;
@@ -255,18 +283,21 @@ void InputBox::mouseOperation() {
 		}
 		++isMouseDown;
 	} else isMouseDown = 0;
-	// ctrl + c
-	if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_C)) {
-		if (selected) {
-			int l = prePosCursor - (add && prePosCursor < posCursor);
-			int r = posCursor;
-			if (!add) --l, --r;
-			if (l > r) swap(l, r);
-			if (l + 1 <= r) {
-				string s = currentInput.substr(l + 1, r - l);
-				if (s.back() == '|') s.pop_back();
-				else if (s.front() == '|') s.erase(0, 1);
-				SetClipboardText(s.c_str());
+}
+
+void InputBox::removeSelected() {
+	if (selected) {
+		selected = false;
+		int l = prePosCursor - (add && prePosCursor < posCursor);
+		int r = posCursor;
+		if (!add) --l, --r;
+		if (l > r) swap(l, r);
+		if (l + 1 <= r) {
+			currentInput.erase(l + 1, r - l);
+			posCursor = l + 1;
+			posR = posCursor;
+			while (posL < posR && !checkCollisionText(posL, posR)) {
+				--posR;
 			}
 		}
 	}

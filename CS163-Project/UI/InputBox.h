@@ -31,6 +31,7 @@ struct InputBox {
     int lastKey = 0;// last key pressed
     int prePosCursor = 0;// previous position of cursor
     long long isMouseDown = 0;// check if mouse is pressed
+    bool selected = false;// selected text
     vector<float> coordDisplay;
     float lengthText = 0;// length of text limit
     enum State { DEFAULT, TOUCHED, TYPING };
@@ -47,6 +48,7 @@ struct InputBox {
     void manipulate();
     void balance();
     void mouseOperation();
+    void removeSelected();
     string getInput();
 };
 
