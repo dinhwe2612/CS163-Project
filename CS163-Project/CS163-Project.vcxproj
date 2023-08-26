@@ -152,11 +152,18 @@
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="Favourite.h" />
     <ClInclude Include="History.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Keyword.h" />
     <ClInclude Include="UI\Button.h" />
     <ClInclude Include="UI\InputBox.h" />
     <ClInclude Include="UI\Other.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CS163-Project.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\External\source\Image\icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

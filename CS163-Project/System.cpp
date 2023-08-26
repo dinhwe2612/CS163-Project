@@ -9,10 +9,13 @@ void System::Construct() {
 	auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
 	cout << "Time taken by loading data: " << duration.count() << " milliseconds" << endl;
 
+	// Init window
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT);
 	windowWidth = 1460;
 	windowHeight = 850;
 	InitWindow(windowWidth, windowHeight, "Dictionary - CS163 Project (>'-'<)");
+	Image window_icon = LoadImage("../External/source/Image/book.png");
+	SetWindowIcon(window_icon);
 
 	Parable_Regular = LoadFontEx("../External/source/Font/Parable-Regular.ttf", 96, 0, 0);
 	Parable_Regular40 = LoadFontEx("../External/source/Font/Parable-Regular.ttf", 40, 0, 0);
